@@ -1,6 +1,6 @@
-% !TeX program = xelatex
-% 编译目录为 docs/，连续运行两次 XeLaTeX 以更新图号与参考文献。
-% 正文、表格、图注与署名采用作者提供的定稿。
+% !TeX program = lualatex
+% 在 docs/ 下连续运行两次 LuaLaTeX，更新图号与参考文献并嵌入中文字符映射。
+% 依作者定稿增补 v1.1.0 水面清漂作业及桌面复验。
 \documentclass[a4paper,fontset=fandol,zihao=5]{ctexart}
 \usepackage[left=19mm,right=19mm,top=21mm,bottom=19mm,headheight=21pt,headsep=6mm,footskip=9mm]{geometry}
 \usepackage{xcolor,graphicx,booktabs,tabularx,array,caption,fancyhdr,microtype}
@@ -18,9 +18,9 @@
 \usepackage[unicode,colorlinks,linkcolor=teal,citecolor=teal,urlcolor=teal]{hyperref}
 \hypersetup{pdftitle={基于 OpenVLA 的无人艇巡检模拟软件开发日志},
   pdfauthor={朱华天，GPT-6.2 Astra，Gemini 4 Neon},
-  pdfsubject={港池无人艇中文指令、路径规划、双艇协作与发布验证}}
+  pdfsubject={港池无人艇中文巡检、水面清漂、双艇协作及 v1.1.0 发布验证}}
 \urlstyle{tt}
-\newcommand{\repolink}[2]{\href{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/blob/v1.0.0/#1}{#2}}
+\newcommand{\repolink}[2]{\href{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/blob/v1.1.0/#1}{#2}}
 \newcommand{\pagetitle}[1]{\section{#1}}
 \newcommand{\subhead}[1]{\subsection*{#1}}
 \ctexset{section={format=\raggedright\sffamily\bfseries\color{navy}\fontsize{19}{25}\selectfont,
@@ -55,7 +55,7 @@
 \vspace{2pt}{\color{rulegray}\hrule height .6pt}\vspace{11pt}
 
 \pagetitle{引言}
-我们开发了这款面向三维港池场景的无人艇巡检模拟软件，能够在仿真环境中实现无人艇依据中文指令自主完成巡检作业。操作者既可以指挥单艘无人艇执行任务，也可以向 A、B 两艘艇分派不同的协同任务。例如，输入“给木栈桥旁的黄标拍照”后，A艇会先规划可航路径，再驶近目标黄标完成拍摄；电子海图会实时记录其航行轨迹，相册则自动留存拍摄画面（图~\ref{fig:desktop}）。
+我们开发了这款面向三维港池场景的无人艇巡检模拟软件。操作者可以用中文指挥单艇检查航标、拍照或清理水面漂浮物，也可以给 A、B 两艘艇分派不同的任务。例如，输入“给木栈桥旁的黄标拍照”后，A艇会先规划可航路径，再驶近黄标完成拍摄。电子海图记录航行轨迹，相册自动留存拍摄画面（图~\ref{fig:desktop}）。
 
 \begin{minipage}{\linewidth}
 \centering
@@ -85,7 +85,7 @@
 环节 & 技术与组件 & 在软件中的用途\\
 \midrule
 训练与导出 & Python、PyTorch、ONNX & 使用中文短句训练指代理解模型，结合仿真航迹与候选图像训练艇控模型，并导出三个 ONNX 计算图。\\
-本机推理 & ONNX Runtime Web~\cite{ortweb}、Web Worker、WebAssembly & 在后台线程中解析指令指向的目标，并在航行过程中持续计算目标航速、转向角速度与快门信号。\\
+本机推理 & ONNX Runtime Web~\cite{ortweb}、Web Worker、WebAssembly & 在后台线程中解析航标指代，计算目标航速和转向角速度。拍摄任务还需核对模型给出的快门信号。\\
 场景与海图 & Three.js、Canvas 2D、Vite & 采用 Three.js 渲染三维港池与船首视角画面，使用 Canvas 2D 绘制电子海图，并通过 Vite 打包前端资源。\\
 桌面封装 & Tauri 2~\cite{tauri2arch}、Rust、WebView2 & 将前端界面、模型权重与推理运行时封装为 Windows 桌面程序，依托 WebView2 呈现交互界面。\\
 \bottomrule
@@ -104,15 +104,15 @@
   branch/.style={-{Stealth[length=1.7mm]},draw=umber,line width=.65pt},
   hint/.style={font=\scriptsize\sffamily,fill=white,text=muted,inner sep=1.6pt},
   every node/.style={font=\small}]
-\node[main] (input) at (0,0) {\textbf{中文指令}\\识别短句指向哪座航标或哪个泊位};
-\node[main] (assign) at (0,-1.55) {\textbf{校验与派单}\\核对颜色、位置与动作，按艇拆分航段};
-\node[main] (route) at (0,-3.1) {\textbf{起航前路径规划}\\从各艇当前位置计算静态可航路径};
-\node[main] (control) at (0,-4.65) {\textbf{实时艇控}\\跟踪航路点，预测并避让移动船只};
-\node[main] (finish) at (0,-6.2) {\textbf{到站作业}\\按航段要求完成观察、拍摄或靠泊};
+\node[main] (input) at (0,0) {\textbf{中文指令}\\确定航标、泊位或要收集的漂浮物类别};
+\node[main] (assign) at (0,-1.55) {\textbf{校验与派单}\\核对目标与动作，按艇分派任务};
+\node[main] (route) at (0,-3.1) {\textbf{起航前路径规划}\\从艇的当前位置规划可航路径};
+\node[main] (control) at (0,-4.65) {\textbf{实时艇控}\\跟踪航点，避让横穿船和邻艇};
+\node[main] (finish) at (0,-6.2) {\textbf{到站作业}\\按指令观察、拍照、收集或靠泊卸载};
 \node[stop] (conflict) at (8,-1.55) {提示冲突并保留原任务\\可采纳建议后重新发送};
 \node[stop] (blocked) at (8,-3.1) {艇停在当前位置，显示不可达航段};
-\node[side] (sense) at (8,-4.65) {更新船首裁片、相对几何量与艇位};
-\node[side] (report) at (8,-6.2) {记录作业结果，向协作艇回传\\观测方位或已拍照片};
+\node[side] (sense) at (8,-4.65) {按任务更新候选图像或航点位置\\读取相对方位、距离与艇速};
+\node[side] (report) at (8,-6.2) {巡检记录观测与照片\\清漂登记入舱和上岸件数};
 \draw[flow] (input)--(assign);
 \draw[flow] (assign)--(route);
 \draw[flow] (route)--(control);
@@ -122,14 +122,15 @@
 \draw[flow] ([yshift=3pt]control.east)--node[hint,above]{执行动作}([yshift=3pt]sense.west);
 \draw[flow] ([yshift=-3pt]sense.west)--node[hint,below]{返回观测}([yshift=-3pt]control.east);
 \draw[flow] (finish)--(report);
+\draw[flow] (report.south) -- (8,-7.11) -- node[hint,above]{还有待执行航段} (-3.65,-7.11) |- (route.west);
 \end{tikzpicture}
-\captionof{figure}{航行指令执行链路。派单完成后先执行静态路径规划；航行阶段，艇控模型依据实时更新的观测持续输出控制动作，直至无人艇抵达目标作业点。}\label{fig:flow}
+\captionof{figure}{航行指令的执行流程。各艇先规划航线，再根据实时观测调整航速和转向。清漂时目标随水流漂移，系统会更新通往收集点的航线。}\label{fig:flow}
 \end{minipage}
 
 \subhead{三个模型的功能分工}
 \texttt{language.onnx} 负责解析“栈桥旁那座”“上一座”等中文指代表达所对应的目标。\texttt{navigation.onnx} 接收四张 \(20\times20\) 像素的 RGB 候选图像、各候选目标相对无人艇的几何位置以及指令中的目标编码，从中锁定关注对象，并输出目标航速、转向角速度与快门触发分数。
 
-由于红绿门标的位置与颜色信息已预先登记在电子海图中，执行门标任务时，\texttt{pilot.onnx} 会直接读取门标相对无人艇的几何位置，并沿用已训练好的艇控权重。在一次常速运行的双艇运行实测中，A艇推理频率达到 5.3 次/秒，B艇达到 5.0 次/秒。各模型的具体输入格式详见\repolink{src/policy-engine.js}{推理代码}。
+红绿门标的位置和颜色已登记在电子海图中。执行门标任务时，\texttt{pilot.onnx} 根据目标相对艇的位置控制航行。清漂复用同一组艇控权重，输入改为当前航点的相对方位、距离及本艇航速。在一次常速双艇巡检实测中，A艇推理频率达到 5.3 次/秒，B艇达到 5.0 次/秒。各模型的具体输入格式详见\repolink{src/policy-engine.js}{推理代码}。
 
 \newpage
 \pagetitle{航路规划与艇上观测}
@@ -182,12 +183,43 @@
 \end{minipage}
 
 \newpage
+\pagetitle{水面漂浮物的收集与卸载}\label{sec:cleanup}
+重置港池后，水面上有三个塑料瓶和两块泡沫。展开工作台的“水面清漂”，或直接在输入框发送“只收集泡沫块”，A艇便会驶向第一块泡沫。第一块入舱后，海图随即标出下一块的位置（图~\ref{fig:cleanup}）。
+
+\begin{minipage}{\linewidth}
+\centering
+\includegraphics[width=.93\linewidth]{../verification/cleanup-desktop.png}\par
+\vspace{3pt}
+\includegraphics[viewport=1340 345 1870 455,clip,width=.61\linewidth]{../verification/cleanup-desktop.png}
+\captionof{figure}{在第一块泡沫入舱后暂停仿真。下方放大了同一画面的“清漂收运”面板。A艇已收起 F1，正驶向 F2。此时水面还剩四件，码头累计为 0 件。}\label{fig:cleanup}
+\end{minipage}
+
+\subhead{从船首收集口到泊位}
+漂浮物的类别与位置由仿真场景提供。规划器选定收集目标，\texttt{pilot.onnx} 根据沿途航点计算航速和转向。图中 A艇的推理读数为 5.0 次/秒。目标进入船首收集口才计入船舱，每艇可装两件。满舱或收完所选类别后，艇返港靠泊，停稳后登记卸载件数。途中撤单会保留已装货物，可再发“回码头卸载”。
+
+\subhead{按指令核对上岸件数}
+\begingroup\small
+\begin{tabularx}{\linewidth}{@{}Y p{64mm} p{29mm}@{}}
+\toprule
+下发指令 & 码头实收 & 水面剩余\\
+\midrule
+只收集泡沫块 & 东泊位收到两块泡沫 & 三个塑料瓶\\
+只收集塑料瓶 & 东泊位分两趟收到三个塑料瓶 & 两块泡沫\\
+清理所有水面漂浮物 & 三趟各卸 2、2、1 件 & 0 件\\
+A艇收集塑料瓶，B艇收集泡沫块 & 三个瓶子送东泊位，两块泡沫送西泊位 & 0 件\\
+\bottomrule
+\end{tabularx}
+\endgroup
+
+两艇在同一水域作业时，各自收取已选定的漂浮物，同一件只计一次。我们在 Windows 发布版中分别下发这四条指令，逐件比对入舱编号和卸载地点。四次作业的相册均新增 0 张照片，明细见\mbox{\repolink{verification/cleanup-desktop.json}{桌面复验记录}}。
+
+\newpage
 \pagetitle{训练、验证与交付}
 \subhead{训练数据与独立验证}
 我们在实验室的 RTX 4090 显卡上基于 PyTorch 2.5.1 完成了艇控模型训练。768 条仿真示范轨迹共提供 70,656 个航行状态样本；验证阶段更换随机种子，独立生成 96 条航迹用于评测。语言指代模型在 24 条留出短句上进行了单独测试，其中 23 条准确指向目标。详细样本分布与评估指标见\repolink{public/models/run.json}{训练记录}。
 
 \subhead{中文指令回放验证}
-验证前，先为每条指令预设预期的执行艇号、目标对象、动作序列及成片数量；随后通过发布版软件的输入框逐条下发指令，驱动软件按完整链路调用 ONNX 模型，并将实际派单结果、航行轨迹与相册输出逐项比对。验证流程借鉴了 CEGIS 思路：先基于一组指令反复回放并迭代修正派单规则，再在独立留出的测试集上进行检验。最终，全部 177 条指令均符合预期。
+巡检验证借鉴了 CEGIS 思路。先为每条指令写明预期艇号、目标、动作顺序和照片数量，再从发布版输入框下发指令，比对实际派单、航迹与相册。先用一组指令回放并修正派单规则，再用独立留出的指令核验。v1.1.0 重新回放了原有的 177 条巡检指令，\repolink{verification/commands-v1.1.0.json}{全部通过}。
 
 \begingroup\small
 \begin{tabularx}{\linewidth}{@{}>{\bfseries}p{24mm}p{35mm}Y@{}}
@@ -202,6 +234,8 @@
 \end{tabularx}
 \endgroup
 
+另用 114 条不同的清漂指令，在三种港池布局中共完成 124 次 \mbox{ONNX} 仿真闭环回放，全部通过。回放时核对船首触碰、舱容、卸载时的艇位与航速，以及拍照数和碰撞记录。详见\mbox{\repolink{verification/cleanup-cases.json}{清漂回放记录}}。
+
 \vspace{4pt}
 \begin{minipage}[c]{.34\linewidth}
 \centering
@@ -209,11 +243,11 @@
 \captionof{figure}{船首相机拍摄的浮标门东侧绿标。}\label{fig:green}
 \end{minipage}\hfill
 \begin{minipage}[c]{.63\linewidth}
-\repolink{verification/commands-final.md}{逐条测试报告}记录了每次回放的原始指令与实测结果，例如用例 C046 核验了单艇观察后返航，用例 C175 核验了仅由接力艇补拍一次的逻辑。在\repolink{verification/desktop.json}{桌面复验}中，操作者下达“去浮标门的绿标拍照”，对图~\ref{fig:green} 画面中央 \(144\times126\) 像素区域进行颜色校验，全部 18,144 个像素中有 7,216 个为绿色、0 个为黄色，与指令指定的绿标目标完全相符。
+\repolink{verification/commands-final.md}{逐条测试报告}记录了每次回放的原始指令与实测结果，例如用例 C046 核验了单艇观察后返航，用例 C175 核验了仅由接力艇补拍一次的逻辑。在首版的\repolink{verification/desktop.json}{桌面复验}中，操作者下达“去浮标门的绿标拍照”，对图~\ref{fig:green} 画面中央 \(144\times126\) 像素区域进行颜色校验，全部 18,144 个像素中有 7,216 个为绿色、0 个为黄色，与指令指定的绿标目标完全相符。
 \end{minipage}
 
 \subhead{Windows 桌面发布包}
-v1.0.0 版本将前端界面、模型权重与推理运行时封装为单个独立 EXE 文件，实测体积为 28,124,672 字节（26.82 MiB）。在已安装 Microsoft Edge WebView2 的 Windows x64 计算机上双击即可离线运行。软件默认以全屏模式启动，点击右上角“窗口模式”按钮即可切换为窗口显示。
+\href{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/releases/tag/v1.1.0}{v1.1.0 中文便携包}附有本开发日志。前端界面、模型权重与推理运行时封装在同一个 EXE 中，实测为 28,130,304 字节（26.83 MiB）。在已安装 Microsoft Edge WebView2 的 Windows x64 计算机上，双击即可离线运行。软件默认全屏，点击右上角“窗口模式”即可切换。
 
 \begingroup
 \small
