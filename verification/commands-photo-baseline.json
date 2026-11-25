@@ -1,0 +1,6484 @@
+{
+  "startedUTC": "2026-11-25T00:15:35.137335+00:00",
+  "phase": "discovery",
+  "mode": "dispatch",
+  "surface": "基于OpenVLA的无人艇巡检模拟.exe",
+  "exeSHA256": "982b299c2b27183711652900c4ecf1993db772f23df63c418e2e9f4c2afccf75",
+  "corpusSHA256": "8b5fb140cef06dc23c7c471108ea23ad9358a03b4ef42b27728bb131e98289ca",
+  "modelSHA256": {
+    "language.onnx": "ec16e19db3b3a98e249dd14f719517b355a12c1d961df26c6dd775730cd4150b",
+    "navigation.onnx": "3433f31675b3340d45d0097ad659fc9fa8d4667026ecb99a3e7d5427073a0048",
+    "pilot.onnx": "f60e8cb930d391054edcc70301e27c1892db7155b21356fc4aba26345cb243d3"
+  },
+  "totalExpected": 143,
+  "complete": true,
+  "rows": [
+    {
+      "id": "C001",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "去木栈桥旁的黄标拍照",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 375,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C002",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "给木桥边的黄色浮标拍一张全景",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 274,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C003",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "抵近观察木栈桥旁的黄标",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 270,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C004",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "靠近木桥边的黄色浮标，不用拍照",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 267,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C005",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "给木栈桥旁的黄标拍张侧面照",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 换侧补拍"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 换侧补拍",
+      "simSeconds": 0.7,
+      "realMs": 272,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C006",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "只观察木桥边的黄色浮标，不要按快门",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 271,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C007",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "绕到另一侧给木栈桥旁的黄标补一张",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 换侧补拍"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 换侧补拍",
+      "simSeconds": 0.7,
+      "realMs": 266,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C008",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "去防波堤内侧的黄标拍照",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 272,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C009",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "给石堤旁的黄色浮标拍一张全景",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 278,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C010",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "抵近观察防波堤内侧的黄标",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 271,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C011",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "靠近石堤旁的黄色浮标，不用拍照",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 285,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C012",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "给防波堤内侧的黄标拍张侧面照",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 换侧补拍"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 换侧补拍",
+      "simSeconds": 0.7,
+      "realMs": 265,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C013",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "只观察石堤旁的黄色浮标，不要按快门",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 264,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C014",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "绕到另一侧给防波堤内侧的黄标补一张",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 换侧补拍"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 换侧补拍",
+      "simSeconds": 0.7,
+      "realMs": 263,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C015",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "去浮标门的红标拍照",
+      "expected": {
+        "A": [
+          "浮标门红标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门红标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 259,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C016",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "给航道西侧的红色浮标拍一张全景",
+      "expected": {
+        "A": [
+          "浮标门红标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门红标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 272,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C017",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "抵近观察浮标门的红标",
+      "expected": {
+        "A": [
+          "浮标门红标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门红标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 258,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C018",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "靠近航道西侧的红色浮标，不用拍照",
+      "expected": {
+        "A": [
+          "浮标门红标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门红标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 257,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C019",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "给浮标门的红标拍张侧面照",
+      "expected": {
+        "A": [
+          "浮标门红标 · 换侧补拍"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门红标 · 换侧补拍",
+      "simSeconds": 0.7,
+      "realMs": 256,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C020",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "只观察航道西侧的红色浮标，不要按快门",
+      "expected": {
+        "A": [
+          "浮标门红标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门红标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 257,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C021",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "绕到另一侧给浮标门的红标补一张",
+      "expected": {
+        "A": [
+          "浮标门红标 · 换侧补拍"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门红标 · 换侧补拍",
+      "simSeconds": 0.7,
+      "realMs": 261,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C022",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "去浮标门的绿标拍照",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 260,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C023",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "给航道东侧的绿色浮标拍一张全景",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 261,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C024",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "抵近观察浮标门的绿标",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 268,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C025",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "靠近航道东侧的绿色浮标，不用拍照",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 261,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C026",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "给浮标门的绿标拍张侧面照",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 换侧补拍"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 换侧补拍",
+      "simSeconds": 0.7,
+      "realMs": 264,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C027",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "只观察航道东侧的绿色浮标，不要按快门",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 258,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C028",
+      "phase": "discovery",
+      "group": "目标与动作",
+      "text": "绕到另一侧给浮标门的绿标补一张",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 换侧补拍"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 换侧补拍",
+      "simSeconds": 0.7,
+      "realMs": 258,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C029",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "回东泊位",
+      "expected": {
+        "A": [
+          "东泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "东泊位 · 返航靠泊",
+      "simSeconds": 0.7,
+      "realMs": 289,
+      "workerCalls": {
+        "language": 1,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C030",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "请返回西泊位",
+      "expected": {
+        "A": [
+          "西泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "西泊位 · 返航靠泊",
+      "simSeconds": 0.7,
+      "realMs": 268,
+      "workerCalls": {
+        "language": 1,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C031",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "从港池返回东侧泊位",
+      "expected": {
+        "A": [
+          "东泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "东泊位 · 返航靠泊",
+      "simSeconds": 0.7,
+      "realMs": 277,
+      "workerCalls": {
+        "language": 1,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C032",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "回到西侧泊位停靠",
+      "expected": {
+        "A": [
+          "西泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "西泊位 · 返航靠泊",
+      "simSeconds": 0.7,
+      "realMs": 265,
+      "workerCalls": {
+        "language": 1,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C033",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "返航",
+      "expected": {
+        "A": [
+          "东泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "东泊位 · 返航靠泊",
+      "simSeconds": 0.7,
+      "realMs": 265,
+      "workerCalls": {
+        "language": 1,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C034",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "穿过红绿浮标门",
+      "expected": {
+        "A": [
+          "浮标门 · 穿过浮标门"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门 · 穿过浮标门",
+      "simSeconds": 0.7,
+      "realMs": 258,
+      "workerCalls": {
+        "language": 0,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门 · 穿过浮标门"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C035",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "通过航标门，回东泊位",
+      "expected": {
+        "A": [
+          "浮标门 · 穿过浮标门",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门 · 穿过浮标门",
+      "simSeconds": 0.7,
+      "realMs": 253,
+      "workerCalls": {
+        "language": 1,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门 · 穿过浮标门",
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C036",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "经过红绿浮标门，最后回西泊位",
+      "expected": {
+        "A": [
+          "浮标门 · 穿过浮标门",
+          "西泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门 · 穿过浮标门",
+      "simSeconds": 0.7,
+      "realMs": 260,
+      "workerCalls": {
+        "language": 1,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门 · 穿过浮标门",
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C037",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "去栈桥黄标，只观察",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 269,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C038",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "先观察防波堤黄标，再拍一张",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察",
+          "防波堤黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 262,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 抵近观察",
+            "防波堤黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C039",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "先拍浮标门红标，然后拍浮标门绿标",
+      "expected": {
+        "A": [
+          "浮标门红标 · 全景拍照",
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门红标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 267,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 全景拍照",
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C040",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "穿过红绿浮标门，再给绿标拍照，随后回到西泊位",
+      "expected": {
+        "A": [
+          "浮标门 · 穿过浮标门",
+          "浮标门绿标 · 全景拍照",
+          "西泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门 · 穿过浮标门",
+      "simSeconds": 0.7,
+      "realMs": 261,
+      "workerCalls": {
+        "language": 1,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门 · 穿过浮标门",
+            "浮标门绿标 · 全景拍照",
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C041",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "靠近木栈桥黄标，先不要拍照",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 266,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C042",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "不要去木栈桥，去防波堤黄标拍照",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 269,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C043",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "别拍绿标，只看浮标门的红标",
+      "expected": {
+        "A": [
+          "浮标门红标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门红标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 263,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C044",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "先只观察绿标，之后再去木桥黄标拍照",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 抵近观察",
+          "栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 261,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 抵近观察",
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C045",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "先拍木栈桥黄标，最后回西泊位",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照",
+          "西泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 259,
+      "workerCalls": {
+        "language": 1,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照",
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C046",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "检查石堤边那座，再回东泊位",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"防波堤黄标 · 抵近观察\",\"东泊位 · 返航靠泊\"]，实为 [\"防波堤黄标 · 全景拍照\",\"东泊位 · 返航靠泊\"]",
+      "feedback": "防波堤黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 276,
+      "workerCalls": {
+        "language": 2,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照",
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C047",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "先观察红标，栈桥黄标留到回程，最后返回东泊位",
+      "expected": {
+        "A": [
+          "浮标门红标 · 抵近观察",
+          "栈桥黄标 · 抵近观察",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"浮标门红标 · 抵近观察\",\"栈桥黄标 · 抵近观察\",\"东泊位 · 返航靠泊\"]，实为 [\"浮标门红标 · 抵近观察\",\"栈桥黄标 · 全景拍照\",\"东泊位 · 返航靠泊\"]",
+      "feedback": "浮标门红标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 267,
+      "workerCalls": {
+        "language": 1,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 抵近观察",
+            "栈桥黄标 · 全景拍照",
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C048",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "先看一眼防波堤边的黄标，再去绿标拍照",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察",
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 272,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 抵近观察",
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C049",
+      "phase": "discovery",
+      "group": "同一目标的连续动作",
+      "text": "先观察木栈桥旁的黄标，再拍一张，最后回西泊位",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察",
+          "栈桥黄标 · 全景拍照",
+          "西泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 269,
+      "workerCalls": {
+        "language": 1,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 抵近观察",
+            "栈桥黄标 · 全景拍照",
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C050",
+      "phase": "discovery",
+      "group": "经过与返航",
+      "text": "穿过浮标门，只观察木栈桥旁的黄标，最后返回东泊位",
+      "expected": {
+        "A": [
+          "浮标门 · 穿过浮标门",
+          "栈桥黄标 · 抵近观察",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门 · 穿过浮标门",
+      "simSeconds": 0.7,
+      "realMs": 288,
+      "workerCalls": {
+        "language": 1,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门 · 穿过浮标门",
+            "栈桥黄标 · 抵近观察",
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C051",
+      "phase": "discovery",
+      "group": "同一目标的连续动作",
+      "text": "先观察防波堤内侧的黄标，再拍一张，最后回西泊位",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察",
+          "防波堤黄标 · 全景拍照",
+          "西泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 285,
+      "workerCalls": {
+        "language": 1,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 抵近观察",
+            "防波堤黄标 · 全景拍照",
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C052",
+      "phase": "discovery",
+      "group": "经过与返航",
+      "text": "穿过浮标门，只观察防波堤内侧的黄标，最后返回东泊位",
+      "expected": {
+        "A": [
+          "浮标门 · 穿过浮标门",
+          "防波堤黄标 · 抵近观察",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门 · 穿过浮标门",
+      "simSeconds": 0.7,
+      "realMs": 278,
+      "workerCalls": {
+        "language": 1,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门 · 穿过浮标门",
+            "防波堤黄标 · 抵近观察",
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C053",
+      "phase": "discovery",
+      "group": "同一目标的连续动作",
+      "text": "先观察浮标门的红标，再拍一张，最后回西泊位",
+      "expected": {
+        "A": [
+          "浮标门红标 · 抵近观察",
+          "浮标门红标 · 全景拍照",
+          "西泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门红标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 287,
+      "workerCalls": {
+        "language": 1,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 抵近观察",
+            "浮标门红标 · 全景拍照",
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C054",
+      "phase": "discovery",
+      "group": "经过与返航",
+      "text": "穿过浮标门，只观察浮标门的红标，最后返回东泊位",
+      "expected": {
+        "A": [
+          "浮标门 · 穿过浮标门",
+          "浮标门红标 · 抵近观察",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门 · 穿过浮标门",
+      "simSeconds": 0.7,
+      "realMs": 258,
+      "workerCalls": {
+        "language": 1,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门 · 穿过浮标门",
+            "浮标门红标 · 抵近观察",
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C055",
+      "phase": "discovery",
+      "group": "同一目标的连续动作",
+      "text": "先观察浮标门的绿标，再拍一张，最后回西泊位",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 抵近观察",
+          "浮标门绿标 · 全景拍照",
+          "西泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 261,
+      "workerCalls": {
+        "language": 1,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 抵近观察",
+            "浮标门绿标 · 全景拍照",
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C056",
+      "phase": "discovery",
+      "group": "经过与返航",
+      "text": "穿过浮标门，只观察浮标门的绿标，最后返回东泊位",
+      "expected": {
+        "A": [
+          "浮标门 · 穿过浮标门",
+          "浮标门绿标 · 抵近观察",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门 · 穿过浮标门",
+      "simSeconds": 0.7,
+      "realMs": 260,
+      "workerCalls": {
+        "language": 1,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门 · 穿过浮标门",
+            "浮标门绿标 · 抵近观察",
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C057",
+      "phase": "discovery",
+      "group": "条件与侧拍",
+      "text": "先拍栈桥黄标，如果它一直歪着，换一侧补拍",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照",
+          "倾斜时 · 栈桥黄标 · 换侧补拍"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "tilt",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 263,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照",
+            "倾斜时 · 栈桥黄标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C058",
+      "phase": "discovery",
+      "group": "条件与侧拍",
+      "text": "先拍木桥边的黄标，若它持续倾斜，就换另一面补拍",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照",
+          "倾斜时 · 栈桥黄标 · 换侧补拍（跳过）"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 280,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照",
+            "倾斜时 · 栈桥黄标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C059",
+      "phase": "discovery",
+      "group": "条件与侧拍",
+      "text": "检查防波堤的黄标，如果它持续倾斜，换一侧补拍",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察",
+          "倾斜时 · 防波堤黄标 · 换侧补拍（跳过）"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "tilt",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"防波堤黄标 · 抵近观察\",\"倾斜时 · 防波堤黄标 · 换侧补拍\"]，实为 [\"防波堤黄标 · 全景拍照\",\"倾斜时 · 防波堤黄标 · 换侧补拍\"]",
+      "feedback": "防波堤黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 269,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照",
+            "倾斜时 · 防波堤黄标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C060",
+      "phase": "discovery",
+      "group": "条件与侧拍",
+      "text": "先查栈桥黄标，再查防波堤黄标，如果哪座一直歪着就换侧补拍",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察",
+          "倾斜时 · 栈桥黄标 · 换侧补拍",
+          "防波堤黄标 · 抵近观察",
+          "倾斜时 · 防波堤黄标 · 换侧补拍（跳过）"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "tilt",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"栈桥黄标 · 抵近观察\",\"倾斜时 · 栈桥黄标 · 换侧补拍\",\"防波堤黄标 · 抵近观察\",\"倾斜时 · 防波堤黄标 · 换侧补拍\"]，实为 [\"栈桥黄标 · 全景拍照\",\"倾斜时 · 栈桥黄标 · 换侧补拍\",\"防波堤黄标 · 全景拍照\",\"倾斜时 · 防波堤黄标 · 换侧补拍\"]",
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 291,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照",
+            "倾斜时 · 栈桥黄标 · 换侧补拍",
+            "防波堤黄标 · 全景拍照",
+            "倾斜时 · 防波堤黄标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C061",
+      "phase": "discovery",
+      "group": "条件与侧拍",
+      "text": "先查浮标门红标，若它持续倾斜就换侧补拍",
+      "expected": {
+        "A": [
+          "浮标门红标 · 抵近观察",
+          "倾斜时 · 浮标门红标 · 换侧补拍（跳过）"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "tilt",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"浮标门红标 · 抵近观察\",\"倾斜时 · 浮标门红标 · 换侧补拍\"]，实为 [\"浮标门红标 · 全景拍照\",\"倾斜时 · 浮标门红标 · 换侧补拍\"]",
+      "feedback": "浮标门红标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 257,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 全景拍照",
+            "倾斜时 · 浮标门红标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C062",
+      "phase": "discovery",
+      "group": "条件与侧拍",
+      "text": "如果栈桥黄标一直歪着，就换到另一面补拍",
+      "expected": {
+        "A": [
+          "倾斜时 · 栈桥黄标 · 换侧补拍"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "tilt",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "倾斜时 · 栈桥黄标 · 换侧补拍",
+      "simSeconds": 0.7,
+      "realMs": 260,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "倾斜时 · 栈桥黄标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C063",
+      "phase": "discovery",
+      "group": "上下文与改派",
+      "text": "追加防波堤黄标拍照",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照",
+          "防波堤黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [
+        [
+          "去木栈桥旁的黄标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 1.3,
+      "realMs": 286,
+      "workerCalls": {
+        "language": 0,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照",
+            "防波堤黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C064",
+      "phase": "discovery",
+      "group": "上下文与改派",
+      "text": "加一项，去观察浮标门的红标",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照",
+          "浮标门红标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [
+        [
+          "给浮标门的绿标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 全景拍照",
+      "simSeconds": 1.3,
+      "realMs": 268,
+      "workerCalls": {
+        "language": 0,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照",
+            "浮标门红标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C065",
+      "phase": "discovery",
+      "group": "上下文与改派",
+      "text": "改去防波堤黄标拍照",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [
+        [
+          "去木栈桥旁的黄标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 全景拍照",
+      "simSeconds": 1.3,
+      "realMs": 287,
+      "workerCalls": {
+        "language": 0,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C066",
+      "phase": "discovery",
+      "group": "上下文与改派",
+      "text": "这座先别拍，先去查另一座，回来再补",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察",
+          "栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [
+        [
+          "去木栈桥旁的黄标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"防波堤黄标 · 抵近观察\",\"栈桥黄标 · 全景拍照\"]，实为 [\"防波堤黄标 · 全景拍照\",\"栈桥黄标 · 全景拍照\"]",
+      "feedback": "防波堤黄标 · 全景拍照",
+      "simSeconds": 1.3,
+      "realMs": 304,
+      "workerCalls": {
+        "language": 1,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照",
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C067",
+      "phase": "discovery",
+      "group": "上下文与改派",
+      "text": "改去浮标门红标，把绿标留到回程",
+      "expected": {
+        "A": [
+          "浮标门红标 · 抵近观察",
+          "浮标门绿标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [
+        [
+          "给浮标门的绿标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"浮标门红标 · 抵近观察\",\"浮标门绿标 · 抵近观察\"]，实为 [\"浮标门红标 · 全景拍照\",\"浮标门绿标 · 全景拍照\"]",
+      "feedback": "浮标门红标 · 全景拍照",
+      "simSeconds": 1.3,
+      "realMs": 282,
+      "workerCalls": {
+        "language": 0,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 全景拍照",
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C068",
+      "phase": "discovery",
+      "group": "上下文与改派",
+      "text": "先前那座换个角度补拍",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照",
+          "栈桥黄标 · 换侧补拍"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [
+        [
+          "给木桥旁的黄标拍照",
+          "done"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 换侧补拍",
+      "simSeconds": 11.3,
+      "realMs": 1275,
+      "workerCalls": {
+        "language": 1,
+        "drive": 47
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "pending": [
+            "栈桥黄标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": [
+            "00:09 · 栈桥黄标 · 全景 · 3.9 m"
+          ]
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C069",
+      "phase": "discovery",
+      "group": "上下文与改派",
+      "text": "给刚才那座补一张，把木栈桥也拍进去",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照",
+          "栈桥黄标 · 带地标补拍"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [
+        [
+          "给木桥旁的黄标拍照",
+          "done"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 带地标补拍",
+      "simSeconds": 19.3,
+      "realMs": 923,
+      "workerCalls": {
+        "language": 1,
+        "drive": 85
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "pending": [
+            "栈桥黄标 · 带地标补拍"
+          ],
+          "held": false,
+          "photos": [
+            "00:16 · 栈桥黄标 · 全景 · 3.9 m"
+          ]
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C070",
+      "phase": "discovery",
+      "group": "上下文与改派",
+      "text": "查另一座",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [
+        [
+          "给防波堤黄标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"栈桥黄标 · 抵近观察\"]，实为 [\"栈桥黄标 · 全景拍照\"]",
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 1.3,
+      "realMs": 286,
+      "workerCalls": {
+        "language": 1,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C071",
+      "phase": "discovery",
+      "group": "航行控制",
+      "text": "停船",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "hold",
+      "reason": "",
+      "setup": [
+        [
+          "去木栈桥旁的黄标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "已停船等候，发送“继续任务”可恢复。",
+      "simSeconds": 1.3,
+      "realMs": 269,
+      "workerCalls": {
+        "language": 0,
+        "drive": 3
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": true,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C072",
+      "phase": "discovery",
+      "group": "航行控制",
+      "text": "原地等一下",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "hold",
+      "reason": "",
+      "setup": [
+        [
+          "给浮标门的绿标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "已停船等候，发送“继续任务”可恢复。",
+      "simSeconds": 1.3,
+      "realMs": 284,
+      "workerCalls": {
+        "language": 0,
+        "drive": 3
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": true,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C073",
+      "phase": "discovery",
+      "group": "航行控制",
+      "text": "请暂停航行",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "hold",
+      "reason": "",
+      "setup": [
+        [
+          "给防波堤黄标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "已停船等候，发送“继续任务”可恢复。",
+      "simSeconds": 1.3,
+      "realMs": 271,
+      "workerCalls": {
+        "language": 0,
+        "drive": 3
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照"
+          ],
+          "held": true,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C074",
+      "phase": "discovery",
+      "group": "航行控制",
+      "text": "继续刚才的任务",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "resume",
+      "reason": "",
+      "setup": [
+        [
+          "去木栈桥旁的黄标拍照",
+          "active"
+        ],
+        [
+          "停船",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 1.9,
+      "realMs": 298,
+      "workerCalls": {
+        "language": 0,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C075",
+      "phase": "discovery",
+      "group": "航行控制",
+      "text": "恢复航行",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "resume",
+      "reason": "",
+      "setup": [
+        [
+          "给浮标门的绿标拍照",
+          "active"
+        ],
+        [
+          "暂停任务",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 全景拍照",
+      "simSeconds": 1.9,
+      "realMs": 287,
+      "workerCalls": {
+        "language": 0,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C076",
+      "phase": "discovery",
+      "group": "航行控制",
+      "text": "取消当前任务",
+      "expected": {
+        "A": [],
+        "B": []
+      },
+      "dual": false,
+      "op": "cancel",
+      "reason": "",
+      "setup": [
+        [
+          "去木栈桥旁的黄标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "等待巡检指令",
+      "simSeconds": 1.3,
+      "realMs": 284,
+      "workerCalls": {
+        "language": 0,
+        "drive": 3
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C077",
+      "phase": "discovery",
+      "group": "航行控制",
+      "text": "清空所有巡检任务",
+      "expected": {
+        "A": [],
+        "B": []
+      },
+      "dual": false,
+      "op": "cancel",
+      "reason": "",
+      "setup": [
+        [
+          "给浮标门的绿标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "等待巡检指令",
+      "simSeconds": 1.3,
+      "realMs": 265,
+      "workerCalls": {
+        "language": 0,
+        "drive": 3
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C078",
+      "phase": "discovery",
+      "group": "航行控制",
+      "text": "等保洁船通过后再走",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "traffic",
+      "reason": "",
+      "setup": [
+        [
+          "去木栈桥旁的黄标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": false,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 1.3,
+      "realMs": 293,
+      "workerCalls": {
+        "language": 0,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C079",
+      "phase": "discovery",
+      "group": "双艇与通信",
+      "text": "A艇只观察木栈桥黄标，B艇给防波堤黄标拍照",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察"
+        ],
+        "B": [
+          "防波堤黄标 · 全景拍照"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 413,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C080",
+      "phase": "discovery",
+      "group": "双艇与通信",
+      "text": "Ｂ艇观察航道西侧的红色浮标",
+      "expected": {
+        "A": [],
+        "B": [
+          "浮标门红标 · 抵近观察"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "等待巡检指令",
+      "simSeconds": 0.7,
+      "realMs": 267,
+      "workerCalls": {
+        "language": 0,
+        "drive": 1
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C081",
+      "phase": "discovery",
+      "group": "双艇与通信",
+      "text": "一号无人艇拍浮标门绿标，二号无人艇看一眼红标",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": [
+          "浮标门红标 · 抵近观察"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 276,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C082",
+      "phase": "discovery",
+      "group": "双艇与通信",
+      "text": "乙艇返回自己的泊位",
+      "expected": {
+        "A": [],
+        "B": [
+          "西泊位 · 返航靠泊"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "等待巡检指令",
+      "simSeconds": 0.7,
+      "realMs": 293,
+      "workerCalls": {
+        "language": 1,
+        "drive": 1
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C083",
+      "phase": "discovery",
+      "group": "双艇与通信",
+      "text": "B艇返航",
+      "expected": {
+        "A": [],
+        "B": [
+          "西泊位 · 返航靠泊"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "等待巡检指令",
+      "simSeconds": 0.7,
+      "realMs": 293,
+      "workerCalls": {
+        "language": 1,
+        "drive": 1
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C084",
+      "phase": "discovery",
+      "group": "双艇与通信",
+      "text": "A艇回东泊位，B艇回西泊位",
+      "expected": {
+        "A": [
+          "东泊位 · 返航靠泊"
+        ],
+        "B": [
+          "西泊位 · 返航靠泊"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "东泊位 · 返航靠泊",
+      "simSeconds": 0.7,
+      "realMs": 305,
+      "workerCalls": {
+        "language": 2,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C085",
+      "phase": "discovery",
+      "group": "双艇与通信",
+      "text": "双艇分别巡检木栈桥和防波堤的黄标",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察"
+        ],
+        "B": [
+          "栈桥黄标 · 抵近观察"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"防波堤黄标 · 抵近观察\"]，实为 [\"防波堤黄标 · 全景拍照\"]",
+      "feedback": "防波堤黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 315,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C086",
+      "phase": "discovery",
+      "group": "双艇与通信",
+      "text": "两艘无人艇分头观察红标和绿标，不必拍照",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 抵近观察"
+        ],
+        "B": [
+          "浮标门红标 · 抵近观察"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 273,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C087",
+      "phase": "discovery",
+      "group": "双艇与通信",
+      "text": "双艇分别给绿标与红标拍照，最后返回各自泊位",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": [
+          "浮标门红标 · 全景拍照",
+          "西泊位 · 返航靠泊"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 270,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照",
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 全景拍照",
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C088",
+      "phase": "discovery",
+      "group": "双艇与通信",
+      "text": "双艇分别巡检两座黄标",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察"
+        ],
+        "B": [
+          "栈桥黄标 · 抵近观察"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"防波堤黄标 · 抵近观察\"]，实为 [\"防波堤黄标 · 全景拍照\"]",
+      "feedback": "防波堤黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 293,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C089",
+      "phase": "discovery",
+      "group": "双艇与通信",
+      "text": "全队返回各自泊位",
+      "expected": {
+        "A": [
+          "东泊位 · 返航靠泊"
+        ],
+        "B": [
+          "西泊位 · 返航靠泊"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "东泊位 · 返航靠泊",
+      "simSeconds": 0.7,
+      "realMs": 296,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C090",
+      "phase": "discovery",
+      "group": "双艇与通信",
+      "text": "接力复核，A艇先查木栈桥黄标，B艇接力补拍",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": [
+          "栈桥黄标 · 换侧补拍"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"栈桥黄标 · 抵近观察\",\"东泊位 · 返航靠泊\"]，实为 [\"栈桥黄标 · 全景拍照\",\"东泊位 · 返航靠泊\"]",
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 288,
+      "workerCalls": {
+        "language": 0,
+        "drive": 1
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照",
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C091",
+      "phase": "discovery",
+      "group": "双艇与通信",
+      "text": "接力，B艇先查防波堤黄标，A艇接力补拍",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 换侧补拍"
+        ],
+        "B": [
+          "防波堤黄标 · 抵近观察",
+          "西泊位 · 返航靠泊"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "B艇派单顺序 应为 [\"防波堤黄标 · 抵近观察\",\"西泊位 · 返航靠泊\"]，实为 [\"防波堤黄标 · 全景拍照\",\"西泊位 · 返航靠泊\"]",
+      "feedback": "等候首艇回传",
+      "simSeconds": 0.7,
+      "realMs": 281,
+      "workerCalls": {
+        "language": 0,
+        "drive": 1
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照",
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C092",
+      "phase": "discovery",
+      "group": "双艇与通信",
+      "text": "接力复核，A艇给绿标拍照，B艇等首拍后补拍",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": [
+          "浮标门绿标 · 换侧补拍"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 287,
+      "workerCalls": {
+        "language": 0,
+        "drive": 1
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照",
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C093",
+      "phase": "discovery",
+      "group": "双艇与通信",
+      "text": "双艇接力，A艇拍栈桥黄标，B艇如果发现倾斜才补拍",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 277,
+      "workerCalls": {
+        "language": 0,
+        "drive": 1
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照",
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C094",
+      "phase": "discovery",
+      "group": "双艇控制",
+      "text": "全队暂停任务",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察"
+        ],
+        "B": [
+          "防波堤黄标 · 抵近观察"
+        ]
+      },
+      "dual": true,
+      "op": "hold",
+      "reason": "",
+      "setup": [
+        [
+          "A艇检查木栈桥黄标，B艇检查防波堤黄标",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"栈桥黄标 · 抵近观察\"]，实为 [\"栈桥黄标 · 全景拍照\"]",
+      "feedback": "原地等候 · 可输入“继续任务”",
+      "simSeconds": 1.3,
+      "realMs": 327,
+      "workerCalls": {
+        "language": 0,
+        "drive": 6
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": true,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照"
+          ],
+          "held": true,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C095",
+      "phase": "discovery",
+      "group": "双艇控制",
+      "text": "双艇继续航行",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察"
+        ],
+        "B": [
+          "防波堤黄标 · 抵近观察"
+        ]
+      },
+      "dual": true,
+      "op": "resume",
+      "reason": "",
+      "setup": [
+        [
+          "A艇检查木栈桥黄标，B艇检查防波堤黄标",
+          "active"
+        ],
+        [
+          "两艇停船",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"栈桥黄标 · 抵近观察\"]，实为 [\"栈桥黄标 · 全景拍照\"]",
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 1.9,
+      "realMs": 360,
+      "workerCalls": {
+        "language": 0,
+        "drive": 8
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C096",
+      "phase": "discovery",
+      "group": "双艇控制",
+      "text": "编队取消任务",
+      "expected": {
+        "A": [],
+        "B": []
+      },
+      "dual": true,
+      "op": "cancel",
+      "reason": "",
+      "setup": [
+        [
+          "A艇检查木栈桥黄标，B艇检查防波堤黄标",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "已撤销",
+      "simSeconds": 1.3,
+      "realMs": 316,
+      "workerCalls": {
+        "language": 0,
+        "drive": 6
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C097",
+      "phase": "discovery",
+      "group": "选中艇上下文",
+      "text": "返回本艇泊位",
+      "expected": {
+        "A": [],
+        "B": [
+          "西泊位 · 返航靠泊"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": true,
+      "selected": "B",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "西泊位 · 返航靠泊",
+      "simSeconds": 0.7,
+      "realMs": 297,
+      "workerCalls": {
+        "language": 1,
+        "drive": 1
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C098",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "去木栈桥旁边的绿标拍照",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "绿标",
+      "setup": [
+        [
+          "给浮标门的绿标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "木栈桥旁没有绿标。这里的是黄标。绿标位于航道浮标门。 本条未派单。 A艇原任务为浮标门绿标 · 全景拍照。",
+      "simSeconds": 1.3,
+      "realMs": 291,
+      "workerCalls": {
+        "language": 0,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C099",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "给防波堤旁的红色浮标拍照",
+      "expected": {
+        "A": [],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "红标",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤旁没有红标。这里的是黄标。红标位于航道浮标门。 本条未派单。",
+      "simSeconds": 0.7,
+      "realMs": 255,
+      "workerCalls": {
+        "language": 0,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C100",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "去木桥边的蓝色航标补拍",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "蓝标",
+      "setup": [
+        [
+          "给浮标门的绿标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "木栈桥旁没有蓝标。这里的是黄标。可巡检的浮标有黄色、红色和绿色。 本条未派单。 A艇原任务为浮标门绿标 · 全景拍照。",
+      "simSeconds": 1.3,
+      "realMs": 286,
+      "workerCalls": {
+        "language": 0,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C101",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "给浮标门的黄标拍照",
+      "expected": {
+        "A": [],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "黄标",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "航道浮标门旁没有黄标。黄标位于木栈桥。 本条未派单。",
+      "simSeconds": 0.7,
+      "realMs": 257,
+      "workerCalls": {
+        "language": 0,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C102",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "去浮标门西侧的绿标拍照",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "西侧|东侧",
+      "setup": [
+        [
+          "给浮标门的绿标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门西侧是红标。绿标在东侧。 本条未派单。 A艇原任务为浮标门绿标 · 全景拍照。",
+      "simSeconds": 1.3,
+      "realMs": 271,
+      "workerCalls": {
+        "language": 0,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C103",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "去浮标门东侧的红标拍照",
+      "expected": {
+        "A": [],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "西侧|东侧",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门东侧是绿标。红标在西侧。 本条未派单。",
+      "simSeconds": 0.7,
+      "realMs": 251,
+      "workerCalls": {
+        "language": 0,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C104",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "给黄标拍一张",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "两座|指定",
+      "setup": [
+        [
+          "给浮标门的绿标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "港池有两座黄标，请指定木栈桥旁的黄标或防波堤旁的黄标。 本条未派单。 A艇原任务为浮标门绿标 · 全景拍照。",
+      "simSeconds": 1.3,
+      "realMs": 267,
+      "workerCalls": {
+        "language": 0,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C105",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "去浮标门拍照",
+      "expected": {
+        "A": [],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "红标|绿标|颜色",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门有红标和绿标，请指定要巡检的颜色。 本条未派单。",
+      "simSeconds": 0.7,
+      "realMs": 251,
+      "workerCalls": {
+        "language": 0,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C106",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "给红或绿标拍照",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "多种|分别|颜色",
+      "setup": [
+        [
+          "给浮标门的绿标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "指令包含多种浮标颜色，请分别指定每个目标的位置和颜色。 本条未派单。 A艇原任务为浮标门绿标 · 全景拍照。",
+      "simSeconds": 1.3,
+      "realMs": 267,
+      "workerCalls": {
+        "language": 0,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C107",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "去东泊位的绿标拍照",
+      "expected": {
+        "A": [],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "绿标",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "东泊位旁没有绿标。绿标位于航道浮标门。 本条未派单。",
+      "simSeconds": 0.7,
+      "realMs": 249,
+      "workerCalls": {
+        "language": 0,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C108",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "先观察防波堤黄标，最后拍木栈桥旁的绿标",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "绿标",
+      "setup": [
+        [
+          "给浮标门的绿标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "木栈桥旁没有绿标。这里的是黄标。绿标位于航道浮标门。 本条未派单。 A艇原任务为浮标门绿标 · 全景拍照。",
+      "simSeconds": 1.3,
+      "realMs": 278,
+      "workerCalls": {
+        "language": 0,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C109",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "给绿标拍照，它在防波堤旁",
+      "expected": {
+        "A": [],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "绿标",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤旁没有绿标。这里的是黄标。绿标位于航道浮标门。 本条未派单。",
+      "simSeconds": 0.7,
+      "realMs": 270,
+      "workerCalls": {
+        "language": 0,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C110",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "去木栈桥旁边，给绿色浮标拍照",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "绿标",
+      "setup": [
+        [
+          "给浮标门的绿标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "木栈桥旁没有绿标。这里的是黄标。绿标位于航道浮标门。 本条未派单。 A艇原任务为浮标门绿标 · 全景拍照。",
+      "simSeconds": 1.3,
+      "realMs": 278,
+      "workerCalls": {
+        "language": 0,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C111",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "A艇回东泊位，B艇拍防波堤旁的绿标",
+      "expected": {
+        "A": [],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "绿标",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤旁没有绿标。这里的是黄标。绿标位于航道浮标门。 本条未派单。",
+      "simSeconds": 0.7,
+      "realMs": 261,
+      "workerCalls": {
+        "language": 1,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C112",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "接力复核，A艇拍栈桥黄标，B艇补拍浮标门绿标",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "同一|不同",
+      "setup": [
+        [
+          "给浮标门的绿标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "接力两艇需要复核同一座浮标，请确认颜色和位置。 本条未派单。 A艇原任务为浮标门绿标 · 全景拍照。",
+      "simSeconds": 1.3,
+      "realMs": 272,
+      "workerCalls": {
+        "language": 0,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C113",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "双艇分别巡检栈桥绿标和防波堤黄标",
+      "expected": {
+        "A": [],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "绿标",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "木栈桥旁没有绿标。这里的是黄标。绿标位于航道浮标门。 本条未派单。",
+      "simSeconds": 0.7,
+      "realMs": 273,
+      "workerCalls": {
+        "language": 0,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C114",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "给紫色浮标拍照",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "紫标",
+      "setup": [
+        [
+          "给浮标门的绿标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "当前所指位置没有紫标。可巡检的浮标有黄色、红色和绿色。 本条未派单。 A艇原任务为浮标门绿标 · 全景拍照。",
+      "simSeconds": 1.3,
+      "realMs": 268,
+      "workerCalls": {
+        "language": 0,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C115",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "去木栈桥采水",
+      "expected": {
+        "A": [],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "设备|支持",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "艇载设备支持航行、观察和拍照，请换成其中一项。 本条未派单。",
+      "simSeconds": 0.7,
+      "realMs": 259,
+      "workerCalls": {
+        "language": 0,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C116",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "给它拍一张",
+      "expected": {
+        "A": [],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "目标|指定",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "这句指令的目标不明确，请指定木栈桥、防波堤、东泊位或西泊位。 本条未派单。",
+      "simSeconds": 0.7,
+      "realMs": 263,
+      "workerCalls": {
+        "language": 1,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C117",
+      "phase": "discovery",
+      "group": "矛盾、歧义与能力边界",
+      "text": "查另一座浮标",
+      "expected": {
+        "A": [],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "目标|指定",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "这句指令的目标不明确，请指定木栈桥、防波堤、东泊位或西泊位。 本条未派单。",
+      "simSeconds": 0.7,
+      "realMs": 265,
+      "workerCalls": {
+        "language": 1,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C152",
+      "phase": "discovery",
+      "group": "拍摄意图",
+      "text": "去木栈桥旁的黄标",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"栈桥黄标 · 抵近观察\"]，实为 [\"栈桥黄标 · 全景拍照\"]",
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 264,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C153",
+      "phase": "discovery",
+      "group": "拍摄意图",
+      "text": "抵达防波堤内侧的黄标，随后返航靠泊",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"防波堤黄标 · 抵近观察\",\"东泊位 · 返航靠泊\"]，实为 [\"防波堤黄标 · 全景拍照\",\"东泊位 · 返航靠泊\"]",
+      "feedback": "防波堤黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 266,
+      "workerCalls": {
+        "language": 1,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照",
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C154",
+      "phase": "discovery",
+      "group": "拍摄意图",
+      "text": "巡检浮标门绿标，然后返回西泊位",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 抵近观察",
+          "西泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"浮标门绿标 · 抵近观察\",\"西泊位 · 返航靠泊\"]，实为 [\"浮标门绿标 · 全景拍照\",\"西泊位 · 返航靠泊\"]",
+      "feedback": "浮标门绿标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 261,
+      "workerCalls": {
+        "language": 1,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照",
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C155",
+      "phase": "discovery",
+      "group": "拍摄意图",
+      "text": "去红标附近的拍照点观察",
+      "expected": {
+        "A": [
+          "浮标门红标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"浮标门红标 · 抵近观察\"]，实为 [\"浮标门红标 · 全景拍照\"]",
+      "feedback": "浮标门红标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 254,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C156",
+      "phase": "discovery",
+      "group": "拍摄意图",
+      "text": "查看上次拍摄的栈桥黄标",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"栈桥黄标 · 抵近观察\"]，实为 [\"栈桥黄标 · 全景拍照\"]",
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 266,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C157",
+      "phase": "discovery",
+      "group": "拍摄意图",
+      "text": "去绿标，禁止拍摄",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"浮标门绿标 · 抵近观察\"]，实为 [\"浮标门绿标 · 全景拍照\"]",
+      "feedback": "浮标门绿标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 281,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C158",
+      "phase": "discovery",
+      "group": "拍摄意图",
+      "text": "检查木栈桥黄标，不要再补拍",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"栈桥黄标 · 抵近观察\"]，实为 [\"栈桥黄标 · 全景拍照\",\"栈桥黄标 · 换侧补拍\"]",
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 263,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照",
+            "栈桥黄标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C159",
+      "phase": "discovery",
+      "group": "拍摄意图",
+      "text": "绕到防波堤黄标另一侧观察",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 换侧观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"防波堤黄标 · 换侧观察\"]，实为 [\"防波堤黄标 · 换侧补拍\"]",
+      "feedback": "防波堤黄标 · 换侧补拍",
+      "simSeconds": 0.7,
+      "realMs": 256,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C160",
+      "phase": "discovery",
+      "group": "拍摄意图",
+      "text": "先巡检红标再去绿标拍照",
+      "expected": {
+        "A": [
+          "浮标门红标 · 抵近观察",
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"浮标门红标 · 抵近观察\",\"浮标门绿标 · 全景拍照\"]，实为 [\"浮标门红标 · 全景拍照\",\"浮标门绿标 · 全景拍照\"]",
+      "feedback": "浮标门红标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 257,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 全景拍照",
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C161",
+      "phase": "discovery",
+      "group": "拍摄意图",
+      "text": "给浮标门绿标拍照，红标留到回程",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照",
+          "浮标门红标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"浮标门绿标 · 全景拍照\",\"浮标门红标 · 抵近观察\"]，实为 [\"浮标门绿标 · 全景拍照\",\"浮标门红标 · 全景拍照\"]",
+      "feedback": "浮标门绿标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 254,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照",
+            "浮标门红标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C162",
+      "phase": "discovery",
+      "group": "拍摄意图",
+      "text": "先检查栈桥黄标，再检查防波堤黄标，每座拍一张全景",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照",
+          "防波堤黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 261,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照",
+            "防波堤黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C163",
+      "phase": "discovery",
+      "group": "拍摄意图",
+      "text": "先查木栈桥黄标，再查防波堤黄标，每座只观察",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察",
+          "防波堤黄标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"栈桥黄标 · 抵近观察\",\"防波堤黄标 · 抵近观察\"]，实为 [\"栈桥黄标 · 全景拍照\",\"防波堤黄标 · 抵近观察\"]",
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 259,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照",
+            "防波堤黄标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C164",
+      "phase": "discovery",
+      "group": "拍摄意图",
+      "text": "到栈桥黄标按下快门",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 261,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C165",
+      "phase": "discovery",
+      "group": "拍摄意图",
+      "text": "改去浮标门红标",
+      "expected": {
+        "A": [
+          "浮标门红标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [
+        [
+          "给浮标门的绿标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"浮标门红标 · 抵近观察\"]，实为 [\"浮标门红标 · 全景拍照\"]",
+      "feedback": "浮标门红标 · 全景拍照",
+      "simSeconds": 1.3,
+      "realMs": 292,
+      "workerCalls": {
+        "language": 0,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C166",
+      "phase": "discovery",
+      "group": "拍摄意图",
+      "text": "这座先别拍，去查另一座",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [
+        [
+          "去木栈桥旁的黄标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"防波堤黄标 · 抵近观察\"]，实为 [\"防波堤黄标 · 全景拍照\",\"栈桥黄标 · 全景拍照\"]",
+      "feedback": "防波堤黄标 · 全景拍照",
+      "simSeconds": 1.3,
+      "realMs": 311,
+      "workerCalls": {
+        "language": 1,
+        "drive": 5
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照",
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C167",
+      "phase": "discovery",
+      "group": "按条件启用快门",
+      "text": "巡检木栈桥黄标，如果持续倾斜就换一侧观察",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察",
+          "倾斜时 · 栈桥黄标 · 换侧观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "tilt",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"栈桥黄标 · 抵近观察\",\"倾斜时 · 栈桥黄标 · 换侧观察\"]，实为 [\"栈桥黄标 · 全景拍照\",\"倾斜时 · 栈桥黄标 · 换侧补拍\"]",
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 272,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照",
+            "倾斜时 · 栈桥黄标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C168",
+      "phase": "discovery",
+      "group": "按条件启用快门",
+      "text": "检查防波堤黄标，只有持续倾斜才拍一张全景",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察",
+          "倾斜时 · 防波堤黄标 · 全景拍照（跳过）"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"防波堤黄标 · 抵近观察\",\"倾斜时 · 防波堤黄标 · 全景拍照\"]，实为 [\"防波堤黄标 · 全景拍照\",\"倾斜时 · 防波堤黄标 · 换侧补拍\"]",
+      "feedback": "防波堤黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 275,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照",
+            "倾斜时 · 防波堤黄标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C169",
+      "phase": "discovery",
+      "group": "按条件启用快门",
+      "text": "检查栈桥黄标，如果一直歪着，再拍一张全景",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察",
+          "倾斜时 · 栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "tilt",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"栈桥黄标 · 抵近观察\",\"倾斜时 · 栈桥黄标 · 全景拍照\"]，实为 [\"栈桥黄标 · 全景拍照\",\"倾斜时 · 栈桥黄标 · 换侧补拍\"]",
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 264,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照",
+            "倾斜时 · 栈桥黄标 · 换侧补拍"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C170",
+      "phase": "discovery",
+      "group": "逐艇拍摄意图",
+      "text": "两艇分头检查红标与绿标",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 抵近观察"
+        ],
+        "B": [
+          "浮标门红标 · 抵近观察"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"浮标门绿标 · 抵近观察\"]，实为 [\"浮标门绿标 · 全景拍照\"]",
+      "feedback": "浮标门绿标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 267,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "浮标门绿标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C171",
+      "phase": "discovery",
+      "group": "逐艇拍摄意图",
+      "text": "双艇分工，给栈桥黄标拍照，检查防波堤黄标",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察"
+        ],
+        "B": [
+          "栈桥黄标 · 全景拍照"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"防波堤黄标 · 抵近观察\"]，实为 [\"防波堤黄标 · 全景拍照\"]",
+      "feedback": "防波堤黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 294,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C172",
+      "phase": "discovery",
+      "group": "逐艇拍摄意图",
+      "text": "双艇分别巡检两座黄标，只给防波堤黄标拍照",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 全景拍照"
+        ],
+        "B": [
+          "栈桥黄标 · 抵近观察"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "B艇派单顺序 应为 [\"栈桥黄标 · 抵近观察\"]，实为 [\"栈桥黄标 · 全景拍照\"]",
+      "feedback": "防波堤黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 286,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C173",
+      "phase": "discovery",
+      "group": "逐艇拍摄意图",
+      "text": "A艇巡检防波堤黄标，B艇拍木栈桥黄标",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察"
+        ],
+        "B": [
+          "栈桥黄标 · 全景拍照"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"防波堤黄标 · 抵近观察\"]，实为 [\"防波堤黄标 · 全景拍照\"]",
+      "feedback": "防波堤黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 292,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C174",
+      "phase": "discovery",
+      "group": "逐艇拍摄意图",
+      "text": "接力复核，A艇检查栈桥黄标，B艇换侧观察",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": [
+          "栈桥黄标 · 换侧观察"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇派单顺序 应为 [\"栈桥黄标 · 抵近观察\",\"东泊位 · 返航靠泊\"]，实为 [\"栈桥黄标 · 全景拍照\",\"东泊位 · 返航靠泊\"]",
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 290,
+      "workerCalls": {
+        "language": 0,
+        "drive": 1
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照",
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C175",
+      "phase": "discovery",
+      "group": "逐艇拍摄意图",
+      "text": "接力，A艇只观察栈桥黄标，B艇收到回报再补拍",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": [
+          "栈桥黄标 · 换侧补拍"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "双艇模式 应为 true，实为 false",
+      "feedback": "接力补拍需要首艇回传照片。两艇只观察时，可以发送“双艇分别观察栈桥和防波堤的黄标”。 本条未派单。",
+      "simSeconds": 0.7,
+      "realMs": 273,
+      "workerCalls": {
+        "language": 0,
+        "drive": 0
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C176",
+      "phase": "discovery",
+      "group": "逐艇拍摄意图",
+      "text": "双艇接力，A艇拍防波堤黄标，B艇换侧复核",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 全景拍照",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": [
+          "防波堤黄标 · 换侧观察"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 全景拍照",
+      "simSeconds": 0.7,
+      "realMs": 286,
+      "workerCalls": {
+        "language": 0,
+        "drive": 1
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 全景拍照",
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C177",
+      "phase": "discovery",
+      "group": "逐艇拍摄意图",
+      "text": "双艇接力，B艇检查红标，A艇若发现倾斜才补拍",
+      "expected": {
+        "A": [],
+        "B": [
+          "浮标门红标 · 抵近观察",
+          "西泊位 · 返航靠泊"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "B艇派单顺序 应为 [\"浮标门红标 · 抵近观察\",\"西泊位 · 返航靠泊\"]，实为 [\"浮标门红标 · 全景拍照\",\"西泊位 · 返航靠泊\"]",
+      "feedback": "等候首艇回传",
+      "simSeconds": 0.7,
+      "realMs": 275,
+      "workerCalls": {
+        "language": 0,
+        "drive": 1
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "浮标门红标 · 全景拍照",
+            "西泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    }
+  ],
+  "pageErrors": [],
+  "counts": {
+    "passed": 106,
+    "failed": 37
+  },
+  "finishedUTC": "2026-11-25T00:16:20.656588+00:00"
+}

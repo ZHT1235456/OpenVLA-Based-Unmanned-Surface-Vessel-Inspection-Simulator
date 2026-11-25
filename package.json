@@ -1,0 +1,22 @@
+{
+  "name": "openvla-asv-inspection",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/copy-runtime.mjs && vite --host 127.0.0.1",
+    "build": "node scripts/copy-runtime.mjs && vite build",
+    "tauri": "tauri",
+    "desktop": "tauri build --no-bundle && node scripts/export-exe.mjs",
+    "test:commands": "node test/commands.mjs"
+  },
+  "dependencies": {
+    "three": "0.180.0",
+    "onnxruntime-web": "1.22.0",
+    "@tauri-apps/api": "^2.8.0"
+  },
+  "devDependencies": {
+    "vite": "^7.2.2",
+    "@tauri-apps/cli": "^2.9.0"
+  }
+}

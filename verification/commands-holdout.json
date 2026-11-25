@@ -1,0 +1,1789 @@
+{
+  "startedUTC": "2026-11-24T12:34:03.223268+00:00",
+  "phase": "holdout",
+  "mode": "closed-loop",
+  "surface": "http://127.0.0.1:5186",
+  "exeSHA256": null,
+  "corpusSHA256": "ecb1da0765380afed087c75151088ecc6bb190b6a11a706a8bc8f85eee1561ab",
+  "modelSHA256": {
+    "language.onnx": "ec16e19db3b3a98e249dd14f719517b355a12c1d961df26c6dd775730cd4150b",
+    "navigation.onnx": "3433f31675b3340d45d0097ad659fc9fa8d4667026ecb99a3e7d5427073a0048",
+    "pilot.onnx": "f60e8cb930d391054edcc70301e27c1892db7155b21356fc4aba26345cb243d3"
+  },
+  "totalExpected": 34,
+  "complete": true,
+  "rows": [
+    {
+      "id": "C118",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "请给木平台附近的黄色航标留一张全景照片",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 15.7,
+      "realMs": 1321,
+      "workerCalls": {
+        "language": 0,
+        "drive": 71
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "00:14 · 栈桥黄标 · 全景 · 3.9 m"
+          ]
+        }
+      },
+      "photoChecks": [
+        {
+          "boat": "A",
+          "title": "栈桥黄标 · 全景",
+          "rangeM": 3.9,
+          "centerPixels": {
+            "红": 0,
+            "绿": 1,
+            "黄": 5118
+          }
+        }
+      ]
+    },
+    {
+      "id": "C119",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "靠近木平台附近的黄色航标就好，不需要拍照",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 抵近观察",
+      "simSeconds": 10.7,
+      "realMs": 376,
+      "workerCalls": {
+        "language": 0,
+        "drive": 45
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "栈桥黄标 · 抵近观察"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C120",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "先观察木平台附近的黄色航标，然后给它拍照",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察",
+          "栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 抵近观察",
+      "simSeconds": 18.7,
+      "realMs": 521,
+      "workerCalls": {
+        "language": 1,
+        "drive": 86
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "栈桥黄标 · 抵近观察",
+            "栈桥黄标 · 全景拍照"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "00:17 · 栈桥黄标 · 全景 · 3.8 m"
+          ]
+        }
+      },
+      "photoChecks": [
+        {
+          "boat": "A",
+          "title": "栈桥黄标 · 全景",
+          "rangeM": 3.8,
+          "centerPixels": {
+            "红": 0,
+            "绿": 0,
+            "黄": 5503
+          }
+        }
+      ]
+    },
+    {
+      "id": "C121",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "请在木平台附近的黄色航标另一面补张照片",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 换侧补拍"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 换侧补拍",
+      "simSeconds": 18.7,
+      "realMs": 515,
+      "workerCalls": {
+        "language": 0,
+        "drive": 87
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "栈桥黄标 · 换侧补拍"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "00:17 · 栈桥黄标 · 侧面 · 4.4 m"
+          ]
+        }
+      },
+      "photoChecks": [
+        {
+          "boat": "A",
+          "title": "栈桥黄标 · 侧面",
+          "rangeM": 4.4,
+          "centerPixels": {
+            "红": 0,
+            "绿": 4,
+            "黄": 4626
+          }
+        }
+      ]
+    },
+    {
+      "id": "C122",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "先经过浮标门，再到木平台附近的黄色航标旁只观察，最后回西泊位",
+      "expected": {
+        "A": [
+          "浮标门 · 穿过浮标门",
+          "栈桥黄标 · 抵近观察",
+          "西泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门 · 穿过浮标门",
+      "simSeconds": 32.7,
+      "realMs": 565,
+      "workerCalls": {
+        "language": 1,
+        "drive": 109
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "浮标门 · 穿过浮标门",
+            "栈桥黄标 · 抵近观察",
+            "西泊位 · 返航靠泊"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C123",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "请给消波堤旁的黄色航标留一张全景照片",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 全景拍照",
+      "simSeconds": 9.7,
+      "realMs": 358,
+      "workerCalls": {
+        "language": 0,
+        "drive": 40
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "防波堤黄标 · 全景拍照"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "00:08 · 防波堤黄标 · 全景 · 3.8 m"
+          ]
+        }
+      },
+      "photoChecks": [
+        {
+          "boat": "A",
+          "title": "防波堤黄标 · 全景",
+          "rangeM": 3.8,
+          "centerPixels": {
+            "红": 0,
+            "绿": 5,
+            "黄": 3557
+          }
+        }
+      ]
+    },
+    {
+      "id": "C124",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "靠近消波堤旁的黄色航标就好，不需要拍照",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 抵近观察",
+      "simSeconds": 11.7,
+      "realMs": 349,
+      "workerCalls": {
+        "language": 0,
+        "drive": 47
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "防波堤黄标 · 抵近观察"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C125",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "先观察消波堤旁的黄色航标，然后给它拍照",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察",
+          "防波堤黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 抵近观察",
+      "simSeconds": 17.7,
+      "realMs": 467,
+      "workerCalls": {
+        "language": 1,
+        "drive": 78
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "防波堤黄标 · 抵近观察",
+            "防波堤黄标 · 全景拍照"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "00:15 · 防波堤黄标 · 全景 · 3.8 m"
+          ]
+        }
+      },
+      "photoChecks": [
+        {
+          "boat": "A",
+          "title": "防波堤黄标 · 全景",
+          "rangeM": 3.8,
+          "centerPixels": {
+            "红": 0,
+            "绿": 2,
+            "黄": 4873
+          }
+        }
+      ]
+    },
+    {
+      "id": "C126",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "请在消波堤旁的黄色航标另一面补张照片",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 换侧补拍"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 换侧补拍",
+      "simSeconds": 11.7,
+      "realMs": 389,
+      "workerCalls": {
+        "language": 0,
+        "drive": 48
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "防波堤黄标 · 换侧补拍"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "00:09 · 防波堤黄标 · 侧面 · 4.4 m"
+          ]
+        }
+      },
+      "photoChecks": [
+        {
+          "boat": "A",
+          "title": "防波堤黄标 · 侧面",
+          "rangeM": 4.4,
+          "centerPixels": {
+            "红": 0,
+            "绿": 7,
+            "黄": 4786
+          }
+        }
+      ]
+    },
+    {
+      "id": "C127",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "先经过浮标门，再到消波堤旁的黄色航标旁只观察，最后回西泊位",
+      "expected": {
+        "A": [
+          "浮标门 · 穿过浮标门",
+          "防波堤黄标 · 抵近观察",
+          "西泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门 · 穿过浮标门",
+      "simSeconds": 32.7,
+      "realMs": 578,
+      "workerCalls": {
+        "language": 1,
+        "drive": 113
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "浮标门 · 穿过浮标门",
+            "防波堤黄标 · 抵近观察",
+            "西泊位 · 返航靠泊"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C128",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "请给浮标门西侧的红色航标留一张全景照片",
+      "expected": {
+        "A": [
+          "浮标门红标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门红标 · 全景拍照",
+      "simSeconds": 8.7,
+      "realMs": 317,
+      "workerCalls": {
+        "language": 0,
+        "drive": 36
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "浮标门红标 · 全景拍照"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "00:07 · 浮标门红标 · 全景 · 3.8 m"
+          ]
+        }
+      },
+      "photoChecks": [
+        {
+          "boat": "A",
+          "title": "浮标门红标 · 全景",
+          "rangeM": 3.8,
+          "centerPixels": {
+            "红": 7758,
+            "绿": 0,
+            "黄": 12
+          }
+        }
+      ]
+    },
+    {
+      "id": "C129",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "靠近浮标门西侧的红色航标就好，不需要拍照",
+      "expected": {
+        "A": [
+          "浮标门红标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门红标 · 抵近观察",
+      "simSeconds": 9.7,
+      "realMs": 296,
+      "workerCalls": {
+        "language": 0,
+        "drive": 38
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "浮标门红标 · 抵近观察"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C130",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "先观察浮标门西侧的红色航标，然后给它拍照",
+      "expected": {
+        "A": [
+          "浮标门红标 · 抵近观察",
+          "浮标门红标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门红标 · 抵近观察",
+      "simSeconds": 9.7,
+      "realMs": 349,
+      "workerCalls": {
+        "language": 1,
+        "drive": 39
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "浮标门红标 · 抵近观察",
+            "浮标门红标 · 全景拍照"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "00:07 · 浮标门红标 · 全景 · 3.8 m"
+          ]
+        }
+      },
+      "photoChecks": [
+        {
+          "boat": "A",
+          "title": "浮标门红标 · 全景",
+          "rangeM": 3.8,
+          "centerPixels": {
+            "红": 7919,
+            "绿": 0,
+            "黄": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "C131",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "请在浮标门西侧的红色航标另一面补张照片",
+      "expected": {
+        "A": [
+          "浮标门红标 · 换侧补拍"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门红标 · 换侧补拍",
+      "simSeconds": 11.7,
+      "realMs": 428,
+      "workerCalls": {
+        "language": 0,
+        "drive": 48
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "浮标门红标 · 换侧补拍"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "00:09 · 浮标门红标 · 侧面 · 4.4 m"
+          ]
+        }
+      },
+      "photoChecks": [
+        {
+          "boat": "A",
+          "title": "浮标门红标 · 侧面",
+          "rangeM": 4.4,
+          "centerPixels": {
+            "红": 6456,
+            "绿": 0,
+            "黄": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "C132",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "先经过浮标门，再到浮标门西侧的红色航标旁只观察，最后回西泊位",
+      "expected": {
+        "A": [
+          "浮标门 · 穿过浮标门",
+          "浮标门红标 · 抵近观察",
+          "西泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门 · 穿过浮标门",
+      "simSeconds": 19.7,
+      "realMs": 507,
+      "workerCalls": {
+        "language": 1,
+        "drive": 48
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "浮标门 · 穿过浮标门",
+            "浮标门红标 · 抵近观察",
+            "西泊位 · 返航靠泊"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C133",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "请给浮标门东侧的绿色航标留一张全景照片",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 全景拍照",
+      "simSeconds": 6.7,
+      "realMs": 369,
+      "workerCalls": {
+        "language": 0,
+        "drive": 23
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "浮标门绿标 · 全景拍照"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "00:04 · 浮标门绿标 · 全景 · 4.4 m"
+          ]
+        }
+      },
+      "photoChecks": [
+        {
+          "boat": "A",
+          "title": "浮标门绿标 · 全景",
+          "rangeM": 4.4,
+          "centerPixels": {
+            "红": 0,
+            "绿": 6869,
+            "黄": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "C134",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "靠近浮标门东侧的绿色航标就好，不需要拍照",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 抵近观察",
+      "simSeconds": 6.7,
+      "realMs": 306,
+      "workerCalls": {
+        "language": 0,
+        "drive": 23
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "浮标门绿标 · 抵近观察"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C135",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "先观察浮标门东侧的绿色航标，然后给它拍照",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 抵近观察",
+          "浮标门绿标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 抵近观察",
+      "simSeconds": 7.7,
+      "realMs": 387,
+      "workerCalls": {
+        "language": 1,
+        "drive": 32
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "浮标门绿标 · 抵近观察",
+            "浮标门绿标 · 全景拍照"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "00:06 · 浮标门绿标 · 全景 · 4.3 m"
+          ]
+        }
+      },
+      "photoChecks": [
+        {
+          "boat": "A",
+          "title": "浮标门绿标 · 全景",
+          "rangeM": 4.3,
+          "centerPixels": {
+            "红": 0,
+            "绿": 7061,
+            "黄": 21
+          }
+        }
+      ]
+    },
+    {
+      "id": "C136",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "请在浮标门东侧的绿色航标另一面补张照片",
+      "expected": {
+        "A": [
+          "浮标门绿标 · 换侧补拍"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门绿标 · 换侧补拍",
+      "simSeconds": 8.7,
+      "realMs": 369,
+      "workerCalls": {
+        "language": 0,
+        "drive": 33
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "浮标门绿标 · 换侧补拍"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "00:06 · 浮标门绿标 · 侧面 · 4.4 m"
+          ]
+        }
+      },
+      "photoChecks": [
+        {
+          "boat": "A",
+          "title": "浮标门绿标 · 侧面",
+          "rangeM": 4.4,
+          "centerPixels": {
+            "红": 0,
+            "绿": 7049,
+            "黄": 41
+          }
+        }
+      ]
+    },
+    {
+      "id": "C137",
+      "phase": "holdout",
+      "group": "留出 · 目标与组合",
+      "text": "先经过浮标门，再到浮标门东侧的绿色航标旁只观察，最后回西泊位",
+      "expected": {
+        "A": [
+          "浮标门 · 穿过浮标门",
+          "浮标门绿标 · 抵近观察",
+          "西泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门 · 穿过浮标门",
+      "simSeconds": 22.7,
+      "realMs": 660,
+      "workerCalls": {
+        "language": 1,
+        "drive": 64
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "浮标门 · 穿过浮标门",
+            "浮标门绿标 · 抵近观察",
+            "西泊位 · 返航靠泊"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C138",
+      "phase": "holdout",
+      "group": "留出 · 航线与协作",
+      "text": "甲艇观察防波堤黄标，乙艇给木桥黄标拍一张",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察"
+        ],
+        "B": [
+          "栈桥黄标 · 全景拍照"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 抵近观察",
+      "simSeconds": 11.7,
+      "realMs": 1059,
+      "workerCalls": {
+        "language": 0,
+        "drive": 91
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "防波堤黄标 · 抵近观察"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "B艇拍摄 · 00:09 · 栈桥黄标 · 全景 · 3.8 m"
+          ]
+        }
+      },
+      "photoChecks": [
+        {
+          "boat": "B",
+          "title": "栈桥黄标 · 全景",
+          "rangeM": 3.8,
+          "centerPixels": {
+            "红": 0,
+            "绿": 2,
+            "黄": 4172
+          }
+        }
+      ]
+    },
+    {
+      "id": "C139",
+      "phase": "holdout",
+      "group": "留出 · 航线与协作",
+      "text": "B艇穿过浮标门，接着再回西泊位",
+      "expected": {
+        "A": [],
+        "B": [
+          "浮标门 · 穿过浮标门",
+          "西泊位 · 返航靠泊"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "等待巡检指令",
+      "simSeconds": 19.7,
+      "realMs": 1087,
+      "workerCalls": {
+        "language": 1,
+        "drive": 50
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [
+            "浮标门 · 穿过浮标门",
+            "西泊位 · 返航靠泊"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C140",
+      "phase": "holdout",
+      "group": "留出 · 航线与协作",
+      "text": "两艇分别观察木栈桥和防波堤旁的黄标，查完各自返航",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": [
+          "栈桥黄标 · 抵近观察",
+          "西泊位 · 返航靠泊"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤黄标 · 抵近观察",
+      "simSeconds": 22.7,
+      "realMs": 1697,
+      "workerCalls": {
+        "language": 0,
+        "drive": 201
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "防波堤黄标 · 抵近观察",
+            "东泊位 · 返航靠泊"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [
+            "栈桥黄标 · 抵近观察",
+            "西泊位 · 返航靠泊"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C141",
+      "phase": "holdout",
+      "group": "留出 · 航线与协作",
+      "text": "双艇接力，B艇给航道红标拍照，A艇收到首拍后补拍",
+      "expected": {
+        "A": [
+          "浮标门红标 · 换侧补拍"
+        ],
+        "B": [
+          "浮标门红标 · 全景拍照",
+          "西泊位 · 返航靠泊"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "等候首艇回传",
+      "simSeconds": 14.7,
+      "realMs": 1193,
+      "workerCalls": {
+        "language": 0,
+        "drive": 98
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "浮标门红标 · 换侧补拍"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "A艇拍摄 · 00:12 · 浮标门红标 · 侧面 · 4.7 m"
+          ]
+        },
+        "B": {
+          "done": [
+            "浮标门红标 · 全景拍照",
+            "西泊位 · 返航靠泊"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "B艇拍摄 · 00:05 · 浮标门红标 · 全景 · 3.9 m"
+          ]
+        }
+      },
+      "photoChecks": [
+        {
+          "boat": "A",
+          "title": "浮标门红标 · 侧面",
+          "rangeM": 4.7,
+          "centerPixels": {
+            "红": 6207,
+            "绿": 0,
+            "黄": 8
+          }
+        },
+        {
+          "boat": "B",
+          "title": "浮标门红标 · 全景",
+          "rangeM": 3.9,
+          "centerPixels": {
+            "红": 7629,
+            "绿": 0,
+            "黄": 55
+          }
+        }
+      ]
+    },
+    {
+      "id": "C142",
+      "phase": "holdout",
+      "group": "留出 · 航线与协作",
+      "text": "去浮标门红标补一张，然后回东泊位",
+      "expected": {
+        "A": [
+          "浮标门红标 · 换侧补拍",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门红标 · 换侧补拍",
+      "simSeconds": 20.7,
+      "realMs": 1202,
+      "workerCalls": {
+        "language": 1,
+        "drive": 93
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "浮标门红标 · 换侧补拍",
+            "东泊位 · 返航靠泊"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "00:09 · 浮标门红标 · 侧面 · 4.4 m"
+          ]
+        }
+      },
+      "photoChecks": [
+        {
+          "boat": "A",
+          "title": "浮标门红标 · 侧面",
+          "rangeM": 4.4,
+          "centerPixels": {
+            "红": 6456,
+            "绿": 0,
+            "黄": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "C143",
+      "phase": "holdout",
+      "group": "留出 · 航线与协作",
+      "text": "先别去防波堤，给木平台旁的黄标留影",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 15.7,
+      "realMs": 1093,
+      "workerCalls": {
+        "language": 0,
+        "drive": 71
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "00:14 · 栈桥黄标 · 全景 · 3.9 m"
+          ]
+        }
+      },
+      "photoChecks": [
+        {
+          "boat": "A",
+          "title": "栈桥黄标 · 全景",
+          "rangeM": 3.9,
+          "centerPixels": {
+            "红": 0,
+            "绿": 1,
+            "黄": 5118
+          }
+        }
+      ]
+    },
+    {
+      "id": "C144",
+      "phase": "holdout",
+      "group": "留出 · 航线与协作",
+      "text": "从东泊位出发，穿过浮标门，再观察绿标",
+      "expected": {
+        "A": [
+          "浮标门 · 穿过浮标门",
+          "浮标门绿标 · 抵近观察"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门 · 穿过浮标门",
+      "simSeconds": 13.7,
+      "realMs": 769,
+      "workerCalls": {
+        "language": 0,
+        "drive": 18
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "浮标门 · 穿过浮标门",
+            "浮标门绿标 · 抵近观察"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C145",
+      "phase": "holdout",
+      "group": "留出 · 航线与协作",
+      "text": "先给栈桥黄标拍一张，再观察石堤旁的黄标，最后回西泊位",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照",
+          "防波堤黄标 · 抵近观察",
+          "西泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "栈桥黄标 · 全景拍照",
+      "simSeconds": 39.7,
+      "realMs": 1843,
+      "workerCalls": {
+        "language": 1,
+        "drive": 189
+      },
+      "boats": {
+        "A": {
+          "done": [
+            "栈桥黄标 · 全景拍照",
+            "防波堤黄标 · 抵近观察",
+            "西泊位 · 返航靠泊"
+          ],
+          "pending": [],
+          "held": false,
+          "photos": [
+            "00:14 · 栈桥黄标 · 全景 · 3.9 m"
+          ]
+        }
+      },
+      "photoChecks": [
+        {
+          "boat": "A",
+          "title": "栈桥黄标 · 全景",
+          "rangeM": 3.9,
+          "centerPixels": {
+            "红": 0,
+            "绿": 1,
+            "黄": 5118
+          }
+        }
+      ]
+    },
+    {
+      "id": "C146",
+      "phase": "holdout",
+      "group": "留出 · 反例变体",
+      "text": "抵近观察木平台附近的红色航标",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "红标",
+      "setup": [
+        [
+          "去木栈桥旁的黄标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "木栈桥旁没有红标。这里的是黄标。红标位于航道浮标门。 本条未派单。 A艇原任务为栈桥黄标 · 全景拍照。",
+      "simSeconds": 2.1,
+      "realMs": 416,
+      "workerCalls": {
+        "language": 0,
+        "drive": 9
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C147",
+      "phase": "holdout",
+      "group": "留出 · 反例变体",
+      "text": "请去消波堤旁的绿色航标补一张",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "绿标",
+      "setup": [
+        [
+          "去木栈桥旁的黄标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "防波堤旁没有绿标。这里的是黄标。绿标位于航道浮标门。 本条未派单。 A艇原任务为栈桥黄标 · 全景拍照。",
+      "simSeconds": 2.1,
+      "realMs": 366,
+      "workerCalls": {
+        "language": 0,
+        "drive": 9
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C148",
+      "phase": "holdout",
+      "group": "留出 · 反例变体",
+      "text": "给航道东侧的红色浮标补拍",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "西侧|东侧",
+      "setup": [
+        [
+          "去木栈桥旁的黄标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门东侧是绿标。红标在西侧。 本条未派单。 A艇原任务为栈桥黄标 · 全景拍照。",
+      "simSeconds": 2.1,
+      "realMs": 343,
+      "workerCalls": {
+        "language": 0,
+        "drive": 9
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C149",
+      "phase": "holdout",
+      "group": "留出 · 反例变体",
+      "text": "只观察航道西侧的绿色标体",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "西侧|东侧",
+      "setup": [
+        [
+          "去木栈桥旁的黄标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 1,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "浮标门西侧是红标。绿标在东侧。 本条未派单。 A艇原任务为栈桥黄标 · 全景拍照。",
+      "simSeconds": 2.1,
+      "realMs": 335,
+      "workerCalls": {
+        "language": 0,
+        "drive": 9
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C150",
+      "phase": "holdout",
+      "group": "留出 · 反例变体",
+      "text": "先回西泊位，随后拍木桥边的绿标",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "绿标",
+      "setup": [
+        [
+          "去木栈桥旁的黄标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 2,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "木栈桥旁没有绿标。这里的是黄标。绿标位于航道浮标门。 本条未派单。 A艇原任务为栈桥黄标 · 全景拍照。",
+      "simSeconds": 2.1,
+      "realMs": 329,
+      "workerCalls": {
+        "language": 1,
+        "drive": 9
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    },
+    {
+      "id": "C151",
+      "phase": "holdout",
+      "group": "留出 · 反例变体",
+      "text": "乙艇检查港池内的白色航标",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 全景拍照"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "reject",
+      "reason": "白标",
+      "setup": [
+        [
+          "去木栈桥旁的黄标拍照",
+          "active"
+        ]
+      ],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": true,
+      "stage": "通过",
+      "error": null,
+      "feedback": "当前所指位置没有白标。可巡检的浮标有黄色、红色和绿色。 本条未派单。 A艇原任务为栈桥黄标 · 全景拍照。",
+      "simSeconds": 2.1,
+      "realMs": 325,
+      "workerCalls": {
+        "language": 0,
+        "drive": 9
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 全景拍照"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "photoChecks": []
+    }
+  ],
+  "pageErrors": [],
+  "counts": {
+    "passed": 34
+  },
+  "finishedUTC": "2026-11-24T12:34:27.208042+00:00"
+}

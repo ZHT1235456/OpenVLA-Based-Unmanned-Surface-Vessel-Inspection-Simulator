@@ -1,0 +1,13 @@
+{
+  "identifier": "main-inspection",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:default",
+    "core:window:allow-set-fullscreen",
+    "core:window:allow-is-fullscreen",
+    "core:window:allow-center",
+    "core:window:allow-set-size"
+  ]
+}

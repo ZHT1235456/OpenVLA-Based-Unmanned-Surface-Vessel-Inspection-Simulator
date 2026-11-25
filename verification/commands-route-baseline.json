@@ -1,0 +1,173 @@
+{
+  "startedUTC": "2026-11-25T01:15:14.453447+00:00",
+  "phase": "discovery",
+  "mode": "dispatch",
+  "surface": "基于OpenVLA的无人艇巡检模拟.exe",
+  "exeSHA256": "0121b7cc7cfd69c9968e1b2ad5379987282a3d3314be97a89f54075493715999",
+  "corpusSHA256": "8b5fb140cef06dc23c7c471108ea23ad9358a03b4ef42b27728bb131e98289ca",
+  "modelSHA256": {
+    "language.onnx": "ec16e19db3b3a98e249dd14f719517b355a12c1d961df26c6dd775730cd4150b",
+    "navigation.onnx": "3433f31675b3340d45d0097ad659fc9fa8d4667026ecb99a3e7d5427073a0048",
+    "pilot.onnx": "f60e8cb930d391054edcc70301e27c1892db7155b21356fc4aba26345cb243d3"
+  },
+  "totalExpected": 3,
+  "complete": true,
+  "rows": [
+    {
+      "id": "C046",
+      "phase": "discovery",
+      "group": "航线与顺序",
+      "text": "检查石堤边那座，再回东泊位",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": []
+      },
+      "dual": false,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇海图缺少待办的规划航段",
+      "feedback": "防波堤黄标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 437,
+      "workerCalls": {
+        "language": 2,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 抵近观察",
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "routeChecks": {},
+      "photoChecks": []
+    },
+    {
+      "id": "C085",
+      "phase": "discovery",
+      "group": "双艇与通信",
+      "text": "双艇分别巡检木栈桥和防波堤的黄标",
+      "expected": {
+        "A": [
+          "防波堤黄标 · 抵近观察"
+        ],
+        "B": [
+          "栈桥黄标 · 抵近观察"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇海图缺少待办的规划航段",
+      "feedback": "防波堤黄标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 372,
+      "workerCalls": {
+        "language": 0,
+        "drive": 2
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "防波堤黄标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 抵近观察"
+          ],
+          "held": false,
+          "photos": []
+        }
+      },
+      "routeChecks": {},
+      "photoChecks": []
+    },
+    {
+      "id": "C090",
+      "phase": "discovery",
+      "group": "双艇与通信",
+      "text": "接力复核，A艇先查木栈桥黄标，B艇接力补拍",
+      "expected": {
+        "A": [
+          "栈桥黄标 · 抵近观察",
+          "东泊位 · 返航靠泊"
+        ],
+        "B": [
+          "栈桥黄标 · 换侧补拍"
+        ]
+      },
+      "dual": true,
+      "op": "order",
+      "reason": "",
+      "setup": [],
+      "condition": "normal",
+      "layout": 0,
+      "startDual": false,
+      "selected": "A",
+      "traffic": true,
+      "pass": false,
+      "stage": "派单",
+      "error": "A艇海图缺少待办的规划航段",
+      "feedback": "栈桥黄标 · 抵近观察",
+      "simSeconds": 0.7,
+      "realMs": 324,
+      "workerCalls": {
+        "language": 0,
+        "drive": 1
+      },
+      "boats": {
+        "A": {
+          "done": [],
+          "pending": [
+            "栈桥黄标 · 抵近观察",
+            "东泊位 · 返航靠泊"
+          ],
+          "held": false,
+          "photos": []
+        },
+        "B": {
+          "done": [],
+          "pending": [],
+          "held": false,
+          "photos": []
+        }
+      },
+      "routeChecks": {},
+      "photoChecks": []
+    }
+  ],
+  "pageErrors": [],
+  "counts": {
+    "failed": 3
+  },
+  "finishedUTC": "2026-11-25T01:15:19.911664+00:00"
+}

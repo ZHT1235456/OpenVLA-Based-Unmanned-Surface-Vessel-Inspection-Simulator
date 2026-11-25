@@ -1,0 +1,233 @@
+{
+  "exe": "基于OpenVLA的无人艇巡检模拟.exe",
+  "exe_sha256": "dcc1f524e97c36e0358d2031ff22f267b6d7dba6003c97c5f0be5b95a36acc25",
+  "page_title": "基于OpenVLA的无人艇巡检模拟",
+  "origin": "http://tauri.localhost/",
+  "initial": {
+    "rect": [
+      0,
+      0,
+      2880,
+      1800
+    ],
+    "monitor": [
+      0,
+      0,
+      2880,
+      1800
+    ],
+    "covers_monitor": true
+  },
+  "windowed": {
+    "rect": [
+      469,
+      202,
+      2411,
+      1488
+    ],
+    "monitor": [
+      0,
+      0,
+      2880,
+      1800
+    ],
+    "covers_monitor": false
+  },
+  "restored": {
+    "rect": [
+      0,
+      0,
+      2880,
+      1800
+    ],
+    "monitor": [
+      0,
+      0,
+      2880,
+      1800
+    ],
+    "covers_monitor": true
+  },
+  "command_response_ms": [
+    22,
+    29,
+    23,
+    28,
+    8,
+    40,
+    20,
+    15
+  ],
+  "saved_jpeg_verified": true,
+  "median_ms": 22.5,
+  "maximum_ms": 40,
+  "last_rate_hz": "4.8",
+  "last_navigation_ms": "1.0",
+  "snapshot_width": 720,
+  "snapshot_height": 405,
+  "compare_after_reset": true,
+  "bow_while_paused": {
+    "fullscreen": {
+      "panel": [
+        631,
+        254
+      ],
+      "css": [
+        631,
+        254
+      ],
+      "buffer": [
+        914,
+        368
+      ],
+      "fit": "fill",
+      "lit_fraction_on_edges": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "windowed": {
+      "panel": [
+        416,
+        170
+      ],
+      "css": [
+        416,
+        170
+      ],
+      "buffer": [
+        603,
+        246
+      ],
+      "fit": "fill",
+      "lit_fraction_on_edges": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "restored": {
+      "panel": [
+        631,
+        254
+      ],
+      "css": [
+        631,
+        254
+      ],
+      "buffer": [
+        914,
+        368
+      ],
+      "fit": "fill",
+      "lit_fraction_on_edges": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "horizontal_orbit": {
+    "drag_css_px": 32,
+    "reference_width_px": 320,
+    "shore_shift_right_drag_px": -34,
+    "shore_shift_left_drag_px": 33,
+    "return_shift_px": 0
+  },
+  "navigation_without_photos": {
+    "command": "穿过红绿浮标门，只观察木栈桥旁的黄标，最后返回西泊位",
+    "completed_in_order": [
+      "浮标门 · 穿过浮标门",
+      "栈桥黄标 · 抵近观察",
+      "西泊位 · 返航靠泊"
+    ],
+    "photos": 0,
+    "elapsed": "00:25"
+  },
+  "fleet": {
+    "split_rate_hz": {
+      "A": "5.3",
+      "B": "5.0"
+    },
+    "default_patrol_photos": {
+      "A": 0,
+      "B": 0
+    },
+    "shared_jpegs": [
+      {
+        "id": "A-1",
+        "boat": "A",
+        "caption": "A艇拍摄 · 00:10 · 防波堤黄标 · 全景 · 3.9 m",
+        "sha256": "e5c3bef3fa4fbadee050bd4a10d234bd66f15612df22772aef76ed836b595630"
+      },
+      {
+        "id": "B-1",
+        "boat": "B",
+        "caption": "B艇回传 · 00:10 · 栈桥黄标 · 全景 · 3.9 m",
+        "sha256": "0899d16c359d1c05b2870d21ebc7899206fdbeb822a10e28b3d4e178e761737b"
+      }
+    ],
+    "relay_jpegs": [
+      {
+        "id": "A-1",
+        "boat": "A",
+        "caption": "A艇回传 · 00:12 · 栈桥黄标 · 全景 · 4.0 m",
+        "sha256": "dc7ac1f0784c43686d36c0c502619713b1b88d90187c1236322ce34bd3080b07"
+      },
+      {
+        "id": "B-1",
+        "boat": "B",
+        "caption": "B艇拍摄 · 00:24 · 栈桥黄标 · 侧面 · 4.6 m",
+        "sha256": "306e59170db3e53757ba896d3523e2b3c7ed1923d85a41bf273f0b8d0a9fc72c"
+      }
+    ],
+    "consecutive_addressed_orders": true,
+    "single_mode_restored": true
+  },
+  "page_errors": [],
+  "command_suggestions": {
+    "empty": "去木栈桥旁的黄标拍照",
+    "prefix": "返回东泊位",
+    "paused": "继续任务",
+    "tab_dispatches": 0,
+    "caret_at_end": true,
+    "stale_correction_dismissed": true,
+    "ime_and_keyboard_navigation": true
+  },
+  "marker_grounding": {
+    "rejected": "去木栈桥旁边的绿标拍照",
+    "tab_accepted": "去浮标门的绿标拍照",
+    "idle_dispatches": 0,
+    "existing_order_preserved": true,
+    "photo_target": "浮标门绿标",
+    "center_green_pixels": 7216,
+    "center_yellow_pixels": 0,
+    "roi_pixels": 18144
+  },
+  "south_sky": {
+    "view": "south meridian from pier inspection",
+    "sky_fraction_in_sample": 1.0,
+    "max_median_column_jump_8bit": 1,
+    "screenshot": "sky-south.png"
+  },
+  "withdrawn_shutter": {
+    "commands": [
+      "给绿标拍照，最后返回东泊位",
+      "不要拍照",
+      "继续任务"
+    ],
+    "finished_at": "东泊位",
+    "photos": 0
+  },
+  "route_before_departure": {
+    "command": "检查木栈桥旁的黄标，最后返回西泊位",
+    "chart_before_motion": "A艇 A* 规划航线 · 2 个航段 · 64.8 m",
+    "speed_before_motion": 0,
+    "completed_at": "西泊位",
+    "screenshot": "planned-route.png"
+  }
+}

@@ -1,0 +1,15 @@
+node_modules/
+dist/
+src-tauri/target/
+public/runtime/
+__pycache__/
+.training-cache/
+/*.exe
+src-tauri/gen/
+docs/*.aux
+docs/*.log
+docs/*.out
+docs/*.toc
+docs/*.fls
+docs/*.fdb_latexmk
+docs/*.xdv

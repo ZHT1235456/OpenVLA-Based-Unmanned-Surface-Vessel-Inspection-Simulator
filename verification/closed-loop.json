@@ -1,0 +1,371 @@
+[
+  {
+    "id": "trained-pilot-parity",
+    "pass": true,
+    "maxError": 0
+  },
+  {
+    "id": "single-0-pier",
+    "pass": true,
+    "photos": [
+      "pier:photo"
+    ],
+    "done": [
+      "pier"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 12.8,
+    "yieldEvents": 2,
+    "details": null
+  },
+  {
+    "id": "single-0-wall",
+    "pass": true,
+    "photos": [
+      "wall:photo"
+    ],
+    "done": [
+      "wall"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 9.4,
+    "yieldEvents": 0,
+    "details": null
+  },
+  {
+    "id": "single-1-pier",
+    "pass": true,
+    "photos": [
+      "pier:photo"
+    ],
+    "done": [
+      "pier"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 8.8,
+    "yieldEvents": 0,
+    "details": null
+  },
+  {
+    "id": "single-1-wall",
+    "pass": true,
+    "photos": [
+      "wall:photo"
+    ],
+    "done": [
+      "wall"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 13.4,
+    "yieldEvents": 2,
+    "details": null
+  },
+  {
+    "id": "single-2-pier",
+    "pass": true,
+    "photos": [
+      "pier:photo"
+    ],
+    "done": [
+      "pier"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 18,
+    "yieldEvents": 2,
+    "details": null
+  },
+  {
+    "id": "single-2-wall",
+    "pass": true,
+    "photos": [
+      "wall:photo"
+    ],
+    "done": [
+      "wall"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 7.8,
+    "yieldEvents": 0,
+    "details": null
+  },
+  {
+    "id": "green-gate-photo",
+    "pass": true,
+    "photos": [
+      "gateGreen:photo"
+    ],
+    "done": [
+      "gateGreen"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 8.2,
+    "yieldEvents": 2,
+    "details": null
+  },
+  {
+    "id": "planned-detour-around-pier",
+    "pass": true,
+    "photos": [],
+    "done": [
+      "west"
+    ],
+    "detour": {
+      "points": [
+        {
+          "x": -28,
+          "z": -13
+        },
+        {
+          "x": -13,
+          "z": -10.91111996829176
+        },
+        {
+          "x": -9.612870750210746,
+          "z": -8.95555998414588
+        },
+        {
+          "x": -9.612870750210746,
+          "z": -5.044440015854119
+        },
+        {
+          "x": -18.352227183942745,
+          "z": 22.69675941941184
+        }
+      ],
+      "directBlocked": true,
+      "segmentsClear": true,
+      "passedPierOnWater": true
+    },
+    "collisions": 0,
+    "simSeconds": 18.6,
+    "yieldEvents": 0,
+    "details": null
+  },
+  {
+    "id": "red-gate-photo",
+    "pass": true,
+    "photos": [
+      "gateRed:photo"
+    ],
+    "done": [
+      "gateRed"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 7,
+    "yieldEvents": 0,
+    "details": null
+  },
+  {
+    "id": "gate-transit-then-green-marker",
+    "pass": true,
+    "photos": [
+      "gateGreen:photo"
+    ],
+    "done": [
+      "gate",
+      "gateGreen",
+      "west"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 21.6,
+    "yieldEvents": 0,
+    "details": null
+  },
+  {
+    "id": "observe-through-gate-and-dock",
+    "pass": true,
+    "photos": [],
+    "done": [
+      "gate",
+      "pier",
+      "west"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 25,
+    "yieldEvents": 0,
+    "details": null
+  },
+  {
+    "id": "persistent-tilt",
+    "pass": true,
+    "photos": [
+      "pier:side"
+    ],
+    "done": [
+      "pier",
+      "pier"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 15.6,
+    "yieldEvents": 0,
+    "details": null
+  },
+  {
+    "id": "wave-only",
+    "pass": true,
+    "photos": [],
+    "done": [
+      "pier",
+      "pier"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 9,
+    "yieldEvents": 0,
+    "details": null
+  },
+  {
+    "id": "replace-shot-with-conditional-view",
+    "pass": true,
+    "photos": [],
+    "done": [
+      "pier"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 11.8,
+    "yieldEvents": 2,
+    "details": null
+  },
+  {
+    "id": "replace-shot-with-conditional-retake",
+    "pass": true,
+    "photos": [
+      "pier:side"
+    ],
+    "done": [
+      "pier"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 18.2,
+    "yieldEvents": 2,
+    "details": null
+  },
+  {
+    "id": "withdraw-photos-then-resume",
+    "pass": true,
+    "photos": [],
+    "done": [
+      "gateGreen",
+      "gateRed",
+      "west"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 35,
+    "yieldEvents": 2,
+    "details": null
+  },
+  {
+    "id": "withdraw-only-green-photo",
+    "pass": true,
+    "photos": [
+      "gateRed:photo"
+    ],
+    "done": [
+      "gateGreen",
+      "gateRed",
+      "west"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 28.2,
+    "yieldEvents": 2,
+    "details": null
+  },
+  {
+    "id": "reassign-and-return",
+    "pass": true,
+    "photos": [],
+    "done": [
+      "wall",
+      "pier",
+      "west"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 37.6,
+    "yieldEvents": 16,
+    "details": null
+  },
+  {
+    "id": "pause-and-resume",
+    "pass": true,
+    "photos": [
+      "wall:photo"
+    ],
+    "done": [
+      "wall"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 11.6,
+    "yieldEvents": 0,
+    "details": null
+  },
+  {
+    "id": "recall-and-frame",
+    "pass": true,
+    "photos": [
+      "pier:side"
+    ],
+    "done": [
+      "pier",
+      "wall",
+      "pier",
+      "west"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 65.4,
+    "yieldEvents": 2,
+    "details": null
+  },
+  {
+    "id": "negated-destination",
+    "pass": true,
+    "photos": [],
+    "done": [
+      "pier"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 8.8,
+    "yieldEvents": 0,
+    "details": null
+  },
+  {
+    "id": "full-patrol",
+    "pass": true,
+    "photos": [
+      "pier:photo",
+      "pier:side",
+      "wall:photo"
+    ],
+    "done": [
+      "gate",
+      "pier",
+      "pier",
+      "wall",
+      "wall",
+      "east"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 44,
+    "yieldEvents": 0,
+    "details": null
+  }
+]

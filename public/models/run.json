@@ -1,0 +1,168 @@
+{
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "torch": "2.5.1+cu124",
+  "seed": 541,
+  "language": {
+    "train_clauses": 5153,
+    "holdout_correct": 23,
+    "holdout_total": 24,
+    "held_examples": [
+      {
+        "text": "优先看看木平台旁边的黄色浮标",
+        "expected": "pier",
+        "predicted": "pier"
+      },
+      {
+        "text": "麻烦摄下木栈桥附近那一枚",
+        "expected": "pier",
+        "predicted": "pier"
+      },
+      {
+        "text": "给木桥边的小黄标留张相片",
+        "expected": "pier",
+        "predicted": "pier"
+      },
+      {
+        "text": "镜头对准石砌防浪堤旁的标",
+        "expected": "wall",
+        "predicted": "wall"
+      },
+      {
+        "text": "绕去石堤内侧给黄标照相",
+        "expected": "wall",
+        "predicted": "wall"
+      },
+      {
+        "text": "这趟先观察防波墙边的黄色标体",
+        "expected": "wall",
+        "predicted": "wall"
+      },
+      {
+        "text": "任务结束请停进东面的泊位",
+        "expected": "east",
+        "predicted": "east"
+      },
+      {
+        "text": "回东岸的停靠点",
+        "expected": "east",
+        "predicted": "east"
+      },
+      {
+        "text": "泊到东边的船位",
+        "expected": "east",
+        "predicted": "east"
+      },
+      {
+        "text": "回程换到西面的泊位",
+        "expected": "west",
+        "predicted": "west"
+      },
+      {
+        "text": "去西岸的停靠点等候",
+        "expected": "west",
+        "predicted": "west"
+      },
+      {
+        "text": "把船停到西边泊位",
+        "expected": "west",
+        "predicted": "west"
+      },
+      {
+        "text": "给眼前这座补张照",
+        "expected": "current",
+        "predicted": "current"
+      },
+      {
+        "text": "拍正在看的这个标",
+        "expected": "current",
+        "predicted": "current"
+      },
+      {
+        "text": "先检查这一个",
+        "expected": "current",
+        "predicted": "current"
+      },
+      {
+        "text": "麻烦换成别的那座浮标",
+        "expected": "other",
+        "predicted": "previous"
+      },
+      {
+        "text": "去另外那一颗拍全景",
+        "expected": "other",
+        "predicted": "other"
+      },
+      {
+        "text": "看看另一边的那座",
+        "expected": "other",
+        "predicted": "other"
+      },
+      {
+        "text": "回去给上次检查的那颗补一张",
+        "expected": "previous",
+        "predicted": "previous"
+      },
+      {
+        "text": "补拍先前那座",
+        "expected": "previous",
+        "predicted": "previous"
+      },
+      {
+        "text": "回顾上一颗航标",
+        "expected": "previous",
+        "predicted": "previous"
+      },
+      {
+        "text": "帮我写首诗",
+        "expected": "unknown",
+        "predicted": "unknown"
+      },
+      {
+        "text": "给我预订餐厅",
+        "expected": "unknown",
+        "predicted": "unknown"
+      },
+      {
+        "text": "水的化学式是什么",
+        "expected": "unknown",
+        "predicted": "unknown"
+      }
+    ]
+  },
+  "navigation": {
+    "training_episodes": 768,
+    "train_frames": 70656,
+    "holdout_episodes": 96,
+    "heldout_view_ids": [
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79
+    ],
+    "sampled_validation_frames": 3072,
+    "grounding_accuracy": 1.0,
+    "normalized_action_mae": [
+      0.02201342210173607,
+      0.004767101723700762
+    ],
+    "shutter_accuracy": 0.9964192708333334
+  },
+  "elapsed_seconds": 10.03,
+  "peak_allocated_mib": 114.6,
+  "onnx_parity_max_abs": {
+    "language": 1.430511474609375e-06,
+    "navigation": 4.842877388000488e-08
+  }
+}

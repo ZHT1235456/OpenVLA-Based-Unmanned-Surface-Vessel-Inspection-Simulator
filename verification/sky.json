@@ -1,0 +1,146 @@
+[
+  {
+    "id": "sky-0",
+    "azimuth": 0,
+    "maxDelta": 1,
+    "pass": true
+  },
+  {
+    "id": "sky-15",
+    "azimuth": 15,
+    "maxDelta": 0,
+    "pass": true
+  },
+  {
+    "id": "sky-30",
+    "azimuth": 30,
+    "maxDelta": 1,
+    "pass": true
+  },
+  {
+    "id": "sky-45",
+    "azimuth": 45,
+    "maxDelta": 0,
+    "pass": true
+  },
+  {
+    "id": "sky-60",
+    "azimuth": 60,
+    "maxDelta": 1,
+    "pass": true
+  },
+  {
+    "id": "sky-75",
+    "azimuth": 75,
+    "maxDelta": 0,
+    "pass": true
+  },
+  {
+    "id": "sky-90",
+    "azimuth": 90,
+    "maxDelta": 1,
+    "pass": true
+  },
+  {
+    "id": "sky-105",
+    "azimuth": 105,
+    "maxDelta": 1,
+    "pass": true
+  },
+  {
+    "id": "sky-120",
+    "azimuth": 120,
+    "maxDelta": 4,
+    "pass": true
+  },
+  {
+    "id": "sky-135",
+    "azimuth": 135,
+    "maxDelta": 0,
+    "pass": true
+  },
+  {
+    "id": "sky-150",
+    "azimuth": 150,
+    "maxDelta": 4,
+    "pass": true
+  },
+  {
+    "id": "sky-165",
+    "azimuth": 165,
+    "maxDelta": 1,
+    "pass": true
+  },
+  {
+    "id": "sky-180",
+    "azimuth": 180,
+    "maxDelta": 1,
+    "pass": true
+  },
+  {
+    "id": "sky-195",
+    "azimuth": 195,
+    "maxDelta": 0,
+    "pass": true
+  },
+  {
+    "id": "sky-210",
+    "azimuth": 210,
+    "maxDelta": 1,
+    "pass": true
+  },
+  {
+    "id": "sky-225",
+    "azimuth": 225,
+    "maxDelta": 0,
+    "pass": true
+  },
+  {
+    "id": "sky-240",
+    "azimuth": 240,
+    "maxDelta": 1,
+    "pass": true
+  },
+  {
+    "id": "sky-255",
+    "azimuth": 255,
+    "maxDelta": 0,
+    "pass": true
+  },
+  {
+    "id": "sky-270",
+    "azimuth": 270,
+    "maxDelta": 1,
+    "pass": true
+  },
+  {
+    "id": "sky-285",
+    "azimuth": 285,
+    "maxDelta": 1,
+    "pass": true
+  },
+  {
+    "id": "sky-300",
+    "azimuth": 300,
+    "maxDelta": 4,
+    "pass": true
+  },
+  {
+    "id": "sky-315",
+    "azimuth": 315,
+    "maxDelta": 0,
+    "pass": true
+  },
+  {
+    "id": "sky-330",
+    "azimuth": 330,
+    "maxDelta": 4,
+    "pass": true
+  },
+  {
+    "id": "sky-345",
+    "azimuth": 345,
+    "maxDelta": 1,
+    "pass": true
+  }
+]
