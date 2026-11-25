@@ -1,6 +1,6 @@
 % !TeX program = xelatex
 % 编译目录为 docs/，连续运行两次 XeLaTeX 以更新图号与参考文献。
-% 初稿由 agy CLI 的 gemini-4-hydrogen-high 撰写，技术表述依据仓库源码与发布版实测记录校订。
+% 初稿和全文修订均使用 agy CLI 指定模型，技术表述依据仓库源码与发布版实测记录校订。
 \documentclass[a4paper,fontset=fandol,zihao=5]{ctexart}
 \usepackage[left=19mm,right=19mm,top=21mm,bottom=19mm,headheight=21pt,headsep=6mm,footskip=9mm]{geometry}
 \usepackage{xcolor,graphicx,booktabs,tabularx,array,caption,fancyhdr,microtype}
@@ -55,36 +55,36 @@
 \vspace{2pt}{\color{rulegray}\hrule height .6pt}\vspace{11pt}
 
 \pagetitle{引言}
-在三维港池中，使用者可用中文指令安排一艘或两艘无人艇观察航标、拍照并返回泊位。港池中设有四座巡检航标。木栈桥与防波堤旁各有一座黄标，航道口的红标和绿标组成浮标门。两艘艇共用这张海图，分别从东、西泊位出发。
+在三维港池场景中，A、B 两艘无人艇共用一张海图，分别停靠在东、西泊位。港池设有四座航标，木栈桥旁和防波堤旁各有一座黄标，航道口由红标和绿标组成浮标门。巡检任务既可指派单艇执行，也可安排双艇协作。向工作台输入“给木栈桥旁的黄标拍照”，系统随即规划航线并驱艇抵近目标，海图记录已航轨迹，相册保存船首拍下的黄标画面（图~\ref{fig:desktop}）。
 
 \begin{minipage}{\linewidth}
 \centering
 \includegraphics[width=\linewidth]{../verification/desktop.png}
-\captionof{figure}{Windows 发布版的单艇巡检。A 艇按指令拍摄木栈桥旁的黄标。下方海图留下驶近目标的航迹，船首画面可用来核对实际入镜的浮标。}\label{fig:desktop}
+\captionof{figure}{Windows 发布版单艇巡检界面。主视图中 A 艇位于栈桥黄标旁，下方并排显示海图已航轨迹与船首黄标，右侧为指令工作台。}\label{fig:desktop}
 \end{minipage}
 
-\subhead{在指令工作台安排一次巡检}
-以“去浮标门的绿标拍照”为例。在输入框中按 Tab 可填入当前建议并继续修改，按 Enter 发送指令。软件随即核对目标颜色与位置，确认绿标位于浮标门东侧，先规划航线，再抵近拍摄。完成后可在巡检相册查看船首相机拍到的绿标（图~\ref{fig:green}）。
+\subhead{发送一条中文指令}
+在输入框中按 Tab 键可填入建议指令并继续修改，按 Enter 键即可派发。以“去浮标门的绿标拍照”为例，软件会先核对目标颜色与位置，确认绿标位于浮标门东侧，再规划航线并控制无人艇抵近拍摄。任务完成后，可在巡检相册中查看船首相机拍到的绿标照片（图~\ref{fig:green}）。
 
-\subhead{观察、拍摄与协作}
-输入“先检查红标，再给绿标拍照”，无人艇会先抵近红标观察，再驶向绿标拍一张照片。使用者可以让单艇按序完成，也可以按艇号划分任务。在双艇接力中，先到的艇回传观测方位，另一艘艇据此驶向目标的另一侧补拍。
+\subhead{观察、拍摄与双艇协同}
+下发“先检查红标，再给绿标拍照”时，无人艇会先抵近红标做普通观察，不保存照片，再前往绿标完成拍摄。使用者既可安排单艇依次执行，也可按艇号分工。在双艇接力中，先到的艇回传观测方位，协作艇据此驶向目标的另一侧补拍。
 
 \newpage
 \pagetitle{技术栈与执行流程}
-受 OpenVLA 均匀动作离散化方法启发\cite{kim2025openvla}，工程自行训练了港池轻量模型。中文编码器用 UER 两层中文 RoBERTa 初始化，视觉分支取 MobileNetV3-Small 的首层卷积。桌面端实际运行下表中的三个 ONNX 图。
+软件借鉴 OpenVLA 的均匀动作离散化思路\cite{kim2025openvla}，运行自行训练的港池专用轻量模型。中文编码器以 UER 两层中文 RoBERTa 初始化，视觉分支提取 MobileNetV3-Small 首层卷积特征。整个工程按训练与导出、本机推理、场景与海图、桌面封装四个环节分工协作。
 
 \begin{tabularx}{\linewidth}{@{}>{\bfseries}p{23mm}p{49mm}Y@{}}
 \toprule
-环节 & 技术与组件 & 在一次巡检中的职责\\
+环节 & 技术与组件 & 职责分工\\
 \midrule
-训练与导出 & Python、PyTorch、ONNX & 从中文短句、仿真航迹和船首裁片学习指代与动作，在 RTX 4090 上训练后导出。\\
-本机推理 & ONNX Runtime Web~\cite{ortweb}、Web Worker、WebAssembly & 后台线程执行 \texttt{language.onnx}、\texttt{navigation.onnx} 和 \texttt{pilot.onnx}。\\
-场景与界面 & Three.js、Canvas 2D、Vite & 用 Three.js 绘制港池、艇体和相机画面，用二维海图显示规划航线与已航轨迹。\\
-桌面分发 & Tauri 2~\cite{tauri2arch}、Rust、WebView2 & 将网页、模型及运行资源嵌入 Windows 程序，提供全屏与窗口切换。\\
+训练与导出 & Python、PyTorch、ONNX & 在 RTX 4090 上用中文短句、仿真航迹与船首裁片训练模型，导出为三个 ONNX 计算图。\\
+本机推理 & ONNX Runtime Web~\cite{ortweb}、Web Worker、WebAssembly & 在后台线程运行 \texttt{language.onnx}、\texttt{navigation.onnx} 与 \texttt{pilot.onnx}，实时输出决策。\\
+场景与海图 & Three.js、Canvas 2D、Vite & Three.js 绘制港池、艇体和船首视图，Canvas 2D 海图实时展示规划航线与已航轨迹。\\
+桌面封装 & Tauri 2~\cite{tauri2arch}、Rust、WebView2 & 将网页前端、模型权重与运行资源嵌入 Windows 程序，管理窗口与全屏模式切换。\\
 \bottomrule
 \end{tabularx}
 
-\subhead{从指令下发到艇上回报}
+\subhead{从指令到路径与艇控的顺序}
 \begin{minipage}{\linewidth}
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm,
@@ -98,13 +98,13 @@
   hint/.style={font=\scriptsize\sffamily,fill=white,text=muted,inner sep=1.6pt},
   every node/.style={font=\small}]
 \node[main] (input) at (0,0) {\textbf{中文指令}\\语言模型判别短句中的目标指代};
-\node[main] (assign) at (0,-1.55) {\textbf{校验与派单}\\核对颜色、位置和动作，按艇拆分航段};
-\node[main] (route) at (0,-3.1) {\textbf{起航前路径规划}\\从各艇当前位置计算可航路线};
-\node[main] (control) at (0,-4.65) {\textbf{实时艇控}\\跟随航路点，预测并避让移动船只};
-\node[main] (finish) at (0,-6.2) {\textbf{到站作业}\\按本航段要求观察、拍摄或靠泊};
-\node[stop] (conflict) at (8,-1.55) {提示冲突，保留原任务\\可接受建议后重新发送};
-\node[stop] (blocked) at (8,-3.1) {停船并显示不可达的任务};
-\node[side] (sense) at (8,-4.65) {更新船首裁片、相对几何量和艇位};
+\node[main] (assign) at (0,-1.55) {\textbf{校验与派单}\\核对颜色、位置与动作，按艇拆分航段};
+\node[main] (route) at (0,-3.1) {\textbf{起航前路径规划}\\从各艇当前位置计算静态可航路径};
+\node[main] (control) at (0,-4.65) {\textbf{实时艇控}\\跟踪航路点，预测并避让移动船只};
+\node[main] (finish) at (0,-6.2) {\textbf{到站作业}\\按航段要求完成观察、拍摄或靠泊};
+\node[stop] (conflict) at (8,-1.55) {提示冲突并保留原任务\\可采纳建议后重新发送};
+\node[stop] (blocked) at (8,-3.1) {停船并标出不可达的任务};
+\node[side] (sense) at (8,-4.65) {更新船首裁片、相对几何量与艇位};
 \node[side] (report) at (8,-6.2) {记录作业结果，向协作艇回传\\观测方位或已拍照片};
 \draw[flow] (input)--(assign);
 \draw[flow] (assign)--(route);
@@ -116,60 +116,60 @@
 \draw[flow] ([yshift=-3pt]sense.west)--node[hint,below]{反馈}([yshift=-3pt]control.east);
 \draw[flow] (finish)--(report);
 \end{tikzpicture}
-\captionof{figure}{一条航行指令的执行流程。接力艇收到有效回报后，按回报方位重新计算自己的作业航段。}\label{fig:flow}
+\captionof{figure}{单条航行指令从输入到路径规划、实时艇控与到站回报的执行顺序。接力艇收到有效回报后，按回传方位重新规划自身航段。}\label{fig:flow}
 \end{minipage}
 
-\subhead{三个推理图怎样分工}
-\texttt{language} 预测目标指代。\texttt{navigation} 结合四张 \(20\times20\) RGB 候选裁片、几何量与目标编码，输出关注对象、航速、转向和快门分数。红绿门标由海图确定身份，\texttt{pilot} 沿用训练好的控制权重，以相对几何量驱艇。明确要求拍照的航段还须满足到站姿态、目标身份和快门条件，才会保存 \(720\times405\) 的船首 JPEG。
+\subhead{三个推理图的模型分工}
+图~\ref{fig:flow} 中，\texttt{language} 仅负责目标指代。\texttt{navigation} 接收四张 \(20\times20\) RGB 候选裁片、几何量与目标编码，输出关注对象、航速、转向和快门分数。红绿门标由海图登记身份，\texttt{pilot} 则基于登记门标的相对几何量与共享控制权重驱艇。普通检查只做抵近观察。只有指令明确要求拍摄，且到站姿态、目标身份和模型快门条件同时满足时，才保存 \(720\times405\) 的船首 JPEG。
 
-展开“模型观测与动作”即可对照当前裁片和模型选中的候选。一次常速双艇复验中，A 艇与 B 艇的艇控推理频率分别为 5.3 Hz 和 5.0 Hz。可在\repolink{src/policy-engine.js}{推理代码}中查看两个艇控图各自的输入。
+展开“模型观测与动作”即可对照当前裁片与模型选中的候选。常速双艇复验中，A、B 两艇的艇控推理频率分别为 5.3 Hz 与 5.0 Hz。三个推理图的输入细节见\repolink{src/policy-engine.js}{推理代码}。
 
 \newpage
 \pagetitle{航路规划与双艇接力}
-\subhead{让操作者在起航前看到路线}
-以“检查木栈桥旁的黄标，最后返回西泊位”为例。派单后，规划器先在静态海图上为艇体预留通行间距。可以直达时采用直线，否则在可视图中用 A* 搜索航路点\cite{hart1968astar}。若任一航段不可达，艇会停下并显示相应任务。航行途中，保洁船与邻艇的移动交由在线让行逻辑处理。
+\subhead{静态规划与动态让行}
+以“检查木栈桥旁的黄标，最后返回西泊位”为例。下发有效航行任务之后、起航之前，规划器先在静态海图上为艇体预留通行间距。航段能够直达时直接采用直线，存在遮挡时则在可视图上运行 A* 算法搜索航路点\cite{hart1968astar}。若任一航段不可达，艇会停船并标出相应任务。航行期间，保洁船与邻艇的移动交由在线让行逻辑实时避让。
 
 \begin{minipage}{\linewidth}
 \centering
 \includegraphics[width=.95\linewidth]{../verification/planned-route.png}
-\captionof{figure}{暂停仿真后发送上述指令，A 艇航速仍为 0.0 m/s。琥珀色虚线已连出前往栈桥黄标和返回西泊位的两个航段，规划总长 64.8 m。随后恢复仿真，艇完成观察并停靠西泊位。}\label{fig:route}
+\captionof{figure}{暂停仿真后发送上述指令，A 艇航速仍为 0.0 m/s。琥珀色虚线已给出前往栈桥黄标与返回西泊位的两个规划航段，规划路程总长 64.8 m。恢复仿真后，艇完成观察并停靠西泊位。}\label{fig:route}
 \end{minipage}
 
-\subhead{同一目标，两种交接方式}
+\subhead{双艇接力中的方位与照片}
 \begin{minipage}[t]{.55\linewidth}\vspace{0pt}
-输入“接力，A 艇只观察栈桥黄标，B 艇收到回报再补拍”时，A 艇先行观察并回传方位。B 艇收到后驶往目标另一侧，整趟任务只有 B 艇拍下的一张照片。接收艇的相册也会显示回传副本，统计拍摄次数时按原始照片计数。
+双艇接力依靠观测方位协调视角，并按指令区分照片来源。输入“接力，A 艇只观察栈桥黄标，B 艇收到回报再补拍”时，A 艇先抵近观察并回传目标方位。B 艇据此驶向目标的另一侧，整趟任务仅由 B 艇拍下一张照片。回传副本也会显示在接收艇相册中，统计拍摄总数时只计原始照片。
 
 \smallskip
-若同时要求 A 艇先拍，首份回报就会附带全景照。图~\ref{fig:relay} 展示了这一版本的交接记录。B 艇相册中可以同时看到 A 艇回传的全景和自己补拍的侧面，艇号和时间能区分两张图片的来源。
+图~\ref{fig:relay} 展示了另一例。这条指令明确要求 A 艇先拍，并且 B 艇也拍。首份回报会附带 A 艇拍下的全景照片，B 艇仍根据方位驶向另一侧补拍。因此 B 艇相册内同时存有 A 艇全景和本艇侧面，通过艇号与时间即可区分。
 
 \smallskip
-两艇每 0.75 仿真秒广播一次艇位，通信模拟的基础单程时延为 0.12 仿真秒。接力艇收到观测回报或照片后才启程复核。
+两艇每 0.75 仿真秒广播一次艇位，模拟通信的基础单程时延为 0.12 仿真秒。接力艇须在收到方位或照片回报后才启程复核。
 \end{minipage}\hfill
 \begin{minipage}[t]{.40\linewidth}\vspace{0pt}
 \centering
 \includegraphics[viewport=1982 205 2848 1107,clip,width=.96\linewidth]{../verification/fleet-handoff.png}
-\captionof{figure}{B 艇工作台局部截图。通信记录与两张巡检照片对应同一次接力。}\label{fig:relay}
+\captionof{figure}{B 艇工作台局部截图。通信记录与两张巡检照片对应“A 先拍、B 再拍”的同一次接力。}\label{fig:relay}
 \end{minipage}
 
-\subhead{途中改变拍摄要求}
-单独下发“不要拍照”会撤销待拍航段的快门授权并保留航线。在发布版连续下发“给绿标拍照，最后返回东泊位”“不要拍照”“继续任务”，艇最终停在东泊位，相册新增 0 张。
+\subhead{途中调整拍摄授权}
+航行途中单独发送“不要拍照”，可撤销待拍航段的快门授权并保留既定航线。在发布版依次发送“给绿标拍照，最后返回东泊位”“不要拍照”“继续任务”，艇最终停靠东泊位，相册新增 0 张照片。
 
 \newpage
-\pagetitle{训练、回归与发布}
-\subhead{训练数据与留出结果}
-模型训练在实验室 RTX 4090 上使用 PyTorch 2.5.1 完成。艇控策略使用 768 条仿真示范和 70,656 个航行状态，另以不同随机种子生成 96 条验证航迹。中文目标指代模型在 24 条留出短句中正确判别 23 条，具体样本和指标见\repolink{public/models/run.json}{训练记录}。
+\pagetitle{训练、验证与交付}
+\subhead{如何阅读训练数据与指标}
+模型在实验室 RTX 4090 上使用 PyTorch 2.5.1 训练完成，训练配置与验证指标记录在\repolink{public/models/run.json}{训练记录}中。接手项目时，可按数据集与模块对照查看。艇控策略基于 768 条仿真示范、共 70,656 个状态学习得到，并另以不同随机种子生成 96 条验证航迹。中文目标指代模型在 24 条留出短句中正确判别 23 条（23/24）。
 
-\subhead{中文指令回放验证}
-验证采用 CEGIS 式迭代。先确定每条指令的艇号、目标、动作和预期相册，再从发布版输入框逐条回放，等待 ONNX 推理完成，并核对实际航线、动作与影像。143 条发现集用于调整规则，另有 34 条独立留出指令用于复验。
+\subhead{中文指令的回放验证}
+整机验证采用 CEGIS 式迭代流程。先为每条指令确定预期艇号、目标、动作和照片数，再从发布版输入框逐条回放，待 ONNX 推理结束后核对航线、动作和实际影像。其中 143 条指令用于迭代打磨校验与派单逻辑，另有 34 条独立留出指令用于最终复验，合计 177 条全部通过。
 
 \begin{tabularx}{\linewidth}{@{}>{\bfseries}p{32mm}p{29mm}Y@{}}
 \toprule
-核验对象 & 实测结果 & 怎样判定\\
+核验项目 & 实测指标 & 判定依据\\
 \midrule
-发现集与留出集 & 143/143，34/34 & 逐条比对预期结果。两组合计 177 条不同中文指令。\\
-执行与拒绝 & 151 条，26 条 & 有效任务核对艇号与动作顺序，预期拒绝项核对拒绝结果。\\
-起航前规划 & 164 次 & 按艇核对起航前规划日志、海图航段数和规划距离。\\
-实际拍摄 & 83 张 JPEG & 解码实际图像并核对分辨率、目标与取证距离，按场景检查中央颜色。回传副本单独比对。\\
+迭代与留出指令 & 143/143，34/34 & 逐条比对预期输出，覆盖全部 177 条不同中文指令。\\
+执行与预期拒绝 & 151 条，26 条 & 151 条有效指令核对艇号与动作顺序，26 条拒绝项核对拒绝提示。\\
+起航前规划 & 164 次 & 按艇核对起航前规划日志、海图航段数和规划路程。\\
+实际拍摄影像 & 83 张 JPEG & 83 张均经过解码，核对相应目标与取证距离，按场景检查画面中央颜色，回传副本单独比对。\\
 \bottomrule
 \end{tabularx}
 
@@ -180,14 +180,14 @@
 \captionof{figure}{船首相机拍到的浮标门东侧绿标。}\label{fig:green}
 \end{minipage}\hfill
 \begin{minipage}[c]{.56\linewidth}
-\repolink{verification/commands-final.md}{逐条测试报告}列出了输入、派单、照片数和结论。C046 对应单艇观察后返航，C175 对应仅接力艇补拍。
+\repolink{verification/commands-final.md}{逐条测试报告}完整列出了每条指令的输入、派单结果、照片数与结论。例如 C046 对应单艇观察后返航，C175 对应先观察再由接力艇补拍。
 
 \smallskip
-\repolink{verification/desktop.json}{常速桌面复验}还核对了实际入镜的颜色。在图~\ref{fig:green} 中，检测窗口的 18,144 个像素里有 7,216 个绿色像素、0 个黄色像素，和海图登记的绿色门标一致。
+\repolink{verification/desktop.json}{常速桌面复验}还定量核验了入镜颜色。图~\ref{fig:green} 检测窗口的 18,144 个像素中包含 7,216 个绿色像素与 0 个黄色像素，与海图登记的绿色门标一致。
 \end{minipage}
 
-\subhead{Windows 交付}
-v1.0.0 把前端、模型和推理运行资源嵌入单个 Windows x64 EXE，实测为 \textbf{28,124,672 字节（26.82 MiB）}。在具备 Microsoft Edge WebView2 的电脑上，双击即可离线运行。程序默认全屏，右上角可切换为窗口模式。
+\subhead{Windows 交付指标}
+v1.0.0 将前端页面、ONNX 模型及运行资源打包为单个 Windows x64 可执行文件，体积实测为 \textbf{28,124,672 字节（26.82 MiB）}。在配备 Microsoft Edge WebView2 的 Windows x64 电脑上，双击即可离线运行。软件默认全屏启动，右上角提供窗口模式切换按钮。
 
 \begingroup
 \small

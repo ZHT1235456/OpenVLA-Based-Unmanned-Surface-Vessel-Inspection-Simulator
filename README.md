@@ -4,7 +4,7 @@
 
 [下载 Windows x64 发布版](https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/releases/latest) · [软件开发日志（PDF）](docs/基于OpenVLA的无人艇巡检模拟软件开发日志.pdf) · [LaTeX 源文件](docs/基于OpenVLA的无人艇巡检模拟软件开发日志.tex)
 
-双击 **基于OpenVLA的无人艇巡检模拟.exe**，等待右上角显示“模型就绪”。Windows 应用默认全屏，右上角“窗口模式”可以还原窗口，同一位置可重新进入全屏。模型、港池和推理运行时均内置于 EXE。在具备 Microsoft Edge WebView2 的 Windows x64 电脑上可离线运行。
+下载发布页的 **Windows x64 中文便携包**，解压后双击 **基于OpenVLA的无人艇巡检模拟.exe**，等待右上角显示“模型就绪”。包内附有中文开发日志 PDF。Windows 应用默认全屏，右上角“窗口模式”可以还原窗口，同一位置可重新进入全屏。模型、港池和推理运行时均内置于 EXE。在具备 Microsoft Edge WebView2 的 Windows x64 电脑上可离线运行。
 
 ![Windows 发布版实际运行画面，左侧为港池三维视图、航迹和船首相机，右侧为中文指令工作台。](verification/desktop.png)
 
@@ -85,7 +85,7 @@ npm run desktop
 
 Vite 开发地址为 `http://127.0.0.1:5186/`，`npm run build` 生成可通过 HTTP 静态服务浏览的 `dist/`。桌面构建在项目根目录生成正式中文名的 EXE。
 
-开发日志采用 XeLaTeX 排版。在装有 TeX Live 和 Fandol 字体的环境中进入 `docs/`，对同名 `.tex` 源文件连续运行两次 `xelatex`，即可重建带图号和文献链接的 PDF。
+开发日志由 agy CLI 的 `gemini-4-hydrogen-high` 撰写并全文修订，采用 XeLaTeX 排版。在装有 TeX Live 和 Fandol 字体的环境中进入 `docs/`，对同名 `.tex` 源文件连续运行两次 `xelatex`，即可重建带图号和文献链接的 PDF。
 
 仿真闭环与桌面复验脚本使用 Python、Playwright、Pillow 和本机 Edge。先启动 Vite，以 `python scripts/check_sim.py` 检验单艇，以 `python scripts/check_sim.py --fleet` 检验双艇。双艇用例包含三种布局的分工、交叉让行、双向接力、倾斜条件、暂停恢复以及照片传输期间撤单。[双艇闭环结果](verification/fleet.json)
 
