@@ -1,4 +1,5 @@
 import {MARKS,gateMarkIds} from './marks.js';
+import {plannerName} from './rrt-star.js';
 const ink = '#102731';
 const vesselColors = { A: '#f3b65a', B: '#65ddc6' };
 const labelFont = '"Microsoft YaHei UI", "Microsoft YaHei", sans-serif';
@@ -192,7 +193,7 @@ function drawLegend(ctx, width, y, height, fleet, previous,hasRoute) {
   ctx.font = '10px ' + labelFont;
   ctx.textAlign = 'left';
   key(fleet?'A 艇':'实际航迹', vesselColors.A);
-  if(hasRoute)key('规划航线','#d1e1d5',[7,3]);
+  if(hasRoute)key(width<240?plannerName:plannerName+' 规划航线','#d1e1d5',[7,3]);
   if (fleet) {
     key('B 艇', vesselColors.B);
     if(cursor+69<=width)key(fleet.linkFresh ? '链路在线' : '链路待同步', fleet.linkFresh ? '#a5bebe' : '#637a7e', [1,4]);

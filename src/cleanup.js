@@ -1,5 +1,6 @@
 import {waterPoint} from './bow-sensor.js';
 import {ShoreArm} from './shore-arm.js';
+import {plannerName} from './rrt-star.js';
 
 export const capacity = 2;
 export const litterNames = {bottle:'塑料瓶', foam:'泡沫块', litter:'水面漂浮物', unload:'船舱卸载'};
@@ -103,7 +104,7 @@ export class CleanupMission {
     this.progress=null;
     r.route={legs:[{target,points}],distance:length,blocked:null};r.waypoint=1;r.revision++;
     r.act={throttle:0,turn:0};
-    if(announce)r.log('规划','A* 航线已生成 · 1 个航段 · '+length.toFixed(1)+' m · '+this.label);
+    if(announce)r.log('规划',plannerName+' 航线已生成 · 1 个航段 · '+length.toFixed(1)+' m · '+this.label);
   }
   pathBetween(from,to){
     if(!this.moored||this.map.clear(from,from))return this.map.findPath(from,to);
@@ -132,7 +133,7 @@ export class CleanupMission {
       }
       if(path){this.routeTo(path,this.berth,announce);return true}
       this.phase='blocked';r.route={legs:[],distance:0,blocked:r.active};
-      r.log('规划','路径不可达 · 卸载泊位');this.retry=r.time+1;return false;
+      r.log('规划',plannerName+' 未找到可航路径 · 卸载泊位');this.retry=r.time+1;return false;
     }
     this.phase='survey';
     while(this.index<this.survey.length){

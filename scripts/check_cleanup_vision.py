@@ -131,7 +131,7 @@ def main(args):
 if __name__=='__main__':
     p=argparse.ArgumentParser()
     p.add_argument('--url',default='http://127.0.0.1:5194')
-    p.add_argument('--out',type=Path,default=Path('verification/shore-arm-vision.json'))
+    p.add_argument('--out',type=Path,default=Path('verification/rrt-star-vision.json'))
     p.add_argument('--full',action='store_true')
     p.add_argument('--debug',action='store_true')
     p.add_argument('--only',type=int,nargs='+')

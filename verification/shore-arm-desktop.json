@@ -1,6 +1,6 @@
 {
   "command": "只收集泡沫块",
-  "exeSHA256": "6e91d777f26aad970dcfe3027297cbaf3b38ace2bddd7efcac0113a28b5932ce",
+  "exeSHA256": "239f054e624c4db3baee625d6cdfede09fd6b448fe9206ed7c2b9706ffe12081",
   "screenshot": "shore-arm-desktop.png",
   "paused": {
     "stage": "swing",
@@ -24,7 +24,7 @@
     "speed": 0.1,
     "phase": "清漂完成",
     "label": "东泊位岸臂 · 待命",
-    "clock": "03:05"
+    "clock": "02:57"
   },
   "sequence": [
     {

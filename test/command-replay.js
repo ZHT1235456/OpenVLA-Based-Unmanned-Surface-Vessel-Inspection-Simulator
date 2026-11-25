@@ -188,10 +188,10 @@
         const receiver=relay && (!expected.length || /补拍|换侧观察/.test(expected[0]));
         same(actual,receiver?[]:expected.map(clean),id+'艇派单顺序');
         if(b?.pending.length&&spec.op!=='reject'){
-          const match=b.routeLabel.match(/A\* 规划航线 · (\d+) 个航段 · ([\d.]+) m/);
+          const match=b.routeLabel.match(/RRT\* 规划航线 · (\d+) 个航段 · ([\d.]+) m/);
           insist(match&&Number(match[1])===b.pending.length,id+'艇海图缺少待办的规划航段');
           const execution=b.logs.findIndex(([,m])=>m.endsWith('· 执行'));
-          insist(execution>=0&&b.logs.slice(execution+1).some(([t,m])=>m.endsWith('· 规划')&&t.includes('A* 航线已生成')),
+          insist(execution>=0&&b.logs.slice(execution+1).some(([t,m])=>m.endsWith('· 规划')&&t.includes('RRT* 航线已生成')),
             id+'艇开始执行前没有已生成的航线');
           routeChecks[id]={legs:Number(match[1]),metres:Number(match[2]),plannedBeforeExecution:true};
         }

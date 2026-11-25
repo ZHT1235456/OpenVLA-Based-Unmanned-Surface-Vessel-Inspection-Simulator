@@ -27,6 +27,7 @@ export async function checkRuns(){
   {id:'planned-detour-around-pier',layout:0,condition:'normal',start:{x:-28,z:-13,yaw:Math.PI},commands:[[0,'返回西泊位']],photos:[],done:['west']},
   {id:'red-gate-photo',layout:1,condition:'normal',commands:[[0,'去红色航标拍一张照片']],photos:['gateRed:photo'],done:['gateRed']},
   {id:'gate-transit-then-green-marker',layout:2,condition:'normal',commands:[[0,'穿过红绿浮标门，再给绿标拍照，最后返回西泊位']],photos:['gateGreen:photo'],done:['gate','gateGreen','west']},
+  {id:'return-against-service-traffic',layout:2,condition:'normal',commands:[[0,'穿过浮标门，只观察浮标门的红标，最后返回东泊位']],photos:[],done:['gate','gateRed','east']},
   {id:'observe-through-gate-and-dock',layout:0,condition:'normal',commands:[[0,'穿过红绿浮标门，只观察木栈桥旁的黄标，最后返回西泊位']],photos:[],done:['gate','pier','west']},
   {id:'persistent-tilt',layout:1,condition:'tilt',commands:[[0,'先查木栈桥旁的黄标，如果它一直歪着，就换一侧补拍']],photos:['pier:side'],done:['pier','pier']},
   {id:'wave-only',layout:1,condition:'normal',commands:[[0,'先查木栈桥旁的黄标，如果它一直歪着，就换一侧补拍']],photos:[],done:['pier','pier']},

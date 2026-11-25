@@ -9,6 +9,7 @@ import {suggestMarkerCorrection} from './marks.js';
 import {drawChart} from './chart.js';
 import {mountInspector} from './inspect-panel.js';
 import {capacity,litterNames} from './cleanup.js';
+import {plannerName} from './rrt-star.js';
 import './inspect.css';
 
 const $=id=>document.getElementById(id);
@@ -67,7 +68,7 @@ function updateFleet(){
  if(roster.children.length!==2){roster.replaceChildren();for(const id of fleet.ids())addRow(roster,'','').dataset.vessel=id}
  for(const row of roster.children){
   const id=row.dataset.vessel,r=fleet.boats[id];row.dataset.selected=String(id===follow);
-  const task=r.held?'原地等候':fleet.peerYield[id]?'邻艇让行':r.yielding?'保洁船让行':r.active?describe(r.active):fleet.lastOrder[id]||'泊位待命';
+  const task=r.held?'原地等候':fleet.peerYield[id]?'邻艇让行':r.yielding?'会遇避让':r.active?describe(r.active):fleet.lastOrder[id]||'泊位待命';
   row.firstElementChild.textContent=task;row.lastElementChild.textContent=r.boat.speed.toFixed(1)+' m/s · '+r.photos.length+' 张';
  }
  if(eventKey!==fleet.eventId){
@@ -104,16 +105,16 @@ function updateUi(force=false){
  $('clock').textContent=timeText(fleet.time);$('speed').textContent=b.speed.toFixed(1);
  $('heading').textContent=String(Math.round((b.yaw*180/Math.PI+360)%360)).padStart(3,'0');
  $('latency').textContent=m.ms?m.ms.toFixed(1):'—';$('policy-rate').textContent=m.rate?m.rate.toFixed(1):'—';
- const mode=failed?'推理故障':!ready?'载入模型':parsing?'理解指令':paused?'仿真暂停':r.held?'原地等候':r.unverifiedTarget?'复核目标':fleet.peerYield[follow]?'邻艇让行':r.yielding?'避让保洁船':cleaning?'清漂中':r.active?'巡检中':fleet.relay?.receiver===follow?(fleet.relay.photoEvidence?'等候首拍':'等候观测回报'):'模型就绪';
+ const mode=failed?'推理故障':!ready?'载入模型':parsing?'理解指令':paused?'仿真暂停':r.held?'原地等候':r.unverifiedTarget?'复核目标':fleet.peerYield[follow]?'邻艇让行':r.yielding?'会遇避让':cleaning?'清漂中':r.active?'巡检中':fleet.relay?.receiver===follow?(fleet.relay.photoEvidence?'等候首拍':'等候观测回报'):'模型就绪';
  $('mode').textContent=blocked&&!paused&&!parsing?'规划受阻':mode;$('mode').dataset.state=failed||blocked?'error':ready?'ready':'loading';
- $('visible-task').textContent=performance.now()<feedbackUntil?feedback:r.held?'原地等候 · 可输入“继续任务”':r.yielding?'保洁船横穿 · 暂缓前进':r.active?describe(r.active):fleet.dual&&fleet.lastOrder[follow]?fleet.lastOrder[follow]:r.done.at(-1)?.kind==='cleanup'&&fleet.lastOrder[follow]==='任务完成'?r.done.at(-1).reason:describe(null);
- if(blocked&&performance.now()>=feedbackUntil)$('visible-task').textContent='路径不可达 · '+describe(blocked);
+ $('visible-task').textContent=performance.now()<feedbackUntil?feedback:r.held?'原地等候 · 可输入“继续任务”':r.yielding?'根据来船位置调整航向和航速':r.active?describe(r.active):fleet.dual&&fleet.lastOrder[follow]?fleet.lastOrder[follow]:r.done.at(-1)?.kind==='cleanup'&&fleet.lastOrder[follow]==='任务完成'?r.done.at(-1).reason:describe(null);
+ if(blocked&&performance.now()>=feedbackUntil)$('visible-task').textContent=plannerName+' 未找到可航路径 · '+describe(blocked);
  for(const btn of [$('send'),$('fleet-order'),...document.querySelectorAll('[data-fleet-command], [data-command]')])btn.disabled=!ready||failed;
  const key=[follow,fleet.dual,r.revision,r.logs.length,r.photos.length,r.done.length,fleet.inbox[follow].size,r.logs.at(-1)?.text].join('|');
  if(force||key!==recordKey){
   recordKey=key;const tasks=$('tasks');tasks.replaceChildren();
   if(r.active)addRow(tasks,describe(r.active),blocked?'等待规划':r.held?'已暂停':'执行中');
-  const chartLabel=r.nextWaypoint&&!r.awaitingOrder?follow+'艇 A* 规划航线 · '+r.route.legs.length+' 个航段 · '+r.route.distance.toFixed(1)+' m':'港池航迹俯视图';
+  const chartLabel=r.nextWaypoint&&!r.awaitingOrder?follow+'艇 '+plannerName+' 规划航线 · '+r.route.legs.length+' 个航段 · '+r.route.distance.toFixed(1)+' m':'港池航迹俯视图';
   $('chart').setAttribute('aria-label',chartLabel);$('chart').title=chartLabel;
   r.queue.forEach(t=>addRow(tasks,describe(t),'待执行'));
   r.done.slice(-5).reverse().forEach(t=>addRow(tasks,describe(t),t.reason.includes('跳过')?'已跳过':'已完成'));

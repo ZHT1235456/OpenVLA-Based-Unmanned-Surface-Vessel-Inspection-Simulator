@@ -12,7 +12,9 @@ const cases=[
  ...[0,1,2].map(layout=>({id:'split-layout-'+layout,layout,command:split,mode:'split'})),
  {id:'split-by-callsigns',layout:1,command:'A艇和B艇分别巡检木栈桥与防波堤的黄标',mode:'observe'},
  {id:'return-to-own-berths',command:split+'，最后返回各自泊位',mode:'return'},
- {id:'crossing-addressed-orders',command:assigned,mode:'cross'},
+ {id:'addressed-from-berths',command:assigned,mode:'assigned'},
+ {id:'crossing-addressed-orders',command:assigned,mode:'cross',
+  start:{A:{x:7,z:6,yaw:-1},B:{x:-6,z:7,yaw:.86}}},
  {id:'two-boat-observation-only',command:'A艇只观察栈桥黄标，B艇只观察防波堤黄标',mode:'observe'},
  {id:'split-without-photos',command:'双艇分别观察栈桥和防波堤的黄标，不用拍照',mode:'observe'},
  {id:'withdraw-fleet-photos-in-flight',command:split,mode:'withdraw-both'},
@@ -34,6 +36,10 @@ export async function checkFleet(){
  for(const spec of cases){
   const fleet=new HarborFleet(portLayout(spec.layout||0),{condition:spec.condition||'tilt',traffic:true});
   const {A,B}=fleet.boats,receivedAt=[],angles={},runs={A:0,B:0},cache={};
+  // These two clear approach legs cross in open water even if the berth departure routes change.
+  if(spec.start)for(const run of [A,B]){
+   Object.assign(run.boat,spec.start[run.id]);run.trace=[{...run.boat}];
+  }
   const order=async text=>{const o=await planFleetOrder(text,fleet,'A',classify);if(o.error)throw Error(o.error);fleet.dispatch(o,text);return o};
   const initial=await order(spec.command);
   const waited=!A.active&&!B.active&&fleet.outbox.some(p=>p.type==='ORDER');
@@ -86,7 +92,10 @@ export async function checkFleet(){
    correct=first('A',expected.A)&&first('B',expected.B)&&expected.A!==expected.B;
    if(spec.mode==='return')correct=correct&&A.done.at(-1)?.physical==='east'&&B.done.at(-1)?.physical==='west';
    if(spec.mode==='hold')correct=correct&&resumed;
-  }else if(spec.mode==='cross'){correct=first('A','pier')&&first('B','wall')&&[...A.logs,...B.logs].some(x=>x.text.includes('邻艇位置'))}
+  }else if(['assigned','cross'].includes(spec.mode)){
+   correct=first('A','pier')&&first('B','wall');
+   if(spec.mode==='cross')correct=correct&&[...A.logs,...B.logs].some(x=>x.text.includes('邻艇位置'));
+  }
   else if(spec.mode==='gate-colors'){
    const captured=new Set([...A.photos,...B.photos].map(p=>p.target));
    correct=captured.has('gateRed')&&captured.has('gateGreen')&&initial.assignments.every(a=>first(a.id,a.plan.tasks[0].target));

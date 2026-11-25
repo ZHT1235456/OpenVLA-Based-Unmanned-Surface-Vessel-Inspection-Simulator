@@ -1,0 +1,10 @@
+{
+  "command": "检查木栈桥旁的黄标，最后返回西泊位",
+  "chart_before_motion": "A艇 RRT* 规划航线 · 2 个航段 · 67.9 m",
+  "speed_before_motion": 0,
+  "completed_at": "西泊位",
+  "screenshot": "planned-route.png",
+  "fullScreenWindowSwitch": true,
+  "version": "1.4.0",
+  "exeSHA256": "239f054e624c4db3baee625d6cdfede09fd6b448fe9206ed7c2b9706ffe12081"
+}

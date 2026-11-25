@@ -2,6 +2,7 @@ import {CONTACTS} from './contacts.js';
 import {names,describe,isPhotoKind,isSideKind} from './commands.js';
 import {MARKS,buoyIds,isGateMark,withChartMarks} from './marks.js';
 import {HarborNavigationMap,planHarborRoute,bearingFrom,waterBounds} from './route-planner.js';
+import {plannerName} from './rrt-star.js';
 import {HarborLitter,CleanupMission} from './cleanup.js';
 
 export const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
@@ -73,9 +74,9 @@ export class HarborRun {
   this.waypoint=1;this.stable=0;this.act={throttle:0,turn:0};this.revision++;
   if(this.route.blocked){
    this.boat.speed=0;this.boat.turn=0;
-   this.log('规划','路径不可达 · '+describe(this.route.blocked));return false;
+   this.log('规划',plannerName+' 未找到可航路径 · '+describe(this.route.blocked));return false;
   }
-  this.log('规划','A* 航线已生成 · '+this.route.legs.length+' 个航段 · '+this.route.distance.toFixed(1)+' m');
+  this.log('规划',plannerName+' 航线已生成 · '+this.route.legs.length+' 个航段 · '+this.route.distance.toFixed(1)+' m');
   return true;
  }
  get nextWaypoint(){return this.route?.legs[0]?.points[this.waypoint]}
@@ -100,9 +101,9 @@ export class HarborRun {
  service(time=this.time){
   const phase=time*.14-.65;return {x:23*Math.sin(phase),z:7.8+.8*Math.sin(phase*2),vx:3.22*Math.cos(phase),vz:.224*Math.cos(phase*2)};
  }
- shouldYieldToService(speed){
+ serviceAvoidance(speed,turn){
   const b=this.boat;
-  if(!this.traffic||!this.nextWaypoint||this.held||this.awaitingOrder||distance(b,this.service())>23)return false;
+  if(!this.traffic||!this.nextWaypoint||this.held||this.awaitingOrder||distance(b,this.service())>23)return null;
   // Compare continuing and braking over the actual crossing boat's curved track.
   // Braking in its path can have less clearance than finishing the crossing.
   const sx=Math.sin(b.yaw),sz=-Math.cos(b.yaw);
@@ -113,13 +114,16 @@ export class HarborRun {
    continuing=Math.min(continuing,Math.hypot(b.x+run*sx-ship.x,b.z+run*sz-ship.z));
    braking=Math.min(braking,Math.hypot(b.x+stop*sx-ship.x,b.z+stop*sz-ship.z));
   }
-  return continuing<(this.yielding?5.0:4.5)&&braking>continuing+.15;
+  if(continuing>=(this.yielding?5.0:4.5))return null;
+  // When the vessel is already in the service boat's track, stopping may leave it in the collision.
+  if(Math.max(continuing,braking)<3.5)return this.trafficManeuver(speed,turn,false);
+  return braking>continuing+.15?{speed:0,turn:0}:null;
  }
- cleanupAvoidance(speed,turn){
+ trafficManeuver(speed,turn,includePeer){
   const b=this.boat,goal=this.nextWaypoint;
   if(!goal||this.held||this.awaitingOrder)return null;
   const peer=this.peerVessel,age=peer?this.time-peer.time:Infinity;
-  const neighbor=age<2.4&&distance(b,peer)<18;
+  const neighbor=includePeer&&age<2.4&&distance(b,peer)<18;
   const service=this.traffic&&distance(b,this.service())<19;
   if(!neighbor&&!service)return null;
   const step=.3,traffic=[];
@@ -268,13 +272,13 @@ export class HarborRun {
    }else{speed=this.act.throttle*3.8;turn=this.act.turn*1.42}
   }
   if(peer&&!this.cleanup&&this.nextWaypoint&&!this.awaitingOrder&&!this.held){speed=Math.min(speed,peer.speed);turn=peer.turn??turn}
-  const service=this.service(),evasion=this.cleanup?this.cleanupAvoidance(speed,turn):null;
-  const near=this.cleanup?!!evasion:this.shouldYieldToService(speed);
-  if(near&&!this.yielding)this.log('让行',this.cleanup?'根据前方船位调整航向与航速':'保洁船接近航线，减速等候');
+  const service=this.service(),evasion=this.cleanup?this.trafficManeuver(speed,turn,true):this.serviceAvoidance(speed,turn);
+  const near=!!evasion;
+  if(near&&!this.yielding)this.log('让行',this.cleanup?'根据前方船位调整航向与航速':
+   evasion.speed===0?'保洁船接近航线，减速等候':'保洁船接近航线，转向避让');
   if(!near&&this.yielding)this.log('让行','通道恢复，继续当前任务');
   this.yielding=near;
-  if(evasion){speed=evasion.speed;turn=evasion.turn;this.cleanup.gate=false}
-  else if(near){speed=0;turn=0}
+  if(evasion){speed=evasion.speed;turn=evasion.turn;if(this.cleanup)this.cleanup.gate=false}
   // A short-range collision layer steers away from unrelated channel markers.
   for(const key of buoyIds){
    const obstacle=this.layout[key];

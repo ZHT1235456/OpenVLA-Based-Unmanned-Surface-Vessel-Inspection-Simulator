@@ -69,7 +69,7 @@ def verify(page):
     expect(page.locator('#cleanup-phase')).to_contain_text('泡沫块')
     expect(page.locator('#speed')).to_have_text('0.0')
     planned = page.locator('#chart').get_attribute('aria-label')
-    assert 'A* 规划航线' in planned
+    assert 'RRT* 规划航线' in planned
     page.locator('#pause').click()
     expect(page.locator('#cleanup-cargo')).to_have_text('1 / 2', timeout=65000)
     rate = float(page.locator('#policy-rate').inner_text())

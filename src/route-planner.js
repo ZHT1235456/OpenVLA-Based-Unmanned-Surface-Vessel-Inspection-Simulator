@@ -1,6 +1,7 @@
 import {buoyIds} from './marks.js';
 import {fixturePosition} from './contacts.js';
 import {isSideKind} from './commands.js';
+import {rrtStarPath} from './rrt-star.js';
 
 // Bounds for the vessel centre, in the same metres as the simulator and harbor meshes.
 export const waterBounds={minX:-36,maxX:36,minZ:-28,maxZ:31};
@@ -45,61 +46,15 @@ export class HarborNavigationMap {
       rect(p.x-1.28,p.x+1.28,z,39,1.3);
       this.obstacles.push({...fixturePosition(p,id),radius:1.3});
     }
-    this.graph=null;
   }
   clear(a,b){return onWater(a)&&onWater(b)&&!this.obstacles.some(o=>intersects(a,b,o))}
   withMooredVessel(point){
     const map=Object.create(HarborNavigationMap.prototype);
-    map.obstacles=[...this.obstacles,{x:point.x,z:point.z,radius:4.6}];map.graph=null;
+    map.obstacles=[...this.obstacles,{x:point.x,z:point.z,radius:4.6}];
     return map;
   }
-  buildGraph(){
-    const candidates=[];
-    for(const o of this.obstacles){
-      if(o.radius!==undefined){
-        for(let i=0;i<12;i++)candidates.push(atBearing(o,i*Math.PI/6,o.radius/Math.cos(Math.PI/12)+.65));
-      }else{
-        for(const x of [o.minX-.7,o.maxX+.7])for(const z of [o.minZ-.7,o.maxZ+.7])candidates.push({x,z});
-      }
-    }
-    const nodes=candidates.filter(p=>this.clear(p,p));
-    const edges=nodes.map(()=>[]);
-    for(let i=0;i<nodes.length;i++)for(let j=0;j<i;j++){
-      if(this.clear(nodes[i],nodes[j])){edges[i].push(j);edges[j].push(i)}
-    }
-    this.graph={nodes,edges};
-  }
-  // A* on a visibility graph. Start and goal are exact continuous coordinates.
   findPath(start,end){
-    if(!this.clear(start,start)||!this.clear(end,end))return null;
-    const origin={x:start.x,z:start.z};
-    if(this.clear(origin,end))return [origin,end];
-    if(!this.graph)this.buildGraph();
-    const {nodes,edges}=this.graph,source=nodes.length,goal=source+1;
-    const points=[...nodes,origin,end];
-    const cost=points.map(()=>Infinity),parent=points.map(()=>-1),open=new Set([source]);
-    cost[source]=0;
-    while(open.size){
-      let current=-1,best=Infinity;
-      for(const i of open){
-        const f=cost[i]+length(points[i],end);
-        if(f<best){best=f;current=i}
-      }
-      if(current===goal){
-        const path=[];
-        for(let i=goal;i!==-1;i=parent[i])path.push(points[i]);
-        return path.reverse();
-      }
-      open.delete(current);
-      const neighbors=current===source?nodes.map((_,i)=>i).filter(i=>this.clear(origin,nodes[i])):edges[current];
-      const next=current!==source&&this.clear(points[current],end)?[...neighbors,goal]:neighbors;
-      for(const i of next){
-        const g=cost[current]+length(points[current],points[i]);
-        if(g>=cost[i])continue;
-        cost[i]=g;parent[i]=current;open.add(i);
-      }
-    }
-    return null;
+    return rrtStarPath(start,end,waterBounds,(a,b)=>this.clear(a,b));
   }
 }
 

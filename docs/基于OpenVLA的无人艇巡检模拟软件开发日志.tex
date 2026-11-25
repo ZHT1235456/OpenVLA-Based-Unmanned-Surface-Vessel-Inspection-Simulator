@@ -1,6 +1,6 @@
 % !TeX program = lualatex
 % 在 docs/ 下连续运行两次 LuaLaTeX，更新图号与参考文献并嵌入中文字符映射。
-% 依作者定稿增补 v1.3.0 泊位机械臂交接及桌面复验。
+% 依作者定稿更新 v1.4.0 航路规划与桌面复验。
 \documentclass[a4paper,fontset=fandol,zihao=5]{ctexart}
 \usepackage[left=19mm,right=19mm,top=21mm,bottom=19mm,headheight=21pt,headsep=6mm,footskip=9mm]{geometry}
 \usepackage{xcolor,graphicx,booktabs,tabularx,array,caption,fancyhdr,microtype}
@@ -18,9 +18,9 @@
 \usepackage[unicode,colorlinks,linkcolor=teal,citecolor=teal,urlcolor=teal]{hyperref}
 \hypersetup{pdftitle={基于 OpenVLA 的无人艇巡检模拟软件开发日志},
   pdfauthor={朱华天，GPT-6.2 Astra，Gemini 4 Neon},
-  pdfsubject={港池无人艇巡检、水面清漂、岸臂交接与 v1.3.0 发布验证}}
+  pdfsubject={港池无人艇巡检、RRT* 航路规划、水面清漂与 v1.4.0 发布验证}}
 \urlstyle{tt}
-\newcommand{\repolink}[2]{\href{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/blob/v1.3.0/#1}{#2}}
+\newcommand{\repolink}[2]{\href{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/blob/v1.4.0/#1}{#2}}
 \newcommand{\pagetitle}[1]{\section{#1}}
 \newcommand{\subhead}[1]{\subsection*{#1}}
 \ctexset{section={format=\raggedright\sffamily\bfseries\color{navy}\fontsize{19}{25}\selectfont,
@@ -106,11 +106,11 @@
   every node/.style={font=\small}]
 \node[main] (input) at (0,0) {\textbf{中文指令}\\确定航标、泊位或要收集的漂浮物类别};
 \node[main] (assign) at (0,-1.55) {\textbf{校验与派单}\\核对目标与动作，按艇分派任务};
-\node[main] (route) at (0,-3.1) {\textbf{起航前路径规划}\\从艇的当前位置规划可航路径};
+\node[main] (route) at (0,-3.1) {\textbf{RRT* 航路规划}\\直航或采样绕障，校验沿途航段};
 \node[main] (control) at (0,-4.65) {\textbf{实时艇控}\\跟踪航点，避让横穿船和邻艇};
 \node[main] (finish) at (0,-6.2) {\textbf{到站作业}\\观察、拍照、收集或靠泊交给岸臂};
 \node[stop] (conflict) at (8,-1.55) {提示冲突并保留原任务\\可采纳建议后重新发送};
-\node[stop] (blocked) at (8,-3.1) {艇停在当前位置，显示不可达航段};
+\node[stop] (blocked) at (8,-3.1) {艇停在当前位置，提示未找到可航路径};
 \node[side] (sense) at (8,-4.65) {清漂读取船首整帧与中文子句\\巡检读取候选裁片或航标方位};
 \node[side] (report) at (8,-6.2) {巡检记录观测与照片\\清漂登记入舱和上岸件数};
 \draw[flow] (input)--(assign);
@@ -118,7 +118,7 @@
 \draw[flow] (route)--(control);
 \draw[flow] (control)--(finish);
 \draw[branch] (assign)--node[hint,above]{冲突}(conflict);
-\draw[branch] (route)--node[hint,above]{无解}(blocked);
+\draw[branch] (route)--node[hint,above]{未连通}(blocked);
 \draw[flow] ([yshift=3pt]control.east)--node[hint,above]{执行动作}([yshift=3pt]sense.west);
 \draw[flow] ([yshift=-3pt]sense.west)--node[hint,below]{返回观测}([yshift=-3pt]control.east);
 \draw[flow] (finish)--(report);
@@ -135,12 +135,12 @@
 \newpage
 \pagetitle{航路规划与艇上观测}
 \subhead{起航前航线预览}
-指令“检查木栈桥旁的黄标，最后返回西泊位”包含两段航程。规划器首先在浮标、栈桥等固定障碍物外围预留艇体安全通行余量：若两点之间无障碍遮挡，则直接规划直线航段；若存在遮挡，则将能够直航连通的航路点构建为连通图，再利用 \mbox{A*} 算法搜索绕行路径~\cite{hart1968astar}。若某航段无可行路径，无人艇将停留在当前位置，工作台同步提示不可达航段。航行途中如遇横穿航线的保洁船或邻艇，系统会根据双方的相对位置与航速动态避让。
+“检查木栈桥旁的黄标，最后返回西泊位”包含两段航程。规划器在浮标、栈桥等障碍外围预留艇体通行余量。两点之间可直航时采用直线段。遇到遮挡时，RRT* 以航段起点为根，从树中最接近采样点的节点向外扩展。新节点在可直航的邻近节点中选择累计航程最短的父节点，并尝试通过重连缩短周围分支的航程~\cite{karaman2011rrt}。每次搜索最多采样 1,500 次，首次连通后在剩余额度内再采样至多 200 次。巡检航段未连通时，艇停在原地。航行中若与保洁船相遇，艇会比较减速和转向后的间距，再决定如何避让。
 
 \begin{minipage}{\linewidth}
 \centering
 \includegraphics[width=.88\linewidth]{figures/planned-route.png}
-\captionof{figure}{为便于核对起航前的规划路线，先暂停仿真再下发指令。此时 A艇航速为 0.0 m/s，海图上的琥珀色虚线已依次连接东泊位、栈桥黄标与西泊位，两段规划航线总长 64.8 m。}\label{fig:route}
+\captionof{figure}{仿真暂停时下发指令，A艇航速仍为 0.0 m/s。海图上的琥珀色虚线从东泊位经栈桥黄标通往西泊位，两段规划航线总长 67.9 m。}\label{fig:route}
 \end{minipage}
 
 \subhead{通过工作台核对模型观测}
@@ -219,7 +219,7 @@ A艇收集塑料瓶，B艇收集泡沫块 & 三个瓶子送东泊位，两块泡
 我们在实验室的 RTX 4090 显卡上基于 PyTorch 2.5.1 完成了艇控模型训练。768 条仿真示范轨迹共提供 70,656 个航行状态样本；验证阶段更换随机种子，独立生成 96 条航迹用于评测。语言指代模型在 24 条留出短句上进行了单独测试，其中 23 条准确指向目标。详细样本分布与评估指标见\repolink{public/models/run.json}{训练记录}。
 
 \subhead{中文指令回放验证}
-巡检验证借鉴了 CEGIS 思路。先为每条指令写明预期艇号、目标、动作顺序和照片数量，再从发布版输入框下发指令，比对实际派单、航迹与相册。先用一组指令回放并修正派单规则，再用独立留出的指令核验。v1.3.0 重新回放了原有的 177 条巡检指令，\repolink{verification/commands-v1.3.0.json}{全部通过}。
+巡检验证借鉴了 CEGIS 思路。先为每条指令写明预期艇号、目标、动作顺序和照片数量，再从发布版输入框下发指令，比对实际派单、航迹与相册。先用一组指令回放并修正派单规则，再用独立留出的指令核验。v1.4.0 从桌面输入框回放了 177 条巡检指令，\repolink{verification/commands-v1.4.0.json}{全部通过}。
 
 \begingroup\small
 \begin{tabularx}{\linewidth}{@{}>{\bfseries}p{24mm}p{35mm}Y@{}}
@@ -234,7 +234,7 @@ A艇收集塑料瓶，B艇收集泡沫块 & 三个瓶子送东泊位，两块泡
 \end{tabularx}
 \endgroup
 
-清漂策略使用 420 条示范轨迹的 \mbox{5,460} 帧训练。96 条留出轨迹有 \mbox{1,248} 帧。两类物体同框的 248 帧中，切换指令后两次都选对的有 221 帧。632 帧空水面均未触发收集。v1.3.0 的 119 条清漂指令共回放 134 次，核对了 470 次夹取入箱，零碰撞、零拍照。详见\repolink{verification/cleanup-export.json}{同帧对照}和\repolink{verification/shore-arm-vision.json}{逐件回放记录}。
+清漂策略使用 420 条示范轨迹的 \mbox{5,460} 帧训练。96 条留出轨迹有 \mbox{1,248} 帧。两类物体同框的 248 帧中，切换指令后两次都选对的有 221 帧。632 帧空水面均未触发收集。v1.4.0 的 119 条清漂指令共回放 134 次，核对了 470 次夹取入箱，零碰撞、零拍照。详见\repolink{verification/cleanup-export.json}{同帧对照}和\repolink{verification/rrt-star-vision.json}{逐件回放记录}。
 
 \vspace{4pt}
 \begin{minipage}[c]{.34\linewidth}
@@ -243,11 +243,11 @@ A艇收集塑料瓶，B艇收集泡沫块 & 三个瓶子送东泊位，两块泡
 \captionof{figure}{船首相机拍摄的浮标门东侧绿标。}\label{fig:green}
 \end{minipage}\hfill
 \begin{minipage}[c]{.63\linewidth}
-\repolink{verification/commands-final.md}{逐条测试报告}记录了每次回放的原始指令与实测结果，例如用例 C046 核验了单艇观察后返航，用例 C175 核验了仅由接力艇补拍一次的逻辑。在首版的\repolink{verification/desktop.json}{桌面复验}中，操作者下达“去浮标门的绿标拍照”，对图~\ref{fig:green} 画面中央 \(144\times126\) 像素区域进行颜色校验，全部 18,144 个像素中有 7,216 个为绿色、0 个为黄色，与指令指定的绿标目标完全相符。
+\repolink{verification/commands-v1.4.0.md}{逐条测试报告}记录了每次回放的原始指令与实测结果，例如用例 C046 核验了单艇观察后返航，用例 C175 核验了仅由接力艇补拍一次的逻辑。在首版的\repolink{verification/desktop.json}{桌面复验}中，操作者下达“去浮标门的绿标拍照”，对图~\ref{fig:green} 画面中央 \(144\times126\) 像素区域进行颜色校验，全部 18,144 个像素中有 7,216 个为绿色、0 个为黄色，与指令指定的绿标目标完全相符。
 \end{minipage}
 
 \subhead{Windows 桌面发布包}
-\href{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/releases/tag/v1.3.0}{v1.3.0 中文便携包}附有本开发日志。前端界面、模型权重与推理运行时封装在同一个 EXE 中，实测为 28,302,336 字节（26.99 MiB）。在已安装 Microsoft Edge WebView2 的 Windows x64 计算机上，双击即可离线运行。软件默认全屏，点击右上角“窗口模式”即可切换。
+\href{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/releases/tag/v1.4.0}{v1.4.0 中文便携包}附有本开发日志。前端界面、模型权重与推理运行时封装在同一个 EXE 中，实测为 28,302,848 字节（26.99 MiB）。在已安装 Microsoft Edge WebView2 的 Windows x64 计算机上，双击即可离线运行。软件默认全屏，点击右上角“窗口模式”即可切换。
 
 \begingroup
 \small
@@ -259,9 +259,9 @@ A艇收集塑料瓶，B艇收集泡沫块 & 三个瓶子送东泊位，两块泡
 \bibitem{kim2025openvla} M. J. Kim, K. Pertsch, S. Karamcheti, et al.
 \href{https://proceedings.mlr.press/v270/kim25c.html}{OpenVLA: An Open-Source Vision-Language-Action Model}.
 \emph{CoRL 2024, Proceedings of Machine Learning Research}, 270, 2679--2713, 2025.
-\bibitem{hart1968astar} P. E. Hart, N. J. Nilsson, B. Raphael.
-\href{https://doi.org/10.1109/TSSC.1968.300136}{A Formal Basis for the Heuristic Determination of Minimum Cost Paths}.
-\emph{IEEE Transactions on Systems Science and Cybernetics}, 4(2), 100--107, 1968.
+\bibitem{karaman2011rrt} S. Karaman, E. Frazzoli.
+\href{https://doi.org/10.1177/0278364911406761}{Sampling-based algorithms for optimal motion planning}.
+\emph{The International Journal of Robotics Research}, 30(7), 846--894, 2011.
 \bibitem{ortweb} ONNX Runtime. \href{https://onnxruntime.ai/docs/tutorials/web/}{\emph{Web tutorials}}. 项目官方文档。
 \bibitem{tauri2arch} Tauri. \href{https://v2.tauri.app/concept/architecture/}{\emph{Tauri Architecture}}. 项目官方文档。
 \end{thebibliography}

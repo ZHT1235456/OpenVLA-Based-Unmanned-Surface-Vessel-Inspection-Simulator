@@ -61,7 +61,7 @@ def write_summary(path,report):
     lines.append(f'- 发布版 EXE 全量闭环通过 {passed}/{len(rows)}。')
     if planning:
         routes=sum(len(r.get('routeChecks',{})) for r in rows)
-        lines.append(f'- 在 {routes} 次单艇派单检查中核对了起航前的 A* 规划日志、海图航段数和规划距离。')
+        lines.append(f'- 在 {routes} 次单艇派单检查中核对了起航前的 RRT* 规划日志、海图航段数和规划距离。')
     desktop=path.parent/'desktop.json'
     if desktop.exists():
         realtime=json.loads(desktop.read_text(encoding='utf8'))

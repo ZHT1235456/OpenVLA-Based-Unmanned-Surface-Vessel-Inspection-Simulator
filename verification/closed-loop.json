@@ -15,8 +15,8 @@
     ],
     "detour": null,
     "collisions": 0,
-    "simSeconds": 12.8,
-    "yieldEvents": 2,
+    "simSeconds": 13.2,
+    "yieldEvents": 0,
     "details": null
   },
   {
@@ -60,8 +60,8 @@
     ],
     "detour": null,
     "collisions": 0,
-    "simSeconds": 13.4,
-    "yieldEvents": 2,
+    "simSeconds": 14.4,
+    "yieldEvents": 0,
     "details": null
   },
   {
@@ -75,7 +75,7 @@
     ],
     "detour": null,
     "collisions": 0,
-    "simSeconds": 18,
+    "simSeconds": 14.6,
     "yieldEvents": 2,
     "details": null
   },
@@ -123,16 +123,8 @@
           "z": -13
         },
         {
-          "x": -13,
-          "z": -10.91111996829176
-        },
-        {
-          "x": -9.612870750210746,
-          "z": -8.95555998414588
-        },
-        {
-          "x": -9.612870750210746,
-          "z": -5.044440015854119
+          "x": -6.946297995866996,
+          "z": -10.982457210224327
         },
         {
           "x": -18.352227183942745,
@@ -144,7 +136,7 @@
       "passedPierOnWater": true
     },
     "collisions": 0,
-    "simSeconds": 18.6,
+    "simSeconds": 19,
     "yieldEvents": 0,
     "details": null
   },
@@ -176,7 +168,22 @@
     ],
     "detour": null,
     "collisions": 0,
-    "simSeconds": 21.6,
+    "simSeconds": 21.8,
+    "yieldEvents": 0,
+    "details": null
+  },
+  {
+    "id": "return-against-service-traffic",
+    "pass": true,
+    "photos": [],
+    "done": [
+      "gate",
+      "gateRed",
+      "east"
+    ],
+    "detour": null,
+    "collisions": 0,
+    "simSeconds": 22.8,
     "yieldEvents": 0,
     "details": null
   },
@@ -207,7 +214,7 @@
     ],
     "detour": null,
     "collisions": 0,
-    "simSeconds": 15.6,
+    "simSeconds": 16.4,
     "yieldEvents": 0,
     "details": null
   },
@@ -234,8 +241,8 @@
     ],
     "detour": null,
     "collisions": 0,
-    "simSeconds": 11.8,
-    "yieldEvents": 2,
+    "simSeconds": 12.8,
+    "yieldEvents": 0,
     "details": null
   },
   {
@@ -249,8 +256,8 @@
     ],
     "detour": null,
     "collisions": 0,
-    "simSeconds": 18.2,
-    "yieldEvents": 2,
+    "simSeconds": 20,
+    "yieldEvents": 0,
     "details": null
   },
   {
@@ -264,7 +271,7 @@
     ],
     "detour": null,
     "collisions": 0,
-    "simSeconds": 35,
+    "simSeconds": 28.4,
     "yieldEvents": 2,
     "details": null
   },
@@ -281,7 +288,7 @@
     ],
     "detour": null,
     "collisions": 0,
-    "simSeconds": 28.2,
+    "simSeconds": 30.4,
     "yieldEvents": 2,
     "details": null
   },
@@ -297,7 +304,7 @@
     "detour": null,
     "collisions": 0,
     "simSeconds": 37.6,
-    "yieldEvents": 16,
+    "yieldEvents": 20,
     "details": null
   },
   {
@@ -329,8 +336,8 @@
     ],
     "detour": null,
     "collisions": 0,
-    "simSeconds": 65.4,
-    "yieldEvents": 2,
+    "simSeconds": 65.2,
+    "yieldEvents": 0,
     "details": null
   },
   {
@@ -364,7 +371,7 @@
     ],
     "detour": null,
     "collisions": 0,
-    "simSeconds": 44,
+    "simSeconds": 41.8,
     "yieldEvents": 0,
     "details": null
   }

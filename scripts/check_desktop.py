@@ -81,10 +81,10 @@ def check_route_before_departure(page,out):
     box=page.locator('#command');chart=page.locator('#chart')
     command='检查木栈桥旁的黄标，最后返回西泊位'
     box.fill(command);box.press('Enter')
-    expect(page.locator('#logs')).to_contain_text('A* 航线已生成 · 2 个航段')
+    expect(page.locator('#logs')).to_contain_text('RRT* 航线已生成 · 2 个航段')
     expect(page.locator('#speed')).to_have_text('0.0')
     label=chart.get_attribute('aria-label')
-    assert 'A* 规划航线 · 2 个航段' in label,label
+    assert 'RRT* 规划航线 · 2 个航段' in label,label
     types=page.locator('#logs > div > small').all_text_contents()[::-1]
     assert next(i for i,v in enumerate(types) if v.endswith('· 规划'))<next(i for i,v in enumerate(types) if v.endswith('· 执行'))
     chart.screenshot(path=str(out/'planned-route.png'))
