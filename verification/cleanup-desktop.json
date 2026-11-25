@@ -1,0 +1,101 @@
+{
+  "exe": "基于OpenVLA的无人艇巡检模拟.exe",
+  "sha256": "f02ef1fe0ec44ada8a73a241f5083d18b9a3d32fd5c9cd69e788d7e5b59fece7",
+  "firstRouteWhilePaused": "A艇 A* 规划航线 · 1 个航段 · 13.9 m",
+  "realtimePilotHz": 5.0,
+  "pausedLedger": {
+    "water": 4,
+    "cargo": "1 / 2",
+    "ashore": 0,
+    "detail": "水面　塑料瓶 3 · 泡沫块 1　｜　已卸　瓶 0 · 泡沫 0",
+    "phase": "驶向泡沫块 F2"
+  },
+  "screenshot": "cleanup-desktop.png",
+  "cases": [
+    {
+      "command": "只收集泡沫块",
+      "ledger": {
+        "water": 3,
+        "cargo": "0 / 2",
+        "ashore": 2,
+        "detail": "水面　塑料瓶 3 · 泡沫块 0　｜　已卸　瓶 0 · 泡沫 2",
+        "phase": "清漂完成"
+      },
+      "waterToHold": [
+        "F2",
+        "F1"
+      ],
+      "unloading": [
+        "A艇 东泊位收到 2 件 · 泡沫块 F1、泡沫块 F2"
+      ],
+      "photos": 0
+    },
+    {
+      "command": "只收集塑料瓶",
+      "ledger": {
+        "water": 2,
+        "cargo": "0 / 2",
+        "ashore": 3,
+        "detail": "水面　塑料瓶 0 · 泡沫块 2　｜　已卸　瓶 3 · 泡沫 0",
+        "phase": "清漂完成"
+      },
+      "waterToHold": [
+        "P3",
+        "P2",
+        "P1"
+      ],
+      "unloading": [
+        "A艇 东泊位收到 1 件 · 塑料瓶 P3",
+        "A艇 东泊位收到 2 件 · 塑料瓶 P1、塑料瓶 P2"
+      ],
+      "photos": 0
+    },
+    {
+      "command": "清理所有水面漂浮物",
+      "ledger": {
+        "water": 0,
+        "cargo": "0 / 2",
+        "ashore": 5,
+        "detail": "水面　塑料瓶 0 · 泡沫块 0　｜　已卸　瓶 3 · 泡沫 2",
+        "phase": "清漂完成"
+      },
+      "waterToHold": [
+        "P3",
+        "F2",
+        "P2",
+        "F1",
+        "P1"
+      ],
+      "unloading": [
+        "A艇 东泊位收到 1 件 · 塑料瓶 P3",
+        "A艇 东泊位收到 2 件 · 塑料瓶 P2、泡沫块 F2",
+        "A艇 东泊位收到 2 件 · 塑料瓶 P1、泡沫块 F1"
+      ],
+      "photos": 0
+    },
+    {
+      "command": "A艇收集塑料瓶，B艇收集泡沫块",
+      "ledger": {
+        "water": 0,
+        "cargo": "0 / 2",
+        "ashore": 5,
+        "detail": "水面　塑料瓶 0 · 泡沫块 0　｜　已卸　瓶 3 · 泡沫 2　｜　B 艇在舱 0",
+        "phase": "清漂完成"
+      },
+      "waterToHold": [
+        "P3",
+        "P2",
+        "P1",
+        "F2",
+        "F1"
+      ],
+      "unloading": [
+        "A艇 东泊位收到 1 件 · 塑料瓶 P3",
+        "A艇 东泊位收到 2 件 · 塑料瓶 P1、塑料瓶 P2",
+        "B艇 西泊位收到 2 件 · 泡沫块 F1、泡沫块 F2"
+      ],
+      "photos": 0
+    }
+  ],
+  "pageErrors": []
+}

@@ -2,6 +2,7 @@ import {CONTACTS} from './contacts.js';
 import {names,describe,isPhotoKind,isSideKind} from './commands.js';
 import {MARKS,buoyIds,isGateMark,withChartMarks} from './marks.js';
 import {HarborNavigationMap,planHarborRoute,bearingFrom,waterBounds} from './route-planner.js';
+import {HarborLitter,CleanupMission} from './cleanup.js';
 
 export const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 export const wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
@@ -18,8 +19,9 @@ export function makeRun(layout,settings={}){
  return new HarborRun(layout,settings);
 }
 export class HarborRun {
- constructor(layout,{condition='tilt',traffic=true}={}){
+ constructor(layout,{condition='tilt',traffic=true,litter=new HarborLitter()}={}){
   this.layout=withChartMarks(layout);this.condition=condition;this.traffic=traffic;
+  this.litter=litter;this.cleanup=null;
   this.navigationMap=new HarborNavigationMap(this.layout);
   this.route=null;this.waypoint=1;this.sideOrigin=null;this.gateEntry=null;
   this.boat={x:layout.east.x-2,z:layout.east.z-1,yaw:-.48,speed:0,turn:0};
@@ -36,19 +38,26 @@ export class HarborRun {
   this.log('指令',original);
   if(plan.op==='hold'){this.held=true;return}
   if(plan.op==='resume'){this.held=false;if(this.active)this.planRoute();return}
-  if(plan.op==='cancel'){this.active=null;this.queue=[];this.route=null;this.held=false;this.log('任务','已清空待办');return}
+  if(plan.op==='cancel'){this.endCleanup();this.active=null;this.queue=[];this.route=null;this.held=false;this.log('任务','已清空待办');return}
   if(plan.op==='traffic'){this.traffic=true;return}
+  if(plan.preserveHold&&this.cleanup&&plan.tasks?.[0]?.kind==='cleanup'&&
+     plan.tasks[0].target===this.active.target&&plan.tasks[0].berth===this.active.berth){
+    this.queue=plan.tasks.slice(1);return;
+  }
   if(!plan.preserveHold)this.held=false;
   if(plan.waitTraffic)this.traffic=true;
-  if(plan.op==='replace'){this.active=null;this.queue=[]}
+  if(plan.op==='replace'){this.endCleanup();this.active=null;this.queue=[]}
   this.queue.push(...plan.tasks.map(x=>({...x})));
   if(this.active)this.planRoute();else this.advance();
  }
+ endCleanup(){this.cleanup?.release();this.cleanup=null}
  advance(){
+  this.endCleanup();
   this.active=this.queue.shift()||null;this.revision++;this.stable=0;this.contact=null;this.unverifiedTarget=false;
   this.approved=!this.active?.conditional;this.act={throttle:0,turn:0};
   this.route=null;this.gateEntry=null;
   if(!this.active)return;
+  if(this.active.kind==='cleanup')this.cleanup=new CleanupMission(this,this.active);
   const target=this.active.target,p=this.layout[target];
   this.sideOrigin=p?(this.firstAngle[target]??bearingFrom(p,this.boat)):null;
   if(this.active.kind==='gate'){
@@ -58,6 +67,7 @@ export class HarborRun {
   if(this.planRoute())this.log('执行',describe(this.active));
  }
  planRoute(){
+  if(this.cleanup)return this.cleanup.plan();
   this.route=planHarborRoute(this.navigationMap,this.layout,this.boat,[this.active,...this.queue],
     this.firstAngle,this.sideOrigin,this.approved,this.gateEntry);
   this.waypoint=1;this.stable=0;this.act={throttle:0,turn:0};this.revision++;
@@ -118,6 +128,11 @@ export class HarborRun {
  }
  observation(cropFor){
   if(!this.nextWaypoint||this.held||this.awaitingOrder||this.active.kind==='gate')return null;
+  if(this.cleanup){
+    const b=this.boat,goal=this.nextWaypoint,err=wrap(direction(b,goal)-b.yaw),d=distance(b,goal);
+    const geometry=new Float32Array([err/Math.PI,Math.sin(err),Math.cos(err),clamp(d/16,0,2.8),b.speed/4]);
+    return {cleanupTarget:this.cleanup.label,input:{markerGeometry:geometry},revision:this.revision};
+  }
   if(isGateMark(this.active.target)){
     const target=this.active.target,feature=this.features(target);
     return {chartTarget:target,input:{markerGeometry:new Float32Array(feature.values)},order:[target],features:[feature],revision:this.revision};
@@ -134,6 +149,12 @@ export class HarborRun {
  }
  inference(obs,result,evidence,capture,dt=.2){
   if(!this.nextWaypoint||this.held||this.awaitingOrder||obs.revision!==this.revision)return false;
+  if(obs.cleanupTarget&&this.cleanup){
+    const [throttle,turn]=result.control;
+    if(!Number.isFinite(throttle)||!Number.isFinite(turn))throw Error('清漂艇控输出无效');
+    this.act={throttle:clamp((throttle+1)/2,0,1),turn:clamp(turn,-1,1)};
+    return true;
+  }
   const chosen=result.focus.indexOf(Math.max(...result.focus));const c=obs.order[chosen],f=obs.features[chosen];
   if(!c||!result.control.every(Number.isFinite))throw Error('推理输出无效');
   if(c!==this.active.target){
@@ -181,13 +202,21 @@ export class HarborRun {
  }
  tick(dt,peer=null){
   this.time+=dt;const b=this.boat;let speed=0,turn=0;
+  this.litter.drift(this.time);
+  if(!this.held&&!this.awaitingOrder)this.cleanup?.refresh();
   if(this.nextWaypoint&&!this.held&&!this.awaitingOrder){
    const points=this.route.legs[0].points;
    if(this.waypoint<points.length-1&&distance(b,this.nextWaypoint)<.85&&this.navigationMap.clear(b,points[this.waypoint+1])){
     if(this.gateEntry&&this.waypoint===points.length-2)this.gateEntry.passed=true;
     this.waypoint++;this.revision++;this.stable=0;this.act={throttle:0,turn:0};
    }
-   if(this.active.kind==='gate'){
+   if(this.cleanup){
+    const d=distance(b,this.nextWaypoint);
+    const docking=this.cleanup.phase==='return'&&this.waypoint===points.length-1;
+    speed=Math.min(3,this.act.throttle*3.8,d*(docking ? .9 : 1.25));turn=this.act.turn*1.42;
+    if(Math.abs(wrap(direction(b,this.nextWaypoint)-b.yaw))>.65)speed=0;
+    if(docking&&d<.48){speed=0;turn=0}
+   }else if(this.active.kind==='gate'){
     const g=this.nextWaypoint,d=distance(b,g),e=wrap(direction(b,g)-b.yaw);
     speed=Math.min(3,d)*Math.max(0,Math.cos(e));turn=clamp(1.8*e,-1.42,1.42);
     if(this.waypoint===points.length-1&&d<.85){this.finish('已通过红绿浮标门','gate');speed=0;turn=0}
@@ -197,7 +226,7 @@ export class HarborRun {
   const service=this.service(),near=this.shouldYieldToService(speed);
   if(near&&!this.yielding)this.log('让行','保洁船接近航线，减速等候');
   if(!near&&this.yielding)this.log('让行','通道恢复，继续当前任务');
-  this.yielding=near;if(near){speed=0;turn=0}
+  this.yielding=near;if(near){speed=0;if(!this.cleanup)turn=0}
   // A short-range collision layer steers away from unrelated channel markers.
   for(const key of buoyIds){
    const obstacle=this.layout[key];
@@ -209,7 +238,16 @@ export class HarborRun {
   const next={x:clamp(b.x+Math.sin(b.yaw)*b.speed*dt,waterBounds.minX,waterBounds.maxX),
    z:clamp(b.z-Math.cos(b.yaw)*b.speed*dt,waterBounds.minZ,waterBounds.maxZ)};
   if(this.navigationMap.clear(b,next)){b.x=next.x;b.z=next.z}
-  else if(b.speed>0){b.speed=0;if(this.nextWaypoint&&!this.held&&!this.awaitingOrder)this.planRoute()}
+  else if(b.speed>0){
+   b.speed=0;
+   if(this.nextWaypoint&&!this.held&&!this.awaitingOrder){
+    if(!this.cleanup)this.planRoute();
+    else if(this.time>=(this.cleanup.nextRecovery||0)&&!this.navigationMap.clear(b,this.nextWaypoint)){
+     this.cleanup.nextRecovery=this.time+.65;this.planRoute();
+    }
+   }
+  }
+  if(!this.held&&!this.awaitingOrder)this.cleanup?.afterMove(dt);
   const hazards=buoyIds.map(id=>[names[id],this.layout[id],isGateMark(id)?1.05:1.12]);
   if(this.traffic)hazards.push(['保洁船',service,2]);
   for(const [key,p,r] of hazards){const d=distance(b,p);if(d<r&&!this.touches.has(key)){this.collisionCount++;this.touches.add(key);this.log('接触','与'+key+'距离过近')}if(d>r+.35)this.touches.delete(key)}

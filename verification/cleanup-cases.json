@@ -1,0 +1,1632 @@
+{
+  "uniqueOrders": 114,
+  "completedRuns": 124,
+  "counterchecks": [
+    "船首触碰",
+    "航线先于执行",
+    "逐艇舱容",
+    "停稳卸载",
+    "零拍照",
+    "零碰撞",
+    "暂停与恢复",
+    "撤单保留船货",
+    "选择性改派",
+    "重复派单与重置",
+    "混合航段",
+    "离网与重新入网"
+  ],
+  "rows": [
+    {
+      "text": "A艇收集塑料瓶",
+      "layout": 0,
+      "traffic": false,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 281
+    },
+    {
+      "text": "B艇收集塑料瓶",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 2,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 303
+    },
+    {
+      "text": "A艇收集塑料瓶，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 4,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 298
+    },
+    {
+      "text": "B艇收集塑料瓶，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 6,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 264
+    },
+    {
+      "text": "A艇收集塑料瓶，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": false,
+      "startedAt": 8,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 285
+    },
+    {
+      "text": "B艇收集塑料瓶，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 306
+    },
+    {
+      "text": "A艇收集泡沫块",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 2,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 137
+    },
+    {
+      "text": "B艇收集泡沫块",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 4,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 135
+    },
+    {
+      "text": "A艇收集泡沫块，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": false,
+      "startedAt": 6,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 156
+    },
+    {
+      "text": "B艇收集泡沫块，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 8,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 211
+    },
+    {
+      "text": "A艇收集泡沫块，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 126
+    },
+    {
+      "text": "B艇收集泡沫块，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 2,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 125
+    },
+    {
+      "text": "A艇收集所有水面漂浮物",
+      "layout": 0,
+      "traffic": false,
+      "startedAt": 4,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 401
+    },
+    {
+      "text": "B艇收集所有水面漂浮物",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 6,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 395
+    },
+    {
+      "text": "A艇收集所有水面漂浮物，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 8,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 424
+    },
+    {
+      "text": "B艇收集所有水面漂浮物，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 427
+    },
+    {
+      "text": "A艇收集所有水面漂浮物，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": false,
+      "startedAt": 2,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 412
+    },
+    {
+      "text": "B艇收集所有水面漂浮物，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 4,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 360
+    },
+    {
+      "text": "A艇清理塑料瓶",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 6,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 285
+    },
+    {
+      "text": "B艇清理塑料瓶",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 8,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 297
+    },
+    {
+      "text": "A艇清理塑料瓶，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": false,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 292
+    },
+    {
+      "text": "B艇清理塑料瓶，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 2,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 266
+    },
+    {
+      "text": "A艇清理塑料瓶，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 4,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 291
+    },
+    {
+      "text": "B艇清理塑料瓶，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 6,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 286
+    },
+    {
+      "text": "A艇清理泡沫块",
+      "layout": 0,
+      "traffic": false,
+      "startedAt": 8,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 149
+    },
+    {
+      "text": "B艇清理泡沫块",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 132
+    },
+    {
+      "text": "A艇清理泡沫块，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 2,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 159
+    },
+    {
+      "text": "B艇清理泡沫块，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 4,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 223
+    },
+    {
+      "text": "A艇清理泡沫块，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": false,
+      "startedAt": 6,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 124
+    },
+    {
+      "text": "B艇清理泡沫块，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 8,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 128
+    },
+    {
+      "text": "A艇清理所有水面漂浮物",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 414
+    },
+    {
+      "text": "B艇清理所有水面漂浮物",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 2,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 383
+    },
+    {
+      "text": "A艇清理所有水面漂浮物，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": false,
+      "startedAt": 4,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 408
+    },
+    {
+      "text": "B艇清理所有水面漂浮物，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 6,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 434
+    },
+    {
+      "text": "A艇清理所有水面漂浮物，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 8,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 424
+    },
+    {
+      "text": "B艇清理所有水面漂浮物，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 375
+    },
+    {
+      "text": "A艇回收塑料瓶",
+      "layout": 0,
+      "traffic": false,
+      "startedAt": 2,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 280
+    },
+    {
+      "text": "B艇回收塑料瓶",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 4,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 298
+    },
+    {
+      "text": "A艇回收塑料瓶，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 6,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 296
+    },
+    {
+      "text": "B艇回收塑料瓶，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 8,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 263
+    },
+    {
+      "text": "A艇回收塑料瓶，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": false,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 287
+    },
+    {
+      "text": "B艇回收塑料瓶，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 2,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 294
+    },
+    {
+      "text": "A艇回收泡沫块",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 4,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 150
+    },
+    {
+      "text": "B艇回收泡沫块",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 6,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 136
+    },
+    {
+      "text": "A艇回收泡沫块，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": false,
+      "startedAt": 8,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 157
+    },
+    {
+      "text": "B艇回收泡沫块，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 174
+    },
+    {
+      "text": "A艇回收泡沫块，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 2,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 125
+    },
+    {
+      "text": "B艇回收泡沫块，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 4,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 127
+    },
+    {
+      "text": "A艇回收所有水面漂浮物",
+      "layout": 0,
+      "traffic": false,
+      "startedAt": 6,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 399
+    },
+    {
+      "text": "B艇回收所有水面漂浮物",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 8,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 386
+    },
+    {
+      "text": "A艇回收所有水面漂浮物，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 417
+    },
+    {
+      "text": "B艇回收所有水面漂浮物，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 2,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 453
+    },
+    {
+      "text": "A艇回收所有水面漂浮物，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": false,
+      "startedAt": 4,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 409
+    },
+    {
+      "text": "B艇回收所有水面漂浮物，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 6,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 358
+    },
+    {
+      "text": "A艇打捞塑料瓶",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 8,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 282
+    },
+    {
+      "text": "B艇打捞塑料瓶",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 307
+    },
+    {
+      "text": "A艇打捞塑料瓶，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": false,
+      "startedAt": 2,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 293
+    },
+    {
+      "text": "B艇打捞塑料瓶，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 4,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 265
+    },
+    {
+      "text": "A艇打捞塑料瓶，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 6,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 286
+    },
+    {
+      "text": "B艇打捞塑料瓶，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 8,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 286
+    },
+    {
+      "text": "A艇打捞泡沫块",
+      "layout": 0,
+      "traffic": false,
+      "startedAt": 0,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 137
+    },
+    {
+      "text": "B艇打捞泡沫块",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 2,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 133
+    },
+    {
+      "text": "A艇打捞泡沫块，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 4,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 161
+    },
+    {
+      "text": "B艇打捞泡沫块，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 6,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 220
+    },
+    {
+      "text": "A艇打捞泡沫块，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": false,
+      "startedAt": 8,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 125
+    },
+    {
+      "text": "B艇打捞泡沫块，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 123
+    },
+    {
+      "text": "A艇打捞所有水面漂浮物",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 2,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 451
+    },
+    {
+      "text": "B艇打捞所有水面漂浮物",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 4,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 381
+    },
+    {
+      "text": "A艇打捞所有水面漂浮物，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": false,
+      "startedAt": 6,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 406
+    },
+    {
+      "text": "B艇打捞所有水面漂浮物，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 8,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 430
+    },
+    {
+      "text": "A艇打捞所有水面漂浮物，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 439
+    },
+    {
+      "text": "B艇打捞所有水面漂浮物，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 2,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 420
+    },
+    {
+      "text": "A艇捡拾塑料瓶",
+      "layout": 0,
+      "traffic": false,
+      "startedAt": 4,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 281
+    },
+    {
+      "text": "B艇捡拾塑料瓶",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 6,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 301
+    },
+    {
+      "text": "A艇捡拾塑料瓶，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 8,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 294
+    },
+    {
+      "text": "B艇捡拾塑料瓶，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 266
+    },
+    {
+      "text": "A艇捡拾塑料瓶，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": false,
+      "startedAt": 2,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 284
+    },
+    {
+      "text": "B艇捡拾塑料瓶，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 4,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 290
+    },
+    {
+      "text": "A艇捡拾泡沫块",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 6,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 150
+    },
+    {
+      "text": "B艇捡拾泡沫块",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 8,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 135
+    },
+    {
+      "text": "A艇捡拾泡沫块，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": false,
+      "startedAt": 0,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 158
+    },
+    {
+      "text": "B艇捡拾泡沫块，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 2,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 187
+    },
+    {
+      "text": "A艇捡拾泡沫块，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 4,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 125
+    },
+    {
+      "text": "B艇捡拾泡沫块，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 6,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 128
+    },
+    {
+      "text": "A艇捡拾所有水面漂浮物",
+      "layout": 0,
+      "traffic": false,
+      "startedAt": 8,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 395
+    },
+    {
+      "text": "B艇捡拾所有水面漂浮物",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 386
+    },
+    {
+      "text": "A艇捡拾所有水面漂浮物，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 2,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 454
+    },
+    {
+      "text": "B艇捡拾所有水面漂浮物，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 4,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 444
+    },
+    {
+      "text": "A艇捡拾所有水面漂浮物，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": false,
+      "startedAt": 6,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 410
+    },
+    {
+      "text": "B艇捡拾所有水面漂浮物，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 8,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 357
+    },
+    {
+      "text": "A艇捞起塑料瓶",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 282
+    },
+    {
+      "text": "B艇捞起塑料瓶",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 2,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 303
+    },
+    {
+      "text": "A艇捞起塑料瓶，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": false,
+      "startedAt": 4,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 296
+    },
+    {
+      "text": "B艇捞起塑料瓶，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 6,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 264
+    },
+    {
+      "text": "A艇捞起塑料瓶，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 8,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 285
+    },
+    {
+      "text": "B艇捞起塑料瓶，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 306
+    },
+    {
+      "text": "A艇捞起泡沫块",
+      "layout": 0,
+      "traffic": false,
+      "startedAt": 2,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 137
+    },
+    {
+      "text": "B艇捞起泡沫块",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 4,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 135
+    },
+    {
+      "text": "A艇捞起泡沫块，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 6,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 157
+    },
+    {
+      "text": "B艇捞起泡沫块，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 8,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 211
+    },
+    {
+      "text": "A艇捞起泡沫块，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": false,
+      "startedAt": 0,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 126
+    },
+    {
+      "text": "B艇捞起泡沫块，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 2,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 125
+    },
+    {
+      "text": "A艇捞起所有水面漂浮物",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 4,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 441
+    },
+    {
+      "text": "B艇捞起所有水面漂浮物",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 6,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 395
+    },
+    {
+      "text": "A艇捞起所有水面漂浮物，装满后返回东泊位卸载",
+      "layout": 2,
+      "traffic": false,
+      "startedAt": 8,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 406
+    },
+    {
+      "text": "B艇捞起所有水面漂浮物，装满后返回东泊位卸载",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 427
+    },
+    {
+      "text": "A艇捞起所有水面漂浮物，满舱后回西泊位卸载",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 2,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 454
+    },
+    {
+      "text": "B艇捞起所有水面漂浮物，满舱后回西泊位卸载",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 4,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 360
+    },
+    {
+      "text": "双艇清理所有水面漂浮物",
+      "layout": 0,
+      "traffic": false,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 327
+    },
+    {
+      "text": "A艇只收集塑料瓶，B艇只收集泡沫块",
+      "layout": 0,
+      "traffic": false,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 438
+    },
+    {
+      "text": "双艇清理所有水面漂浮物",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 332
+    },
+    {
+      "text": "A艇只收集塑料瓶，B艇只收集泡沫块",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 439
+    },
+    {
+      "text": "双艇清理所有水面漂浮物",
+      "layout": 1,
+      "traffic": false,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 327
+    },
+    {
+      "text": "A艇只收集塑料瓶，B艇只收集泡沫块",
+      "layout": 1,
+      "traffic": false,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 438
+    },
+    {
+      "text": "双艇清理所有水面漂浮物",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 332
+    },
+    {
+      "text": "A艇只收集塑料瓶，B艇只收集泡沫块",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 439
+    },
+    {
+      "text": "双艇清理所有水面漂浮物",
+      "layout": 2,
+      "traffic": false,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 342
+    },
+    {
+      "text": "A艇只收集塑料瓶，B艇只收集泡沫块",
+      "layout": 2,
+      "traffic": false,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 446
+    },
+    {
+      "text": "双艇清理所有水面漂浮物",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 388
+    },
+    {
+      "text": "A艇只收集塑料瓶，B艇只收集泡沫块",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 0,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 471
+    },
+    {
+      "text": "请把港池里的漂浮物清理干净，不要碰浮标",
+      "layout": 2,
+      "traffic": true,
+      "startedAt": 19,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 405
+    },
+    {
+      "text": "收集水面漂浮物，不要回收塑料瓶",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 12,
+      "ashore": [
+        0,
+        2
+      ],
+      "water": 3,
+      "trips": 1,
+      "pilotCalls": 159
+    },
+    {
+      "text": "只捡拾漂浮的塑料瓶，满了就回码头卸货",
+      "layout": 0,
+      "traffic": true,
+      "startedAt": 26,
+      "ashore": [
+        3,
+        0
+      ],
+      "water": 2,
+      "trips": 2,
+      "pilotCalls": 260
+    },
+    {
+      "text": "双艇清理水面漂浮物，装满后回东泊位卸载",
+      "layout": 1,
+      "traffic": true,
+      "startedAt": 15,
+      "ashore": [
+        3,
+        2
+      ],
+      "water": 0,
+      "trips": 3,
+      "pilotCalls": 424
+    }
+  ]
+}

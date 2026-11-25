@@ -7,6 +7,10 @@ const presets = [
   '改去防波堤旁那座，栈桥留到回程',
   '返回东泊位',
 ];
+const cleanupPresets = [
+  ['只收塑料瓶','只收集塑料瓶'], ['只收泡沫块','只收集泡沫块'],
+  ['全部清理','清理所有水面漂浮物'], ['双艇分工','A艇收集塑料瓶，B艇收集泡沫块']
+];
 
 const metrics = [
   ['speed', '航速', 'm/s'],
@@ -20,7 +24,7 @@ export function bindCommandInput(root, send) {
   const preview = root.querySelector('#command-suggestion');
   const proposedText = root.querySelector('#suggestion-text');
   const shortcut = root.querySelector('#suggestion-key');
-  const examples = [...presets, root.querySelector('#fleet-order').title, root.querySelector('.relay-order').dataset.fleetCommand];
+  const examples = [...presets, ...cleanupPresets.map(([,text])=>text), root.querySelector('#fleet-order').title, root.querySelector('.relay-order').dataset.fleetCommand];
   let correction = null;
   let composing = false;
 
@@ -242,6 +246,12 @@ export function mountShell(root) {
                 ${presets.map((command) => `<button type="button" data-command="${command}" title="${command}">${command}</button>`).join('')}
               </div>
             </details>
+            <details class="command-library cleanup-library">
+              <summary>水面清漂</summary>
+              <div class="presets">
+                ${cleanupPresets.map(([label,command])=>`<button type="button" data-command="${command}" title="${command}">${label}</button>`).join('')}
+              </div>
+            </details>
             <button id="fleet-order" class="fleet-order" type="button" title="双艇协作，分别巡检木栈桥和防波堤旁的黄标"><span class="fleet-symbol" aria-hidden="true"></span><span>分派两艇巡检</span><span class="order-arrow" aria-hidden="true">→</span></button>
           </section>
 
@@ -266,6 +276,15 @@ export function mountShell(root) {
                 <p id="visible-task" role="status">等待巡检指令</p>
               </div>
             </div>
+            <section id="cleanup-ledger" class="cleanup-ledger" aria-label="清漂收运" hidden>
+              <div class="section-heading"><h3>清漂收运</h3><span id="cleanup-phase"></span></div>
+              <dl>
+                <div><dt>水面剩余</dt><dd id="cleanup-water">5</dd></div>
+                <div><dt id="cleanup-cargo-label">A 艇船舱</dt><dd id="cleanup-cargo">0 / 2</dd></div>
+                <div><dt>码头累计</dt><dd id="cleanup-land">0</dd></div>
+              </dl>
+              <p id="cleanup-detail"></p>
+            </section>
             <div class="record-tabs" role="tablist" aria-label="巡检记录">
               <button id="task-tab" role="tab" type="button" aria-controls="task-panel" aria-selected="true">任务队列</button>
               <button id="photo-tab" role="tab" type="button" aria-controls="photo-panel" aria-selected="false" tabindex="-1">巡检照片</button>

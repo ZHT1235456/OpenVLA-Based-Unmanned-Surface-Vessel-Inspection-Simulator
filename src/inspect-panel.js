@@ -19,12 +19,13 @@ export function mountInspector(){
  });
  return {
   setText(text){utterance.hidden=!text;utterance.textContent=text?'指令 · '+text:''},
+  cleaning(){crops.hidden=true;out.textContent='清漂读取仿真物体的类别与位置，等待航点艇控推理。快门关闭。'},
   waitForTarget(name){crops.hidden=true;out.textContent='等候确认'+name+'，航速指令为 0，快门关闭。'},
   reset(){crops.hidden=false;utterance.hidden=true;utterance.textContent='';out.textContent='执行任务后显示最新控制量。';for(const s of slots){s.ctx.clearRect(0,0,20,20);s.group.classList.remove('focus')}},
   updateShutter,
   update(obs,pred,enabled){
-   crops.hidden=!!obs.chartTarget;
-   const source=obs.chartTarget?'海图定位'+MARKS[obs.chartTarget].name+' · 艇控 ONNX · ':'';
+   crops.hidden=!!(obs.chartTarget||obs.cleanupTarget);
+   const source=obs.cleanupTarget?'清漂航点 · '+obs.cleanupTarget+' · 艇控 ONNX · ':obs.chartTarget?'海图定位'+MARKS[obs.chartTarget].name+' · 艇控 ONNX · ':'';
    const [v,t,s]=pred.control;predictedReady=s>.4;
    out.textContent=source+'目标航速 '+((v+1)*1.9).toFixed(2)+' m/s  ·  转向 '+(t*1.42*180/Math.PI).toFixed(0)+' °/s';
    updateShutter(enabled);out.append(shutter);

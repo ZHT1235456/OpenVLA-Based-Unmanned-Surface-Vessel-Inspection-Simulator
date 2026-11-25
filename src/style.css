@@ -346,6 +346,16 @@ kbd { font: 555 .98em/1 var(--numeric); }
 .send-button:disabled { background: #78918c; border-color: #78918c; }
 .command-library, .fleet-comms, .model-inspector { font-size: .795rem; }
 .command-library { margin: 3px 0 7px; }
+.cleanup-library { border-top: 1px solid var(--rule); }
+.cleanup-ledger { margin: 5px 0 7px; padding: 8px 10px; border: 1px solid #b6cbc0; border-radius: 5px; background: #eef4ee; color: #284d48; }
+.cleanup-ledger[hidden] { display: none; }
+.cleanup-ledger h3 { margin: 0; font-size: .82rem; }
+#cleanup-phase { font-size: .71rem; }
+.cleanup-ledger dl { display: grid; grid-template-columns: repeat(3,1fr); margin: 6px 0 3px; }
+.cleanup-ledger dl div + div { border-left: 1px solid #c5d5ca; padding-left: 9px; }
+.cleanup-ledger dt, .cleanup-ledger p { font-size: .7rem; color: #4a655b; }
+.cleanup-ledger dd { margin: 1px 0; font: 650 1rem var(--numeric); }
+.cleanup-ledger p { margin: 0; line-height: 1.5; }
 .workbench summary {
   display: flex;
   align-items: center;

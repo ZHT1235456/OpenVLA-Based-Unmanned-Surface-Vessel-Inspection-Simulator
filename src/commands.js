@@ -1,5 +1,6 @@
 import {MARKS,buoyIds as buoys,groundMarker,isGateMark,joinMarkerDescriptions} from './marks.js';
-export const names={...Object.fromEntries(buoys.map(id=>[id,MARKS[id].name])),east:'东泊位',west:'西泊位',gate:'浮标门'};
+import {litterNames} from './cleanup.js';
+export const names={...litterNames,...Object.fromEntries(buoys.map(id=>[id,MARKS[id].name])),east:'东泊位',west:'西泊位',gate:'浮标门'};
 const hold=/^(请|先|现在|立即|马上|原地|给我|把船)?(暂停(任务|航行)?|停船|停下(来)?|停一下|等一下|等等|停车|别动|停止航行|等待)(吧|一下|。)?$/;
 const resume=/^(请|现在|可以|接着)?(继续(刚才的)?(任务|航行|巡检)?|恢复(航行|任务)?|接着走|走吧)(吧|。)?$/;
 export const conditional=/如果|假如|要是|若是?|只要|只有|只在|持续倾斜才|一直歪.*才/;
@@ -15,7 +16,7 @@ const photoQuestion=/(?:是否|要不要|需不需要|能不能|可不可以)(?:
 const observedPhotographer=/(?:游客|工作人员|行人|摄影师)(?:在|正在|们在)?(?:拍照|摄影|拍摄|照相)/g;
 const defer=/留[到给着]|回程|回头再|回来再|稍后再|最后再|待会再/;
 const targetWords=/栈|木桥|木头|木质|木制|木平台|码头|堤|石墙|防波|防浪|消波|泊|东岸|西岸|停靠点|这座|这颗|那座|另一[座颗枚个]|另一边的标|另外|浮标|黄标|航标|上一|刚才|原来|眼前|当前|标体|它|港/;
-function unique(tasks){return tasks.filter((t,i)=>i===0||t.target!==tasks[i-1].target||t.kind!==tasks[i-1].kind||t.conditional!==tasks[i-1].conditional)}
+function unique(tasks){return tasks.filter((t,i)=>i===0||t.target!==tasks[i-1].target||t.kind!==tasks[i-1].kind||t.conditional!==tasks[i-1].conditional||t.berth!==tasks[i-1].berth)}
 export const isPhotoKind=kind=>kind==='photo'||kind==='side';
 export const isSideKind=kind=>kind==='side'||kind==='sideObserve';
 export function photoIntent(clause){
@@ -33,7 +34,37 @@ export function buoyAction(clause){
  if(shoot)return retake.test(clause)?'side':'photo';
  return 'approach';
 }
-export function describe(t){if(!t)return '等待巡检指令';const verbs={photo:'全景拍照',side:t.framing?'带地标补拍':'换侧补拍',approach:'抵近观察',sideObserve:'换侧观察',berth:'返航靠泊',gate:'穿过浮标门'};return (t.conditional?'倾斜时 · ':'')+names[t.target]+' · '+verbs[t.kind]}
+export function describe(t){if(!t)return '等待巡检指令';if(t.kind==='cleanup')return t.target==='unload'?'返港卸载':'清漂 · '+names[t.target];const verbs={photo:'全景拍照',side:t.framing?'带地标补拍':'换侧补拍',approach:'抵近观察',sideObserve:'换侧观察',berth:'返航靠泊',gate:'穿过浮标门'};return (t.conditional?'倾斜时 · ':'')+names[t.target]+' · '+verbs[t.kind]}
+const collectVerb=/清漂|清(?:理|除|扫|捞)|打捞|捞(?:起|取|走)?|回收|收集|收取|捡(?:拾|起|取)|拾取|只收|仅收/;
+export const cleanupWords=/清漂|清理|清除|清扫|清捞|打捞|捞起|回收|收集|捡拾|塑料瓶|瓶子|泡沫|漂浮物|漂浮垃圾|卸[货载]/;
+const unloadWords=/卸[货载]/;
+const typeToken=/塑料瓶(?:子)?|饮料瓶|矿泉水瓶|空瓶|瓶子|泡沫(?:塑料)?(?:块)?/g;
+function cleanupClause(clause){
+ if(!collectVerb.test(clause)&&!unloadWords.test(clause))return null;
+ const berth=clause.includes('东泊位')?'east':clause.includes('西泊位')?'west':null;
+ const specified=berth?{berth}:{};
+ const error={error:'清漂可收集塑料瓶和泡沫块。请写明要收集的类别或发送“清理所有水面漂浮物”。'};
+ // Reject unrecognized restrictions instead of broadening the set of items to collect.
+ const exclusions=new Set(),included=new Set();
+ const typeOf=name=>name.startsWith('泡沫')?'foam':'bottle';
+ const positive=clause.replace(/(?:不要|不用|不必|不|别|跳过|留下|保留)(?:去)?(?:打捞|回收|收集|捞|收)?(塑料瓶(?:子)?|饮料瓶|矿泉水瓶|空瓶|瓶子|泡沫(?:塑料)?(?:块)?)/g,
+   (_,name)=>{exclusions.add(typeOf(name));return ''});
+ const permittedLimits=/(?:不要|不用|不|别)拍照|(?:不要|别)碰(?:浮标|航标)/g;
+ if(/不要|禁止|停止|取消|别|不再|勿|[不没]收/.test(positive.replace(permittedLimits,'')))return error;
+ const stripped=positive.replace(typeToken,name=>{included.add(typeOf(name));return ''})
+   .replace(permittedLimits,'')
+   .replace(/清理|清除|清扫|清捞|清漂|打捞|捞起|捞取|捞走|回收|收集|收取|捡拾|捡起|捡取|拾取|干净/g,'')
+   .replace(/漂浮物|漂浮垃圾|水面垃圾|垃圾|漂浮着?|漂着|港池|水域|水面|海面|所有|全部|两类|两种/g,'')
+   .replace(/东泊位|西泊位|自己的泊位|各自泊位|码头|泊位|靠岸|返航|回港|返回|回到|卸载|卸货|装满|满舱|满载|满了|船舱|货舱/g,'')
+   .replace(/协同|协作|分头|一起|同时|帮我|请把|然后|之后|先去|前往|清空|[仅只全都也和与及、的将把先请去上下里中再就后时回至到并收捞艇舱吧]/g,'').trim();
+ if(stripped||included.size&&[...included].some(t=>exclusions.has(t)))return error;
+ if(!collectVerb.test(positive)&&unloadWords.test(positive))return subtask('unload','cleanup',specified);
+ if(!collectVerb.test(positive)&&!included.size)return error;
+ const generic=/清漂|漂浮物|垃圾/.test(positive);
+ if(!generic&&!included.size)return error;
+ const kinds=[...(included.size?included:['bottle','foam'])].filter(t=>!exclusions.has(t));
+ return kinds.length?subtask(kinds.length===2?'litter':kinds[0],'cleanup',specified):error;
+}
 function subtask(target,kind,extra={}){return {target,kind,conditional:false,framing:false,...extra}}
 function resolve(label,ctx,reference){
  if(buoys.includes(label)||['east','west'].includes(label))return label;
@@ -97,18 +128,28 @@ export async function planCommand(raw,ctx,classify){
  if(hold.test(text))return {op:'hold'};
  if(resume.test(text))return {op:'resume'};
  if(/^(取消|清空|终止)(当前|全部|所有)?(巡检)?任务$/.test(text))return {op:'cancel'};
- if(/采水|取样|打捞|测温|抓取|起飞|钻入|天气|写诗|订餐/.test(text))return {error:'艇载设备支持航行、观察和拍照，请换成其中一项。'};
- let reference=ctx.active?.target||ctx.last||null;
+ if(/采水|取样|测温|抓取|起飞|钻入|天气|写诗|订餐/.test(text))return {error:'艇载设备支持航行、观察、拍照和水面清漂，请换成其中一项。'};
+ let reference=(ctx.active?.kind!=='cleanup'&&ctx.active?.target)||ctx.last||null;
  const initial=reference,deferred=[],tasks=[];
  const appendPrefix=/^(?:追加(?:一项(?:任务)?)?|加一项(?:任务)?|接下来再|完成后再|拍完后再)[,、：:\s]*/;
  const append=appendPrefix.test(text);
  let pendingCondition=null,waitTraffic=false;
- const clauses=orderClauses(text.replace(appendPrefix,''));
+ const clauses=orderClauses(text.replace(appendPrefix,'').replace(/[,;；]\s*(?=(?:不要|不用|不|别|跳过|留下|保留)(?:收集|打捞|回收|收|捞)?(?:塑料瓶|瓶子|泡沫))/g,''));
  const protectedStops=new Set();
  const noPhotosThroughout=clauses.some(c=>/全程|整个(?:航程|任务)|所有(?:目标|浮标)/.test(c)&&photoIntent(c)==='denied');
  for(const clause of clauses){
    if(/^从.+(出发|起航)$/.test(clause))continue;
    const previous=tasks.at(-1),intent=photoIntent(clause);
+   if(previous?.kind==='cleanup'&&/^(?:不要|别)碰(?:浮标|航标)$/.test(clause))continue;
+   const clean=cleanupClause(clause);
+   if(clean){
+     if(clean.error)return clean;
+     if(previous?.kind==='cleanup'&&clean.target==='unload'){
+       if(clean.berth)previous.berth=clean.berth;
+     }else tasks.push(clean);
+     continue;
+   }
+   if(cleanupWords.test(clause))return {error:'请写明清漂动作，例如“只收集泡沫块”。'};
    const group=/每[座颗个处]|两座都|全程|每个标/.test(clause);
    const grounded=groundMarker(clause,reference);
    if(clauses.length===1&&cameraDenialOnly(clause)){

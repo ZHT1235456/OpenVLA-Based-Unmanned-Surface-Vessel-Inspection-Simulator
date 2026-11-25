@@ -4,6 +4,7 @@ import {makeVessel,makeBuoy,makeServiceBoat} from './vessels.js';
 import {CONTACTS,fixture,fixturePosition,makeOptics} from './contacts.js';
 import {distance} from './simulation.js';
 import {MARKS,buoyIds,isGateMark} from './marks.js';
+import {CleanupView} from './cleanup-scene.js';
 
 function makeWake(){
  const geo=new T.PlaneGeometry(1,1);geo.rotateX(-Math.PI/2);
@@ -30,6 +31,7 @@ export class HarborView {
   this.service=makeServiceBoat(T);this.scene.add(this.models.A,this.wakes.A,this.service);
   this.markers=Object.fromEntries(buoyIds.map(id=>[id,makeBuoy(T,MARKS[id].paint)]));this.scene.add(...Object.values(this.markers));
   this.parts=Object.fromEntries(CONTACTS.map(k=>[k,fixture(k)]));this.scene.add(...Object.values(this.parts));
+  this.cleanupView=new CleanupView(this.scene,run.litter.items);
   this.optics=makeOptics(this.bow);this.view=0;this.orbit=.29;this.height=3.35;this.radius=8.25;this.setRun(run);
   let drag=null;world.addEventListener('pointerdown',e=>{if(e.button!==0||this.view!==0)return;drag=[e.clientX,e.clientY];world.setPointerCapture(e.pointerId)});
   world.addEventListener('pointermove',e=>{
@@ -57,6 +59,7 @@ export class HarborView {
  updateObjects(){
   const r=this.run,t=r.time;
   this.env.update(t,1);
+  this.cleanupView.update(r,this.boats,this.models);
   for(const [id,run] of Object.entries(this.boats)){
    const b=run.boat,v=this.models[id],w=this.wakes[id],phase=id==='B'?.52:0;
    v.position.set(b.x,.045*Math.sin(t*1.72+phase),b.z);
@@ -72,7 +75,8 @@ export class HarborView {
  cameraPose(cam,run){
   const b=run.boat;
   cam.position.set(b.x+Math.sin(b.yaw)*.72,1.39+.04*Math.sin(run.time*1.72),b.z-Math.cos(b.yaw)*.72);
-  cam.up.set(0,1,0);cam.lookAt(b.x+Math.sin(b.yaw)*20,.94,b.z-Math.cos(b.yaw)*20);
+  const reach=run.cleanup?4.5:20, height=run.cleanup ? .12 : .94;
+  cam.up.set(0,1,0);cam.lookAt(b.x+Math.sin(b.yaw)*reach,height,b.z-Math.cos(b.yaw)*reach);
  }
  fit(renderer,camera){
   const el=renderer.domElement,w=el.clientWidth,h=el.clientHeight;

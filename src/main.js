@@ -8,6 +8,7 @@ import {describe,names} from './commands.js';
 import {suggestMarkerCorrection} from './marks.js';
 import {drawChart} from './chart.js';
 import {mountInspector} from './inspect-panel.js';
+import {capacity} from './cleanup.js';
 import './inspect.css';
 
 const $=id=>document.getElementById(id);
@@ -77,16 +78,30 @@ function updateUi(force=false){
  if(!fleet)return;
  const r=current(),b=r.boat,m=meters[follow];
  const blocked=r.route?.blocked;
+ const world=r.litter, cleaning=!!r.cleanup;
+ if(cleaning&&!m.prediction?.obs.cleanupTarget)inspector.cleaning();
+ $('cleanup-ledger').hidden=!world.used;
+ if(world.used){
+  const water=world.items.filter(i=>i.state==='water'),land=world.items.filter(i=>i.state==='land');
+  const count=(items,kind)=>items.filter(i=>i.kind===kind).length;
+  $('cleanup-phase').textContent=r.held?'原地等候':r.cleanup?.label||(r.done.at(-1)?.kind==='cleanup'?'清漂完成':'待命');
+  $('cleanup-water').textContent=water.length;$('cleanup-land').textContent=land.length;
+  $('cleanup-cargo-label').textContent=follow+' 艇船舱';
+  $('cleanup-cargo').textContent=world.cargo(follow).length+' / '+capacity;
+  const peer=follow==='A'?'B':'A',peerCargo=world.cargo(peer).length;
+  $('cleanup-detail').textContent='水面　塑料瓶 '+count(water,'bottle')+' · 泡沫块 '+count(water,'foam')+'　｜　已卸　瓶 '+count(land,'bottle')+' · 泡沫 '+count(land,'foam')+
+    (fleet.dual||peerCargo?'　｜　'+peer+' 艇在舱 '+peerCargo:'');
+ }
  inspector.updateShutter(!paused&&!failed&&r.shutterEnabled&&m.prediction?.obs.revision===r.revision);
  composer.setDefault(r.held?'继续任务':undefined);
  $('clock').textContent=timeText(fleet.time);$('speed').textContent=b.speed.toFixed(1);
  $('heading').textContent=String(Math.round((b.yaw*180/Math.PI+360)%360)).padStart(3,'0');
  $('latency').textContent=m.ms?m.ms.toFixed(1):'—';$('policy-rate').textContent=m.rate?m.rate.toFixed(1):'—';
- const mode=failed?'推理故障':!ready?'载入模型':parsing?'理解指令':paused?'仿真暂停':r.held?'原地等候':r.unverifiedTarget?'复核目标':fleet.peerYield[follow]?'邻艇让行':r.yielding?'避让保洁船':r.active?'巡检中':fleet.relay?.receiver===follow?(fleet.relay.photoEvidence?'等候首拍':'等候观测回报'):'模型就绪';
+ const mode=failed?'推理故障':!ready?'载入模型':parsing?'理解指令':paused?'仿真暂停':r.held?'原地等候':r.unverifiedTarget?'复核目标':fleet.peerYield[follow]?'邻艇让行':r.yielding?'避让保洁船':cleaning?'清漂中':r.active?'巡检中':fleet.relay?.receiver===follow?(fleet.relay.photoEvidence?'等候首拍':'等候观测回报'):'模型就绪';
  $('mode').textContent=blocked&&!paused&&!parsing?'规划受阻':mode;$('mode').dataset.state=failed||blocked?'error':ready?'ready':'loading';
- $('visible-task').textContent=performance.now()<feedbackUntil?feedback:r.held?'原地等候 · 可输入“继续任务”':r.yielding?'保洁船横穿 · 暂缓前进':r.active?describe(r.active):fleet.dual&&fleet.lastOrder[follow]?fleet.lastOrder[follow]:describe(null);
+ $('visible-task').textContent=performance.now()<feedbackUntil?feedback:r.held?'原地等候 · 可输入“继续任务”':r.yielding?'保洁船横穿 · 暂缓前进':r.active?describe(r.active):fleet.dual&&fleet.lastOrder[follow]?fleet.lastOrder[follow]:r.done.at(-1)?.kind==='cleanup'&&fleet.lastOrder[follow]==='任务完成'?r.done.at(-1).reason:describe(null);
  if(blocked&&performance.now()>=feedbackUntil)$('visible-task').textContent='路径不可达 · '+describe(blocked);
- for(const btn of [$('send'),$('fleet-order'),...document.querySelectorAll('[data-fleet-command]')])btn.disabled=!ready||failed;
+ for(const btn of [$('send'),$('fleet-order'),...document.querySelectorAll('[data-fleet-command], [data-command]')])btn.disabled=!ready||failed;
  const key=[follow,fleet.dual,r.revision,r.logs.length,r.photos.length,r.done.length,fleet.inbox[follow].size,r.logs.at(-1)?.text].join('|');
  if(force||key!==recordKey){
   recordKey=key;const tasks=$('tasks');tasks.replaceChildren();
@@ -186,7 +201,7 @@ $('fullscreen').addEventListener('click',async()=>{
 });
 document.addEventListener('fullscreenchange',()=>void setWindowButton());
 $('send').addEventListener('click',()=>send($('command').value));
-$('examples').addEventListener('click',e=>{const b=e.target.closest('[data-command]');if(b){composer.setValue(b.dataset.command);void send(b.dataset.command)}});
+document.querySelector('.command-section').addEventListener('click',e=>{const b=e.target.closest('[data-command]');if(b){composer.setValue(b.dataset.command);void send(b.dataset.command)}});
 $('fleet-order').addEventListener('click',()=>send('双艇协作，分别巡检木栈桥和防波堤旁的黄标'));
 for(const b of document.querySelectorAll('[data-fleet-command]'))b.addEventListener('click',()=>send(b.dataset.fleetCommand));
 $('fleet-mode').addEventListener('change',()=>{

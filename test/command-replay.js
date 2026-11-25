@@ -242,4 +242,5 @@
     }
   }
   window.replayHarborCommand=replay;
+  window.advanceHarborFrames=advance;
 })();

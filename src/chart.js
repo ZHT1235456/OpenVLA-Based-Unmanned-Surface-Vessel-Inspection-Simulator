@@ -230,6 +230,19 @@ export function drawChart(canvas, run, previous = [], fleetOverlay = null) {
   for(const [id,vessel] of entries){
     drawTrack(ctx,view,vessel.plannedTrack,vesselColors[id],id===follow?1.65:1.2,[7,3]);
   }
+  for(const item of run.litter.items){
+    if(item.state!=='water')continue;
+    const x=view.x(item.x),y=view.y(item.z);
+    ctx.fillStyle=item.kind==='foam'?'#fff0cb':'#94dce8';ctx.strokeStyle=ink;ctx.lineWidth=1;
+    ctx.beginPath();
+    if(item.kind==='foam')ctx.rect(x-2.4,y-2.4,4.8,4.8);
+    else ctx.ellipse(x,y,3.4,1.9,-.6,0,Math.PI*2);
+    ctx.fill();ctx.stroke();
+    if(item.claim){
+      ctx.beginPath();ctx.arc(x,y,5.8,0,Math.PI*2);ctx.strokeStyle=vesselColors[item.claim];ctx.stroke();
+      if(item.claim===follow&&!compact)mapLabel(ctx,item.id,x+8,y-6,'#fff4d9');
+    }
+  }
   let close = false;
   let leftBoat = 'A';
   if (fleet) {

@@ -1,4 +1,4 @@
-import {buoyAction,cameraDenialOnly,conditional,conditionalAction,isPhotoKind,isSideKind,orderClauses,photoIntent,planCommand,tiltConsequence} from './commands.js';
+import {buoyAction,cameraDenialOnly,cleanupWords,conditional,conditionalAction,isPhotoKind,isSideKind,orderClauses,photoIntent,planCommand,tiltConsequence} from './commands.js';
 import {MARKS,groundMarker,namedPlaces} from './marks.js';
 
 export const otherBoat = id => id === 'A' ? 'B' : 'A';
@@ -150,7 +150,7 @@ export async function planFleetOrder(raw,fleet,selected,classify){
    if(action){const op=/停|暂停/.test(action[1])?'hold':/取消/.test(action[1])?'cancel':'resume';
      return {kind:'team',needsDual:true,assignments:['A','B'].map(id=>({id,plan:{op}}))};}
    const request=s.replace(/^(?:请)?(?:双艇|两(?:艘)?(?:无人)?[艇船]|全队|编队)(?:都|同时|一起)?/,'').replace(/[。！？!]+$/,'');
-   if(cameraDenialOnly(request)){
+   if(cameraDenialOnly(request)||cleanupWords.test(request)){
      const assignments=[];
      for(const id of ['A','B']){
        const plan=await planFor(fleet,id,request,classify);

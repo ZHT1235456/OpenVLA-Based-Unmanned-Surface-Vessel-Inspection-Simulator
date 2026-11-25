@@ -126,6 +126,8 @@ export function planHarborRoute(map,layout,start,tasks,firstAngles={},activeSide
   const legs=[],angles={...firstAngles};
   let from=start,total=0;
   for(const [index,task] of tasks.entries()){
+    // Drifting targets acquire their own route when the preceding leg finishes.
+    if(task.kind==='cleanup')break;
     const point=layout[task.target];
     const side=isSideKind(task.kind)&&(!task.conditional||(index===0&&approved));
     const origin=index===0&&activeSideOrigin!=null?activeSideOrigin:angles[task.target]??(point?bearingFrom(point,from):0);

@@ -2,6 +2,7 @@ import {makeRun, distance, clamp, wrap} from './simulation.js';
 import {describe,names,isPhotoKind} from './commands.js';
 import {otherBoat} from './fleet-orders.js';
 import {withChartMarks} from './marks.js';
+import {HarborLitter} from './cleanup.js';
 
 const radioDelay=.12, heartbeat=.75;
 const velocity=b=>({x:Math.sin(b.yaw)*b.speed,z:-Math.cos(b.yaw)*b.speed});
@@ -10,7 +11,9 @@ const role=id=>id==='岸'?'岸台':id+'艇';
 export class HarborFleet {
  constructor(layout,settings={}){
   this.layout=withChartMarks(layout);
-  this.boats={A:makeRun(layout,settings),B:makeRun(layout,settings)};
+  this.litter=new HarborLitter();
+  const shared={...settings,litter:this.litter};
+  this.boats={A:makeRun(layout,shared),B:makeRun(layout,shared)};
   for(const [id,run] of Object.entries(this.boats))run.id=id;
   const b=this.boats.B;
   Object.assign(b.boat,{x:layout.west.x+2,z:layout.west.z-1,yaw:.48});
@@ -36,7 +39,7 @@ export class HarborFleet {
   if(on){
    this.event('岸','AB','组网','A、B 两艇已加入港池通信');this.sendStates();
   }else{
-   this.relay=null;b.active=null;b.queue=[];b.route=null;b.held=false;this.lastOrder.B='';
+   this.relay=null;b.endCleanup();b.active=null;b.queue=[];b.route=null;b.held=false;this.lastOrder.B='';
    this.event('岸','B','离网','B艇退出协作，结束当前派单');
   }
  }
@@ -53,7 +56,7 @@ export class HarborFleet {
  sendStates(){
   for(const id of ['A','B']){
    const run=this.boats[id];
-   this.send(id,otherBoat(id),'STATE',{...run.boat,active:!!run.active,held:run.held,task:describe(run.active)});
+   this.send(id,otherBoat(id),'STATE',{...run.boat,active:!!run.active,held:run.held,yieldingToPeer:this.peerYield[id],task:describe(run.active)});
   }
   this.lastHeartbeat=this.time;
  }
@@ -187,7 +190,7 @@ export class HarborFleet {
   const v=velocity({...b,speed:Math.max(b.speed,run.act.throttle*3.8)}),rx=q.x-v.x,rz=q.z-v.z;
   const seconds=clamp(-(dx*rx+dz*rz)/(rx*rx+rz*rz+.01),0,3);
   const miss=Math.hypot(dx+seconds*rx,dz+seconds*rz);
-  const stationary=peer.speed<.32&&(!peer.active||peer.held);
+  const stationary=peer.speed<.32&&(!peer.active||peer.held||(run.cleanup&&id==='A'&&peer.yieldingToPeer));
   const bearing=wrap(Math.atan2(dx,-dz)-b.yaw);
   if(stationary&&range<9&&miss<4.0&&Math.abs(bearing)<1.35)
    return {speed:1.55,turn:(bearing>=0?-1:1)*.95};
