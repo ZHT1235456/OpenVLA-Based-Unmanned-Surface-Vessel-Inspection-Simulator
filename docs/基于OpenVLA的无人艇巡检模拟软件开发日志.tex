@@ -1,6 +1,6 @@
 % !TeX program = xelatex
 % 编译目录为 docs/，连续运行两次 XeLaTeX 以更新图号与参考文献。
-% 初稿及早期全文修订使用 agy CLI 的 gemini-4-hydrogen-high。本次根据该模型的校读意见、软件截图和实测记录编辑。
+% 正文、表格、图注与署名采用作者提供的定稿。
 \documentclass[a4paper,fontset=fandol,zihao=5]{ctexart}
 \usepackage[left=19mm,right=19mm,top=21mm,bottom=19mm,headheight=21pt,headsep=6mm,footskip=9mm]{geometry}
 \usepackage{xcolor,graphicx,booktabs,tabularx,array,caption,fancyhdr,microtype}
@@ -16,8 +16,8 @@
 \definecolor{sand}{HTML}{FCF3E4}
 \definecolor{umber}{HTML}{89551B}
 \usepackage[unicode,colorlinks,linkcolor=teal,citecolor=teal,urlcolor=teal]{hyperref}
-\hypersetup{pdftitle={基于OpenVLA的无人艇巡检模拟软件开发日志},
-  pdfauthor={朱华天，GPT-6.2 Astra，Gemini 4 Hydrogen},
+\hypersetup{pdftitle={基于 OpenVLA 的无人艇巡检模拟软件开发日志},
+  pdfauthor={朱华天，GPT-6.2 Astra，Gemini 4 Neon},
   pdfsubject={港池无人艇中文指令、路径规划、双艇协作与发布验证}}
 \urlstyle{tt}
 \newcommand{\repolink}[2]{\href{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/blob/v1.0.0/#1}{#2}}
@@ -28,9 +28,9 @@
   subsection={format=\raggedright\sffamily\bfseries\color{teal}\fontsize{12}{17}\selectfont,
   beforeskip=8pt,afterskip=3pt}}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{4.5pt}
+\setlength{\parskip}{3.5pt}
 \setlength{\tabcolsep}{5pt}
-\renewcommand{\arraystretch}{1.22}
+\renewcommand{\arraystretch}{1.15}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \captionsetup[figure]{hypcap=false,font={small},labelfont={bf,color=teal},labelsep=quad,
   justification=raggedright,singlelinecheck=false,skip=4pt}
@@ -46,52 +46,52 @@
 \color{ink}
 \thispagestyle{front}
 \begin{center}
-{\sffamily\bfseries\color{navy}\fontsize{21}{28}\selectfont\mbox{基于OpenVLA的无人艇巡检模拟软件开发日志}\par}
+{\sffamily\bfseries\color{navy}\fontsize{21}{28}\selectfont\mbox{基于 OpenVLA 的无人艇巡检模拟软件开发日志}\par}
 \vspace{4pt}
-{\large 朱华天，GPT-6.2 Astra，Gemini 4 Hydrogen\par}
-{\color{muted}2026年11月25日\par}
-{\fontsize{9}{13}\selectfont\url{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator}\par}
+{\large \textbf{作者}：朱华天，GPT-6.2 Astra，Gemini 4 Neon\par}
+{\color{muted}\textbf{日期}：2026 年 11 月 25 日\par}
+{\fontsize{9}{13}\selectfont\textbf{项目地址}：\url{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator}\par}
 \end{center}
 \vspace{2pt}{\color{rulegray}\hrule height .6pt}\vspace{11pt}
 
 \pagetitle{引言}
-这套软件用来在三维港池里测试无人艇能否按中文指令完成巡检。操作者可以指挥一艘艇，也可以给 A、B 两艘艇分派不同任务。例如，输入“给木栈桥旁的黄标拍照”后，A 艇会先规划航线，再驶近黄标拍照。海图记录它走过的路线，相册保留它拍到的画面（图~\ref{fig:desktop}）。
+我们开发了这款面向三维港池场景的无人艇巡检模拟软件，能够在仿真环境中实现无人艇依据中文指令自主完成巡检作业。操作者既可以指挥单艘无人艇执行任务，也可以向 A、B 两艘艇分派不同的协同任务。例如，输入“给木栈桥旁的黄标拍照”后，A艇会先规划可航路径，再驶近目标黄标完成拍摄；电子海图会实时记录其航行轨迹，相册则自动留存拍摄画面（图~\ref{fig:desktop}）。
 
 \begin{minipage}{\linewidth}
 \centering
-\includegraphics[width=.90\linewidth]{figures/desktop.png}
-\captionof{figure}{A 艇在木栈桥旁完成拍摄。左下是已航轨迹，旁边的船首画面中可以辨认出黄标。右侧工作台显示这次拍摄已完成。}\label{fig:desktop}
+\includegraphics[width=.86\linewidth]{figures/desktop.png}
+\captionof{figure}{A艇在木栈桥旁完成拍摄。左下方海图显示已航轨迹，相邻的船首画面中可清晰辨认目标黄标，右侧工作台提示该拍摄任务已完成。}\label{fig:desktop}
 \end{minipage}
 
 \subhead{从指令输入框到任务队列}
 \begin{minipage}[t]{.46\linewidth}\vspace{0pt}
-输入框出现建议时，按 Tab 会将建议填入框内，还可以继续修改。按 Enter 才发送。
+当指令输入框弹出补全建议时，按 \texttt{Tab} 键可将建议填入输入框并支持继续编辑，按 \texttt{Enter} 键则正式下发指令。
 
 \smallskip
-发送“先检查红标，再给绿标拍照”后，工作台把任务拆成两步（图~\ref{fig:queue}）。A 艇先到浮标门西侧观察红标，再去东侧拍绿标。这趟巡检应当只留下一张绿标照片。
+发送“先检查红标，再给绿标拍照”后，工作台会自动将指令拆解为两段连续任务（图~\ref{fig:queue}）：A艇先前往浮标门西侧抵近观察红标，随后驶向东侧拍摄绿标。整趟巡检按指令要求仅留存一张绿标照片。
 \end{minipage}\hfill
 \begin{minipage}[t]{.50\linewidth}\vspace{0pt}
 \centering
 \includegraphics[width=\linewidth]{figures/command-queue.png}
-\captionof{figure}{指令刚下发时，红标的“抵近观察”已开始，绿标的“全景拍照”仍在队列中。}\label{fig:queue}
+\captionof{figure}{指令下发初期的工作台状态。红标的“抵近观察”任务已开始执行，绿标的“全景拍照”任务处于队列待执行状态。}\label{fig:queue}
 \end{minipage}
 
 \newpage
 \pagetitle{技术栈与执行流程}
-艇控模型把连续的航速和转向量划成等宽区间，训练时预测动作落在哪个区间。这种编码方式借鉴了 OpenVLA\cite{kim2025openvla}。软件在港池数据上训练自己的轻量模型，中文编码器用 UER 两层中文 RoBERTa 初始化，视觉分支沿用 MobileNetV3-Small 的首层卷积。
+艇控模型将连续的航速与转向量离散化为等宽区间，在训练阶段通过分类预测动作所属区间，该动作编码思路借鉴自 OpenVLA~\cite{kim2025openvla}。本软件基于港池仿真数据训练了专属的轻量化模型：中文编码器采用 UER 两层中文 RoBERTa 权重初始化，视觉分支则沿用 MobileNetV3-Small 的首层卷积结构。
 
-\begin{tabularx}{\linewidth}{@{}>{\bfseries}p{23mm}p{49mm}Y@{}}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}p{22mm}p{48mm}Y@{}}
 \toprule
 环节 & 技术与组件 & 在软件中的用途\\
 \midrule
-训练与导出 & Python、PyTorch、ONNX & 用中文短句训练指代模型，用仿真航迹与候选图像训练艇控模型，导出三个 ONNX 计算图。\\
-本机推理 & ONNX Runtime Web~\cite{ortweb}、Web Worker、WebAssembly & 后台线程识别指令所指的目标，航行时持续计算目标航速、转向和快门信号。\\
-场景与海图 & Three.js、Canvas 2D、Vite & Three.js 绘制港池和船首画面，Canvas 2D 绘制海图。Vite 打包前端资源。\\
-桌面封装 & Tauri 2~\cite{tauri2arch}、Rust、WebView2 & 将前端、模型和推理运行时装入 Windows 程序，由 WebView2 显示操作界面。\\
+训练与导出 & Python、PyTorch、ONNX & 使用中文短句训练指代理解模型，结合仿真航迹与候选图像训练艇控模型，并导出三个 ONNX 计算图。\\
+本机推理 & ONNX Runtime Web~\cite{ortweb}、Web Worker、WebAssembly & 在后台线程中解析指令指向的目标，并在航行过程中持续计算目标航速、转向角速度与快门信号。\\
+场景与海图 & Three.js、Canvas 2D、Vite & 采用 Three.js 渲染三维港池与船首视角画面，使用 Canvas 2D 绘制电子海图，并通过 Vite 打包前端资源。\\
+桌面封装 & Tauri 2~\cite{tauri2arch}、Rust、WebView2 & 将前端界面、模型权重与推理运行时封装为 Windows 桌面程序，依托 WebView2 呈现交互界面。\\
 \bottomrule
 \end{tabularx}
 
-\subhead{一条航行指令怎样执行}
+\subhead{航行指令的执行流程}
 \begin{minipage}{\linewidth}
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm,
@@ -123,98 +123,97 @@
 \draw[flow] ([yshift=-3pt]sense.west)--node[hint,below]{返回观测}([yshift=-3pt]control.east);
 \draw[flow] (finish)--(report);
 \end{tikzpicture}
-\captionof{figure}{派单后先计算航线。航行中，艇控模型根据新观测更新动作，直到艇抵达作业位置。}\label{fig:flow}
+\captionof{figure}{航行指令执行链路。派单完成后先执行静态路径规划；航行阶段，艇控模型依据实时更新的观测持续输出控制动作，直至无人艇抵达目标作业点。}\label{fig:flow}
 \end{minipage}
 
-\subhead{三个模型各自处理什么}
-\texttt{language.onnx} 判断“栈桥旁那座”“上一座”等说法指向哪个目标。\texttt{navigation.onnx} 接收四张 \(20\times20\) 的 RGB 候选图像、各候选相对艇的位置和指令中的目标编码，选出关注对象并给出航速、转向与快门分数。
+\subhead{三个模型的功能分工}
+\texttt{language.onnx} 负责解析“栈桥旁那座”“上一座”等中文指代表达所对应的目标。\texttt{navigation.onnx} 接收四张 \(20\times20\) 像素的 RGB 候选图像、各候选目标相对无人艇的几何位置以及指令中的目标编码，从中锁定关注对象，并输出目标航速、转向角速度与快门触发分数。
 
-红绿门标的位置和颜色已经登记在海图中。执行门标任务时，\texttt{pilot.onnx} 直接使用门标相对艇的位置，沿用训练好的艇控权重。一次按正常速度播放的双艇测试中，A 艇每秒推理 5.3 次，B 艇每秒 5.0 次。各模型的输入见\repolink{src/policy-engine.js}{推理代码}。
+由于红绿门标的位置与颜色信息已预先登记在电子海图中，执行门标任务时，\texttt{pilot.onnx} 会直接读取门标相对无人艇的几何位置，并沿用已训练好的艇控权重。在一次常速运行的双艇运行实测中，A艇推理频率达到 5.3 次/秒，B艇达到 5.0 次/秒。各模型的具体输入格式详见\repolink{src/policy-engine.js}{推理代码}。
 
 \newpage
 \pagetitle{航路规划与艇上观测}
-\subhead{起航前看航线}
-“检查木栈桥旁的黄标，最后返回西泊位”包含两段航程。规划器先在浮标、栈桥等固定障碍周围留出艇体通行的间距。两点之间可以直达就走直线。遇到遮挡时，把能够直航相连的航路点连成一张图，再用 A* 搜索绕行路线\cite{hart1968astar}。某一段无路可走时，艇停在当前位置，工作台显示对应任务。途中遇到横穿航线的保洁船或邻艇，艇会根据双方的位置和航速让行。
+\subhead{起航前航线预览}
+指令“检查木栈桥旁的黄标，最后返回西泊位”包含两段航程。规划器首先在浮标、栈桥等固定障碍物外围预留艇体安全通行余量：若两点之间无障碍遮挡，则直接规划直线航段；若存在遮挡，则将能够直航连通的航路点构建为连通图，再利用 \mbox{A*} 算法搜索绕行路径~\cite{hart1968astar}。若某航段无可行路径，无人艇将停留在当前位置，工作台同步提示不可达航段。航行途中如遇横穿航线的保洁船或邻艇，系统会根据双方的相对位置与航速动态避让。
 
 \begin{minipage}{\linewidth}
 \centering
-\includegraphics[width=.91\linewidth]{figures/planned-route.png}
-\captionof{figure}{为核对起航前的路线，先暂停仿真，再发送指令。此时 A 艇航速为 0.0 m/s，海图上的琥珀色虚线已从东泊位连到栈桥黄标，再通向西泊位。两段规划总长 64.8 m。}\label{fig:route}
+\includegraphics[width=.88\linewidth]{figures/planned-route.png}
+\captionof{figure}{为便于核对起航前的规划路线，先暂停仿真再下发指令。此时 A艇航速为 0.0 m/s，海图上的琥珀色虚线已依次连接东泊位、栈桥黄标与西泊位，两段规划航线总长 64.8 m。}\label{fig:route}
 \end{minipage}
 
-\subhead{用工作台核对艇正在观察什么}
-展开“模型观测与动作”，同一面板会随目标切换。检查栈桥黄标时，可以看到送入模型的四张候选图像。检查浮标门红标时，面板会直接写出海图定位的门标名称。两处都显示当前的目标航速、转向角速度和快门状态（图~\ref{fig:inspector}）。
+\subhead{通过工作台核对模型观测}
+展开“模型观测与动作”面板后，显示内容会随当前任务目标自动切换：检查栈桥黄标时，面板直观展示送入模型的四张候选图像；检查浮标门红标时，面板则直接标明海图定位的门标名称。两种模式下均实时显示当前的目标航速、转向角速度与快门状态（图~\ref{fig:inspector}）。
 
 \begin{minipage}{\linewidth}
 \centering
 \begin{minipage}[t]{.485\linewidth}\vspace{0pt}\includegraphics[width=\linewidth]{figures/visual-control.png}\end{minipage}\hfill
 \begin{minipage}[t]{.485\linewidth}\vspace{0pt}\includegraphics[width=\linewidth]{figures/gate-control.png}\end{minipage}
-\captionof{figure}{两次观察任务的面板截图。左图的绿框标出模型选中的候选 2。右图显示“海图定位浮标门红标”。两次观察的快门均关闭。}\label{fig:inspector}
+\captionof{figure}{两次观察任务的面板对比。左图中的绿色方框标出了模型选中的候选 2，右图显示“海图定位浮标门红标”，两次观察任务中快门均保持关闭。}\label{fig:inspector}
 \end{minipage}
 
-\subhead{途中取消拍照}
-拍摄航段须得到指令授权。艇抵达拍摄位置、朝向合适、认准目标且快门信号就绪时，才保存一张 \(720\times405\) 的 JPEG。航行中单独发送“不要拍照”，待拍动作就改成观察，艇仍按原定目标和返航顺序航行。桌面复验先发送“给绿标拍照，最后返回东泊位”，途中撤销拍照，又发送“继续任务”。艇最终停靠东泊位，相册新增 0 张。
+\subhead{航行途中取消拍照}
+拍摄航段须经指令明确授权。仅当无人艇抵达拍摄点位、艇首朝向满足要求、锁定目标且快门信号就绪时，系统才会保存一张 \(720\times405\) 像素的 JPEG 照片。若在航行途中单独发送“不要拍照”，待执行的拍摄动作将转为抵近观察，无人艇仍按原定目标与返航顺序继续航行。桌面端复验时，先下发“给绿标拍照，最后返回东泊位”，途中撤销拍照并下发“继续任务”；最终无人艇顺利停靠东泊位，相册新增 0 张照片。
 
 \newpage
 \pagetitle{双艇分工与接力}
-点击“分派两艇巡检”，两艘艇会分别前往不同的黄标。A 艇从东泊位驶向防波堤，B 艇从西泊位驶向木栈桥。切到“港池鸟瞰”可以同时看到两艘艇。右侧“艇队状态”列出各艇正在做什么，左下海图用颜色区分两条航线（图~\ref{fig:fleet}）。
+点击“分派两艇巡检”后，两艘无人艇将分头前往不同的目标黄标：A艇从东泊位驶向防波堤，B艇从西泊位驶向木栈桥。切换至“港池鸟瞰”视角可纵览双艇动态，右侧“艇队状态”实时列出各艇当前任务，左下海图则以不同颜色区分两条航线（图~\ref{fig:fleet}）。
 
 \begin{minipage}{\linewidth}
 \centering
-\includegraphics[width=.94\linewidth]{figures/fleet-overview.png}
-\captionof{figure}{画面截自两艇出发后的第 2 秒（仿真时间）。A 艇沿琥珀色航线驶向防波堤，B 艇沿青绿色航线驶向木栈桥。两艇都只需抵近观察。}\label{fig:fleet}
+\includegraphics[width=.90\linewidth]{figures/fleet-overview.png}
+\captionof{figure}{画面截取自双艇出发后的第 2 秒（仿真时间）。A艇沿琥珀色航线驶向防波堤，B艇沿青绿色航线驶向木栈桥，两艇均执行抵近观察任务。}\label{fig:fleet}
 \end{minipage}
 
-\subhead{一次接力会拍几张照片}
+\subhead{接力任务的拍摄机制}
 \begin{minipage}[t]{.55\linewidth}\vspace{0pt}
-“接力，A 艇只观察栈桥黄标，B 艇收到回报再补拍”要求 A 艇回传观察方位。B 艇收到后，才规划驶向黄标另一侧的航段并拍照。两艇合计只拍一张。照片传给另一艘艇后，相册会显示副本，拍摄次数仍按原片计算。
+指令“接力，A艇只观察栈桥黄标，B艇收到回报再补拍”要求 A艇抵近观察并回传观测方位；B艇收到报文后，再规划驶向黄标另一侧的航段并完成拍摄。整个过程两艇合计仅拍摄一张原片；照片回传至协作艇后，对方相册虽会展示该副本，但拍摄次数仍按原片统计。
 
 \smallskip
-若下达“接力复核，A艇拍摄栈桥黄标，B艇接力补拍”，A 艇的第一份回报就带有黄标全景照。图~\ref{fig:relay} 中，B 艇相册收到了这张照片，还保存了自己从另一侧拍的侧面照。
+若下达“接力复核，A艇拍摄栈桥黄标，B艇接力补拍”，A艇发出的首份回报即附带黄标全景照片。如图~\ref{fig:relay} 所示，B艇相册不仅接收了该全景照，还留存了自身从另一侧补拍的侧面照。
 
 \smallskip
-两艇每隔 0.75 仿真秒广播一次艇位。通信模拟的基础单程时延为 0.12 仿真秒。
+仿真中，两艇每隔 0.75 仿真秒广播一次自身艇位，艇间通信模拟的基础单程时延为 0.12 仿真秒。
 \end{minipage}\hfill
 \begin{minipage}[t]{.40\linewidth}\vspace{0pt}
 \centering
 \includegraphics[width=.96\linewidth]{figures/relay-workbench.png}
-\captionof{figure}{B 艇相册。左边是 B 艇在 00:24 拍的侧面照，右边是 A 艇在 00:12 拍摄并回传的全景照。}\label{fig:relay}
+\captionof{figure}{B艇相册界面。左侧为 B艇在 00:24 拍摄的侧面照，右侧为 A艇在 00:12 拍摄并回传的全景照。}\label{fig:relay}
 \end{minipage}
 
 \newpage
 \pagetitle{训练、验证与交付}
 \subhead{训练数据与独立验证}
-我们用 PyTorch 2.5.1 在实验室的 RTX 4090 上训练了艇控模型。768 条仿真示范提供了 70,656 个航行状态。验证时另换随机种子，生成 96 条航迹。语言模型单独测试了 24 条留出短句，其中 23 条指向正确目标。样本和指标见\repolink{public/models/run.json}{训练记录}。
+我们在实验室的 RTX 4090 显卡上基于 PyTorch 2.5.1 完成了艇控模型训练。768 条仿真示范轨迹共提供 70,656 个航行状态样本；验证阶段更换随机种子，独立生成 96 条航迹用于评测。语言指代模型在 24 条留出短句上进行了单独测试，其中 23 条准确指向目标。详细样本分布与评估指标见\repolink{public/models/run.json}{训练记录}。
 
-\subhead{中文指令的回放验证}
-测试前先为每条指令写下预期的艇号、目标、动作顺序和照片数。随后从发布版输入框逐条发送指令，让软件按正常流程调用 ONNX 模型，再把实际派单、航迹和相册与预期逐项比对。测试借鉴 CEGIS 的做法，用一组指令反复回放、调整派单规则，再用独立留出的一组检验。177 条指令均符合各自的预期。
+\subhead{中文指令回放验证}
+验证前，先为每条指令预设预期的执行艇号、目标对象、动作序列及成片数量；随后通过发布版软件的输入框逐条下发指令，驱动软件按完整链路调用 ONNX 模型，并将实际派单结果、航行轨迹与相册输出逐项比对。验证流程借鉴了 CEGIS 思路：先基于一组指令反复回放并迭代修正派单规则，再在独立留出的测试集上进行检验。最终，全部 177 条指令均符合预期。
 
-\begin{tabularx}{\linewidth}{@{}>{\bfseries}p{32mm}p{29mm}Y@{}}
+\begingroup\small
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}p{24mm}p{35mm}Y@{}}
 \toprule
 核验项目 & 实测指标 & 判定依据\\
 \midrule
-按测试轮次 & 143/143，34/34 & 前一组用于调整规则，后一组独立留出。两组都从发布版输入框回放。\\
-按预期行为 & 执行 151 条，拒绝 26 条 & 对执行的指令核对艇号和动作顺序，对应当拒绝的指令核对工作台提示。\\
-起航前规划 & 164 次 & 按有待执行航段的艇分别计数，检查规划日志、航段数和规划距离。\\
-实际拍摄 & 83 张 JPEG & 解码原片，核对目标与拍摄距离。需要辨别颜色的场景还检查画面中央。回传副本另行比对。\\
+按测试轮次 & 143/143，34/34 & 前一组用于迭代调优派单规则，后一组为独立留出集；两组均从发布版输入框逐条回放。\\
+按预期行为 & 执行 151 条，拒绝 26 条 & 对执行类指令核对艇号与动作序列；对应当拒绝的指令核对工作台冲突或拦截提示。\\
+起航前规划 & 164 次 & 按存在待执行航段的无人艇分别计数，核查规划日志、航段数量与规划总距离。\\
+实际拍摄 & 83 张 JPEG & 逐张解码原片，核对拍摄目标与距离；涉及颜色辨别的场景额外校验画面中央区域，回传副本另行比对。\\
 \bottomrule
 \end{tabularx}
+\endgroup
 
 \vspace{4pt}
-\begin{minipage}[c]{.39\linewidth}
+\begin{minipage}[c]{.34\linewidth}
 \centering
 \includegraphics[width=\linewidth]{figures/gate-green.jpg}
-\captionof{figure}{船首相机拍到的浮标门东侧绿标。}\label{fig:green}
+\captionof{figure}{船首相机拍摄的浮标门东侧绿标。}\label{fig:green}
 \end{minipage}\hfill
-\begin{minipage}[c]{.56\linewidth}
-\repolink{verification/commands-final.md}{逐条测试报告}给出了每次回放的指令和实测结果。用例 C046 核对单艇观察后返航，C175 核对仅由接力艇补拍一次。
-
-\smallskip
-在\repolink{verification/desktop.json}{桌面复验}中，操作者下达“去浮标门的绿标拍照”。对图~\ref{fig:green} 中央 \(144\times126\) 像素做颜色检查，18,144 个像素中有 7,216 个为绿色，黄色为 0，与指令要求的绿标相符。
+\begin{minipage}[c]{.63\linewidth}
+\repolink{verification/commands-final.md}{逐条测试报告}记录了每次回放的原始指令与实测结果，例如用例 C046 核验了单艇观察后返航，用例 C175 核验了仅由接力艇补拍一次的逻辑。在\repolink{verification/desktop.json}{桌面复验}中，操作者下达“去浮标门的绿标拍照”，对图~\ref{fig:green} 画面中央 \(144\times126\) 像素区域进行颜色校验，全部 18,144 个像素中有 7,216 个为绿色、0 个为黄色，与指令指定的绿标目标完全相符。
 \end{minipage}
 
-\subhead{Windows 发布包}
-v1.0.0 把前端、模型和推理运行时装在一个 EXE 中，实测大小为 \textbf{28,124,672 字节（26.82 MiB）}。在装有 Microsoft Edge WebView2 的 Windows x64 电脑上双击即可离线运行。软件默认全屏，点击右上角“窗口模式”可切回窗口。
+\subhead{Windows 桌面发布包}
+v1.0.0 版本将前端界面、模型权重与推理运行时封装为单个独立 EXE 文件，实测体积为 28,124,672 字节（26.82 MiB）。在已安装 Microsoft Edge WebView2 的 Windows x64 计算机上双击即可离线运行。软件默认以全屏模式启动，点击右上角“窗口模式”按钮即可切换为窗口显示。
 
 \begingroup
 \small
@@ -225,12 +224,12 @@ v1.0.0 把前端、模型和推理运行时装在一个 EXE 中，实测大小�
 \setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}
 \bibitem{kim2025openvla} M. J. Kim, K. Pertsch, S. Karamcheti, et al.
 \href{https://proceedings.mlr.press/v270/kim25c.html}{OpenVLA: An Open-Source Vision-Language-Action Model}.
-CoRL 2024, \emph{Proceedings of Machine Learning Research}, 270, 2679--2713, 2025.
+\emph{CoRL 2024, Proceedings of Machine Learning Research}, 270, 2679--2713, 2025.
 \bibitem{hart1968astar} P. E. Hart, N. J. Nilsson, B. Raphael.
 \href{https://doi.org/10.1109/TSSC.1968.300136}{A Formal Basis for the Heuristic Determination of Minimum Cost Paths}.
 \emph{IEEE Transactions on Systems Science and Cybernetics}, 4(2), 100--107, 1968.
-\bibitem{ortweb} ONNX Runtime. \href{https://onnxruntime.ai/docs/tutorials/web/}{Web tutorials}. 项目官方文档。
-\bibitem{tauri2arch} Tauri. \href{https://v2.tauri.app/concept/architecture/}{Tauri Architecture}. 项目官方文档。
+\bibitem{ortweb} ONNX Runtime. \href{https://onnxruntime.ai/docs/tutorials/web/}{\emph{Web tutorials}}. 项目官方文档。
+\bibitem{tauri2arch} Tauri. \href{https://v2.tauri.app/concept/architecture/}{\emph{Tauri Architecture}}. 项目官方文档。
 \end{thebibliography}
 \endgroup
 \end{document}
