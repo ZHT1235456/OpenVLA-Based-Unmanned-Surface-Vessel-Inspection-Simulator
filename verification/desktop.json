@@ -1,35 +1,35 @@
 {
   "exe": "基于OpenVLA的无人艇巡检模拟.exe",
-  "exe_sha256": "dcc1f524e97c36e0358d2031ff22f267b6d7dba6003c97c5f0be5b95a36acc25",
+  "exe_sha256": "9dc9e1d20d5e9005b4d94a97a27fe1f6f7451adb672d3e61bb1fb2578129a823",
   "page_title": "基于OpenVLA的无人艇巡检模拟",
   "origin": "http://tauri.localhost/",
   "initial": {
     "rect": [
       0,
       0,
-      2880,
-      1800
+      1920,
+      1080
     ],
     "monitor": [
       0,
       0,
-      2880,
-      1800
+      1920,
+      1080
     ],
     "covers_monitor": true
   },
   "windowed": {
     "rect": [
-      469,
-      202,
-      2411,
-      1488
+      312,
+      74,
+      1608,
+      933
     ],
     "monitor": [
       0,
       0,
-      2880,
-      1800
+      1920,
+      1080
     ],
     "covers_monitor": false
   },
@@ -37,48 +37,47 @@
     "rect": [
       0,
       0,
-      2880,
-      1800
+      1920,
+      1080
     ],
     "monitor": [
       0,
       0,
-      2880,
-      1800
+      1920,
+      1080
     ],
     "covers_monitor": true
   },
   "command_response_ms": [
-    22,
-    29,
-    23,
-    28,
-    8,
-    40,
     20,
-    15
+    20,
+    24,
+    31,
+    5,
+    29,
+    25,
+    9
   ],
   "saved_jpeg_verified": true,
-  "median_ms": 22.5,
-  "maximum_ms": 40,
-  "last_rate_hz": "4.8",
-  "last_navigation_ms": "1.0",
+  "median_ms": 22.0,
+  "maximum_ms": 31,
+  "last_rate_hz": "5.0",
+  "last_navigation_ms": "0.7",
   "snapshot_width": 720,
   "snapshot_height": 405,
-  "compare_after_reset": true,
   "bow_while_paused": {
     "fullscreen": {
       "panel": [
-        631,
-        254
+        630,
+        224
       ],
       "css": [
-        631,
-        254
+        630,
+        224
       ],
       "buffer": [
-        914,
-        368
+        630,
+        224
       ],
       "fit": "fill",
       "lit_fraction_on_edges": [
@@ -90,16 +89,16 @@
     },
     "windowed": {
       "panel": [
-        416,
-        170
+        415,
+        169
       ],
       "css": [
-        416,
-        170
+        415,
+        169
       ],
       "buffer": [
-        603,
-        246
+        415,
+        169
       ],
       "fit": "fill",
       "lit_fraction_on_edges": [
@@ -111,16 +110,16 @@
     },
     "restored": {
       "panel": [
-        631,
-        254
+        630,
+        224
       ],
       "css": [
-        631,
-        254
+        630,
+        224
       ],
       "buffer": [
-        914,
-        368
+        630,
+        224
       ],
       "fit": "fill",
       "lit_fraction_on_edges": [
@@ -134,8 +133,8 @@
   "horizontal_orbit": {
     "drag_css_px": 32,
     "reference_width_px": 320,
-    "shore_shift_right_drag_px": -34,
-    "shore_shift_left_drag_px": 33,
+    "shore_shift_right_drag_px": -30,
+    "shore_shift_left_drag_px": 29,
     "return_shift_px": 0
   },
   "navigation_without_photos": {
@@ -150,7 +149,7 @@
   },
   "fleet": {
     "split_rate_hz": {
-      "A": "5.3",
+      "A": "4.9",
       "B": "5.0"
     },
     "default_patrol_photos": {
@@ -162,31 +161,41 @@
         "id": "A-1",
         "boat": "A",
         "caption": "A艇拍摄 · 00:10 · 防波堤黄标 · 全景 · 3.9 m",
-        "sha256": "e5c3bef3fa4fbadee050bd4a10d234bd66f15612df22772aef76ed836b595630"
+        "sha256": "93354361750db2be5a8a62ee8a822868335abbd823f39e3c678a9e64fa065884"
       },
       {
         "id": "B-1",
         "boat": "B",
         "caption": "B艇回传 · 00:10 · 栈桥黄标 · 全景 · 3.9 m",
-        "sha256": "0899d16c359d1c05b2870d21ebc7899206fdbeb822a10e28b3d4e178e761737b"
+        "sha256": "3b48a7191dd140442265bf352d96f3971c3123cf41032d868dd00bbadfce3063"
       }
     ],
     "relay_jpegs": [
       {
         "id": "A-1",
         "boat": "A",
-        "caption": "A艇回传 · 00:12 · 栈桥黄标 · 全景 · 4.0 m",
-        "sha256": "dc7ac1f0784c43686d36c0c502619713b1b88d90187c1236322ce34bd3080b07"
+        "caption": "A艇回传 · 00:13 · 栈桥黄标 · 全景 · 4.0 m",
+        "sha256": "e4990cf8bf30409db62742199f3f00b21804d43137a75872df99127062095c48"
       },
       {
         "id": "B-1",
         "boat": "B",
-        "caption": "B艇拍摄 · 00:24 · 栈桥黄标 · 侧面 · 4.6 m",
-        "sha256": "306e59170db3e53757ba896d3523e2b3c7ed1923d85a41bf273f0b8d0a9fc72c"
+        "caption": "B艇拍摄 · 00:25 · 栈桥黄标 · 侧面 · 4.6 m",
+        "sha256": "10b9541581c5b9992a7a38ee644c68a982d3dc704d41c3cef8ef5f76f925fc3e"
       }
     ],
     "consecutive_addressed_orders": true,
-    "single_mode_restored": true
+    "single_mode_restored": true,
+    "track_pixels": {
+      "at_start": {
+        "A": 59,
+        "B": 66
+      },
+      "after_sailing": {
+        "A": 113,
+        "B": 141
+      }
+    }
   },
   "page_errors": [],
   "command_suggestions": {
@@ -204,14 +213,14 @@
     "idle_dispatches": 0,
     "existing_order_preserved": true,
     "photo_target": "浮标门绿标",
-    "center_green_pixels": 7216,
+    "center_green_pixels": 7310,
     "center_yellow_pixels": 0,
     "roi_pixels": 18144
   },
   "south_sky": {
     "view": "south meridian from pier inspection",
     "sky_fraction_in_sample": 1.0,
-    "max_median_column_jump_8bit": 1,
+    "max_median_column_jump_8bit": 5,
     "screenshot": "sky-south.png"
   },
   "withdrawn_shutter": {
@@ -225,9 +234,24 @@
   },
   "route_before_departure": {
     "command": "检查木栈桥旁的黄标，最后返回西泊位",
-    "chart_before_motion": "A艇 A* 规划航线 · 2 个航段 · 64.8 m",
+    "chart_before_motion": "A艇 RRT* 规划航线 · 2 个航段 · 67.9 m",
     "speed_before_motion": 0,
     "completed_at": "西泊位",
-    "screenshot": "planned-route.png"
+    "screenshot": "planned-route.png",
+    "track_pixels": {
+      "at_start": {
+        "A": 32,
+        "B": 0
+      },
+      "after_sailing": {
+        "A": 311,
+        "B": 0
+      },
+      "after_reset": {
+        "A": 32,
+        "B": 0
+      }
+    },
+    "layout_round_trip_clears_chart": true
   }
 }

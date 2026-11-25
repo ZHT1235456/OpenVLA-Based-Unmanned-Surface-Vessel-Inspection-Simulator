@@ -75,9 +75,24 @@ def check_horizontal_orbit(page):
     assert page.locator('#heading').inner_text()==heading
     return {'drag_css_px':32,'reference_width_px':w,'shore_shift_right_drag_px':rightward,'shore_shift_left_drag_px':leftward,'return_shift_px':restored}
 
+def chart_ink(page):
+    """Count pixels painted in the two vessel colors on the actual chart."""
+    return page.locator('#chart').evaluate("""canvas => {
+        const data = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
+        const counts = {A: 0, B: 0};
+        for (let i = 0; i < data.length; i += 4) {
+            const r = data[i], g = data[i + 1], b = data[i + 2];
+            if (Math.abs(r-243)<5 && Math.abs(g-182)<5 && Math.abs(b-90)<5) counts.A++;
+            if (Math.abs(r-101)<5 && Math.abs(g-221)<5 && Math.abs(b-198)<5) counts.B++;
+        }
+        return counts;
+    }""")
+
 def check_route_before_departure(page,out):
     page.locator('#reset').click()
     page.locator('#pause').click()
+    expect(page.get_by_role('button',name='对比航迹')).to_have_count(0)
+    idle=chart_ink(page)
     box=page.locator('#command');chart=page.locator('#chart')
     command='检查木栈桥旁的黄标，最后返回西泊位'
     box.fill(command);box.press('Enter')
@@ -91,14 +106,28 @@ def check_route_before_departure(page,out):
     page.locator('#pause').click()
     expect(page.locator('#logs')).to_contain_text('西泊位 · 返航靠泊已完成',timeout=100000)
     expect(page.locator('#photos img')).to_have_count(0)
+    finished=chart_ink(page)
+    assert finished['A']>idle['A']+20,(idle,finished)
     page.locator('#reset').click()
-    return {'command':command,'chart_before_motion':label,'speed_before_motion':0,'completed_at':'西泊位','screenshot':'planned-route.png'}
+    expect(chart).to_have_attribute('aria-label','港池航迹俯视图')
+    reset=chart_ink(page)
+    assert reset==idle,(idle,reset)
+    layout=page.locator('#layout')
+    original=layout.input_value()
+    other=next(value for value in layout.locator('option').evaluate_all('opts=>opts.map(o=>o.value)') if value!=original)
+    layout.select_option(other)
+    layout.select_option(original)
+    assert chart_ink(page)==idle
+    return {'command':command,'chart_before_motion':label,'speed_before_motion':0,'completed_at':'西泊位',
+            'screenshot':'planned-route.png','track_pixels':{'at_start':idle,'after_sailing':finished,'after_reset':reset},
+            'layout_round_trip_clears_chart':True}
 
 def check_navigation_without_photos(page):
     sentence='穿过红绿浮标门，只观察木栈桥旁的黄标，最后返回西泊位'
-    page.locator('.command-library summary').click()
+    examples=page.locator('.command-library > summary',has_text='指令示例')
+    examples.click()
     page.locator('#examples').get_by_role('button',name=sentence,exact=True).click()
-    page.locator('.command-library summary').click()
+    examples.click()
     logs=page.locator('#logs')
     expect(logs).to_contain_text('西泊位 · 返航靠泊已完成',timeout=100000)
     expect(logs).to_contain_text('已通过红绿浮标门')
@@ -259,6 +288,10 @@ def check_south_sky(page,out):
 
 def check_fleet(page,out):
     page.locator('#reset').click()
+    mode=page.locator('#fleet-mode')
+    mode.select_option('dual')
+    idle_ink=chart_ink(page)
+    mode.select_option('single')
     page.locator('#fleet-order').click()
     expect(page.locator('#fleet-mode')).to_have_value('dual')
     expect(page.locator('#link-status')).to_contain_text('链路在线')
@@ -284,6 +317,8 @@ def check_fleet(page,out):
         expect(row).to_contain_text('已完成',timeout=100000)
         expect(page.locator('#photos img')).to_have_count(0)
         patrol_photos[vessel]=page.locator('#photos img').count()
+    sailed_ink=chart_ink(page)
+    assert all(sailed_ink[id]>idle_ink[id]+20 for id in ('A','B')),(idle_ink,sailed_ink)
     page.locator('#follow-boat').select_option('A')
     page.locator('#command').fill('双艇分别给木栈桥和防波堤旁的黄标拍照')
     page.locator('#command').press('Enter')
@@ -320,7 +355,8 @@ def check_fleet(page,out):
     page.locator('#fleet-mode').select_option('single')
     expect(page.locator('#follow-boat')).to_have_value('A');expect(page.locator('#follow-boat')).to_be_disabled()
     expect(page.locator('#fleet-panel')).to_be_hidden()
-    return {'split_rate_hz':{'A':first_rate,'B':second_rate},'default_patrol_photos':patrol_photos,'shared_jpegs':gallery_a,'relay_jpegs':relay_gallery,'consecutive_addressed_orders':True,'single_mode_restored':True}
+    return {'split_rate_hz':{'A':first_rate,'B':second_rate},'default_patrol_photos':patrol_photos,'shared_jpegs':gallery_a,'relay_jpegs':relay_gallery,'consecutive_addressed_orders':True,'single_mode_restored':True,
+            'track_pixels':{'at_start':idle_ink,'after_sailing':sailed_ink}}
 
 def run(exe,out,keep=False,command_check=None):
     exe=exe.resolve();out=out.resolve();out.mkdir(parents=True,exist_ok=True)
@@ -389,12 +425,9 @@ def run(exe,out,keep=False,command_check=None):
             assert output_photo.read_bytes()==base64.b64decode(photo_data)
             page.keyboard.press('Escape')
             rate=page.locator('#policy-rate').inner_text();latency=page.locator('#latency').inner_text()
-            page.locator('#reset').click();page.locator('#compare').click()
-            assert page.locator('#compare').get_attribute('aria-pressed')=='true'
-            page.locator('#compare').click()
             fleet=check_fleet(page,out)
             report={'exe':exe.name,'exe_sha256':hashlib.sha256(exe.read_bytes()).hexdigest(),'page_title':page.title(),'origin':page.url,'initial':init,'windowed':small,'restored':big,'command_response_ms':times,'saved_jpeg_verified':True,
-                    'median_ms':statistics.median(times),'maximum_ms':max(times),'last_rate_hz':rate,'last_navigation_ms':latency,'snapshot_width':720,'snapshot_height':405,'compare_after_reset':True,'bow_while_paused':{'fullscreen':full_bow,'windowed':window_bow,'restored':restored_bow},'horizontal_orbit':orbit,'navigation_without_photos':observation,'fleet':fleet,'page_errors':errors}
+                    'median_ms':statistics.median(times),'maximum_ms':max(times),'last_rate_hz':rate,'last_navigation_ms':latency,'snapshot_width':720,'snapshot_height':405,'bow_while_paused':{'fullscreen':full_bow,'windowed':window_bow,'restored':restored_bow},'horizontal_orbit':orbit,'navigation_without_photos':observation,'fleet':fleet,'page_errors':errors}
             report.update(command_suggestions=suggestions,marker_grounding=marker,south_sky=sky,withdrawn_shutter=withdrawn,route_before_departure=planned)
             (out/'desktop.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf8')
             print(json.dumps(report,ensure_ascii=True),flush=True)

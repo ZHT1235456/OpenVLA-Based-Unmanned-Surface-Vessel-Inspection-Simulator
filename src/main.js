@@ -16,13 +16,12 @@ const $=id=>document.getElementById(id);
 mountShell($('app'));
 const composer=bindCommandInput($('app'),send);
 const timeText=t=>[Math.floor(t/60),Math.floor(t)%60].map(v=>String(v).padStart(2,'0')).join(':');
-const inspector=mountInspector(),policy=new OnboardPolicy(),pastRoutes=new Map();
+const inspector=mountInspector(),policy=new OnboardPolicy();
 const makeMeter=()=>({last:0,rate:0,ms:0,first:null,prediction:null,raw:''});
 let fleet,view,follow='A',meters,ready=false,failed=false,paused=false,pending=false,parsing=false;
-let compare=false,cmdSerial=0,nextPoll=0,lastRender=0,lastUi=0,recordKey='',eventKey=-1,feedback='',feedbackUntil=0;
+let cmdSerial=0,nextPoll=0,lastRender=0,lastUi=0,recordKey='',eventKey=-1,feedback='',feedbackUntil=0;
 let commandQueue=Promise.resolve();
 const current=()=>fleet.boats[follow];
-const historyKey=(id,layout)=>id+':'+JSON.stringify(layout);
 function message(text,sticky=false){feedback=text;feedbackUntil=sticky?Infinity:performance.now()+6500;updateUi(true)}
 function updateFollow(id){
  composer.clearCorrection();
@@ -40,18 +39,14 @@ function updateFollow(id){
  if(current().unverifiedTarget)inspector.waitForTarget(names[current().active.target]);
  recordKey='';eventKey=-1;view.render();updateUi(true);
 }
-function reset(layoutChanged=false){
- if(fleet)for(const [id,r] of Object.entries(fleet.boats))if(r.trace.length>1)pastRoutes.set(historyKey(id,r.layout),r.trace.slice());
- if(layoutChanged)compare=false;
+function reset(){
  cmdSerial++;parsing=false;nextPoll=0;paused=false;feedback='';feedbackUntil=0;meters={A:makeMeter(),B:makeMeter()};
  const dual=$('fleet-mode').value==='dual';
  fleet=new HarborFleet(portLayout($('layout').value),{condition:$('condition').value,traffic:$('traffic').checked});
  fleet.setDual(dual);
- if(!pastRoutes.has(historyKey(follow,fleet.layout)))compare=false;
  if(view)view.setRun(fleet.boats.A);else view=new HarborView($('world'),$('bow'),fleet.boats.A);
  $('view').textContent='切换视角';
  $('pause').setAttribute('aria-pressed','false');$('pause').textContent='暂停';
- $('compare').setAttribute('aria-pressed',String(compare));$('compare').textContent=compare?'隐藏对比':'对比航迹';
  updateFollow(follow);
 }
 function addRow(container,title,meta){
@@ -129,7 +124,7 @@ function updateUi(force=false){
   $('photo-tab').textContent=photos.length?'巡检照片 ('+photos.length+')':'巡检照片';
  }
  updateFleet();
- drawChart($('chart'),r,compare?(pastRoutes.get(historyKey(follow,r.layout))||[]):[],fleet.dual?{boats:fleet.boats,follow,linkFresh:fleet.linkFresh}:null);
+ drawChart($('chart'),r,fleet.dual?{boats:fleet.boats,follow,linkFresh:fleet.linkFresh}:null);
 }
 function send(text){
  if(!ready||failed)return;
@@ -223,11 +218,9 @@ $('pause').addEventListener('click',()=>{
 });
 $('view').addEventListener('click',()=>{$('view').textContent=view.nextView();view.render();updateUi(true)});
 $('shore-view').addEventListener('click',()=>{view.shore=!view.shore;$('view').textContent=view.viewName;view.render();updateUi(true)});
-$('reset').addEventListener('click',()=>reset());$('layout').addEventListener('change',()=>reset(true));
+$('reset').addEventListener('click',reset);$('layout').addEventListener('change',reset);
 $('condition').addEventListener('change',()=>{for(const r of Object.values(fleet.boats)){r.condition=$('condition').value;r.resetSamples();r.log('试验','浮标状态已切换')}updateUi()});
 $('traffic').addEventListener('change',()=>{for(const r of Object.values(fleet.boats)){r.traffic=$('traffic').checked;r.log('试验',r.traffic?'已启用保洁船穿行':'已关闭保洁船穿行')}updateUi()});
-$('compare').addEventListener('click',()=>{if(!pastRoutes.has(historyKey(follow,fleet.layout))){message('先执行一段航行，再重置场景。上次航迹会保留作对照。');return}
- compare=!compare;$('compare').setAttribute('aria-pressed',String(compare));$('compare').textContent=compare?'隐藏对比':'对比航迹';updateUi()});
 try{
  reset();void setWindowButton();requestAnimationFrame(frame);
  await policy.init();ready=true;fleet.boats.A.log('模型','中文与艇控 ONNX 已在本机加载');updateUi(true);

@@ -243,8 +243,6 @@ button, a, select, textarea, summary { transition: background-color 140ms ease, 
 }
 .instrument h2 { gap: 7px; white-space: nowrap; color: #eff6f4; font-size: clamp(12px, .95vw, 17px); line-height: 1.15; font-weight: 630; letter-spacing: .025em; }
 .camera-symbol, .chart-symbol { color: var(--glass); width: 17px; height: 17px; }
-.compare-button { background: transparent; padding: 3px 7px; }
-.compare-button[aria-pressed="true"] { color: #a5f2e4; border-color: #71acac; }
 .instrument-screen, .instrument-screen canvas {
   display: block;
   width: 100%;
@@ -611,7 +609,6 @@ kbd { font: 555 .98em/1 var(--numeric); }
   .instrument-heading { padding: 3px 6px; gap: 3px; min-height: 28px; }
   .instrument h2 { font-size: .73rem; gap: 3px; }
   .instrument h2 i { width: 13px; height: 13px; }
-  .compare-button { font-size: .64rem; padding: 3px 4px; }
   .telemetry { padding-block: 6px; }
   .metric { padding-inline: 8px; flex-direction: column; gap: 2px; }
   .metric dt { font-size: .67rem; }

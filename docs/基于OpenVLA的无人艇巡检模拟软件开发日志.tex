@@ -1,6 +1,6 @@
 % !TeX program = lualatex
 % 在 docs/ 下连续运行两次 LuaLaTeX，更新图号与参考文献并嵌入中文字符映射。
-% 依作者定稿更新 v1.4.0 航路规划与桌面复验。
+% 依作者定稿更新 v1.4.1 港池海图、清漂说明与桌面复验。
 \documentclass[a4paper,fontset=fandol,zihao=5]{ctexart}
 \usepackage[left=19mm,right=19mm,top=21mm,bottom=19mm,headheight=21pt,headsep=6mm,footskip=9mm]{geometry}
 \usepackage{xcolor,graphicx,booktabs,tabularx,array,caption,fancyhdr,microtype}
@@ -18,9 +18,9 @@
 \usepackage[unicode,colorlinks,linkcolor=teal,citecolor=teal,urlcolor=teal]{hyperref}
 \hypersetup{pdftitle={基于 OpenVLA 的无人艇巡检模拟软件开发日志},
   pdfauthor={朱华天，GPT-6.2 Astra，Gemini 4 Neon},
-  pdfsubject={港池无人艇巡检、RRT* 航路规划、水面清漂与 v1.4.0 发布验证}}
+  pdfsubject={港池无人艇巡检、RRT* 航路规划、水面清漂与 v1.4.1 发布验证}}
 \urlstyle{tt}
-\newcommand{\repolink}[2]{\href{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/blob/v1.4.0/#1}{#2}}
+\newcommand{\repolink}[2]{\href{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/blob/v1.4.1/#1}{#2}}
 \newcommand{\pagetitle}[1]{\section{#1}}
 \newcommand{\subhead}[1]{\subsection*{#1}}
 \ctexset{section={format=\raggedright\sffamily\bfseries\color{navy}\fontsize{19}{25}\selectfont,
@@ -140,7 +140,7 @@
 \begin{minipage}{\linewidth}
 \centering
 \includegraphics[width=.88\linewidth]{figures/planned-route.png}
-\captionof{figure}{仿真暂停时下发指令，A艇航速仍为 0.0 m/s。海图上的琥珀色虚线从东泊位经栈桥黄标通往西泊位，两段规划航线总长 67.9 m。}\label{fig:route}
+\captionof{figure}{仿真暂停时下发指令，A艇航速仍为 0.0 m/s。海图上的琥珀色虚线从东泊位经栈桥黄标通往西泊位，两段规划航线总长 67.9 m。重置场景后，海图从起点重新记录。}\label{fig:route}
 \end{minipage}
 
 \subhead{通过工作台核对模型观测}
@@ -188,14 +188,16 @@
 
 \begin{minipage}{\linewidth}
 \centering
-\includegraphics[width=.80\linewidth]{../verification/shore-arm-desktop.png}\par
+\includegraphics[width=.75\linewidth]{../verification/shore-arm-desktop.png}\par
 \vspace{3pt}
-\includegraphics[width=.67\linewidth]{../verification/cleanup-pair.png}
+\includegraphics[width=.62\linewidth]{../verification/cleanup-pair.png}
 \captionof{figure}{上图中，F1 在岸臂夹爪上，F2 仍在艇首，码头累计为 0。下方两图是同一帧船首画面，绿框分别标出下令收瓶和收泡沫时模型选中的目标。}\label{fig:cleanup}
 \end{minipage}
 
 \subhead{从船首收集口到岸上收集箱}
-船首相机提供 \(128\times80\) 像素的 RGB 画面。目标连续两帧定位一致后，艇驶近收集。物体通过开启的收集口才登记入舱。每艇可装两件，满舱或完成搜索后返港。艇靠稳后，岸臂按货位下探、夹紧并提起，在收集箱内松爪时才登记上岸。仿真根据夹爪位置，通过逆运动学求出两段连杆的关节角度。东、西泊位可同时卸货，两艇共用同一泊位时依次交接。
+艇沿搜索线观察水面，船首相机提供 \(128\times80\) 像素的 RGB 画面。目标连续两帧定位一致后，RRT* 规划抵近航段。物体通过开启的收集口才登记入舱。每艇可装两件，满舱或完成搜索后返港。艇靠稳后，岸臂按货位下探、夹紧并提起，在收集箱内松爪时才登记上岸。仿真根据夹爪位置，通过逆运动学求出两段连杆的关节角度。东、西泊位可同时卸货，两艇共用同一泊位时依次交接。
+
+若目标位置固定且已知，单艇一趟收齐再返港的最短路线就是旅行商问题。这里的五件漂浮物至少要分三趟运回，双艇还需分工，调度更接近带容量约束的车辆路径问题~\cite{cvrp}。
 
 \subhead{按指令核对上岸件数}
 \begingroup\small
@@ -219,7 +221,7 @@ A艇收集塑料瓶，B艇收集泡沫块 & 三个瓶子送东泊位，两块泡
 我们在实验室的 RTX 4090 显卡上基于 PyTorch 2.5.1 完成了艇控模型训练。768 条仿真示范轨迹共提供 70,656 个航行状态样本；验证阶段更换随机种子，独立生成 96 条航迹用于评测。语言指代模型在 24 条留出短句上进行了单独测试，其中 23 条准确指向目标。详细样本分布与评估指标见\repolink{public/models/run.json}{训练记录}。
 
 \subhead{中文指令回放验证}
-巡检验证借鉴了 CEGIS 思路。先为每条指令写明预期艇号、目标、动作顺序和照片数量，再从发布版输入框下发指令，比对实际派单、航迹与相册。先用一组指令回放并修正派单规则，再用独立留出的指令核验。v1.4.0 从桌面输入框回放了 177 条巡检指令，\repolink{verification/commands-v1.4.0.json}{全部通过}。
+巡检验证借鉴了 CEGIS 思路。先规定每条指令的艇号、目标、动作顺序和照片数，再从桌面输入框回放，比对派单、航迹与相册。前一组用于修正派单规则，再用留出集核验。v1.4.1 回放的 177 条指令\repolink{verification/commands-v1.4.1.json}{全部通过}。
 
 \begingroup\small
 \begin{tabularx}{\linewidth}{@{}>{\bfseries}p{24mm}p{35mm}Y@{}}
@@ -243,19 +245,19 @@ A艇收集塑料瓶，B艇收集泡沫块 & 三个瓶子送东泊位，两块泡
 \captionof{figure}{船首相机拍摄的浮标门东侧绿标。}\label{fig:green}
 \end{minipage}\hfill
 \begin{minipage}[c]{.63\linewidth}
-\repolink{verification/commands-v1.4.0.md}{逐条测试报告}记录了每次回放的原始指令与实测结果，例如用例 C046 核验了单艇观察后返航，用例 C175 核验了仅由接力艇补拍一次的逻辑。在首版的\repolink{verification/desktop.json}{桌面复验}中，操作者下达“去浮标门的绿标拍照”，对图~\ref{fig:green} 画面中央 \(144\times126\) 像素区域进行颜色校验，全部 18,144 个像素中有 7,216 个为绿色、0 个为黄色，与指令指定的绿标目标完全相符。
+\repolink{verification/commands-v1.4.1.md}{逐条测试报告}记录了每次回放的原始指令与实测结果，例如用例 C046 核验了单艇观察后返航，用例 C175 核验了仅由接力艇补拍一次的逻辑。在首版的\href{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/blob/v1.0.0/verification/desktop.json}{桌面复验}中，操作者下达“去浮标门的绿标拍照”，对图~\ref{fig:green} 画面中央 \(144\times126\) 像素区域进行颜色校验，全部 18,144 个像素中有 7,216 个为绿色、0 个为黄色，与指令指定的绿标目标完全相符。
 \end{minipage}
 
 \subhead{Windows 桌面发布包}
-\href{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/releases/tag/v1.4.0}{v1.4.0 中文便携包}附有本开发日志。前端界面、模型权重与推理运行时封装在同一个 EXE 中，实测为 28,302,848 字节（26.99 MiB）。在已安装 Microsoft Edge WebView2 的 Windows x64 计算机上，双击即可离线运行。软件默认全屏，点击右上角“窗口模式”即可切换。
+\href{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/releases/tag/v1.4.1}{v1.4.1 中文便携包}附有本日志。EXE 内含界面、权重和推理运行时，实测为 28,302,336 字节（26.99 MiB）。已安装 Microsoft Edge WebView2 的 Windows x64 电脑可双击离线运行。默认全屏，点击右上角“窗口模式”即可切换。
 
 \begingroup
 \small
 \setlength{\parskip}{0pt}
 \renewcommand{\refname}{参考文献}
-\ctexset{section/format=\raggedright\sffamily\bfseries\color{navy}\large,section/beforeskip=8pt,section/afterskip=3pt}
-\begin{thebibliography}{4}
-\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}
+\ctexset{section/format=\raggedright\sffamily\bfseries\color{navy}\large,section/beforeskip=6pt,section/afterskip=2pt}
+\begin{thebibliography}{5}
+\setlength{\itemsep}{0.5pt}\setlength{\parskip}{0pt}
 \bibitem{kim2025openvla} M. J. Kim, K. Pertsch, S. Karamcheti, et al.
 \href{https://proceedings.mlr.press/v270/kim25c.html}{OpenVLA: An Open-Source Vision-Language-Action Model}.
 \emph{CoRL 2024, Proceedings of Machine Learning Research}, 270, 2679--2713, 2025.
@@ -264,6 +266,7 @@ A艇收集塑料瓶，B艇收集泡沫块 & 三个瓶子送东泊位，两块泡
 \emph{The International Journal of Robotics Research}, 30(7), 846--894, 2011.
 \bibitem{ortweb} ONNX Runtime. \href{https://onnxruntime.ai/docs/tutorials/web/}{\emph{Web tutorials}}. 项目官方文档。
 \bibitem{tauri2arch} Tauri. \href{https://v2.tauri.app/concept/architecture/}{\emph{Tauri Architecture}}. 项目官方文档。
+\bibitem{cvrp} Google OR-Tools. \href{https://developers.google.com/optimization/routing/cvrp}{\emph{Capacity Constraints}}. 项目官方文档。
 \end{thebibliography}
 \endgroup
 \end{document}

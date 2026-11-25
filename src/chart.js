@@ -170,7 +170,7 @@ function drawMarker(ctx, view, id, boat, focused, labelSide, close) {
   mapLabel(ctx, id, labelX, labelY, color, 'center');
 }
 
-function drawLegend(ctx, width, y, height, fleet, previous,hasRoute) {
+function drawLegend(ctx, width, y, height, fleet, hasRoute) {
   ctx.fillStyle = '#10242d';
   ctx.fillRect(0, y, width, height);
   ctx.fillStyle = '#315059';
@@ -198,10 +198,9 @@ function drawLegend(ctx, width, y, height, fleet, previous,hasRoute) {
     key('B 艇', vesselColors.B);
     if(cursor+69<=width)key(fleet.linkFresh ? '链路在线' : '链路待同步', fleet.linkFresh ? '#a5bebe' : '#637a7e', [1,4]);
   }
-  if (previous.length > 1 && cursor + 48 <= width) key('上次', '#b7c3bd', [2,3]);
 }
 
-export function drawChart(canvas, run, previous = [], fleetOverlay = null) {
+export function drawChart(canvas, run, fleetOverlay = null) {
   const width = canvas.clientWidth || 320;
   const height = canvas.clientHeight || 140;
   const dpr = Math.min(1.7, globalThis.devicePixelRatio || 1);
@@ -215,7 +214,7 @@ export function drawChart(canvas, run, previous = [], fleetOverlay = null) {
   const compact = width < 310 || height < 130;
   const entries = fleet ? [['A', fleet.boats.A], ['B', fleet.boats.B]] : [['A', run]];
   const hasRoute=entries.some(([,v])=>v.nextWaypoint&&!v.awaitingOrder);
-  const legendHeight = height >= 94 && width >= 180 && (fleet || hasRoute || previous.length > 1) ? 19 : 0;
+  const legendHeight = height >= 94 && width >= 180 && (fleet || hasRoute) ? 19 : 0;
   const view = makeChartView(width, height - legendHeight);
   ctx.save();
   ctx.setTransform(pixelWidth / width, 0, 0, pixelHeight / height, 0, 0);
@@ -227,7 +226,6 @@ export function drawChart(canvas, run, previous = [], fleetOverlay = null) {
   ctx.rect(0, 0, width, view.height);
   ctx.clip();
   drawHarbor(ctx, view, run.layout, compact);
-  drawTrack(ctx, view, previous, '#b7c3bd', 1.3, [2, 3]);
   for(const [id,vessel] of entries){
     drawTrack(ctx,view,vessel.plannedTrack,vesselColors[id],id===follow?1.65:1.2,[7,3]);
   }
@@ -275,6 +273,6 @@ export function drawChart(canvas, run, previous = [], fleetOverlay = null) {
     drawMarker(ctx, view, id, vessel.boat, id === follow, labelSide, close);
   }
   ctx.restore();
-  if (legendHeight) drawLegend(ctx, width, view.height, legendHeight, fleet, previous,hasRoute);
+  if (legendHeight) drawLegend(ctx, width, view.height, legendHeight, fleet, hasRoute);
   ctx.restore();
 }

@@ -200,7 +200,6 @@ export function mountShell(root) {
             <section class="instrument chart-instrument" aria-labelledby="chart-title">
               <div class="instrument-heading">
                 <h2 id="chart-title"><i class="chart-symbol" aria-hidden="true"></i>港池航迹</h2>
-                <button id="compare" class="small-button compare-button" type="button" aria-pressed="false" title="对比本次与上次航迹">对比航迹</button>
               </div>
               <div class="instrument-screen"><canvas id="chart" width="440" height="170" aria-label="港池航迹俯视图"></canvas></div>
             </section>

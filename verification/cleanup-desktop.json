@@ -1,7 +1,7 @@
 {
   "exe": "基于OpenVLA的无人艇巡检模拟.exe",
-  "sha256": "ffd9743e455a595143bb26c094c92a7ce85f12d201e2788ed1322d603f3c3e9c",
-  "firstRouteWhilePaused": "A艇 A* 规划航线 · 1 个航段 · 34.1 m",
+  "sha256": "9dc9e1d20d5e9005b4d94a97a27fe1f6f7451adb672d3e61bb1fb2578129a823",
+  "firstRouteWhilePaused": "A艇 RRT* 规划航线 · 1 个航段 · 34.1 m",
   "realtimeVisionHz": 5.0,
   "pausedLedger": {
     "water": 4,
