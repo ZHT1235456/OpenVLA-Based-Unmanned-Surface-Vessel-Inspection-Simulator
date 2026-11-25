@@ -19,10 +19,47 @@ def ledger(page):
                 detail=field('detail'), phase=field('phase'))
 
 
+def check_camera_panel(page):
+    expect(page.locator('#mode')).to_have_text('模型就绪',timeout=60000)
+    page.locator('.model-inspector').evaluate('el=>el.open=true')
+    box=page.locator('#command')
+    box.fill('只收集塑料瓶');box.press('Enter')
+    expect(page.locator('.actuator-readout')).to_contain_text('视觉候选 · 塑料瓶',timeout=25000)
+    camera=page.locator('.inspection-camera')
+    expect(camera).to_be_visible()
+    width,height,colors=camera.evaluate("""el=>{
+      const rgb=el.getContext('2d').getImageData(0,0,el.width,el.height).data;
+      const tones=new Set();
+      for(let i=0;i<rgb.length;i+=4)tones.add((rgb[i]<<16)|(rgb[i+1]<<8)|rgb[i+2]);
+      return [el.width,el.height,tones.size];
+    }""")
+    assert (width,height)==(128,80) and colors>50
+    result=dict(exeSHA256=hashlib.sha256(EXE.read_bytes()).hexdigest(),width=width,height=height,
+                displayedRGBColors=colors,readout=page.locator('.actuator-readout').inner_text(),
+                photos=page.locator('#photos img').count())
+    assert result['photos']==0
+    (OUT/'cleanup-camera-panel.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+
+
 def verify(page):
     errors = []
     page.on('pageerror', lambda error: errors.append(str(error)))
     cases = []
+    def remember():
+        page.evaluate("""() => {
+          window.cleanupLog=new Map();
+          window.readCleanupLog=()=>{
+            const boat=document.querySelector('#follow-boat')?.value || 'A';
+            for(const el of document.querySelectorAll('#logs > div')){
+              const line=el.querySelector('span')?.textContent;
+              if(line && (line.includes('通过船首收集口')||line.includes('泊位收到 '))){
+                window.cleanupLog.set(boat+el.textContent,[boat,line]);
+              }
+            }
+          };
+          new MutationObserver(window.readCleanupLog).observe(document.querySelector('#logs'),{childList:true});
+        }""")
+    remember()
     box = page.locator('#command')
     page.locator('#pause').click()
     box.fill('只收集泡')
@@ -47,7 +84,7 @@ def verify(page):
     assert page.locator('#clock').inner_text() == paused_clock and ledger(page) == work
     page.screenshot(path=str(OUT / 'cleanup-desktop.png'), scale='css', timeout=20000)
     page.locator('#pause').click()
-    expect(page.locator('#cleanup-phase')).to_have_text('清漂完成', timeout=120000)
+    expect(page.locator('#cleanup-phase')).to_have_text('清漂完成', timeout=320000)
 
     def record(text, bottles, foam, trips, boat_ids):
         final = ledger(page)
@@ -57,7 +94,7 @@ def verify(page):
         for vessel in boat_ids:
             if len(boat_ids) > 1:
                 page.locator('#follow-boat').select_option(vessel)
-            logs = page.locator('#logs > div > span').all_text_contents()
+            logs=page.evaluate('id=>Array.from(window.cleanupLog.values()).filter(([boat])=>boat===id).map(x=>x[1])',vessel)
             unload.extend(vessel+'艇 '+line for line in logs if '泊位收到 ' in line)
             picked.extend(re.findall(r'([PF][1-3]) 通过船首收集口', ' '.join(logs)))
             photos += page.locator('#photos img').count()
@@ -76,6 +113,7 @@ def verify(page):
         ('A艇收集塑料瓶，B艇收集泡沫块',3,2,None,['A','B']),
     ]):
         page.locator('#reset').evaluate('el => el.click()')
+        remember()
         expect(page.locator('#cleanup-ledger')).to_be_hidden()
         if i == 0:
             page.locator('.cleanup-library').evaluate('el => el.open = true')
@@ -83,19 +121,32 @@ def verify(page):
         else:
             box.fill(text)
             box.press('Enter')
-        for _ in range(44):
+        for _ in range(130):
             page.evaluate('() => window.advanceHarborFrames(40)')
-            if ledger(page)['ashore'] == bottles+foam:
-                break
+            if len(ids)>1:
+                for vessel in ['B','A']:
+                    page.locator('#follow-boat').select_option(vessel)
+                    page.evaluate('()=>window.readCleanupLog()')
+            if ledger(page)['ashore'] == bottles+foam and ledger(page)['phase']=='清漂完成':
+                if len(ids)==1:break
+                page.locator('#follow-boat').select_option('B')
+                finished=ledger(page)['phase']=='清漂完成'
+                page.locator('#follow-boat').select_option('A')
+                if finished:break
+        else:
+            raise AssertionError(('视觉作业未完成',text,ledger(page)))
         page.evaluate('() => window.advanceHarborFrames(20)')
         record(text,bottles,foam,trips,ids)
     assert not errors, errors
     report = dict(exe=EXE.name, sha256=hashlib.sha256(EXE.read_bytes()).hexdigest(),
-                  firstRouteWhilePaused=planned, realtimePilotHz=rate, pausedLedger=work,
+                  firstRouteWhilePaused=planned, realtimeVisionHz=rate, pausedLedger=work,
                   screenshot='cleanup-desktop.png', cases=cases, pageErrors=errors)
     (OUT/'cleanup-desktop.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
     print([(row['command'],row['ledger']['ashore'],row['photos']) for row in cases], flush=True)
 
 
 if __name__ == '__main__':
-    run(EXE, OUT, command_check=verify)
+    import argparse
+    p=argparse.ArgumentParser()
+    p.add_argument('--camera-panel',action='store_true')
+    run(EXE, OUT, command_check=check_camera_panel if p.parse_args().camera_panel else verify)

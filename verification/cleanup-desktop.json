@@ -1,14 +1,14 @@
 {
   "exe": "基于OpenVLA的无人艇巡检模拟.exe",
-  "sha256": "f02ef1fe0ec44ada8a73a241f5083d18b9a3d32fd5c9cd69e788d7e5b59fece7",
-  "firstRouteWhilePaused": "A艇 A* 规划航线 · 1 个航段 · 13.9 m",
-  "realtimePilotHz": 5.0,
+  "sha256": "ffd9743e455a595143bb26c094c92a7ce85f12d201e2788ed1322d603f3c3e9c",
+  "firstRouteWhilePaused": "A艇 A* 规划航线 · 1 个航段 · 34.1 m",
+  "realtimeVisionHz": 5.0,
   "pausedLedger": {
     "water": 4,
     "cargo": "1 / 2",
     "ashore": 0,
     "detail": "水面　塑料瓶 3 · 泡沫块 1　｜　已卸　瓶 0 · 泡沫 0",
-    "phase": "驶向泡沫块 F2"
+    "phase": "视觉搜索泡沫块 · 航线 1/14"
   },
   "screenshot": "cleanup-desktop.png",
   "cases": [
@@ -22,8 +22,8 @@
         "phase": "清漂完成"
       },
       "waterToHold": [
-        "F2",
-        "F1"
+        "F1",
+        "F2"
       ],
       "unloading": [
         "A艇 东泊位收到 2 件 · 泡沫块 F1、泡沫块 F2"
@@ -40,13 +40,13 @@
         "phase": "清漂完成"
       },
       "waterToHold": [
-        "P3",
+        "P1",
         "P2",
-        "P1"
+        "P3"
       ],
       "unloading": [
-        "A艇 东泊位收到 1 件 · 塑料瓶 P3",
-        "A艇 东泊位收到 2 件 · 塑料瓶 P1、塑料瓶 P2"
+        "A艇 东泊位收到 2 件 · 塑料瓶 P1、塑料瓶 P2",
+        "A艇 东泊位收到 1 件 · 塑料瓶 P3"
       ],
       "photos": 0
     },
@@ -60,16 +60,16 @@
         "phase": "清漂完成"
       },
       "waterToHold": [
-        "P3",
-        "F2",
-        "P2",
+        "P1",
         "F1",
-        "P1"
+        "P2",
+        "F2",
+        "P3"
       ],
       "unloading": [
-        "A艇 东泊位收到 1 件 · 塑料瓶 P3",
+        "A艇 东泊位收到 2 件 · 塑料瓶 P1、泡沫块 F1",
         "A艇 东泊位收到 2 件 · 塑料瓶 P2、泡沫块 F2",
-        "A艇 东泊位收到 2 件 · 塑料瓶 P1、泡沫块 F1"
+        "A艇 东泊位收到 1 件 · 塑料瓶 P3"
       ],
       "photos": 0
     },
@@ -83,15 +83,15 @@
         "phase": "清漂完成"
       },
       "waterToHold": [
-        "P3",
-        "P2",
         "P1",
+        "P2",
+        "P3",
         "F2",
         "F1"
       ],
       "unloading": [
-        "A艇 东泊位收到 1 件 · 塑料瓶 P3",
         "A艇 东泊位收到 2 件 · 塑料瓶 P1、塑料瓶 P2",
+        "A艇 东泊位收到 1 件 · 塑料瓶 P3",
         "B艇 西泊位收到 2 件 · 泡沫块 F1、泡沫块 F2"
       ],
       "photos": 0

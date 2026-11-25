@@ -1,6 +1,6 @@
 % !TeX program = lualatex
 % 在 docs/ 下连续运行两次 LuaLaTeX，更新图号与参考文献并嵌入中文字符映射。
-% 依作者定稿增补 v1.1.0 水面清漂作业及桌面复验。
+% 依作者定稿增补 v1.2.0 水面清漂作业及桌面复验。
 \documentclass[a4paper,fontset=fandol,zihao=5]{ctexart}
 \usepackage[left=19mm,right=19mm,top=21mm,bottom=19mm,headheight=21pt,headsep=6mm,footskip=9mm]{geometry}
 \usepackage{xcolor,graphicx,booktabs,tabularx,array,caption,fancyhdr,microtype}
@@ -18,9 +18,9 @@
 \usepackage[unicode,colorlinks,linkcolor=teal,citecolor=teal,urlcolor=teal]{hyperref}
 \hypersetup{pdftitle={基于 OpenVLA 的无人艇巡检模拟软件开发日志},
   pdfauthor={朱华天，GPT-6.2 Astra，Gemini 4 Neon},
-  pdfsubject={港池无人艇中文巡检、水面清漂、双艇协作及 v1.1.0 发布验证}}
+  pdfsubject={港池无人艇中文巡检、水面清漂、双艇协作及 v1.2.0 发布验证}}
 \urlstyle{tt}
-\newcommand{\repolink}[2]{\href{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/blob/v1.1.0/#1}{#2}}
+\newcommand{\repolink}[2]{\href{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/blob/v1.2.0/#1}{#2}}
 \newcommand{\pagetitle}[1]{\section{#1}}
 \newcommand{\subhead}[1]{\subsection*{#1}}
 \ctexset{section={format=\raggedright\sffamily\bfseries\color{navy}\fontsize{19}{25}\selectfont,
@@ -55,7 +55,7 @@
 \vspace{2pt}{\color{rulegray}\hrule height .6pt}\vspace{11pt}
 
 \pagetitle{引言}
-我们开发了这款面向三维港池场景的无人艇巡检模拟软件。操作者可以用中文指挥单艇检查航标、拍照或清理水面漂浮物，也可以给 A、B 两艘艇分派不同的任务。例如，输入“给木栈桥旁的黄标拍照”后，A艇会先规划可航路径，再驶近黄标完成拍摄。电子海图记录航行轨迹，相册自动留存拍摄画面（图~\ref{fig:desktop}）。
+我们开发了这款面向三维港池场景的无人艇巡检模拟软件。操作者可以用中文指挥单艇检查航标、拍照或清理水面漂浮物，也可以给 A、B 两艘艇分派不同的任务。例如，输入“给木栈桥旁的黄标拍照”后，A艇会先规划可航路径，再驶近黄标完成拍摄。电子海图记录航行轨迹，相册自动留存拍摄画面（图~\ref{fig:desktop}）。清漂时，艇用船首画面区分塑料瓶和泡沫块，将选中的漂浮物收入舱内，再送回泊位卸载。
 
 \begin{minipage}{\linewidth}
 \centering
@@ -78,13 +78,13 @@
 
 \newpage
 \pagetitle{技术栈与执行流程}
-艇控模型将连续的航速与转向量离散化为等宽区间，在训练阶段通过分类预测动作所属区间，该动作编码思路借鉴自 OpenVLA~\cite{kim2025openvla}。本软件基于港池仿真数据训练了专属的轻量化模型：中文编码器采用 UER 两层中文 RoBERTa 权重初始化，视觉分支则沿用 MobileNetV3-Small 的首层卷积结构。
+航标巡检模型将连续的航速与转向量离散化为等宽区间，在训练阶段通过分类预测动作所属区间，该动作编码思路借鉴自 OpenVLA~\cite{kim2025openvla}。本软件基于港池仿真数据训练了专属的轻量化模型：航标指代编码器采用 UER 两层中文 RoBERTa 权重初始化，视觉分支则沿用 MobileNetV3-Small 的首层卷积结构。
 
 \begin{tabularx}{\linewidth}{@{}>{\bfseries}p{22mm}p{48mm}Y@{}}
 \toprule
 环节 & 技术与组件 & 在软件中的用途\\
 \midrule
-训练与导出 & Python、PyTorch、ONNX & 使用中文短句训练指代理解模型，结合仿真航迹与候选图像训练艇控模型，并导出三个 ONNX 计算图。\\
+训练与导出 & Python、PyTorch、ONNX & 用中文短句、巡检航迹与船首清漂示范训练模型，发布四个 ONNX 计算图。\\
 本机推理 & ONNX Runtime Web~\cite{ortweb}、Web Worker、WebAssembly & 在后台线程中解析航标指代，计算目标航速和转向角速度。拍摄任务还需核对模型给出的快门信号。\\
 场景与海图 & Three.js、Canvas 2D、Vite & 采用 Three.js 渲染三维港池与船首视角画面，使用 Canvas 2D 绘制电子海图，并通过 Vite 打包前端资源。\\
 桌面封装 & Tauri 2~\cite{tauri2arch}、Rust、WebView2 & 将前端界面、模型权重与推理运行时封装为 Windows 桌面程序，依托 WebView2 呈现交互界面。\\
@@ -111,7 +111,7 @@
 \node[main] (finish) at (0,-6.2) {\textbf{到站作业}\\按指令观察、拍照、收集或靠泊卸载};
 \node[stop] (conflict) at (8,-1.55) {提示冲突并保留原任务\\可采纳建议后重新发送};
 \node[stop] (blocked) at (8,-3.1) {艇停在当前位置，显示不可达航段};
-\node[side] (sense) at (8,-4.65) {按任务更新候选图像或航点位置\\读取相对方位、距离与艇速};
+\node[side] (sense) at (8,-4.65) {清漂读取船首整帧与中文子句\\巡检读取候选裁片或航标方位};
 \node[side] (report) at (8,-6.2) {巡检记录观测与照片\\清漂登记入舱和上岸件数};
 \draw[flow] (input)--(assign);
 \draw[flow] (assign)--(route);
@@ -124,13 +124,13 @@
 \draw[flow] (finish)--(report);
 \draw[flow] (report.south) -- (8,-7.11) -- node[hint,above]{还有待执行航段} (-3.65,-7.11) |- (route.west);
 \end{tikzpicture}
-\captionof{figure}{航行指令的执行流程。各艇先规划航线，再根据实时观测调整航速和转向。清漂时目标随水流漂移，系统会更新通往收集点的航线。}\label{fig:flow}
+\captionof{figure}{航行指令的执行流程。各艇先规划航线，再根据实时观测调整航速和转向。船首相机发现匹配的漂浮物后，策略控制艇首对准目标并开启收集口。}\label{fig:flow}
 \end{minipage}
 
-\subhead{三个模型的功能分工}
+\subhead{四个模型的功能分工}
 \texttt{language.onnx} 负责解析“栈桥旁那座”“上一座”等中文指代表达所对应的目标。\texttt{navigation.onnx} 接收四张 \(20\times20\) 像素的 RGB 候选图像、各候选目标相对无人艇的几何位置以及指令中的目标编码，从中锁定关注对象，并输出目标航速、转向角速度与快门触发分数。
 
-红绿门标的位置和颜色已登记在电子海图中。执行门标任务时，\texttt{pilot.onnx} 根据目标相对艇的位置控制航行。清漂复用同一组艇控权重，输入改为当前航点的相对方位、距离及本艇航速。在一次常速双艇巡检实测中，A艇推理频率达到 5.3 次/秒，B艇达到 5.0 次/秒。各模型的具体输入格式详见\repolink{src/policy-engine.js}{推理代码}。
+红绿门标的位置和颜色已登记在电子海图中。\texttt{pilot.onnx} 根据航点方位与距离控制门标巡检、清漂搜索和返港。\texttt{cleanup.onnx} 根据船首整帧图像和本艇的中文作业子句锁定漂浮物，输出航速、转向和收集口开启分数。在一次常速双艇巡检中，A艇和 B艇的推理频率分别为 5.3 和 5.0 次/秒。输入格式详见\repolink{src/policy-engine.js}{推理代码}。
 
 \newpage
 \pagetitle{航路规划与艇上观测}
@@ -184,18 +184,18 @@
 
 \newpage
 \pagetitle{水面漂浮物的收集与卸载}\label{sec:cleanup}
-重置港池后，水面上有三个塑料瓶和两块泡沫。展开工作台的“水面清漂”，或直接在输入框发送“只收集泡沫块”，A艇便会驶向第一块泡沫。第一块入舱后，海图随即标出下一块的位置（图~\ref{fig:cleanup}）。
+港池内漂着三个塑料瓶和两块泡沫。输入“只收集泡沫块”后，A艇先沿规划航线搜索，再根据船首画面对准泡沫。工作台记录入舱数量，海图在视觉锁定处画圈（图~\ref{fig:cleanup}）。
 
 \begin{minipage}{\linewidth}
 \centering
-\includegraphics[width=.93\linewidth]{../verification/cleanup-desktop.png}\par
+\includegraphics[width=.78\linewidth]{../verification/cleanup-desktop.png}\par
 \vspace{3pt}
-\includegraphics[viewport=1340 345 1870 455,clip,width=.61\linewidth]{../verification/cleanup-desktop.png}
-\captionof{figure}{在第一块泡沫入舱后暂停仿真。下方放大了同一画面的“清漂收运”面板。A艇已收起 F1，正驶向 F2。此时水面还剩四件，码头累计为 0 件。}\label{fig:cleanup}
+\includegraphics[width=.67\linewidth]{../verification/cleanup-pair.png}
+\captionof{figure}{上图为第一块泡沫入舱后的桌面实测。下方两幅使用同一张留出轨迹的船首画面。分别要求收瓶和收泡沫后，绿色方框标出模型选中的位置。}\label{fig:cleanup}
 \end{minipage}
 
 \subhead{从船首收集口到泊位}
-漂浮物的类别与位置由仿真场景提供。规划器选定收集目标，\texttt{pilot.onnx} 根据沿途航点计算航速和转向。图中 A艇的推理读数为 5.0 次/秒。目标进入船首收集口才计入船舱，每艇可装两件。满舱或收完所选类别后，艇返港靠泊，停稳后登记卸载件数。途中撤单会保留已装货物，可再发“回码头卸载”。
+船首相机持续提供 \(128\times80\) 像素的 RGB 画面。清漂策略依中文子句选择物体，连续两帧定位一致后转入抵近。只有模型请求打开收集口且物体实际碰到艇首，模拟器才登记入舱。每艇可装两件，满舱或完成搜索后返回泊位，停稳才卸载。途中撤单会保留船货。
 
 \subhead{按指令核对上岸件数}
 \begingroup\small
@@ -211,7 +211,7 @@ A艇收集塑料瓶，B艇收集泡沫块 & 三个瓶子送东泊位，两块泡
 \end{tabularx}
 \endgroup
 
-两艇在同一水域作业时，各自收取已选定的漂浮物，同一件只计一次。我们在 Windows 发布版中分别下发这四条指令，逐件比对入舱编号和卸载地点。四次作业的相册均新增 0 张照片，明细见\mbox{\repolink{verification/cleanup-desktop.json}{桌面复验记录}}。
+两艇通过报文交换艇位和视觉锁定位置。巡检台账记录接触后的入舱编号和卸载地点，供操作者核对。桌面端单艇清漂实测为 5.0 次推理/秒。四种指令的收运结果见上表，清漂相册均新增 0 张照片。详见\repolink{verification/cleanup-desktop.json}{桌面复验记录}。
 
 \newpage
 \pagetitle{训练、验证与交付}
@@ -219,7 +219,7 @@ A艇收集塑料瓶，B艇收集泡沫块 & 三个瓶子送东泊位，两块泡
 我们在实验室的 RTX 4090 显卡上基于 PyTorch 2.5.1 完成了艇控模型训练。768 条仿真示范轨迹共提供 70,656 个航行状态样本；验证阶段更换随机种子，独立生成 96 条航迹用于评测。语言指代模型在 24 条留出短句上进行了单独测试，其中 23 条准确指向目标。详细样本分布与评估指标见\repolink{public/models/run.json}{训练记录}。
 
 \subhead{中文指令回放验证}
-巡检验证借鉴了 CEGIS 思路。先为每条指令写明预期艇号、目标、动作顺序和照片数量，再从发布版输入框下发指令，比对实际派单、航迹与相册。先用一组指令回放并修正派单规则，再用独立留出的指令核验。v1.1.0 重新回放了原有的 177 条巡检指令，\repolink{verification/commands-v1.1.0.json}{全部通过}。
+巡检验证借鉴了 CEGIS 思路。先为每条指令写明预期艇号、目标、动作顺序和照片数量，再从发布版输入框下发指令，比对实际派单、航迹与相册。先用一组指令回放并修正派单规则，再用独立留出的指令核验。v1.2.0 重新回放了原有的 177 条巡检指令，\repolink{verification/commands-v1.2.0.json}{全部通过}。
 
 \begingroup\small
 \begin{tabularx}{\linewidth}{@{}>{\bfseries}p{24mm}p{35mm}Y@{}}
@@ -234,7 +234,7 @@ A艇收集塑料瓶，B艇收集泡沫块 & 三个瓶子送东泊位，两块泡
 \end{tabularx}
 \endgroup
 
-另用 114 条不同的清漂指令，在三种港池布局中共完成 124 次 \mbox{ONNX} 仿真闭环回放，全部通过。回放时核对船首触碰、舱容、卸载时的艇位与航速，以及拍照数和碰撞记录。详见\mbox{\repolink{verification/cleanup-cases.json}{清漂回放记录}}。
+清漂策略使用 420 条示范轨迹的 \mbox{5,460} 帧训练。96 条留出轨迹有 \mbox{1,248} 帧。两类物体同框的 248 帧中，切换指令后两次都选对的有 221 帧。632 帧空水面均未触发收集。另将 119 条不同清漂指令完整回放 134 次，全部通过，零碰撞、零拍照。详见\repolink{verification/cleanup-export.json}{同帧对照}和\repolink{verification/cleanup-vision.json}{回放记录}。
 
 \vspace{4pt}
 \begin{minipage}[c]{.34\linewidth}
@@ -247,7 +247,7 @@ A艇收集塑料瓶，B艇收集泡沫块 & 三个瓶子送东泊位，两块泡
 \end{minipage}
 
 \subhead{Windows 桌面发布包}
-\href{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/releases/tag/v1.1.0}{v1.1.0 中文便携包}附有本开发日志。前端界面、模型权重与推理运行时封装在同一个 EXE 中，实测为 28,130,304 字节（26.83 MiB）。在已安装 Microsoft Edge WebView2 的 Windows x64 计算机上，双击即可离线运行。软件默认全屏，点击右上角“窗口模式”即可切换。
+\href{https://github.com/ZHT1235456/OpenVLA-Based-Unmanned-Surface-Vessel-Inspection-Simulator/releases/tag/v1.2.0}{v1.2.0 中文便携包}附有本开发日志。前端界面、模型权重与推理运行时封装在同一个 EXE 中，实测为 28,298,752 字节（26.99 MiB）。在已安装 Microsoft Edge WebView2 的 Windows x64 计算机上，双击即可离线运行。软件默认全屏，点击右上角“窗口模式”即可切换。
 
 \begingroup
 \small

@@ -5,6 +5,7 @@ import {CONTACTS,fixture,fixturePosition,makeOptics} from './contacts.js';
 import {distance} from './simulation.js';
 import {MARKS,buoyIds,isGateMark} from './marks.js';
 import {CleanupView} from './cleanup-scene.js';
+import {BowSensor} from './bow-sensor.js';
 
 function makeWake(){
  const geo=new T.PlaneGeometry(1,1);geo.rotateX(-Math.PI/2);
@@ -21,6 +22,7 @@ export class HarborView {
   this.bow=new T.WebGLRenderer({canvas:bow,antialias:true,alpha:false});
   this.camera=new T.PerspectiveCamera(49,1,.12,520);
   this.lens=new T.PerspectiveCamera(67,1,.12,520);
+  this.sensor=new BowSensor();
   this.photoLens=new T.PerspectiveCamera(49,720/405,.12,520);
   this.photoTarget=new T.WebGLRenderTarget(720,405);this.photoTarget.texture.colorSpace=T.SRGBColorSpace;
   this.print=document.createElement('canvas');this.print.width=720;this.print.height=405;
@@ -74,6 +76,7 @@ export class HarborView {
  }
  cameraPose(cam,run){
   const b=run.boat;
+  if(run.cleanup){this.sensor.pose(cam,b);return}
   cam.position.set(b.x+Math.sin(b.yaw)*.72,1.39+.04*Math.sin(run.time*1.72),b.z-Math.cos(b.yaw)*.72);
   const reach=run.cleanup?4.5:20, height=run.cleanup ? .12 : .94;
   cam.up.set(0,1,0);cam.lookAt(b.x+Math.sin(b.yaw)*reach,height,b.z-Math.cos(b.yaw)*reach);

@@ -158,7 +158,7 @@ async function poll(){
  try{
   for(const id of f.ids()){
    if(f!==fleet||paused||parsing||(!f.dual&&id==='B'))break;
-   const r=f.boats[id],obs=r.observation(c=>view.cropFor(c,r));if(!obs)continue;
+   const r=f.boats[id],obs=r.observation(c=>view.cropFor(c,r),()=>view.sensor.read(view,r));if(!obs)continue;
    const data=await policy.drive(obs.input);
    if(f!==fleet||paused||parsing||(!f.dual&&id==='B')||obs.revision!==r.revision)continue;
    const now=performance.now(),m=meters[id],diff=m.last?now-m.last:200;

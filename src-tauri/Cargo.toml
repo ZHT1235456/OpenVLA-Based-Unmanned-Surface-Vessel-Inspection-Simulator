@@ -1,6 +1,6 @@
 [package]
 name = "tideline-inspection"
-version = "1.1.0"
+version = "1.2.0"
 description = "基于OpenVLA的无人艇巡检模拟"
 edition = "2021"
 [build-dependencies]

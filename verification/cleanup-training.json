@@ -1,0 +1,59 @@
+{
+  "seed": 2651,
+  "torch": "2.5.1+cu124",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "steps": 1750,
+  "train_episodes": 420,
+  "train_frames": 5460,
+  "holdout_episodes": 96,
+  "holdout_frames": 1248,
+  "threshold": 0.55,
+  "match_radius_px": 5,
+  "holdout": {
+    "只捡拾水面上的空瓶子": {
+      "frames": 1248,
+      "correct_localizations": 463,
+      "false_locks": 3,
+      "missed_visible_targets": 20,
+      "empty_or_other_material": 765,
+      "false_locks_on_empty_or_other": 3,
+      "precision": 0.9936,
+      "recall": 0.9586,
+      "speed_mae_m_s": 0.0362,
+      "turn_mae_rad_s": 0.0157,
+      "aligned_gate_positives": 97,
+      "true_gate_opens": 97,
+      "false_gate_opens": 3
+    },
+    "请打捞港池里的泡沫块": {
+      "frames": 1248,
+      "correct_localizations": 361,
+      "false_locks": 7,
+      "missed_visible_targets": 20,
+      "empty_or_other_material": 867,
+      "false_locks_on_empty_or_other": 5,
+      "precision": 0.981,
+      "recall": 0.9475,
+      "speed_mae_m_s": 0.0332,
+      "turn_mae_rad_s": 0.0155,
+      "aligned_gate_positives": 57,
+      "true_gate_opens": 55,
+      "false_gate_opens": 2
+    },
+    "收集所有水面漂浮物": {
+      "frames": 1248,
+      "correct_localizations": 596,
+      "false_locks": 11,
+      "missed_visible_targets": 20,
+      "empty_or_other_material": 632,
+      "false_locks_on_empty_or_other": 3,
+      "precision": 0.9819,
+      "recall": 0.9675,
+      "speed_mae_m_s": 0.0325,
+      "turn_mae_rad_s": 0.0154,
+      "aligned_gate_positives": 138,
+      "true_gate_opens": 136,
+      "false_gate_opens": 5
+    }
+  }
+}

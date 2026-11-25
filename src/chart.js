@@ -238,10 +238,13 @@ export function drawChart(canvas, run, previous = [], fleetOverlay = null) {
     if(item.kind==='foam')ctx.rect(x-2.4,y-2.4,4.8,4.8);
     else ctx.ellipse(x,y,3.4,1.9,-.6,0,Math.PI*2);
     ctx.fill();ctx.stroke();
-    if(item.claim){
-      ctx.beginPath();ctx.arc(x,y,5.8,0,Math.PI*2);ctx.strokeStyle=vesselColors[item.claim];ctx.stroke();
-      if(item.claim===follow&&!compact)mapLabel(ctx,item.id,x+8,y-6,'#fff4d9');
-    }
+  }
+  for(const [id,vessel] of entries){
+    const track=vessel.cleanup?.track;
+    if(!track)continue;
+    const x=view.x(track.x),y=view.y(track.z);
+    ctx.beginPath();ctx.arc(x,y,6.5,0,Math.PI*2);ctx.strokeStyle=vesselColors[id];ctx.stroke();
+    if(id===follow&&!compact)mapLabel(ctx,'视觉锁定',x+8,y-6,'#fff4d9');
   }
   let close = false;
   let leftBoat = 'A';

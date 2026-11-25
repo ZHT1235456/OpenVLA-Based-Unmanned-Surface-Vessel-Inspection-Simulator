@@ -59,10 +59,7 @@ export class CleanupView {
     this.scene=scene;
     this.meshes=new Map(items.map(i=>[i.id,litterMesh(i.kind)]));
     this.intakes={};this.bins={east:dockBin(),west:dockBin()};
-    this.highlight=new T.Mesh(new T.RingGeometry(.46,.51,48),
-      new T.MeshBasicMaterial({color:0xffc46c,side:T.DoubleSide,transparent:true,opacity:.83,depthWrite:false}));
-    this.highlight.rotation.x=-Math.PI/2;
-    scene.add(...this.meshes.values(),...Object.values(this.bins),this.highlight);
+    scene.add(...this.meshes.values(),...Object.values(this.bins));
   }
   update(run,boats,hulls){
     const world=run.litter,t=run.time;
@@ -93,8 +90,5 @@ export class CleanupView {
         mesh.rotation.set(0,item.phase*.08,0);
       }
     }
-    const item=run.cleanup?.item;
-    this.highlight.visible=!!item;
-    if(item)this.highlight.position.set(item.x,.13,item.z);
   }
 }

@@ -1,0 +1,10 @@
+{
+  "onnx_sha256": "b55b0814cb64a98bcecb02d8f4fddbd6c3a4fc7192e4b2879ba76d75e84aa493",
+  "frames": 1248,
+  "command_pairs": 1248,
+  "frames_with_both_materials": 248,
+  "both_commands_localized_correctly": 221,
+  "empty_frames": 632,
+  "gate_requests_on_empty": 0,
+  "pytorch_onnx_max_abs_error": 1.1622905731201172e-06
+}

@@ -25,6 +25,7 @@
 }
 .optical-contacts .focus canvas { outline: 2px solid #297d6c; outline-offset: 1px; }
 .optical-contacts figcaption { font-size: .71rem; }
+.inspection-camera { width: min(100%, 210px); height: auto; border-radius: 3px; image-rendering: pixelated; }
 .actuator-readout { margin: 3px 0 6px; font-size: .76rem; line-height: 1.45; font-variant-numeric: tabular-nums; }
 #tasks > div, #logs > div { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
 #tasks small, #logs small { flex-shrink: 0; color: var(--dim); font-size: .72rem; }

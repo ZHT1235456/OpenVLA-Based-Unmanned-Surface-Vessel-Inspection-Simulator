@@ -48,6 +48,11 @@ export class HarborNavigationMap {
     this.graph=null;
   }
   clear(a,b){return onWater(a)&&onWater(b)&&!this.obstacles.some(o=>intersects(a,b,o))}
+  withMooredVessel(point){
+    const map=Object.create(HarborNavigationMap.prototype);
+    map.obstacles=[...this.obstacles,{x:point.x,z:point.z,radius:4.6}];map.graph=null;
+    return map;
+  }
   buildGraph(){
     const candidates=[];
     for(const o of this.obstacles){

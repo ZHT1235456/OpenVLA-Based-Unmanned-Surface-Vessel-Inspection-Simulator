@@ -115,6 +115,45 @@ export class HarborRun {
   }
   return continuing<(this.yielding?5.0:4.5)&&braking>continuing+.15;
  }
+ cleanupAvoidance(speed,turn){
+  const b=this.boat,goal=this.nextWaypoint;
+  if(!goal||this.held||this.awaitingOrder)return null;
+  const peer=this.peerVessel,age=peer?this.time-peer.time:Infinity;
+  const neighbor=age<2.4&&distance(b,peer)<18;
+  const service=this.traffic&&distance(b,this.service())<19;
+  if(!neighbor&&!service)return null;
+  const step=.3,traffic=[];
+  for(let i=1;i<=15;i++){
+   const t=i*step, obstacles=[];
+   if(service)obstacles.push(this.service(this.time+t));
+   if(neighbor)obstacles.push({x:peer.x+Math.sin(peer.yaw)*peer.speed*(t+age),
+     z:peer.z-Math.cos(peer.yaw)*peer.speed*(t+age)});
+   traffic.push(obstacles);
+  }
+  const predict=(v,w)=>{
+   let x=b.x,z=b.z,yaw=b.yaw,s=b.speed,a=b.turn,clearance=Infinity,separation=Infinity,grounding=0;
+   for(let i=0;i<traffic.length;i++){
+    s+=(v-s)*.451;a+=(w-a)*.777;yaw+=a*step;
+    const next={x:x+Math.sin(yaw)*s*step,z:z-Math.cos(yaw)*s*step};
+    if(this.navigationMap.clear({x,z},next)){x=next.x;z=next.z}
+    else{s=0;grounding=Math.max(grounding,1-i/traffic.length)}
+    separation=Math.min(...traffic[i].map(p=>Math.hypot(x-p.x,z-p.z)));
+    clearance=Math.min(clearance,separation);
+   }
+   return {clearance,separation,grounding,progress:distance(b,goal)-distance({x,z},goal)};
+  };
+  const nominal=predict(speed,turn);
+  if(nominal.clearance>4.05)return null;
+  const stopped=predict(0,0);
+  if(stopped.clearance>4.5&&(!neighbor||peer.speed>.55&&this.id==='B'))return {speed:0,turn:0};
+  const valueOf=(a,w)=>4*Math.min(5,a.clearance)+.38*Math.min(8,a.separation)+.14*a.progress-.18*Math.abs(w-turn)-1.2*a.grounding;
+  let best={speed,turn},score=valueOf(nominal,turn);
+  for(const v of [2.8,1.65,.65,0])for(const w of [0,-.48,.48,-1.05,1.05]){
+   const option=predict(v,w),value=valueOf(option,w);
+   if(value>score+.05){score=value;best={speed:v,turn:w}}
+  }
+  return best;
+ }
  features(c){
   const b=this.boat,point=this.layout[c];
   let margin=distance(b,point)-(['east','west'].includes(c)?1.35:4.2),aim=point,final=false;
@@ -126,12 +165,16 @@ export class HarborRun {
   const err=wrap(direction(b,aim)-b.yaw);
   return {values:[err/Math.PI,Math.sin(err),Math.cos(err),clamp(margin/16,-.6,2.8),b.speed/4],margin,err,final};
  }
- observation(cropFor){
+ observation(cropFor,readBow){
   if(!this.nextWaypoint||this.held||this.awaitingOrder||this.active.kind==='gate')return null;
   if(this.cleanup){
     const b=this.boat,goal=this.nextWaypoint,err=wrap(direction(b,goal)-b.yaw),d=distance(b,goal);
     const geometry=new Float32Array([err/Math.PI,Math.sin(err),Math.cos(err),clamp(d/16,0,2.8),b.speed/4]);
-    return {cleanupTarget:this.cleanup.label,input:{markerGeometry:geometry},revision:this.revision};
+    const input={markerGeometry:geometry};
+    if(this.cleanup.phase!=='return'&&this.cleanup.phase!=='blocked'){
+      input.bowRgb=readBow();input.words=this.cleanup.words;
+    }
+    return {cleanupTarget:this.cleanup.label,pose:{...b},input,revision:this.revision};
   }
   if(isGateMark(this.active.target)){
     const target=this.active.target,feature=this.features(target);
@@ -150,6 +193,7 @@ export class HarborRun {
  inference(obs,result,evidence,capture,dt=.2){
   if(!this.nextWaypoint||this.held||this.awaitingOrder||obs.revision!==this.revision)return false;
   if(obs.cleanupTarget&&this.cleanup){
+    if(obs.input.bowRgb&&this.cleanup.applyVision(obs,result))return true;
     const [throttle,turn]=result.control;
     if(!Number.isFinite(throttle)||!Number.isFinite(turn))throw Error('清漂艇控输出无效');
     this.act={throttle:clamp((throttle+1)/2,0,1),turn:clamp(turn,-1,1)};
@@ -213,8 +257,8 @@ export class HarborRun {
    if(this.cleanup){
     const d=distance(b,this.nextWaypoint);
     const docking=this.cleanup.phase==='return'&&this.waypoint===points.length-1;
-    speed=Math.min(3,this.act.throttle*3.8,d*(docking ? .9 : 1.25));turn=this.act.turn*1.42;
-    if(Math.abs(wrap(direction(b,this.nextWaypoint)-b.yaw))>.65)speed=0;
+    speed=this.cleanup.phase==='collect'?this.act.throttle*3.8:Math.min(3,this.act.throttle*3.8,d*(docking ? .9 : 1.25));turn=this.act.turn*1.42;
+    if(this.cleanup.phase!=='collect'&&Math.abs(wrap(direction(b,this.nextWaypoint)-b.yaw))>.65)speed=0;
     if(docking&&d<.48){speed=0;turn=0}
    }else if(this.active.kind==='gate'){
     const g=this.nextWaypoint,d=distance(b,g),e=wrap(direction(b,g)-b.yaw);
@@ -222,11 +266,14 @@ export class HarborRun {
     if(this.waypoint===points.length-1&&d<.85){this.finish('已通过红绿浮标门','gate');speed=0;turn=0}
    }else{speed=this.act.throttle*3.8;turn=this.act.turn*1.42}
   }
-  if(peer&&this.nextWaypoint&&!this.awaitingOrder&&!this.held){speed=Math.min(speed,peer.speed);turn=peer.turn??turn}
-  const service=this.service(),near=this.shouldYieldToService(speed);
-  if(near&&!this.yielding)this.log('让行','保洁船接近航线，减速等候');
+  if(peer&&!this.cleanup&&this.nextWaypoint&&!this.awaitingOrder&&!this.held){speed=Math.min(speed,peer.speed);turn=peer.turn??turn}
+  const service=this.service(),evasion=this.cleanup?this.cleanupAvoidance(speed,turn):null;
+  const near=this.cleanup?!!evasion:this.shouldYieldToService(speed);
+  if(near&&!this.yielding)this.log('让行',this.cleanup?'根据前方船位调整航向与航速':'保洁船接近航线，减速等候');
   if(!near&&this.yielding)this.log('让行','通道恢复，继续当前任务');
-  this.yielding=near;if(near){speed=0;if(!this.cleanup)turn=0}
+  this.yielding=near;
+  if(evasion){speed=evasion.speed;turn=evasion.turn;this.cleanup.gate=false}
+  else if(near){speed=0;turn=0}
   // A short-range collision layer steers away from unrelated channel markers.
   for(const key of buoyIds){
    const obstacle=this.layout[key];

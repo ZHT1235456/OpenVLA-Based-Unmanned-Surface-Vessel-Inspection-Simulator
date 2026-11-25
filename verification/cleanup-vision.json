@@ -1,0 +1,12008 @@
+{
+ "passed": 134,
+ "total": 134,
+ "failed": [],
+ "uniqueOrders": 119,
+ "cleanupONNXSHA256": "b55b0814cb64a98bcecb02d8f4fddbd6c3a4fc7192e4b2879ba76d75e84aa493",
+ "bowFrames": 111206,
+ "collisions": 0,
+ "photos": 0,
+ "rows": [
+  {
+   "text": "只收集泡沫块",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 697,
+    "locks": 27,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     6
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     48
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     64
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     64
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 169,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 0,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "只收集塑料瓶",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 755,
+    "locks": 50,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     3
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     14
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     103
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     180
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 180,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 1,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "清理所有水面漂浮物",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 816,
+    "locks": 79,
+    "gates": 8
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     3
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     8
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     18
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     18
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     46
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     80
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     95
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     95
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     122
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     202
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 202,
+   "remaining": [],
+   "case": 2,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "A艇收集塑料瓶，B艇收集泡沫块",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 1528,
+    "locks": 84,
+    "gates": 5
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     14
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     33
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     72
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     83
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     83
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     102
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     179
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 186,
+   "remaining": [],
+   "case": 3,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "只收集泡沫块",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 705,
+    "locks": 36,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     11
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     21
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     36
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     36
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 177,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 4,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 7,
+    "placements": [
+     [
+      3,
+      18
+     ],
+     [
+      -10,
+      4
+     ],
+     [
+      10,
+      -3
+     ],
+     [
+      12,
+      15
+     ],
+     [
+      -12,
+      14
+     ]
+    ]
+   }
+  },
+  {
+   "text": "只收集塑料瓶",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 821,
+    "locks": 53,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     13
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     55
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     71
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     71
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     107
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     201
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 201,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 5,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 7,
+    "placements": [
+     [
+      3,
+      18
+     ],
+     [
+      -10,
+      4
+     ],
+     [
+      10,
+      -3
+     ],
+     [
+      12,
+      15
+     ],
+     [
+      -12,
+      14
+     ]
+    ]
+   }
+  },
+  {
+   "text": "A艇收集塑料瓶",
+   "layout": 0,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 690,
+    "locks": 54,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     3
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     14
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     90
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     167
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 167,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 6,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "B艇收集塑料瓶",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 647,
+    "locks": 52,
+    "gates": 5
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     6
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     30
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     46
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     46
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     88
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     167
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 167,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 7,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "A艇收集塑料瓶，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 695,
+    "locks": 49,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     8
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     26
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     41
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     41
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     79
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     172
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 172,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 8,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "B艇收集塑料瓶，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 748,
+    "locks": 72,
+    "gates": 5
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     10
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     36
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     53
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     53
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     66
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     192
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 192,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 9,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "A艇收集塑料瓶，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 631,
+    "locks": 55,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     11
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     22
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     32
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     32
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     85
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     154
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 154,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 10,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "B艇收集塑料瓶，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 764,
+    "locks": 44,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     3
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     28
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     44
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     44
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     86
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     187
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 187,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 11,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "A艇收集泡沫块",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 699,
+    "locks": 30,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     9
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     51
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     67
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     67
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 171,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 12,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "B艇收集泡沫块",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 662,
+    "locks": 29,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     48
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     79
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     91
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     91
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 167,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 13,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "A艇收集泡沫块，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 771,
+    "locks": 40,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     14
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     56
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     72
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     72
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 190,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 14,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "B艇收集泡沫块，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 741,
+    "locks": 46,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     44
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     83
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "east",
+     96
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "east",
+     96
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 188,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 15,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "A艇收集泡沫块，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 646,
+    "locks": 27,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     6
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     48
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "west",
+     61
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "west",
+     61
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 153,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 16,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "B艇收集泡沫块，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 805,
+    "locks": 29,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     48
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     82
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     93
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     93
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 197,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 17,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "A艇收集所有水面漂浮物",
+   "layout": 0,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 723,
+    "locks": 68,
+    "gates": 6
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     7
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     12
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     21
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     21
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     41
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     68
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     84
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     84
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     111
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     188
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 188,
+   "remaining": [],
+   "case": 18,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "B艇收集所有水面漂浮物",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 763,
+    "locks": 93,
+    "gates": 8
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     10
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     17
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     29
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     29
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     55
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     62
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     73
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     73
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     123
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     201
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 201,
+   "remaining": [],
+   "case": 19,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "A艇收集所有水面漂浮物，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 842,
+    "locks": 78,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     12
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     16
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     26
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     26
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     46
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     80
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     96
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     96
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     123
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     216
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 216,
+   "remaining": [],
+   "case": 20,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "B艇收集所有水面漂浮物，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 801,
+    "locks": 106,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     11
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     24
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "east",
+     24
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     50
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     56
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     75
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "east",
+     75
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     87
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     215
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 215,
+   "remaining": [],
+   "case": 21,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "A艇收集所有水面漂浮物，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 668,
+    "locks": 80,
+    "gates": 6
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     5
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     10
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     25
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "west",
+     25
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     33
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     71
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     85
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "west",
+     85
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     105
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     174
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 174,
+   "remaining": [],
+   "case": 22,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "B艇收集所有水面漂浮物，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 845,
+    "locks": 83,
+    "gates": 6
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     7
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     15
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     26
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     26
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     53
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     68
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     79
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     79
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     91
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     216
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 216,
+   "remaining": [],
+   "case": 23,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "A艇清理塑料瓶",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 727,
+    "locks": 51,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     9
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     20
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     35
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     35
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     103
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     180
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 180,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 24,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "B艇清理塑料瓶",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 678,
+    "locks": 55,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     12
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     37
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     52
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     52
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     96
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     179
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 179,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 25,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "A艇清理塑料瓶，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 777,
+    "locks": 60,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     5
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     16
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     31
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     31
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     92
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     185
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 185,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 26,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "B艇清理塑料瓶，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 767,
+    "locks": 66,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     6
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     32
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     50
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     50
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     61
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     192
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 192,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 27,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "A艇清理塑料瓶，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 745,
+    "locks": 52,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     8
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     18
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     28
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     28
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     102
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     173
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 173,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 28,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "B艇清理塑料瓶，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 762,
+    "locks": 38,
+    "gates": 5
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     9
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     34
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     49
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     49
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     91
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     197
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 197,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 29,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "A艇清理泡沫块",
+   "layout": 0,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 680,
+    "locks": 32,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     14
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     55
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     71
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     71
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 174,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 30,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "B艇清理泡沫块",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 625,
+    "locks": 30,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     32
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     69
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     81
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     81
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 156,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 31,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "A艇清理泡沫块，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 777,
+    "locks": 31,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     27
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     50
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     66
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     66
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 188,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 32,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "B艇清理泡沫块，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 758,
+    "locks": 34,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     37
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     81
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "east",
+     95
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "east",
+     95
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 188,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 33,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "A艇清理泡沫块，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 624,
+    "locks": 27,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     12
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     53
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "west",
+     67
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "west",
+     67
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 155,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 34,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "B艇清理泡沫块，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 775,
+    "locks": 28,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     48
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     82
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     93
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     93
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 197,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 35,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "A艇清理所有水面漂浮物",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 816,
+    "locks": 79,
+    "gates": 8
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     3
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     8
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     18
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     18
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     46
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     80
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     95
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     95
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     122
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     202
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 202,
+   "remaining": [],
+   "case": 36,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "B艇清理所有水面漂浮物",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 652,
+    "locks": 85,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     6
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     30
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     46
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     46
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     67
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     89
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     102
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     102
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     146
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     182
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 182,
+   "remaining": [],
+   "case": 37,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "A艇清理所有水面漂浮物，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 809,
+    "locks": 74,
+    "gates": 5
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     8
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     12
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     22
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     22
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     42
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     70
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     86
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     86
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     113
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     206
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 206,
+   "remaining": [],
+   "case": 38,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "B艇清理所有水面漂浮物，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 784,
+    "locks": 96,
+    "gates": 9
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     10
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     18
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     31
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "east",
+     31
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     56
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     62
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     85
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "east",
+     85
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     139
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     217
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 217,
+   "remaining": [],
+   "case": 39,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "A艇清理所有水面漂浮物，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 683,
+    "locks": 84,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     11
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     16
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     31
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "west",
+     31
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     40
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     80
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     93
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "west",
+     93
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     114
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     183
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 183,
+   "remaining": [],
+   "case": 40,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "B艇清理所有水面漂浮物，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 810,
+    "locks": 78,
+    "gates": 6
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     3
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     11
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     22
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     22
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     48
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     63
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     75
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     75
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     86
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     203
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 203,
+   "remaining": [],
+   "case": 41,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "A艇回收塑料瓶",
+   "layout": 0,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 690,
+    "locks": 52,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     5
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     16
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     31
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     31
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     92
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     169
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 169,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 42,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "B艇回收塑料瓶",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 648,
+    "locks": 52,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     8
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     32
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     49
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     49
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     91
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     171
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 171,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 43,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "A艇回收塑料瓶，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 827,
+    "locks": 54,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     10
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     21
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     37
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     37
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     103
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     201
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 201,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 44,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "B艇回收塑料瓶，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 738,
+    "locks": 76,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     12
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     38
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     55
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     55
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     68
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     192
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 192,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 45,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "A艇回收塑料瓶，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 630,
+    "locks": 54,
+    "gates": 6
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     3
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     14
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     24
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     24
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     77
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     146
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 146,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 46,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "B艇回收塑料瓶，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 782,
+    "locks": 48,
+    "gates": 5
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     5
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     30
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     46
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     46
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     89
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     197
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 197,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 47,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "A艇回收泡沫块",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 693,
+    "locks": 29,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     10
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     53
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     68
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     68
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 172,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 48,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "B艇回收泡沫块",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 651,
+    "locks": 34,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     38
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     80
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     91
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     91
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 167,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 49,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "A艇回收泡沫块，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 760,
+    "locks": 36,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     33
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     55
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     71
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     71
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 190,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 50,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "B艇回收泡沫块，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 730,
+    "locks": 34,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     33
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     70
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "east",
+     83
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "east",
+     83
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 178,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 51,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "A艇回收泡沫块，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 637,
+    "locks": 32,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     9
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     51
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "west",
+     65
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "west",
+     65
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 153,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 52,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "B艇回收泡沫块，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 795,
+    "locks": 29,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     48
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     82
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     93
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     93
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 197,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 53,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "A艇回收所有水面漂浮物",
+   "layout": 0,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 732,
+    "locks": 82,
+    "gates": 8
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     9
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     15
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     24
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     24
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     44
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     71
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     87
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     87
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     113
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     191
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 191,
+   "remaining": [],
+   "case": 54,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "B艇回收所有水面漂浮物",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 659,
+    "locks": 91,
+    "gates": 5
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     12
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     37
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     52
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     52
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     73
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     95
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     108
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     108
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     150
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     189
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 189,
+   "remaining": [],
+   "case": 55,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "A艇回收所有水面漂浮物，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 879,
+    "locks": 87,
+    "gates": 8
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     5
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     10
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     20
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     20
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     46
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     80
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     96
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     96
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     122
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     216
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 216,
+   "remaining": [],
+   "case": 56,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "B艇回收所有水面漂浮物，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 809,
+    "locks": 99,
+    "gates": 6
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     6
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     32
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     50
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     50
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     61
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     66
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     79
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "east",
+     79
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     105
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "east",
+     215
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 215,
+   "remaining": [],
+   "case": 57,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "A艇回收所有水面漂浮物，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 671,
+    "locks": 74,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     7
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     12
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     26
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "west",
+     26
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     36
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     73
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     87
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "west",
+     87
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     108
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     177
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 177,
+   "remaining": [],
+   "case": 58,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "B艇回收所有水面漂浮物，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 905,
+    "locks": 88,
+    "gates": 8
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     9
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     19
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     30
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     30
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     57
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     72
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     85
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     85
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     96
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     231
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 231,
+   "remaining": [],
+   "case": 59,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "A艇打捞塑料瓶",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 721,
+    "locks": 54,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     11
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     22
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     38
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     38
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     105
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     181
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 181,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 60,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "B艇打捞塑料瓶",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 657,
+    "locks": 54,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     28
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     44
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     44
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     87
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     167
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 167,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 61,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "A艇打捞塑料瓶，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 771,
+    "locks": 56,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     6
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     17
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     32
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     32
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     93
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     186
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 186,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 62,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "B艇打捞塑料瓶，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 758,
+    "locks": 65,
+    "gates": 5
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     8
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     34
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     51
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     51
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     63
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     192
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 192,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 63,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "A艇打捞塑料瓶，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 736,
+    "locks": 52,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     9
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     20
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     30
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     30
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     102
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     173
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 173,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 64,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "B艇打捞塑料瓶，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 760,
+    "locks": 35,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     11
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     36
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     51
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     51
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     93
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     197
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 197,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 65,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "A艇打捞泡沫块",
+   "layout": 0,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 679,
+    "locks": 30,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     6
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     47
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     63
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     63
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 165,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 66,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "B艇打捞泡沫块",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 617,
+    "locks": 39,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     34
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     70
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     82
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     82
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 156,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 67,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "A艇打捞泡沫块，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 835,
+    "locks": 35,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     11
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     53
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     70
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     70
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 201,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 68,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "B艇打捞泡沫块，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 724,
+    "locks": 29,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     48
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     79
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "east",
+     92
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "east",
+     92
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 183,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 69,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "A艇打捞泡沫块，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 625,
+    "locks": 32,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     14
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     55
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "west",
+     69
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "west",
+     69
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 157,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 70,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "B艇打捞泡沫块，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 815,
+    "locks": 30,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     48
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     82
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     92
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     92
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 197,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 71,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "A艇打捞所有水面漂浮物",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 806,
+    "locks": 86,
+    "gates": 6
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     5
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     10
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     19
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     19
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     32
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     80
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     95
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     95
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     122
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     202
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 202,
+   "remaining": [],
+   "case": 72,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "B艇打捞所有水面漂浮物",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 773,
+    "locks": 91,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     8
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     16
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     28
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     28
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     54
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     60
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     71
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     71
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     123
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     201
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 201,
+   "remaining": [],
+   "case": 73,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "A艇打捞所有水面漂浮物，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 861,
+    "locks": 102,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     16
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     24
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     39
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     39
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     68
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     87
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     105
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     105
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     133
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     226
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 226,
+   "remaining": [],
+   "case": 74,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "B艇打捞所有水面漂浮物，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 896,
+    "locks": 110,
+    "gates": 5
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     12
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     38
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     55
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     55
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     68
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     74
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     87
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "east",
+     87
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     111
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "east",
+     236
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 236,
+   "remaining": [],
+   "case": 75,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "A艇打捞所有水面漂浮物，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 724,
+    "locks": 85,
+    "gates": 9
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     3
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     8
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     23
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "west",
+     23
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     32
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     80
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     93
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "west",
+     93
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     114
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     183
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 183,
+   "remaining": [],
+   "case": 76,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "B艇打捞所有水面漂浮物，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 762,
+    "locks": 81,
+    "gates": 10
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     5
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     30
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     46
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     46
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     66
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     88
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     102
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     102
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     121
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     202
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 202,
+   "remaining": [],
+   "case": 77,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "A艇捡拾塑料瓶",
+   "layout": 0,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 693,
+    "locks": 51,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     7
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     18
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     33
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     33
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     94
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     172
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 172,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 78,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "B艇捡拾塑料瓶",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 647,
+    "locks": 57,
+    "gates": 6
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     10
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     34
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     51
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     51
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     93
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     174
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 174,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 79,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "A艇捡拾塑料瓶，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 817,
+    "locks": 54,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     12
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     23
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     39
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     39
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     104
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     201
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 201,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 80,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "B艇捡拾塑料瓶，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 730,
+    "locks": 65,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     30
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     48
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     48
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     60
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     182
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 182,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 81,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "A艇捡拾塑料瓶，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 632,
+    "locks": 53,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     5
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     16
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     26
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     26
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     79
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     149
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 149,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 82,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "B艇捡拾塑料瓶，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 772,
+    "locks": 47,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     7
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     32
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     48
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     48
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     90
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     197
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 197,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 83,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "A艇捡拾泡沫块",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 749,
+    "locks": 54,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     34
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     56
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     72
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     72
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 186,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 84,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "B艇捡拾泡沫块",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 642,
+    "locks": 48,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     43
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     81
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     93
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     93
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 167,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 85,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "A艇捡拾泡沫块，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 759,
+    "locks": 29,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     25
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     47
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     67
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     67
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 185,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 86,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "B艇捡拾泡沫块，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 743,
+    "locks": 29,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     48
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     79
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "east",
+     92
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "east",
+     92
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 182,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 87,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "A艇捡拾泡沫块，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 632,
+    "locks": 29,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     10
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     53
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "west",
+     66
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "west",
+     66
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 154,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 88,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "B艇捡拾泡沫块，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 785,
+    "locks": 30,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     48
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     82
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     92
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     92
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 197,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 89,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "A艇捡拾所有水面漂浮物",
+   "layout": 0,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 740,
+    "locks": 82,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     11
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     16
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     25
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     25
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     38
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     75
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     91
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     91
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     117
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     195
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 195,
+   "remaining": [],
+   "case": 90,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "B艇捡拾所有水面漂浮物",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 699,
+    "locks": 90,
+    "gates": 6
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     11
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     22
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     22
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     48
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     64
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     76
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     76
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     88
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     183
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 183,
+   "remaining": [],
+   "case": 91,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "A艇捡拾所有水面漂浮物，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 869,
+    "locks": 78,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     6
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     10
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     20
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     20
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     46
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     80
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     96
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     96
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     122
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     216
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 216,
+   "remaining": [],
+   "case": 92,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "B艇捡拾所有水面漂浮物，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 785,
+    "locks": 100,
+    "gates": 9
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     8
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     15
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     28
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "east",
+     28
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     54
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     59
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     84
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "east",
+     84
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     96
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     217
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 217,
+   "remaining": [],
+   "case": 93,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "A艇捡拾所有水面漂浮物，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 677,
+    "locks": 85,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     9
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     15
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     30
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "west",
+     30
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     39
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     77
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     90
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "west",
+     90
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     111
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     180
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 180,
+   "remaining": [],
+   "case": 94,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "B艇捡拾所有水面漂浮物，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 904,
+    "locks": 82,
+    "gates": 6
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     11
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     21
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     32
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     32
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     58
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     65
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     75
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     75
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     123
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     232
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 232,
+   "remaining": [],
+   "case": 95,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "A艇捞起塑料瓶",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 755,
+    "locks": 50,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     3
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     14
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     103
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     180
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 180,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 96,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "B艇捞起塑料瓶",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 647,
+    "locks": 52,
+    "gates": 5
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     6
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     30
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     46
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     46
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     88
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     167
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 167,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 97,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "A艇捞起塑料瓶，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 687,
+    "locks": 47,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     8
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     26
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     41
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     41
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     77
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     171
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 171,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 98,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "B艇捞起塑料瓶，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 748,
+    "locks": 72,
+    "gates": 5
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     10
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     36
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     53
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     53
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     66
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     192
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 192,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 99,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "A艇捞起塑料瓶，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 726,
+    "locks": 52,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     11
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     22
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     32
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     32
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     102
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     173
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 173,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 100,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "B艇捞起塑料瓶，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 764,
+    "locks": 44,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     3
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     28
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     44
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     44
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     86
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     187
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 187,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 101,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "A艇捞起泡沫块",
+   "layout": 0,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 684,
+    "locks": 31,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     9
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     50
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     66
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     66
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 168,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 102,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "B艇捞起泡沫块",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 662,
+    "locks": 29,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     48
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     79
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     91
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     91
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 167,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 103,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "A艇捞起泡沫块，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 825,
+    "locks": 40,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     14
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     56
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     72
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     72
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 201,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 104,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "B艇捞起泡沫块，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 741,
+    "locks": 46,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     44
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     83
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "east",
+     96
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "east",
+     96
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 188,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 105,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "A艇捞起泡沫块，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 624,
+    "locks": 30,
+    "gates": 2
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     6
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     47
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "west",
+     60
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "west",
+     60
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 148,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 106,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "B艇捞起泡沫块，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 805,
+    "locks": 29,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     48
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     82
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     93
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     93
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 197,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 107,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "A艇捞起所有水面漂浮物",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 796,
+    "locks": 82,
+    "gates": 6
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     8
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     12
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     22
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     22
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     46
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     80
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     95
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     95
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     121
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     202
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 202,
+   "remaining": [],
+   "case": 108,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "B艇捞起所有水面漂浮物",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 763,
+    "locks": 93,
+    "gates": 8
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     10
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     17
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     29
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     29
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     55
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     62
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     73
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     73
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     123
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     201
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 201,
+   "remaining": [],
+   "case": 109,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 6
+   }
+  },
+  {
+   "text": "A艇捞起所有水面漂浮物，装满后返回东泊位卸载",
+   "layout": 2,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 761,
+    "locks": 71,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     27
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     34
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     43
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     43
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     65
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     80
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     96
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     96
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     103
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     199
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 199,
+   "remaining": [],
+   "case": 110,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 8
+   }
+  },
+  {
+   "text": "B艇捞起所有水面漂浮物，装满后返回东泊位卸载",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 801,
+    "locks": 106,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     11
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     24
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "east",
+     24
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     50
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     56
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     75
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "east",
+     75
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     87
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     215
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 215,
+   "remaining": [],
+   "case": 111,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 0
+   }
+  },
+  {
+   "text": "A艇捞起所有水面漂浮物，满舱后回西泊位卸载",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 715,
+    "locks": 83,
+    "gates": 6
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     5
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     10
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     25
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "west",
+     25
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     33
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     80
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     93
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "west",
+     93
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     113
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "west",
+     183
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 183,
+   "remaining": [],
+   "case": 112,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 2
+   }
+  },
+  {
+   "text": "B艇捞起所有水面漂浮物，满舱后回西泊位卸载",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 845,
+    "locks": 83,
+    "gates": 6
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     7
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     15
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     26
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     26
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     53
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     68
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     79
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     79
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     91
+    ],
+    [
+     "P1",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     216
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 216,
+   "remaining": [],
+   "case": 113,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 4
+   }
+  },
+  {
+   "text": "双艇清理所有水面漂浮物",
+   "layout": 0,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 1440,
+    "locks": 78,
+    "gates": 5
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     8
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     18
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     18
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     31
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     47
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     47
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     62
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     156
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 191,
+   "remaining": [],
+   "case": 114,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {}
+  },
+  {
+   "text": "A艇只收集塑料瓶，B艇只收集泡沫块",
+   "layout": 0,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 1447,
+    "locks": 86,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     14
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     33
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     68
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     79
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     79
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     91
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     168
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 181,
+   "remaining": [],
+   "case": 115,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {}
+  },
+  {
+   "text": "双艇清理所有水面漂浮物",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 1477,
+    "locks": 104,
+    "gates": 5
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     8
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     18
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     18
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     30
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     47
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     47
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     64
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     159
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 198,
+   "remaining": [],
+   "case": 116,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {}
+  },
+  {
+   "text": "A艇只收集塑料瓶，B艇只收集泡沫块",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 1589,
+    "locks": 101,
+    "gates": 6
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     14
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     33
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     80
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     91
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     91
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     102
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     181
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 198,
+   "remaining": [],
+   "case": 117,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {}
+  },
+  {
+   "text": "双艇清理所有水面漂浮物",
+   "layout": 1,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 1455,
+    "locks": 79,
+    "gates": 5
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     8
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     18
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     18
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     28
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     45
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     45
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     62
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     157
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 195,
+   "remaining": [],
+   "case": 118,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {}
+  },
+  {
+   "text": "A艇只收集塑料瓶，B艇只收集泡沫块",
+   "layout": 1,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 1383,
+    "locks": 83,
+    "gates": 6
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     14
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     39
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     63
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     74
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     74
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     89
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     161
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 175,
+   "remaining": [],
+   "case": 119,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {}
+  },
+  {
+   "text": "双艇清理所有水面漂浮物",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 1461,
+    "locks": 89,
+    "gates": 5
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     8
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     18
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     18
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     28
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     45
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     45
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     65
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     158
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 198,
+   "remaining": [],
+   "case": 120,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {}
+  },
+  {
+   "text": "A艇只收集塑料瓶，B艇只收集泡沫块",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 1531,
+    "locks": 93,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     14
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     32
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     71
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     77
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     89
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     89
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     177
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 189,
+   "remaining": [],
+   "case": 121,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {}
+  },
+  {
+   "text": "双艇清理所有水面漂浮物",
+   "layout": 2,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 1546,
+    "locks": 88,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     3
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     9
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     28
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     32
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     40
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     40
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     44
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     44
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     62
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     174
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 190,
+   "remaining": [],
+   "case": 122,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {}
+  },
+  {
+   "text": "A艇只收集塑料瓶，B艇只收集泡沫块",
+   "layout": 2,
+   "traffic": false,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 1528,
+    "locks": 66,
+    "gates": 6
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     19
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     29
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     36
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     36
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     38
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     68
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     79
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     79
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     81
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     176
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 180,
+   "remaining": [],
+   "case": 123,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {}
+  },
+  {
+   "text": "双艇清理所有水面漂浮物",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 1621,
+    "locks": 83,
+    "gates": 5
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     3
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     5
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     9
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     19
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     19
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     28
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     43
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "west",
+     43
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     64
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     184
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 199,
+   "remaining": [],
+   "case": 124,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {}
+  },
+  {
+   "text": "A艇只收集塑料瓶，B艇只收集泡沫块",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 1615,
+    "locks": 106,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     5
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     15
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     30
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     30
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     32
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     72
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     82
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     82
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     101
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     198
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 198,
+   "remaining": [],
+   "case": 125,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {}
+  },
+  {
+   "text": "请把港池里的漂浮物清理干净，不要碰浮标",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 816,
+    "locks": 89,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     23
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     27
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     37
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     37
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     57
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     84
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     101
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     101
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     128
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     222
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 222,
+   "remaining": [],
+   "case": 126,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 19
+   }
+  },
+  {
+   "text": "收集水面漂浮物，不要回收塑料瓶",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 798,
+    "locks": 31,
+    "gates": 3
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     18
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     80
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     95
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     95
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 201,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3"
+   ],
+   "case": 127,
+   "passed": true,
+   "expected": [
+    0,
+    2
+   ],
+   "setup": {
+    "delay": 12
+   }
+  },
+  {
+   "text": "只捡拾漂浮的塑料瓶，满了就回码头卸货",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 689,
+    "locks": 51,
+    "gates": 4
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     29
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     40
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     54
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     54
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     115
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     193
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 193,
+   "remaining": [
+    "F1",
+    "F2"
+   ],
+   "case": 128,
+   "passed": true,
+   "expected": [
+    3,
+    0
+   ],
+   "setup": {
+    "delay": 26
+   }
+  },
+  {
+   "text": "双艇清理水面漂浮物，装满后回东泊位卸载",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 1579,
+    "locks": 113,
+    "gates": 7
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     19
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     19
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     23
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     32
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     32
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "aboard",
+     null,
+     46
+    ],
+    [
+     "P2",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     65
+    ],
+    [
+     "P3",
+     "bottle",
+     "B",
+     "land",
+     "east",
+     65
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     85
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "east",
+     227
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 227,
+   "remaining": [],
+   "case": 129,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "delay": 15
+   }
+  },
+  {
+   "text": "穿过浮标门，再清理水面漂浮物，不要拍照",
+   "layout": 2,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 871,
+    "locks": 86,
+    "gates": 6
+   },
+   "transitions": [
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     19
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     35
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     44
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     44
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     80
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     104
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     120
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "east",
+     120
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     127
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     223
+    ]
+   ],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 223,
+   "remaining": [],
+   "case": 130,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {}
+  },
+  {
+   "text": "只收集泡沫块",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 1062,
+    "locks": 87,
+    "gates": 8
+   },
+   "transitions": [
+    [
+     "F1",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     6
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     16
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     31
+    ],
+    [
+     "F1",
+     "foam",
+     "A",
+     "land",
+     "east",
+     31
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     59
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     103
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     118
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     118
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "aboard",
+     null,
+     259
+    ],
+    [
+     "F2",
+     "foam",
+     "A",
+     "land",
+     "west",
+     272
+    ]
+   ],
+   "checks": [
+    "暂停、继续、撤单保留船货与改派",
+    "途中单独返港卸载"
+   ],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 272,
+   "remaining": [],
+   "case": 131,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "exercise": "reassign"
+   }
+  },
+  {
+   "text": "A艇收集塑料瓶，B艇收集泡沫块",
+   "layout": 1,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 1572,
+    "locks": 88,
+    "gates": 5
+   },
+   "transitions": [
+    [
+     "P1",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     4
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     14
+    ],
+    [
+     "P1",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "P2",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     29
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     32
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "aboard",
+     null,
+     102
+    ],
+    [
+     "P3",
+     "bottle",
+     "A",
+     "land",
+     "east",
+     177
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "aboard",
+     null,
+     233
+    ],
+    [
+     "F1",
+     "foam",
+     "B",
+     "land",
+     "west",
+     243
+    ],
+    [
+     "F2",
+     "foam",
+     "B",
+     "land",
+     "west",
+     243
+    ]
+   ],
+   "checks": [
+    "离网保留船货与重新入网"
+   ],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 342,
+   "remaining": [],
+   "case": 132,
+   "passed": true,
+   "expected": [
+    3,
+    2
+   ],
+   "setup": {
+    "exercise": "reconnect"
+   }
+  },
+  {
+   "text": "只收集泡沫块",
+   "layout": 0,
+   "traffic": true,
+   "done": true,
+   "photos": 0,
+   "collisions": 0,
+   "counts": {
+    "frames": 634,
+    "locks": 0,
+    "gates": 0
+   },
+   "transitions": [],
+   "checks": [],
+   "badContact": false,
+   "badUnload": false,
+   "overcapacity": false,
+   "planned": true,
+   "time": 141,
+   "remaining": [
+    "P1",
+    "P2",
+    "P3",
+    "F1",
+    "F2"
+   ],
+   "case": 133,
+   "passed": true,
+   "expected": [
+    0,
+    0
+   ],
+   "setup": {
+    "placements": [
+     [
+      28,
+      -17
+     ],
+     [
+      29,
+      -20
+     ],
+     [
+      30,
+      -19
+     ],
+     [
+      28,
+      -22
+     ],
+     [
+      30,
+      -24
+     ]
+    ]
+   }
+  }
+ ]
+}

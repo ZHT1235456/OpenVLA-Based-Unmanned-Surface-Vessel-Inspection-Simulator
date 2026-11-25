@@ -1,3 +1,5 @@
+import {waterPoint} from './bow-sensor.js';
+
 export const capacity = 2;
 export const litterNames = {bottle:'塑料瓶', foam:'泡沫块', litter:'水面漂浮物', unload:'船舱卸载'};
 export const intake = {near:1.35, far:2.22, halfWidth:.53};
@@ -6,7 +8,6 @@ const seeds = [
   ['F1','foam',2,18], ['F2','foam',-10,2]
 ];
 const gap = (a,b) => Math.hypot(b.x-a.x,b.z-a.z);
-const matches = (item,filter) => filter==='litter'||item.kind===filter;
 const berthName = id => id==='east'?'东泊位':'西泊位';
 const pathLength = points => points.slice(1).reduce((sum,p,i)=>sum+gap(points[i],p),0);
 export const unloadingPoint = (berth,id) => ({x:berth.x+(id==='B'?3.35:-3.35),z:berth.z+2.9});
@@ -35,12 +36,13 @@ export class HarborLitter {
     }
   }
   cargo(id){return this.items.filter(item=>item.state==='aboard'&&item.vessel===id)}
-  collect(item,run){
+  takeAtIntake(run){
     const id=run.id||'A';
-    if(item.state!=='water'||item.claim!==id||this.cargo(id).length>=capacity||
-        !intakeContact(run.boat,item))return false;
-    Object.assign(item,{state:'aboard',claim:null,vessel:id});
-    return true;
+    if(this.cargo(id).length>=capacity)return null;
+    // A physical contact can pick up either material, including a policy mistake.
+    const item=this.items.find(i=>i.state==='water'&&intakeContact(run.boat,i));
+    if(item)Object.assign(item,{state:'aboard',vessel:id});
+    return item;
   }
   unload(run,berth){
     if(gap(run.boat,unloadingPoint(run.layout[berth],run.id))>.85||run.boat.speed>.32)return [];
@@ -50,99 +52,180 @@ export class HarborLitter {
   }
 }
 
-// A collection leg follows a moving object. Each return leg ends at a fixed unloading berth.
+// Each strip covers the charted cleanup basin. Its coordinates are independent of litter placement.
+function surveyPoints(run){
+  const left=-19,right=19,rows=[21,14.8,3.9,-2,-8];
+  const fromWest=run.id==='B';
+  const passes=fromWest?[...rows].reverse():rows;
+  const targets=[];
+  let east=fromWest;
+  for(const z of passes){
+    if(targets.length)targets.push({x:east?left:right,z});
+    targets.push({x:east?right:left,z});east=!east;
+  }
+  // Cross the first transects at right angles to observe gaps left by diversions and unloading.
+  const columns=fromWest?[-12,0,12]:[12,0,-12];
+  for(const [i,x] of columns.entries()){
+    const near=(i%2===0)===fromWest?22:-8,far=near===22?-8:22;
+    for(const z of [near,far]){
+      for(const offset of [0,2,-2,4,-4]){
+        const p={x:x+offset,z};
+        if(run.navigationMap.clear(p,p)){targets.push(p);break}
+      }
+    }
+  }
+  return targets.filter(p=>run.navigationMap.clear(p,p));
+}
+
 export class CleanupMission {
   constructor(run,task){
     this.run=run;this.world=run.litter;this.world.used=true;
-    this.id=run.id||'A';this.filter=task.target;this.berth=task.berth||(this.id==='A'?'east':'west');
-    this.phase='';this.item=null;this.nextCheck=0;this.delivered=0;this.dwell=0;
+    this.id=run.id||'A';this.filter=task.target;this.words=task.words||('收集'+litterNames[task.target]);
+    this.berth=task.berth||(this.id==='A'?'east':'west');
+    this.survey=task.target==='unload'?[]:surveyPoints(run);this.index=0;
+    this.phase='survey';this.delivered=0;this.dwell=0;this.gate=false;
+    this.track=null;this.candidate=null;this.lastSeen=-Infinity;
+    this.map=run.navigationMap;this.moored=null;
   }
-  release(){
-    if(this.item?.claim===this.id)this.item.claim=null;
-    this.item=null;
-  }
+  release(){this.track=null;this.candidate=null;this.gate=false}
   get label(){
-    if(this.phase==='collect'&&this.item)return '驶向'+litterNames[this.item.kind]+' '+this.item.id;
+    if(this.phase==='collect')return '船首视觉对准'+litterNames[this.track?.kind||this.filter];
     if(this.phase==='return')return '返回'+berthName(this.berth)+'卸载';
-    if(this.phase==='wait')return '等候邻艇收集';
     if(this.phase==='blocked')return '等待可航路径';
-    return '选择清漂目标';
+    return '视觉搜索'+litterNames[this.filter]+' · 航线 '+(this.index+1)+'/'+this.survey.length;
   }
   routeTo(points,target,announce){
-    const r=this.run, length=pathLength(points);
+    const r=this.run,length=pathLength(points);
+    this.progress=null;
     r.route={legs:[{target,points}],distance:length,blocked:null};r.waypoint=1;r.revision++;
     r.act={throttle:0,turn:0};
     if(announce)r.log('规划','A* 航线已生成 · 1 个航段 · '+length.toFixed(1)+' m · '+this.label);
   }
+  pathBetween(from,to){
+    if(!this.moored||this.map.clear(from,from))return this.map.findPath(from,to);
+    // Leave a neighbor's clearance perimeter if its last reported stop put us just inside it.
+    const m=this.moored,angle=Math.atan2(from.z-m.z,from.x-m.x);
+    for(const offset of [0,.45,-.45,.9,-.9]){
+      const exit={x:m.x+5.3*Math.cos(angle+offset),z:m.z+5.3*Math.sin(angle+offset)};
+      if(!this.run.navigationMap.clear(from,exit))continue;
+      const path=this.map.findPath(exit,to);
+      if(path)return [{x:from.x,z:from.z},...path];
+    }
+    return null;
+  }
   plan(announce=true){
-    const r=this.run, water=this.world.items.filter(i=>i.state==='water'&&matches(i,this.filter));
-    const cargo=this.world.cargo(this.id);
-    this.nextCheck=r.time+1;this.dwell=0;
-    if(this.phase==='return'||cargo.length>=capacity||(cargo.length&&(!water.length||this.filter==='unload'||water.every(i=>i.claim&&i.claim!==this.id)))){
-      this.release();this.phase='return';
+    const r=this.run,cargo=this.world.cargo(this.id);
+    this.release();this.dwell=0;
+    if(this.phase==='return'||cargo.length>=capacity||this.index>=this.survey.length&&(cargo.length||this.survey.length)){
+      this.phase='return';
       const berth=r.layout[this.berth],end=unloadingPoint(berth,this.id);
       const entry={x:end.x+(this.id==='B'?1.8:-1.8),z:berth.z-3.5};
-      let path;
-      if(gap(r.boat,end)<5&&r.navigationMap.clear(r.boat,end))path=r.navigationMap.findPath(r.boat,end);
-      else{
-        const approach=r.navigationMap.findPath(r.boat,entry),alongside=r.navigationMap.findPath(entry,end);
-        if(approach&&alongside)path=[...approach,...alongside.slice(1)];
+      let path=this.pathBetween(r.boat,end);
+      if(gap(r.boat,end)>=5){
+        const a=this.pathBetween(r.boat,entry),b=this.map.findPath(entry,end);
+        if(a&&b)path=[...a,...b.slice(1)];
       }
       if(path){this.routeTo(path,this.berth,announce);return true}
-    }else if(!water.length){
-      this.release();r.route=null;
-      r.finish('清漂完成 · 本次卸载 '+this.delivered+' 件'+(this.filter==='unload'?'':' · 所选水面目标已清完'),null);
-      return false;
-    }else{
-      let best=null,bestPath=null,bestLength=Infinity;
-      const available=water.filter(i=>!i.claim||i.claim===this.id);
-      if(!available.length){this.release();this.phase='wait';r.route=null;return false}
-      for(const item of (this.item&&available.includes(this.item)?[this.item]:available)){
-        const path=r.navigationMap.findPath(r.boat,{x:item.x,z:item.z});
-        if(!path)continue;
-        const length=pathLength(path);
-        if(length<bestLength){best=item;bestPath=path;bestLength=length}
-      }
-      if(best){
-        this.item=best;best.claim=this.id;this.phase='collect';
-        // Leave enough room for the bow to turn towards an object drifting alongside the hull.
-        if(bestLength<intake.near+.04&&!intakeContact(r.boat,best)){
-          const angle=r.boat.yaw;
-          for(const offset of [0,1.57,-1.57,Math.PI]){
-            const start={x:best.x-3.5*Math.sin(angle+offset),z:best.z+3.5*Math.cos(angle+offset)};
-            const path=r.navigationMap.findPath(r.boat,start);
-            if(path&&r.navigationMap.clear(start,best)){bestPath=[...path,{x:best.x,z:best.z}];break}
-          }
-        }
-        this.routeTo(bestPath,best.id,announce);return true;
-      }
+      this.phase='blocked';r.route={legs:[],distance:0,blocked:r.active};
+      r.log('规划','路径不可达 · 卸载泊位');this.retry=r.time+1;return false;
     }
-    if(this.phase!=='blocked')r.log('规划','路径不可达 · '+this.label);
-    this.release();this.phase='blocked';r.route={legs:[],distance:0,blocked:r.active};return false;
+    this.phase='survey';
+    while(this.index<this.survey.length){
+      const path=this.pathBetween(r.boat,this.survey[this.index]);
+      if(path){this.routeTo(path,'survey',announce);return true}
+      this.index++;
+    }
+    if(this.survey.length||cargo.length){this.phase='return';return this.plan(announce)}
+    r.finish('清漂完成 · 本次卸载 '+this.delivered+' 件'+(this.filter==='unload'?'':' · 已完成作业区目视搜索'),null);
+    return false;
+  }
+  applyVision(obs,result){
+    const r=this.run;
+    const [confidence,u,v,material]=result.visualFocus;
+    const [throttle,turn,gate]=result.visualControl;
+    if(![confidence,u,v,material,throttle,turn,gate].every(Number.isFinite))throw Error('船首视觉策略输出无效');
+    const p=waterPoint(obs.pose,u,v),kind=material>.5?'foam':'bottle',peer=r.peerVisualClaim;
+    const forbidden=peer&&r.time-peer.received<1.8&&p&&peer.kind===kind&&gap(peer,p)<1.6&&
+      (!this.track||this.id==='B');
+    const visible=confidence>=.55&&p&&gap(obs.pose,p)<10.5&&Math.abs(p.x)<=21&&p.z>=-11&&p.z<=24&&
+      !forbidden&&(!this.rejected||r.time>this.rejected.until||gap(this.rejected,p)>1.7)&&this.map.clear(r.boat,p);
+    this.gate=false;
+    if(visible){
+      const confirmed=this.track&&this.track.kind===kind&&gap(this.track,p)<2||
+        this.candidate&&this.candidate.kind===kind&&gap(this.candidate,p)<1.65;
+      this.candidate={...p,kind};
+      if(confirmed){
+        if(this.phase!=='collect'){
+          const path=this.map.findPath(r.boat,p);
+          if(!path)return false;
+          this.phase='collect';this.track=this.candidate;this.started=r.time;
+          this.routeTo(path,'visual',false);
+          r.log('视觉','船首锁定'+litterNames[kind]+' · 规划抵近航段');
+        }else{
+          const points=r.route.legs[0].points;points[points.length-1]=p;
+        }
+        this.track=this.candidate;this.lastSeen=r.time;
+        this.gate=gate>=.5;
+        r.act={throttle,turn};return true;
+      }
+    }else this.candidate=null;
+    if(this.phase==='collect'){
+      r.act={throttle:0,turn:0};
+      return true;
+    }
+    return false;
   }
   refresh(){
     const r=this.run;
-    if(r.time<this.nextCheck)return;
-    this.nextCheck=r.time+1;
-    if(this.phase==='wait'||this.phase==='blocked'){this.plan();return}
-    if(this.phase!=='collect')return;
-    const end=r.route?.legs[0]?.points.at(-1);
-    if(!end||gap(end,this.item)>.38||(gap(r.boat,this.item)<intake.near&&!intakeContact(r.boat,this.item)&&r.waypoint===r.route.legs[0].points.length-1))this.plan(false);
+    const peer=r.peerVessel,stationary=peer&&r.time-peer.time<2.4&&(!peer.active||peer.held)&&peer.speed<.25;
+    if(stationary&&gap(r.boat,peer)>4.65&&(!this.moored||gap(this.moored,peer)>.8)){
+      this.moored={x:peer.x,z:peer.z};this.map=r.navigationMap.withMooredVessel(this.moored);this.plan(false);return;
+    }
+    if(!stationary&&this.moored){this.moored=null;this.map=r.navigationMap;this.plan(false);return}
+    if(this.phase==='blocked'&&r.time>=this.retry){this.phase='return';this.plan();return}
+    if(this.phase==='survey'&&r.nextWaypoint){
+      const d=gap(r.boat,r.nextWaypoint),key=this.index+':'+r.waypoint;
+      if(!this.progress||this.progress.key!==key||d<this.progress.best-.45){
+        this.progress={key,best:d,at:r.time};
+      }else if(r.time-this.progress.at>12){
+        // At a blocked survey vantage the perpendicular transects still cover the same water.
+        // Never advance a delivery leg until cargo has physically been unloaded.
+        this.progress=null;
+        if(this.retriedIndex===this.index){
+          r.log('规划','搜索航点持续受阻，从交叉航线继续观测');this.index++;
+        }else this.retriedIndex=this.index;
+        this.plan(false);return;
+      }
+    }
+    if(this.phase==='collect'&&(r.time-this.lastSeen>.85||r.time-this.started>13)){
+      if(r.time-this.started>13)this.rejected={...this.track,until:r.time+12};
+      this.plan(false);
+    }
   }
   afterMove(dt){
     const r=this.run;
-    if(this.phase==='collect'&&this.world.collect(this.item,r)){
-      r.log('入舱',litterNames[this.item.kind]+' '+this.item.id+' 通过船首收集口 · 舱载 '+this.world.cargo(this.id).length+'/'+capacity);
-      this.release();this.plan();
+    if(this.phase==='collect'&&this.gate){
+      const picked=this.world.takeAtIntake(r);
+      if(picked){
+        r.log('入舱',litterNames[picked.kind]+' '+picked.id+' 通过船首收集口 · 舱载 '+this.world.cargo(this.id).length+'/'+capacity);
+        this.plan();return;
+      }
+    }
+    const peer=r.peerVessel,goal=r.nextWaypoint;
+    const occupied=goal&&peer&&r.time-peer.time<2.4&&peer.speed<.5&&gap(peer,goal)<6&&gap(r.boat,goal)<8;
+    if(this.phase==='survey'&&goal&&r.waypoint===r.route.legs[0].points.length-1&&(gap(r.boat,goal)<.83||occupied)){
+      this.index++;this.plan(false);
     }else if(this.phase==='return'){
       const atDock=gap(r.boat,unloadingPoint(r.layout[this.berth],this.id))<.85&&r.boat.speed<.32;
       this.dwell=atDock?this.dwell+dt:0;
       if(this.dwell<.7)return;
       const cargo=this.world.unload(r,this.berth);
-      if(!cargo.length)return;
       this.delivered+=cargo.length;
-      r.log('卸载',berthName(this.berth)+'收到 '+cargo.length+' 件 · '+cargo.map(i=>litterNames[i.kind]+' '+i.id).join('、'));
-      this.phase='';this.plan();
+      if(cargo.length)r.log('卸载',berthName(this.berth)+'收到 '+cargo.length+' 件 · '+cargo.map(i=>litterNames[i.kind]+' '+i.id).join('、'));
+      if(this.index>=this.survey.length){
+        r.finish('清漂完成 · 本次卸载 '+this.delivered+' 件'+(this.filter==='unload'?'':' · 已完成作业区目视搜索并靠泊'),null);return;
+      }
+      this.phase='survey';this.plan();
     }
   }
 }

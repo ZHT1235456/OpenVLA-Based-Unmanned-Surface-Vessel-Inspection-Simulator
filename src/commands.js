@@ -63,7 +63,11 @@ function cleanupClause(clause){
  const generic=/清漂|漂浮物|垃圾/.test(positive);
  if(!generic&&!included.size)return error;
  const kinds=[...(included.size?included:['bottle','foam'])].filter(t=>!exclusions.has(t));
- return kinds.length?subtask(kinds.length===2?'litter':kinds[0],'cleanup',specified):error;
+ if(!kinds.length)return error;
+ const target=kinds.length===2?'litter':kinds[0];
+ // Expand explicit exclusions before sending the permitted material clause to the language branch.
+ const words=exclusions.size?'收集'+litterNames[target]:positive;
+ return subtask(target,'cleanup',{...specified,words});
 }
 function subtask(target,kind,extra={}){return {target,kind,conditional:false,framing:false,...extra}}
 function resolve(label,ctx,reference){

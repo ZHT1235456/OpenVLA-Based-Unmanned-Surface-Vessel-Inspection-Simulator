@@ -34,7 +34,7 @@ export class HarborFleet {
   if(this.dual===on)return;
   this.dual=on;this.outbox=[];this.telemetry={A:null,B:null};this.lastHeartbeat=-Infinity;this.rtt=null;
   this.peerYield={A:false,B:false};this.touching=false;
-  for(const run of Object.values(this.boats))run.awaitingOrder=false;
+  for(const run of Object.values(this.boats)){run.awaitingOrder=false;run.peerVessel=null;run.peerVisualClaim=null}
   const b=this.boats.B;b.revision++;b.act={throttle:0,turn:0};b.boat.speed=0;b.boat.turn=0;b.time=this.time;
   if(on){
    this.event('岸','AB','组网','A、B 两艇已加入港池通信');this.sendStates();
@@ -56,7 +56,8 @@ export class HarborFleet {
  sendStates(){
   for(const id of ['A','B']){
    const run=this.boats[id];
-   this.send(id,otherBoat(id),'STATE',{...run.boat,active:!!run.active,held:run.held,yieldingToPeer:this.peerYield[id],task:describe(run.active)});
+   this.send(id,otherBoat(id),'STATE',{...run.boat,active:!!run.active,held:run.held,yieldingToPeer:this.peerYield[id],task:describe(run.active),
+     visualClaim:run.cleanup?.track?{...run.cleanup.track}:null});
   }
   this.lastHeartbeat=this.time;
  }
@@ -113,7 +114,9 @@ export class HarborFleet {
   const d=p.data,id=p.to,run=this.boats[id];
   switch(p.type){
    case 'STATE':
-    this.telemetry[id]={...d,time:p.sent,received:this.time};break;
+    this.telemetry[id]={...d,time:p.sent,received:this.time};
+    run.peerVessel=this.telemetry[id];
+    run.peerVisualClaim=d.visualClaim?{...d.visualClaim,received:this.time}:null;break;
    case 'ORDER':
     if(this.applyOrder(id,d)){
      this.event(p.from,id,'派单',this.lastOrder[id]);

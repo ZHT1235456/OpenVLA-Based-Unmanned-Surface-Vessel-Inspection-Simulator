@@ -1,6 +1,6 @@
 # 基于 OpenVLA 的无人艇巡检模拟
 
-我们开发了这款面向三维港池场景的无人艇巡检模拟软件。操作者可以用中文指挥单艇检查航标、拍照或清理水面漂浮物，也可以给 A、B 两艘艇分派不同的任务。例如，输入“给木栈桥旁的黄标拍照”后，A艇会先规划可航路径，再驶近黄标完成拍摄。电子海图记录航行轨迹，相册自动留存拍摄画面（图 1）。
+我们开发了这款面向三维港池场景的无人艇巡检模拟软件。操作者可以用中文指挥单艇检查航标、拍照或清理水面漂浮物，也可以给 A、B 两艘艇分派不同的任务。例如，输入“给木栈桥旁的黄标拍照”后，A艇会先规划可航路径，再驶近黄标完成拍摄。电子海图记录航行轨迹，相册自动留存拍摄画面（图 1）。清漂时，艇用船首画面区分塑料瓶和泡沫块，将选中的漂浮物收入舱内，再送回泊位卸载。
 
 **作者**：朱华天，GPT-6.2 Astra，Gemini 4 Neon
 
@@ -12,7 +12,7 @@
 
 **图 1**　A艇在木栈桥旁完成拍摄。左下方海图显示已航轨迹，相邻的船首画面中可清晰辨认目标黄标，右侧工作台提示该拍摄任务已完成。
 
-下载发布页的 **Windows x64 中文便携包**，解压后双击 **基于OpenVLA的无人艇巡检模拟.exe**，等待右上角显示“模型就绪”。v1.1.0 的 EXE 大小为 28,130,304 字节（26.83 MiB）。包内附六页中文开发日志，第 5 章用桌面截图和码头实收记录说明水面清漂流程。在已安装 Microsoft Edge WebView2 的 Windows x64 电脑上可离线运行。软件默认全屏，点击右上角“窗口模式”可切换为窗口显示，再次点击可恢复全屏。
+下载发布页的 **Windows x64 中文便携包**，解压后双击 **基于OpenVLA的无人艇巡检模拟.exe**，等待右上角显示“模型就绪”。v1.2.0 的 EXE 大小为 28,298,752 字节（26.99 MiB）。包内附六页中文开发日志，第 5 章用桌面截图和码头实收记录说明水面清漂流程。在已安装 Microsoft Edge WebView2 的 Windows x64 电脑上可离线运行。软件默认全屏，点击右上角“窗口模式”可切换为窗口显示，再次点击可恢复全屏。
 
 ## 试一趟巡检
 
@@ -45,13 +45,17 @@
 | 清理所有水面漂浮物 | 单艇分三趟卸下五件，最后一趟载一件。 |
 | A艇收集塑料瓶，B艇收集泡沫块 | 两艇在同一港池分工，分别回东、西泊位卸载。 |
 
-海图上的椭圆代表塑料瓶，方块代表泡沫，圆圈标出艇已选定的目标。规划器在起航前求出可航路径，并随漂移更新航点。目标进入船首收集口才算入舱，每艇最多装两件。满舱或已收完所选类别时，船会靠泊，停稳后才记入码头累计。可在指令中指定“装满后返回西泊位卸载”。中途撤单会保留船上货物，再发“回码头卸载”即可送岸。单独的清漂任务全程关闭快门。
+艇先沿 A* 规划的航线搜索港池。地标和泊位登记在海图上，漂浮物由船首相机发现。海图用椭圆和方块显示仿真中的瓶子和泡沫，艇色圆圈显示相机估计的锁定位置。目标通过开启的船首收集口才计入船舱。每艇可装两件，满舱或完成搜索后返港，停稳才卸载。可指定“装满后返回西泊位卸载”。撤单会保留船上货物，再发“回码头卸载”即可送岸。清漂期间快门关闭。
 
-![Windows 发布版中的清漂作业。工作台显示本艇已装入一块泡沫，海图标出下一件要收集的漂浮物。](verification/cleanup-desktop.png)
+![Windows 桌面实测，工作台记录 A 艇已收起一块泡沫。](verification/cleanup-desktop.png)
 
-清漂采用仿真场景提供的物体类别和实时位置。现有的 `pilot.onnx` 在本机根据航点方位、距离和当前艇速计算航速与转向，展开“模型观测与动作”可查看输出。船首触碰、装载上限、邻艇占用和靠泊卸载由模拟器判定。
+`cleanup.onnx` 读取固定船首相机的整帧 128×80 RGB 和本艇的中文作业子句。派单器先拆分双艇分工，并把“不要收塑料瓶”等排除条件转成允许收集的类别。模型在画面中选择目标，预测接近速度、转向和收集口开启分数。工作台的“模型观测与动作”可查看实际输入和预测位置。两艇通过艇位报文共享视觉锁定位置。搜索、绕障和返港使用海图，物体类别与真实坐标只供渲染、接触物理、台账及离线监督使用。
 
-执行 `npm run test:cleanup` 可回放 114 条不同的清漂指令，共 124 次闭环航行，覆盖三种布局、横穿船、指定卸载泊位和双艇分工。执行 `python scripts/check_cleanup_desktop.py` 可在打包后的 EXE 中复验三类清理指令和双艇分工，并核对相册与卸载记录。[清漂指令回放](verification/cleanup-cases.json) · [清漂桌面复验](verification/cleanup-desktop.json)
+![同一张留出集船首画面，左边下发“只收集塑料瓶”，右边下发“只收集泡沫块”。绿框显示权重的实际输出。](verification/cleanup-pair.png)
+
+清漂策略在实验室 RTX 4090 上使用 420 条仿真轨迹、5,460 帧船首图像训练。另用 96 条轨迹的 1,248 帧逐帧换指令复测。248 帧同时看得见两种材料，其中 221 帧在切换指令后两次均选对，定位误差在 5 像素以内。632 帧无标注目标的画面，两条指令都未触发收集。这些结果来自三维港池仿真。[训练指标](verification/cleanup-training.json) · [换指令与导出一致性](verification/cleanup-export.json)
+
+119 条不同的中文指令共回放 134 次，全部通过。回放覆盖三种港池布局、移动漂浮物、两艇分工、停船改派和指定泊位卸载，累计处理 111,206 帧船首图像，碰撞和拍照均为 0。桌面 EXE 在常速单艇清漂测试中的一次读数为 5.0 次/秒。`npm run test:cleanup` 可重跑视觉闭环，`python scripts/check_cleanup_desktop.py` 可从桌面输入框复验四项收运任务。[视觉清漂回放](verification/cleanup-vision.json) · [桌面实测](verification/cleanup-desktop.json) · [模型面板实测](verification/cleanup-camera-panel.json)
 
 ## 双艇通信与协作
 
@@ -74,16 +78,16 @@
 
 ## 模型与训练
 
-Three.js 渲染三维港池和船首画面，Canvas 2D 绘制电子海图。Vite 打包前端资源，Tauri 2 与 Rust 将前端和模型封装为 Windows 桌面程序，界面由 WebView2 显示。三个 ONNX 模型通过 ONNX Runtime Web 的 WebAssembly 后端在 Web Worker 中运行。
+Three.js 渲染三维港池和船首画面，Canvas 2D 绘制电子海图。Vite 打包前端资源，Tauri 2 与 Rust 将前端和模型封装为 Windows 桌面程序，界面由 WebView2 显示。四个 ONNX 模型通过 ONNX Runtime Web 的 WebAssembly 后端在 Web Worker 中运行。
 
-本项目沿用 OpenVLA 的均匀动作离散化方法。艇控模型在 256 个边界形成的区间上预测归一化航速和转向，同时输出快门信号。发布的是在实验室训练的无人艇专用轻量模型。OpenVLA 论文的 7B 权重面向机器人操作，本项目的中文编码器来自 UER 的两层中文 RoBERTa，视觉网络使用 MobileNetV3-Small 首层卷积初始化。 [OpenVLA，CoRL 2024](https://proceedings.mlr.press/v270/kim25c.html) · [动作编码原始实现](https://github.com/openvla/openvla/blob/main/prismatic/vla/action_tokenizer.py) · [UER 预训练权重](https://huggingface.co/uer/chinese_roberta_L-2_H-128) · [Torchvision MobileNetV3](https://pytorch.org/vision/stable/models/mobilenetv3.html)
+航标巡检策略沿用 OpenVLA 的均匀动作离散化方法。艇控模型在 256 个边界形成的区间上预测归一化航速和转向，同时输出快门信号。发布的是在实验室训练的无人艇专用轻量模型。OpenVLA 论文的 7B 权重面向机器人操作，本项目的中文编码器来自 UER 的两层中文 RoBERTa，视觉网络使用 MobileNetV3-Small 首层卷积初始化。 [OpenVLA，CoRL 2024](https://proceedings.mlr.press/v270/kim25c.html) · [动作编码原始实现](https://github.com/openvla/openvla/blob/main/prismatic/vla/action_tokenizer.py) · [UER 预训练权重](https://huggingface.co/uer/chinese_roberta_L-2_H-128) · [Torchvision MobileNetV3](https://pytorch.org/vision/stable/models/mobilenetv3.html)
 
 - **中文指令**由 language.onnx 识别目标指代。任务管理器处理语句顺序、否定、条件、改派和待办记录。含糊的目标可在输入框重新指定。训练覆盖港池导航、观察、拍照和靠泊用语。
 - **艇控**由 navigation.onnx 在本机 Web Worker 执行。模拟器提供实例候选和相对测距测角。光学模拟使用艇所在方位，从与场景相同的地标网格渲染归一化的 20×20 RGB 实例裁片。四个候选按观察方位排列，模型根据裁片、指令目标和相对几何量选择目标并输出运动与拍照动作。船首相机单独渲染全景取证照片。这一设计免去了在真实水面图像上检测候选物的环节。
 - **动态任务**使用带惯性的艇体运动、倾角时间序列、低速让行和任务队列。是否再拍取决于观测到的持续倾斜。航道门通过、交通避让、取证站位和任务记忆由显式控制逻辑实现。
 - **训练与验证**使用 768 条仿真示范轨迹，共 70,656 个航行状态。验证时更换随机种子，另生成 96 条航迹。语言指代模型在 24 条留出短句中有 23 条正确指向目标。训练和验证使用不同的视觉裁片，导出后逐一核对 ONNX 与 PyTorch 的输出。[训练记录](public/models/run.json) · [闭环验证](verification/closed-loop.json) · [桌面验证](verification/desktop.json)
 
-训练和导出均在配备 NVIDIA GeForce RTX 4090 的实验室服务器上完成，艇控模型使用 PyTorch 2.5.1 训练。发布版随附三个 ONNX 模型和中文词表。[中文指代模型](public/models/language.onnx) · [视觉艇控模型](public/models/navigation.onnx) · [门标艇控模型](public/models/pilot.onnx) · [中文词表](public/models/vocab.txt)
+训练和导出均在配备 NVIDIA GeForce RTX 4090 的实验室服务器上完成，艇控模型使用 PyTorch 2.5.1 训练。发布版随附四个 ONNX 模型和中文词表。[中文指代模型](public/models/language.onnx) · [视觉艇控模型](public/models/navigation.onnx) · [门标艇控模型](public/models/pilot.onnx) · [船首清漂策略](public/models/cleanup.onnx) · [中文词表](public/models/vocab.txt)
 
 红绿门标的身份由海图中与三维模型共用的颜色、位置登记表确定。门标任务把该目标的相对几何量送入 `pilot.onnx`，该文件直接从原艇控网络提取，保留已训练的航速、转向和快门权重。其余四个视觉候选沿用 `navigation.onnx` 的图像注意力。观测选中的实体与派单目标不一致时，艇会减速并复核目标身份。
 
@@ -122,11 +126,26 @@ Vite 开发地址为 `http://127.0.0.1:5186/`，`npm run build` 生成可通过 
 
 执行 `python scripts/check_commands.py` 可从发布版 EXE 的输入框复验 177 条中文指令。按 CEGIS 的做法，先用 143 条指令回放并调整派单规则，再用 34 条独立留出的指令检验。发布版回放的 177 条均符合预期，其中 151 条执行，26 条按预期拒绝派单。测试按艇核对了 164 次起航前规划，解码校验了 83 张船首 JPEG，艇间回传的副本另行比对。使用 `--ids C046,C085` 可复验单艇检查和双艇巡检的零照片结果，使用 `--ids C175` 可复验 A 艇观察、B 艇补拍一张的接力任务。[逐条测试报告](verification/commands-final.md) · [测试规格](scripts/cegis_cases.py)
 
-在 v1.1.0 的同一个 EXE 上再次回放上述 177 条巡检指令，全部通过，核验了 164 次起航前规划和 83 张实际拍摄的 JPEG。[v1.1.0 逐条回归记录](verification/commands-v1.1.0.json)
+在 v1.2.0 的 Windows EXE 上再次回放 177 条巡检指令，全部通过。发布版完成了 164 次起航前规划，并按要求拍摄 83 张 JPEG。[v1.2.0 逐条回归记录](verification/commands-v1.2.0.json)
 
 复训时，以 `python training/prepare_base.py` 获取初始权重和词表，以 `python scripts/collect_views.py` 从开发服务器采集实际使用的相机裁片。将基础权重、词表和 `visual.bank` 放入服务器同一 `data/` 目录，准备 `out/`。在含有 CUDA PyTorch 与 NumPy 的环境中运行训练，以安装有 PyTorch、ONNX 和 ONNX Runtime 的环境导出。
 
 ```sh
 python training/train.py --data data --out out
 python training/export.py --data data --out out
+```
+
+清漂的采集器使用与 EXE 相同的船首相机。启动 `npm run dev -- --port 5193` 后，在另一终端运行以下两条命令。第二批轨迹加入近距离邻艇和遮挡。
+
+```sh
+python scripts/collect_cleanup.py --out data
+python scripts/collect_cleanup.py --neighbor --train 150 --holdout 36 --out data
+```
+
+将这些数据分片复制到 GPU 服务器的 `data/` 目录。在仓库根目录训练策略、导出权重，再用独立轨迹比对 PyTorch 与 ONNX 并核验同帧换指令结果。
+
+```sh
+python training/cleanup_policy.py --data data --out out --steps 1750 --lexicon public/models/cleanup-lexicon.json
+python training/cleanup_policy.py --export --out out --lexicon public/models/cleanup-lexicon.json
+python training/check_cleanup_export.py --data data --out out --lexicon public/models/cleanup-lexicon.json
 ```
