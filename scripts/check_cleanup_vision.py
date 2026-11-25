@@ -51,8 +51,10 @@ def cases(full):
 def report(rows):
     weights=Path(__file__).resolve().parents[1]/'public/models/cleanup.onnx'
     failures=[row['case'] for row in rows if not row['passed']]
+    landed=[t for row in rows for t in row.get('transitions',[]) if t[3]=='land']
     return dict(passed=len(rows)-len(failures),total=len(rows),failed=failures,
                 uniqueOrders=len({row['text'] for row in rows}),
+                shoreTransfers=len(landed),perBerth={k:sum(t[4]==k for t in landed) for k in ('east','west')},
                 cleanupONNXSHA256=hashlib.sha256(weights.read_bytes()).hexdigest(),
                 bowFrames=sum(row.get('counts',{}).get('frames',0) for row in rows),
                 collisions=sum(row.get('collisions',0) for row in rows),
@@ -114,7 +116,7 @@ def main(args):
                         sum(t[4]=='east' for t in landed)==4 and len(row['checks'])==2)
             if case.get('exercise')=='reconnect':berths=berths and bool(row['checks'])
             ok=(row.get('done') and counts==expected and actors and berths and row['planned'] and row['counts']['frames']>0 and
-                not any(row[k] for k in ['photos','badContact','badUnload','overcapacity','collisions']))
+                not any(row[k] for k in ['photos','badContact','badTransfer','badUnload','overcapacity','collisions']))
             row.update(case=i,passed=bool(ok),expected=expected,
                        setup={key:value for key,value in case.items() if key not in ('text','layout','traffic')})
             rows.append(row)
@@ -129,7 +131,7 @@ def main(args):
 if __name__=='__main__':
     p=argparse.ArgumentParser()
     p.add_argument('--url',default='http://127.0.0.1:5194')
-    p.add_argument('--out',type=Path,default=Path('verification/cleanup-vision.json'))
+    p.add_argument('--out',type=Path,default=Path('verification/shore-arm-vision.json'))
     p.add_argument('--full',action='store_true')
     p.add_argument('--debug',action='store_true')
     p.add_argument('--only',type=int,nargs='+')

@@ -208,8 +208,9 @@ export class HarborFleet {
     this.peerYield[id]=!!peer;
     this.boats[id].log('协作',peer?'收到邻艇位置，调整航行避让':'邻艇航线已清，恢复巡检');
    }
-   this.boats[id].tick(dt,peer);
+   this.boats[id].tick(dt,peer,false);
   }
+  this.litter.tickArms(dt);
   if(!this.dual){this.sync();return}
   if(this.time-this.lastHeartbeat>=heartbeat)this.sendStates();
   // Stable sorting preserves the order of equally timed control packets.

@@ -35,9 +35,9 @@ export class HarborView {
   this.parts=Object.fromEntries(CONTACTS.map(k=>[k,fixture(k)]));this.scene.add(...Object.values(this.parts));
   this.cleanupView=new CleanupView(this.scene,run.litter.items);
   this.optics=makeOptics(this.bow);this.view=0;this.orbit=.29;this.height=3.35;this.radius=8.25;this.setRun(run);
-  let drag=null;world.addEventListener('pointerdown',e=>{if(e.button!==0||this.view!==0)return;drag=[e.clientX,e.clientY];world.setPointerCapture(e.pointerId)});
+  let drag=null;world.addEventListener('pointerdown',e=>{if(e.button!==0||this.view!==0||this.shore)return;drag=[e.clientX,e.clientY];world.setPointerCapture(e.pointerId)});
   world.addEventListener('pointermove',e=>{
-   if(!drag||this.view!==0)return;
+   if(!drag||this.view!==0||this.shore)return;
    this.orbit+=(e.clientX-drag[0])*.008;
    this.height=Math.max(1.5,Math.min(10,this.height+(e.clientY-drag[1])*.035));
    drag=[e.clientX,e.clientY];
@@ -46,6 +46,7 @@ export class HarborView {
   world.addEventListener('wheel',e=>{e.preventDefault();this.radius=Math.max(5.5,Math.min(19,this.radius+e.deltaY*.012))},{passive:false});
  }
  setRun(run){
+  this.shore=false;
   this.env?.dispose();this.env=buildHarbor(T,this.scene,run.layout);
   for(const c of CONTACTS){
    const p=run.layout[c],q=fixturePosition(p,c);this.parts[c].position.set(q.x,0,q.z);
@@ -64,8 +65,9 @@ export class HarborView {
   this.cleanupView.update(r,this.boats,this.models);
   for(const [id,run] of Object.entries(this.boats)){
    const b=run.boat,v=this.models[id],w=this.wakes[id],phase=id==='B'?.52:0;
-   v.position.set(b.x,.045*Math.sin(t*1.72+phase),b.z);
-   v.rotation.set(.012*Math.sin(t*1.32+phase),-b.yaw,.017*Math.sin(t*1.78+phase),'YXZ');
+   const swell=run.litter.isMoored(id)?0:1;
+   v.position.set(b.x,swell*.045*Math.sin(t*1.72+phase),b.z);
+   v.rotation.set(swell*.012*Math.sin(t*1.32+phase),-b.yaw,swell*.017*Math.sin(t*1.78+phase),'YXZ');
    const len=3.4+b.speed*1.8;
    w.position.set(b.x-Math.sin(b.yaw)*(1.15+len/2),.024,b.z+Math.cos(b.yaw)*(1.15+len/2));w.rotation.y=-b.yaw;
    w.scale.set(2.1+b.speed*.41,1,len);w.material.uniforms.intensity.value=Math.min(1,b.speed/.8);w.material.uniforms.seconds.value=t;
@@ -93,13 +95,19 @@ export class HarborView {
  render(){
   const r=this.run,b=r.boat;this.updateObjects();
   this.fit(this.main,this.camera);
-  if(this.view===0){
+  if(this.shore){
+   const berth=r.layout[this.shoreStation().berth],s=this.follow==='A'?-1:1;
+   const zoom=Math.max(1,1.45/this.camera.aspect);
+   this.camera.up.set(0,1,0);
+   this.camera.position.set(berth.x+s*8.4*zoom,2.4+3.2*zoom,berth.z+4.7-7.9*zoom);
+   this.camera.lookAt(berth.x+s*.45,2.4,berth.z+4.7);
+  }else if(this.view===0){
    const a=b.yaw+this.orbit;
    this.camera.up.set(0,1,0);this.camera.position.set(b.x-Math.sin(a)*this.radius,this.height,b.z+Math.cos(a)*this.radius);
    this.camera.lookAt(b.x+Math.sin(b.yaw)*3,.82,b.z-Math.cos(b.yaw)*3);
   }else if(this.view===1){this.camera.up.set(0,1,0);this.camera.position.set(1,52,35);this.camera.lookAt(0,0,1)}
   else this.cameraPose(this.camera,r);
-  const hull=this.models[this.follow];hull.visible=this.view!==2;this.main.render(this.scene,this.camera);hull.visible=true;
+  const hull=this.models[this.follow];hull.visible=this.shore||this.view!==2;this.main.render(this.scene,this.camera);hull.visible=true;
   const resized=this.fit(this.bow,this.lens);
   if(resized||r.time-this.lastBow>=.2){
    this.cameraPose(this.lens,r);hull.visible=false;this.bow.render(this.scene,this.lens);hull.visible=true;this.lastBow=r.time;
@@ -134,5 +142,12 @@ export class HarborView {
   }
   return entry.crops[c];
  }
- nextView(){this.view=(this.view+1)%3;return ['随艇视角','港池鸟瞰','船首视角'][this.view]}
+ shoreStation(){
+  const r=this.run,arms=r.litter.arms;
+  const active=Object.values(arms).find(arm=>arm.moors(this.follow));
+  const recent=r.done.findLast(task=>task.kind==='cleanup');
+  return active||arms[r.cleanup?.berth||recent?.berth||(this.follow==='A'?'east':'west')];
+ }
+ get viewName(){return this.shore?'岸端接应':['随艇视角','港池鸟瞰','船首视角'][this.view]}
+ nextView(){if(this.shore)this.shore=false;else this.view=(this.view+1)%3;return this.viewName}
 }

@@ -8,7 +8,7 @@ import {describe,names} from './commands.js';
 import {suggestMarkerCorrection} from './marks.js';
 import {drawChart} from './chart.js';
 import {mountInspector} from './inspect-panel.js';
-import {capacity} from './cleanup.js';
+import {capacity,litterNames} from './cleanup.js';
 import './inspect.css';
 
 const $=id=>document.getElementById(id);
@@ -48,6 +48,7 @@ function reset(layoutChanged=false){
  fleet.setDual(dual);
  if(!pastRoutes.has(historyKey(follow,fleet.layout)))compare=false;
  if(view)view.setRun(fleet.boats.A);else view=new HarborView($('world'),$('bow'),fleet.boats.A);
+ $('view').textContent='切换视角';
  $('pause').setAttribute('aria-pressed','false');$('pause').textContent='暂停';
  $('compare').setAttribute('aria-pressed',String(compare));$('compare').textContent=compare?'隐藏对比':'对比航迹';
  updateFollow(follow);
@@ -88,6 +89,12 @@ function updateUi(force=false){
   $('cleanup-water').textContent=water.length;$('cleanup-land').textContent=land.length;
   $('cleanup-cargo-label').textContent=follow+' 艇船舱';
   $('cleanup-cargo').textContent=world.cargo(follow).length+' / '+capacity;
+  const arm=view.shoreStation(),state=$('shore-state'),dock=arm.berth==='east'?'东泊位':'西泊位';
+  const item=arm.item,action=arm.job?arm.job.vessel+'艇 · '+arm.label:'待命';
+  const status=dock+'岸臂 · '+action+(item&&arm.stage!=='stow'?' · '+litterNames[item.kind]+' '+item.id:'');
+  if(state.textContent!==status)state.textContent=status;
+  state.dataset.stage=arm.stage;state.dataset.item=item?.id||'';state.dataset.berth=arm.berth;
+  $('shore-view').setAttribute('aria-pressed',String(view.shore));$('shore-view').textContent=view.shore?'返回巡检视角':'查看岸臂';
   const peer=follow==='A'?'B':'A',peerCargo=world.cargo(peer).length;
   $('cleanup-detail').textContent='水面　塑料瓶 '+count(water,'bottle')+' · 泡沫块 '+count(water,'foam')+'　｜　已卸　瓶 '+count(land,'bottle')+' · 泡沫 '+count(land,'foam')+
     (fleet.dual||peerCargo?'　｜　'+peer+' 艇在舱 '+peerCargo:'');
@@ -213,7 +220,8 @@ $('pause').addEventListener('click',()=>{
  paused=!paused;for(const id of fleet.ids()){fleet.boats[id].revision++;meters[id].first=null;meters[id].last=0}
  nextPoll=0;$('pause').setAttribute('aria-pressed',String(paused));$('pause').textContent=paused?'继续':'暂停';updateUi();
 });
-$('view').addEventListener('click',()=>{const s=view.nextView();$('view').textContent=s;view.render()});
+$('view').addEventListener('click',()=>{$('view').textContent=view.nextView();view.render();updateUi(true)});
+$('shore-view').addEventListener('click',()=>{view.shore=!view.shore;$('view').textContent=view.viewName;view.render();updateUi(true)});
 $('reset').addEventListener('click',()=>reset());$('layout').addEventListener('change',()=>reset(true));
 $('condition').addEventListener('change',()=>{for(const r of Object.values(fleet.boats)){r.condition=$('condition').value;r.resetSamples();r.log('试验','浮标状态已切换')}updateUi()});
 $('traffic').addEventListener('change',()=>{for(const r of Object.values(fleet.boats)){r.traffic=$('traffic').checked;r.log('试验',r.traffic?'已启用保洁船穿行':'已关闭保洁船穿行')}updateUi()});

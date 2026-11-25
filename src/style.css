@@ -356,6 +356,8 @@ kbd { font: 555 .98em/1 var(--numeric); }
 .cleanup-ledger dt, .cleanup-ledger p { font-size: .7rem; color: #4a655b; }
 .cleanup-ledger dd { margin: 1px 0; font: 650 1rem var(--numeric); }
 .cleanup-ledger p { margin: 0; line-height: 1.5; }
+.shore-status { display: flex; align-items: center; justify-content: space-between; gap: 6px; border-top: 1px solid #c5d5ca; margin-top: 5px; padding-top: 5px; font-size: .72rem; }
+.shore-status button { flex-shrink: 0; }
 .workbench summary {
   display: flex;
   align-items: center;

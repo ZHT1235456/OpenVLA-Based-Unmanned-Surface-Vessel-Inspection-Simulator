@@ -284,6 +284,10 @@ export function mountShell(root) {
                 <div><dt>码头累计</dt><dd id="cleanup-land">0</dd></div>
               </dl>
               <p id="cleanup-detail"></p>
+              <div class="shore-status">
+                <span id="shore-state" role="status"></span>
+                <button class="small-button" type="button" id="shore-view" aria-pressed="false">查看岸臂</button>
+              </div>
             </section>
             <div class="record-tabs" role="tablist" aria-label="巡检记录">
               <button id="task-tab" role="tab" type="button" aria-controls="task-panel" aria-selected="true">任务队列</button>

@@ -50,7 +50,7 @@ export class HarborRun {
   this.queue.push(...plan.tasks.map(x=>({...x})));
   if(this.active)this.planRoute();else this.advance();
  }
- endCleanup(){this.cleanup?.release();this.cleanup=null}
+ endCleanup(){this.cleanup?.detach();this.cleanup=null}
  advance(){
   this.endCleanup();
   this.active=this.queue.shift()||null;this.revision++;this.stable=0;this.contact=null;this.unverifiedTarget=false;
@@ -166,6 +166,7 @@ export class HarborRun {
   return {values:[err/Math.PI,Math.sin(err),Math.cos(err),clamp(margin/16,-.6,2.8),b.speed/4],margin,err,final};
  }
  observation(cropFor,readBow){
+  if(this.litter.isMoored(this.id||'A'))return null;
   if(!this.nextWaypoint||this.held||this.awaitingOrder||this.active.kind==='gate')return null;
   if(this.cleanup){
     const b=this.boat,goal=this.nextWaypoint,err=wrap(direction(b,goal)-b.yaw),d=distance(b,goal);
@@ -244,7 +245,7 @@ export class HarborRun {
   }
   this.finish(describe(t)+'已完成',c,tilted);return true;
  }
- tick(dt,peer=null){
+ tick(dt,peer=null,advanceShore=true){
   this.time+=dt;const b=this.boat;let speed=0,turn=0;
   this.litter.drift(this.time);
   if(!this.held&&!this.awaitingOrder)this.cleanup?.refresh();
@@ -280,6 +281,7 @@ export class HarborRun {
    const d=distance(b,obstacle),a=wrap(direction(b,obstacle)-b.yaw);
    if(d<3.1&&Math.abs(a)<.90&&speed>.25){turn=(a>=0?-1:1)*1.2;speed=Math.min(speed,.8)}
   }
+  if(this.litter.isMoored(this.id||'A')){speed=0;turn=0;b.speed=0;b.turn=0}
   b.speed+=(speed-b.speed)*(1-Math.exp(-dt/.5));b.turn+=(turn-b.turn)*(1-Math.exp(-dt/.20));
   b.yaw=wrap(b.yaw+b.turn*dt);
   const next={x:clamp(b.x+Math.sin(b.yaw)*b.speed*dt,waterBounds.minX,waterBounds.maxX),
@@ -295,6 +297,7 @@ export class HarborRun {
    }
   }
   if(!this.held&&!this.awaitingOrder)this.cleanup?.afterMove(dt);
+  if(advanceShore)this.litter.tickArms(dt);
   const hazards=buoyIds.map(id=>[names[id],this.layout[id],isGateMark(id)?1.05:1.12]);
   if(this.traffic)hazards.push(['保洁船',service,2]);
   for(const [key,p,r] of hazards){const d=distance(b,p);if(d<r&&!this.touches.has(key)){this.collisionCount++;this.touches.add(key);this.log('接触','与'+key+'距离过近')}if(d>r+.35)this.touches.delete(key)}

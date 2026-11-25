@@ -1,4 +1,5 @@
 import {waterPoint} from './bow-sensor.js';
+import {ShoreArm} from './shore-arm.js';
 
 export const capacity = 2;
 export const litterNames = {bottle:'塑料瓶', foam:'泡沫块', litter:'水面漂浮物', unload:'船舱卸载'};
@@ -22,6 +23,7 @@ export function intakeContact(boat,item){
 export class HarborLitter {
   constructor(){
     this.used=false;
+    this.arms={east:new ShoreArm('east'),west:new ShoreArm('west')};
     this.items=seeds.map(([id,kind,x,z],i)=>({id,kind,x,z,origin:{x,z},phase:i*1.72,
       state:'water',claim:null,vessel:null,berth:null}));
   }
@@ -36,19 +38,16 @@ export class HarborLitter {
     }
   }
   cargo(id){return this.items.filter(item=>item.state==='aboard'&&item.vessel===id)}
+  isMoored(id){return this.arms.east.moors(id)||this.arms.west.moors(id)}
+  tickArms(dt){for(const arm of Object.values(this.arms))arm.step(dt,this.items)}
   takeAtIntake(run){
     const id=run.id||'A';
-    if(this.cargo(id).length>=capacity)return null;
+    const cargo=this.cargo(id);
+    if(cargo.length>=capacity)return null;
     // A physical contact can pick up either material, including a policy mistake.
     const item=this.items.find(i=>i.state==='water'&&intakeContact(run.boat,i));
-    if(item)Object.assign(item,{state:'aboard',vessel:id});
+    if(item)Object.assign(item,{state:'aboard',vessel:id,slot:cargo.some(i=>i.slot===0)?1:0});
     return item;
-  }
-  unload(run,berth){
-    if(gap(run.boat,unloadingPoint(run.layout[berth],run.id))>.85||run.boat.speed>.32)return [];
-    const cargo=this.cargo(run.id||'A');
-    for(const item of cargo)Object.assign(item,{state:'land',berth});
-    return cargo;
   }
 }
 
@@ -88,7 +87,12 @@ export class CleanupMission {
     this.map=run.navigationMap;this.moored=null;
   }
   release(){this.track=null;this.candidate=null;this.gate=false}
+  detach(){this.world.arms[this.berth].cancel(this.handoff);this.release()}
   get label(){
+    if(this.phase==='handoff'){
+      const arm=this.world.arms[this.berth];
+      return arm.job===this.handoff?'靠泊交接':'等候岸臂';
+    }
     if(this.phase==='collect')return '船首视觉对准'+litterNames[this.track?.kind||this.filter];
     if(this.phase==='return')return '返回'+berthName(this.berth)+'卸载';
     if(this.phase==='blocked')return '等待可航路径';
@@ -115,6 +119,7 @@ export class CleanupMission {
   }
   plan(announce=true){
     const r=this.run,cargo=this.world.cargo(this.id);
+    if(this.handoff)return true;
     this.release();this.dwell=0;
     if(this.phase==='return'||cargo.length>=capacity||this.index>=this.survey.length&&(cargo.length||this.survey.length)){
       this.phase='return';
@@ -177,6 +182,7 @@ export class CleanupMission {
   }
   refresh(){
     const r=this.run;
+    if(this.handoff)return;
     const peer=r.peerVessel,stationary=peer&&r.time-peer.time<2.4&&(!peer.active||peer.held)&&peer.speed<.25;
     if(stationary&&gap(r.boat,peer)>4.65&&(!this.moored||gap(this.moored,peer)>.8)){
       this.moored={x:peer.x,z:peer.z};this.map=r.navigationMap.withMooredVessel(this.moored);this.plan(false);return;
@@ -204,6 +210,10 @@ export class CleanupMission {
   }
   afterMove(dt){
     const r=this.run;
+    if(this.handoff){
+      if(!this.handoff.done)return;
+      this.delivered+=this.handoff.delivered.length;this.handoff=null;this.leaveDock();return;
+    }
     if(this.phase==='collect'&&this.gate){
       const picked=this.world.takeAtIntake(r);
       if(picked){
@@ -219,13 +229,19 @@ export class CleanupMission {
       const atDock=gap(r.boat,unloadingPoint(r.layout[this.berth],this.id))<.85&&r.boat.speed<.32;
       this.dwell=atDock?this.dwell+dt:0;
       if(this.dwell<.7)return;
-      const cargo=this.world.unload(r,this.berth);
-      this.delivered+=cargo.length;
-      if(cargo.length)r.log('卸载',berthName(this.berth)+'收到 '+cargo.length+' 件 · '+cargo.map(i=>litterNames[i.kind]+' '+i.id).join('、'));
-      if(this.index>=this.survey.length){
-        r.finish('清漂完成 · 本次卸载 '+this.delivered+' 件'+(this.filter==='unload'?'':' · 已完成作业区目视搜索并靠泊'),null);return;
+      const cargo=this.world.cargo(this.id);
+      if(cargo.length){
+        r.boat.speed=0;r.boat.turn=0;r.act={throttle:0,turn:0};r.revision++;
+        this.phase='handoff';this.handoff=this.world.arms[this.berth].request(r,cargo);
+        r.log('交接',berthName(this.berth)+'已靠稳 · 等候机械臂接收 '+cargo.length+' 件');
+      }else{
+        this.leaveDock();
       }
-      this.phase='survey';this.plan();
     }
+  }
+  leaveDock(){
+    if(this.index>=this.survey.length){
+      this.run.finish('清漂完成 · 本次卸载 '+this.delivered+' 件'+(this.filter==='unload'?'':' · 已完成作业区目视搜索并靠泊'),null);
+    }else{this.phase='survey';this.plan()}
   }
 }

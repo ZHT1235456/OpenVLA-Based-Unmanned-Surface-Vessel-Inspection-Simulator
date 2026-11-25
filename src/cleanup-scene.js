@@ -1,5 +1,7 @@
 import * as T from 'three';
 import {intake} from './cleanup.js';
+import {cargoDepth,binCenter,binSlotPoint} from './shore-arm.js';
+import {makeShoreArm} from './shore-arm-view.js';
 
 const steel=new T.MeshStandardMaterial({color:0x507274,metalness:.48,roughness:.42});
 const orange=new T.MeshStandardMaterial({color:0xffad43,roughness:.6});
@@ -48,9 +50,15 @@ function bowIntake(){
 }
 function dockBin(){
   const group=new T.Group();
-  block(group,canvas,0,.04,0,2.35,.08,.93);
-  for(const z of [-.47,.47])block(group,steel,0,.15,z,2.39,.18,.05);
-  for(const x of [-1.17,1.17])block(group,orange,x,.15,0,.045,.19,.95);
+  block(group,canvas,0,.055,0,2.55,.11,1.35);
+  block(group,steel,0,.32,.66,2.55,.50,.06);
+  block(group,orange,0,.59,.66,2.58,.045,.08);
+  for(const x of [-1.25,1.25]){
+    block(group,steel,x,.27,0,.064,.40,1.34);
+    block(group,orange,x,.48,0,.078,.038,1.36);
+  }
+  // The low water-facing lip leaves the landed material visible from the quay camera.
+  block(group,steel,0,.15,-.66,2.55,.18,.06);
   return group;
 }
 
@@ -59,7 +67,9 @@ export class CleanupView {
     this.scene=scene;
     this.meshes=new Map(items.map(i=>[i.id,litterMesh(i.kind)]));
     this.intakes={};this.bins={east:dockBin(),west:dockBin()};
+    this.arms={east:makeShoreArm(),west:makeShoreArm()};
     scene.add(...this.meshes.values(),...Object.values(this.bins));
+    for(const arm of Object.values(this.arms))scene.add(arm.root);
   }
   update(run,boats,hulls){
     const world=run.litter,t=run.time;
@@ -68,26 +78,29 @@ export class CleanupView {
       this.intakes[id].visible=!!boat.cleanup||world.cargo(id).length>0;
     }
     for(const [key,bin] of Object.entries(this.bins)){
-      const berth=run.layout[key];bin.visible=world.used;
-      bin.position.set(berth.x,1.135,berth.z+5.72);
+      const berth=run.layout[key],arm=this.arms[key];
+      bin.position.set(berth.x+binCenter.x,binCenter.y,berth.z+binCenter.z);
+      arm.root.position.set(berth.x,0,berth.z);arm.update(world.arms[key]);
     }
-    const slots={A:0,B:0,east:0,west:0};
+    const slots={east:0,west:0};
     for(const item of world.items){
       const mesh=this.meshes.get(item.id);
-      const afloat=item.state==='water', aboard=item.state==='aboard';
-      const parent=afloat?this.scene:aboard?hulls[item.vessel]:this.bins[item.berth];
+      const afloat=item.state==='water', aboard=item.state==='aboard',gripped=item.state==='gripped';
+      const parent=afloat?this.scene:aboard?hulls[item.vessel]:gripped?this.arms[item.berth].root:this.bins[item.berth];
       if(parent&&mesh.parent!==parent)parent.add(mesh);
       mesh.visible=!aboard||!!boats[item.vessel];
       if(afloat){
         mesh.position.set(item.x,.073+.029*Math.sin(1.9*t+item.phase),item.z);
         mesh.rotation.set(.085*Math.sin(t+item.phase),item.phase+.27*Math.sin(t*.17),.1*Math.cos(1.6*t+item.phase));
       }else if(aboard){
-        mesh.position.set(0,.18,-1.52-.37*slots[item.vessel]++);
+        mesh.position.set(0,.18,-cargoDepth(item.slot??0));
         mesh.rotation.set(0,item.phase*.09,0);
+      }else if(gripped){
+        const {tip,yaw}=world.arms[item.berth].pose;
+        mesh.position.set(tip.x,tip.y,tip.z);mesh.rotation.set(0,yaw,0);
       }else{
-        const slot=slots[item.berth]++;
-        mesh.position.set((slot%3-1)*.73,.23,(Math.floor(slot/3)-.5)*.39);
-        mesh.rotation.set(0,item.phase*.08,0);
+        const ordinal=slots[item.berth]++,p=binSlotPoint(item.binSlot??ordinal);
+        mesh.position.set(p.x-binCenter.x,p.y-binCenter.y,p.z-binCenter.z);mesh.rotation.set(0,0,0);
       }
     }
   }

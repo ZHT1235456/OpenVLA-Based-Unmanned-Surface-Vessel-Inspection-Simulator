@@ -26,8 +26,9 @@ export async function cameraTrials(){
     if(order.error)return {error:order.error};
     f.dispatch(order,text);view.setMembers(f.dual?f.boats:{A:f.boats.A},'A');
     const counts={frames:0,locks:0,gates:0},trace=[],transitions=[],states=f.litter.items.map(i=>i.state);
+    const nextState={water:'aboard',aboard:'gripped',gripped:'land'};
     const applied={},checks=[];let phase=0,retained=null;
-    let badContact=false,badUnload=false,overcapacity=false,planned=true;
+    let badContact=false,badTransfer=false,badUnload=false,overcapacity=false,planned=true;
     for(let step=0;step<30*650;step++){
       if(step%6===0)for(const id of f.ids()){
         const r=f.boats[id],obs=r.observation(c=>view.cropFor(c,r),()=>view.sensor.read(view,r));
@@ -48,6 +49,12 @@ export async function cameraTrials(){
       for(const [i,item] of f.litter.items.entries()){
         if(states[i]===item.state)continue;
         const r=f.boats[item.vessel];
+        if(nextState[states[i]]!==item.state)badTransfer=true;
+        if(item.state==='gripped'||item.state==='land'){
+          const arm=f.litter.arms[item.berth];
+          if(arm?.item!==item||arm.job.vessel!==item.vessel||
+            arm.stage!==(item.state==='land'?'stow':'lift'))badTransfer=true;
+        }
         if(item.state==='aboard'&&!intakeContact(r.boat,item))badContact=true;
         if(item.state==='land'){
           const dock=unloadingPoint(r.layout[item.berth],r.id);
@@ -83,7 +90,7 @@ export async function cameraTrials(){
     }
     const done=f.ids().every(id=>!f.boats[id].active), photos=f.ids().reduce((n,id)=>n+f.boats[id].photos.length,0);
     const collisions=f.contacts+f.ids().reduce((n,id)=>n+f.boats[id].collisionCount,0);
-    return {text,layout,traffic,done,photos,collisions,counts,transitions,checks,badContact,badUnload,overcapacity,planned,
+    return {text,layout,traffic,done,photos,collisions,counts,transitions,checks,badContact,badTransfer,badUnload,overcapacity,planned,
       time:Math.round(f.time),remaining:f.litter.items.filter(i=>i.state==='water').map(i=>i.id),
       ...(debug?{trace,logs:f.ids().map(id=>f.boats[id].logs)}:{})};
   };
