@@ -85,7 +85,7 @@ npm run desktop
 
 Vite 开发地址为 `http://127.0.0.1:5186/`，`npm run build` 生成可通过 HTTP 静态服务浏览的 `dist/`。桌面构建在项目根目录生成正式中文名的 EXE。
 
-开发日志由 agy CLI 的 `gemini-4-hydrogen-high` 撰写并全文修订，采用 XeLaTeX 排版。在装有 TeX Live 和 Fandol 字体的环境中进入 `docs/`，对同名 `.tex` 源文件连续运行两次 `xelatex`，即可重建带图号和文献链接的 PDF。
+开发日志初稿和前期修订使用了 agy CLI 的 `gemini-4-hydrogen-high`。本次由该模型通读并提出校读意见，再结合软件运行截图改写正文和图注。在装有 TeX Live 和 Fandol 字体的环境中进入 `docs/`，对同名 `.tex` 源文件连续运行两次 `xelatex`，即可重建带图号和文献链接的 PDF。
 
 仿真闭环与桌面复验脚本使用 Python、Playwright、Pillow 和本机 Edge。先启动 Vite，以 `python scripts/check_sim.py` 检验单艇，以 `python scripts/check_sim.py --fleet` 检验双艇。双艇用例包含三种布局的分工、交叉让行、双向接力、倾斜条件、暂停恢复以及照片传输期间撤单。[双艇闭环结果](verification/fleet.json)
 
